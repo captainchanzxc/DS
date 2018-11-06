@@ -32,12 +32,16 @@ func schedule(jobName string, mapFiles []string, nReduce int, phase jobPhase, re
 	//
 	myCh := make(chan int, ntasks)
 	for i := 0; i < ntasks; i++ {
-		workerIP, _ := <-registerChan
 		go func(taskNum int) {
+			workerIP, _ := <-registerChan
 			res := call(workerIP, "Worker.DoTask", DoTaskArgs{JobName: jobName, File: mapFiles[taskNum], TaskNumber: taskNum, Phase: phase, NumOtherPhase: n_other}, nil)
 			if res == true {
 				myCh <- 1
-				registerChan <- workerIP
+				select {
+				case registerChan <- workerIP:
+				default:
+					return
+				}
 
 			} else {
 				fmt.Printf("%d false\n", taskNum)
@@ -48,6 +52,7 @@ func schedule(jobName string, mapFiles []string, nReduce int, phase jobPhase, re
 	for i := 0; i < ntasks; i++ {
 		<-myCh
 	}
-
+	close(myCh)
+	close(registerChan)
 	fmt.Printf("Schedule: %v done\n", phase)
 }
