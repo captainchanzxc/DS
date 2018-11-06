@@ -7,19 +7,30 @@ import (
 
 func main(){
 	var tc=make(chan  int)
-	var ac=make(chan  int)
-	go func() {
+	//var ac=make(chan  int)
+	//go func() {
+	//	select {
+	//	case tc <- 1: //not execute tc<-1
+	//		fmt.Println("tc")
+	//	case ac<-1:
+	//		fmt.Println("ac")
+	//	fmt.Println("return")
+	//	}
+	//}()
+	//time.Sleep(3*time.Second)
+	//<-ac
+	//time.Sleep(3*time.Second)
+	//fmt.Println("exit")
+	for{
 		select {
-		case tc <- 1: //not execute tc<-1
-			fmt.Println("tc")
-		case ac<-1:
-			fmt.Println("ac")
-		fmt.Println("return")
-		}
-	}()
-	time.Sleep(3*time.Second)
-	<-ac
-	time.Sleep(3*time.Second)
-	fmt.Println("exit")
+		case tc<-1:
+		default:
+			fmt.Println("default")
+			break
 
+		}
+	}
+
+	fmt.Println("return")
+	time.Sleep(3*time.Second)
 }

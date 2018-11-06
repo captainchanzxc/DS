@@ -31,28 +31,42 @@ func schedule(jobName string, mapFiles []string, nReduce int, phase jobPhase, re
 	// Your code here (Part III, Part IV).
 	//
 	myCh := make(chan int, ntasks)
+	toDoTasks := make(chan int, ntasks)
+	done := make(chan int)
 	for i := 0; i < ntasks; i++ {
-		go func(taskNum int) {
-			workerIP, _ := <-registerChan
-			res := call(workerIP, "Worker.DoTask", DoTaskArgs{JobName: jobName, File: mapFiles[taskNum], TaskNumber: taskNum, Phase: phase, NumOtherPhase: n_other}, nil)
-			if res == true {
-				myCh <- 1
-				select {
-				case registerChan <- workerIP:
-				default:
-					return
-				}
-
-			} else {
-				fmt.Printf("%d false\n", taskNum)
-			}
-
-		}(i)
+		toDoTasks <- i
 	}
+	go func() {
+		for {
+			select {
+			case taskNum, _ := <-toDoTasks:
+				go func() {
+					workerIP, _ := <-registerChan
+					res := call(workerIP, "Worker.DoTask", DoTaskArgs{JobName: jobName, File: mapFiles[taskNum], TaskNumber: taskNum, Phase: phase, NumOtherPhase: n_other}, nil)
+					if res == true {
+						myCh <- 1
+						select {
+						case registerChan <- workerIP:
+						default:
+							return
+						}
+
+					} else {
+						toDoTasks <- taskNum
+					}
+
+				}()
+			case <-done:
+				return
+			}
+		}
+	}()
 	for i := 0; i < ntasks; i++ {
 		<-myCh
 	}
+	done<-1
 	close(myCh)
-	close(registerChan)
+	//close(registerChan)
+	close(done)
 	fmt.Printf("Schedule: %v done\n", phase)
 }
