@@ -21,4 +21,15 @@ func main(){
 	for i:=0;i<3;i++{
 		fmt.Println(kvs[i].Key,kvs[i].Value)
 	}
+
+	var t sort.StringSlice
+	t=append(t, "cd")
+	t=append(t, "ad")
+	t=append(t, "ac")
+	sort.Sort(t)
+	a:="1"
+	for i,r:=range  t{
+		fmt.Println(i)
+		fmt.Println(a+r)
+	}
 }

@@ -64,9 +64,10 @@ func schedule(jobName string, mapFiles []string, nReduce int, phase jobPhase, re
 	for i := 0; i < ntasks; i++ {
 		<-myCh
 	}
-	done<-1
+	done <- 1
 	close(myCh)
-	//close(registerChan)
 	close(done)
+	close(toDoTasks)
+	//close(registerChan)
 	fmt.Printf("Schedule: %v done\n", phase)
 }
