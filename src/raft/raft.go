@@ -185,7 +185,7 @@ func (rf *Raft) RequestVote(args *RequestVoteArgs, reply *RequestVoteReply) {
 		reply.VoterGranted = false
 
 	}
-	//fmt.Printf("%s peer %d current term %d vote peer %d current term %d: %t\n", time.Now().Format("2006/01/02/ 15:03:04.000"), rf.me, rf.CurrentTerm, args.CandidateId, args.Term, reply.VoterGranted)
+	fmt.Printf("%s peer %d current term %d vote peer %d current term %d: %t\n", time.Now().Format("2006/01/02/ 15:03:04.000"), rf.me, rf.CurrentTerm, args.CandidateId, args.Term, reply.VoterGranted)
 	if args.Term > rf.CurrentTerm {
 		rf.CurrentTerm = args.Term
 		rf.State = Follower
@@ -231,7 +231,7 @@ func (rf *Raft) sendRequestVote(server int, args *RequestVoteArgs, reply *Reques
 
 func (rf *Raft) startElection() {
 
-	fmt.Printf("%s peer %d starts election\n", time.Now().Format("2006/01/02/ 15:03:04.000"), rf.me)
+	//fmt.Printf("%s peer %d starts election\n", time.Now().Format("2006/01/02/ 15:03:04.000"), rf.me)
 	rf.mu.Lock()
 	rf.CurrentTerm += 1
 	rf.mu.Unlock()
@@ -477,14 +477,14 @@ func (rf *Raft) Start(command interface{}) (int, int, bool) {
 	isLeader := true
 
 	// Your code here (2B).
-	index = len(rf.Logs)
-	rf.mu.Lock()
-	defer rf.mu.Unlock()
-	rf.Logs = append(rf.Logs, Log{Term: rf.CurrentTerm, Command: command})
-	term = rf.CurrentTerm
-	if rf.State != Leader {
-		isLeader = false
-	}
+	//index = len(rf.Logs)
+	//rf.mu.Lock()
+	//defer rf.mu.Unlock()
+	//rf.Logs = append(rf.Logs, Log{Term: rf.CurrentTerm, Command: command})
+	//term = rf.CurrentTerm
+	//if rf.State != Leader {
+	//	isLeader = false
+	//}
 
 	return index, term, isLeader
 }
