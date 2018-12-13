@@ -172,29 +172,35 @@ type RequestVoteReply struct {
 //
 func (rf *Raft) RequestVote(args *RequestVoteArgs, reply *RequestVoteReply) {
 
-	fmt.Printf("peer %d receive vote req of peer %d\n", rf.me, args.CandidateId)
-
 	// Your code here (2A, 2B).
-	rf.resetElectionTimeOut()
-	fmt.Printf("================================================%d\n", rf.me)
 	rf.mu.Lock()
-	defer rf.mu.Unlock()
-
-	rf.VotedFor = args.CandidateId
 	reply.Term = rf.CurrentTerm
 
 	if args.Term < rf.CurrentTerm {
 		reply.VoterGranted = false
-	} else if args.LastLogTerm > rf.CurrentTerm || (args.LastLogTerm == rf.CurrentTerm && args.LastLogIndex > len(rf.Logs)-1) {
-		reply.VoterGranted = true
-	} else {
-		reply.VoterGranted = false
-
 	}
-	fmt.Printf("%s peer %d current term %d vote peer %d current term %d: %t\n", time.Now().Format("2006/01/02/ 15:03:04.000"), rf.me, rf.CurrentTerm, args.CandidateId, args.Term, reply.VoterGranted)
+	if args.Term == rf.CurrentTerm {
+		if rf.VotedFor == -1 || rf.VotedFor == args.CandidateId {
+			if args.LastLogTerm > rf.Logs[len(rf.Logs)-1].Term || (args.LastLogTerm == rf.Logs[len(rf.Logs)-1].Term && args.LastLogIndex >= len(rf.Logs)-1) {
+				reply.VoterGranted = true
+				rf.VotedFor = args.CandidateId
+
+			}
+		}
+	}
 	if args.Term > rf.CurrentTerm {
+		if args.LastLogTerm > rf.Logs[len(rf.Logs)-1].Term || (args.LastLogTerm == rf.Logs[len(rf.Logs)-1].Term && args.LastLogIndex >= len(rf.Logs)-1) {
+			reply.VoterGranted = true
+			rf.VotedFor = args.CandidateId
+
+		}
 		rf.CurrentTerm = args.Term
 		rf.State = Follower
+	}
+	fmt.Printf("%s peer %d(votedFor %d) current term %d vote peer %d current term %d: %t\n", time.Now().Format("2006/01/02/ 15:03:04.000"), rf.me, rf.VotedFor, rf.CurrentTerm, args.CandidateId, args.Term, reply.VoterGranted)
+	rf.mu.Unlock()
+	if reply.VoterGranted {
+		rf.resetElectionTimeOut()
 	}
 
 	return
@@ -240,6 +246,7 @@ func (rf *Raft) startElection() {
 	fmt.Printf("%s peer %d starts election\n", time.Now().Format("2006/01/02/ 15:03:04.000"), rf.me)
 	rf.mu.Lock()
 	rf.CurrentTerm += 1
+	rf.VotedFor=rf.me
 	rf.mu.Unlock()
 
 	rf.resetElectionTimeOut()
@@ -247,13 +254,9 @@ func (rf *Raft) startElection() {
 
 	rva := RequestVoteArgs{}
 	rva.Term = rf.CurrentTerm
-	if len(rf.Logs) == 1 {
-		rva.LastLogIndex = 0
-		rva.LastLogTerm = rf.CurrentTerm
-	} else {
-		rva.LastLogIndex = len(rf.Logs) - 1
-		rva.LastLogTerm = rf.Logs[len(rf.Logs)-1].Term
-	}
+
+	rva.LastLogIndex = len(rf.Logs) - 1
+	rva.LastLogTerm = rf.Logs[len(rf.Logs)-1].Term
 
 	rva.CandidateId = rf.me
 	count := 1
@@ -267,7 +270,6 @@ func (rf *Raft) startElection() {
 
 			rvr := RequestVoteReply{}
 			rf.sendRequestVote(peer, &rva, &rvr)
-
 			rf.mu.Lock()
 			if rvr.Term > rf.CurrentTerm {
 				rf.CurrentTerm = rvr.Term
@@ -291,6 +293,7 @@ func (rf *Raft) startElection() {
 					rf.State = Leader
 					go rf.startHeartBeat()
 					go rf.checkLeaderCommitIndex()
+
 					//如果不加这一行，则选出的leader会启动多个心跳线程
 					count = 0
 				}
@@ -302,7 +305,6 @@ func (rf *Raft) startElection() {
 }
 
 func (rf *Raft) startElectionTimeOut() {
-	fmt.Printf("peer %d start election time out\n", rf.me)
 	var timeOut int64
 	var constantItv int64
 	timeOut = 0
@@ -318,7 +320,6 @@ func (rf *Raft) startElectionTimeOut() {
 		}
 		rf.mu.Unlock()
 	}
-	fmt.Printf("peer %d try to election\n", rf.me)
 	rf.mu.Lock()
 	//只有Follower和Candidate在election time out后才会发起投票，由于本程序的原因，在candidate选举时也会启动
 	//一个electionTimeOut线程，其在成为Leader不应该再次进行投票了
@@ -385,9 +386,9 @@ func (rf *Raft) AppendEntries(args *AppendEntryArgs, reply *AppendEntryReply) {
 		}
 	}
 	if len(args.Entries) == 0 {
-		fmt.Printf("hb: leader %d send peer %d\n ", args.LeaderId, rf.me)
+		fmt.Printf("%s leader %d send hb to peer %d\n ", time.Now().Format("2006/01/02/ 15:03:04.000"), args.LeaderId, rf.me)
 	} else {
-		fmt.Printf("replicate: leader %d replicate peer %d: %v\n ", args.LeaderId, rf.me, args.Entries)
+		fmt.Printf("%s leader %d replicate peer %d: %v\n ", time.Now().Format("2006/01/02/ 15:03:04.000"), args.LeaderId, rf.me, args.Entries)
 	}
 	rf.Logs = append(rf.Logs, args.Entries[dist:]...)
 	//fmt.Printf("before: leaderCommit: %d, peer %d Commit: %d, applied:%d\n",args.LeaderCommit,rf.me,rf.CommitIndex,rf.LastApplied)
@@ -413,7 +414,6 @@ func (rf *Raft) startHeartBeat() {
 	rf.heartBeatInterval = 100
 	for true {
 		for i := 0; i < len(rf.peers); i++ {
-			fmt.Printf("leader %d try to send peer %d  1\n", rf.me, i)
 			rf.mu.Lock()
 			if rf.State != Leader {
 				fmt.Printf("leader %d return !!!\n", rf.me)
@@ -423,7 +423,6 @@ func (rf *Raft) startHeartBeat() {
 			rf.mu.Unlock()
 			if i != rf.me {
 				go func(peer int) {
-					fmt.Printf("leader %d try to send peer  %d  2\n", rf.me, peer)
 					reply := AppendEntryReply{}
 					args := AppendEntryArgs{}
 					rf.mu.Lock()
@@ -456,6 +455,7 @@ func (rf *Raft) startHeartBeat() {
 }
 
 func (rf *Raft) replicateLog() {
+
 	rf.mu.Lock()
 	peersNum := len(rf.peers)
 	rf.mu.Unlock()
@@ -483,6 +483,16 @@ func (rf *Raft) replicateLog() {
 			rf.sendAppendEntries(peer, &args, &reply)
 
 			rf.mu.Lock()
+			if reply.Term > rf.CurrentTerm {
+				rf.CurrentTerm = reply.Term
+				fmt.Printf("leader %d becomes follower in replicate\n", rf.me)
+				rf.State = Follower
+				rf.mu.Unlock()
+				rf.resetElectionTimeOut()
+				rf.startElectionTimeOut()
+				return
+			}
+
 			if reply.Success {
 				rf.NextIndex[peer] += len(entries)
 				rf.MatchIndex[peer] += len(entries)
@@ -494,6 +504,7 @@ func (rf *Raft) replicateLog() {
 			rf.mu.Unlock()
 		}(i)
 	}
+
 	//todo
 
 }
@@ -559,7 +570,6 @@ func (rf *Raft) Start(command interface{}) (int, int, bool) {
 	index := -1
 	term := -1
 	isLeader := true
-	fmt.Println(rf.Logs)
 	// Your code here (2B).
 	if rf.State != Leader {
 		isLeader = false
@@ -567,12 +577,11 @@ func (rf *Raft) Start(command interface{}) (int, int, bool) {
 		index = len(rf.Logs)
 		rf.mu.Lock()
 		defer rf.mu.Unlock()
-
 		rf.Logs = append(rf.Logs, Log{Term: rf.CurrentTerm, Command: command})
-
-		term = rf.CurrentTerm
-
 		go rf.replicateLog()
+		term = rf.CurrentTerm
+		fmt.Println(rf.Logs)
+
 	}
 
 	return index, term, isLeader
@@ -611,6 +620,7 @@ func Make(peers []*labrpc.ClientEnd, me int,
 	rf.State = Follower
 	rf.CommitIndex = 0
 	rf.LastApplied = 0
+	rf.VotedFor = -1
 	rf.applyCh = applyCh
 	rf.Logs = append(rf.Logs, Log{0, 0})
 	go rf.startElectionTimeOut()
