@@ -3,6 +3,27 @@
   <component name="ChangeListManager">
     <list default="true" id="9ba51afa-95e0-4a65-b01c-859fe5e8fb86" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/raft/.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/raft/20181213160845.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/raft/20181213160929.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/raft/20181213163310.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/raft/20181214085536.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/raft/20181214085643.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/raft/20181214101038.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/raft/20181214101314.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/raft/20181214101638.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/raft/20181214101809.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/raft/20181214102014.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/raft/20181214103320.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/raft/20181214104748.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/raft/20181214105154.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/raft/20181214110111.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/raft/20181214110324.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/raft/20181214110713.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/raft/20181214112246.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/raft/20181214142852.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/raft/20181214144126.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/raft/20181214150932.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/raft/raft.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/raft/raft.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,8 +37,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/raft/raft.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="517" column="35" selection-start-line="517" selection-start-column="35" selection-end-line="517" selection-end-column="35" />
+            <state relative-caret-position="1746">
+              <caret line="465" selection-start-line="465" selection-end-line="465" />
             </state>
           </provider>
         </entry>
@@ -43,8 +64,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/raft/config.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8721">
-              <caret line="469" column="4" selection-start-line="469" selection-start-column="4" selection-end-line="469" selection-end-column="4" />
+            <state relative-caret-position="-166">
+              <caret line="425" column="19" selection-start-line="425" selection-start-column="19" selection-end-line="425" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -52,8 +73,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/raft/test_test.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="321">
-              <caret line="488" column="33" selection-start-line="488" selection-start-column="28" selection-end-line="488" selection-end-column="33" />
+            <state relative-caret-position="2107">
+              <caret line="372" column="5" selection-start-line="372" selection-start-column="5" selection-end-line="372" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -136,8 +157,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+    <option name="x" value="-7" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
   </component>
@@ -291,7 +311,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.16897655" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -311,20 +330,13 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" />
-      <window_info active="true" anchor="right" id="Terminal" order="4" visible="true" weight="0.48507464" />
+      <window_info active="true" anchor="right" id="Terminal" order="4" visible="true" weight="0.4067164" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/mytest/rfile.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="5" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/inter_files/rr.txt" />
     <entry file="file://$PROJECT_DIR$/src/mapreduce/824-mrinput-0.txt" />
     <entry file="file://$PROJECT_DIR$/src/mapreduce/master_rpc.go">
@@ -558,13 +570,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/raft/config.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8721">
-          <caret line="469" column="4" selection-start-line="469" selection-start-column="4" selection-end-line="469" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/mytest/test_slice.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
@@ -572,17 +577,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/raft/20181214154721.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="17" column="27" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/raft/config.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-166">
+          <caret line="425" column="19" selection-start-line="425" selection-start-column="19" selection-end-line="425" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/raft/test_test.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="488" column="33" selection-start-line="488" selection-start-column="28" selection-end-line="488" selection-end-column="33" />
+        <state relative-caret-position="2107">
+          <caret line="372" column="5" selection-start-line="372" selection-start-column="5" selection-end-line="372" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/raft/raft.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="517" column="35" selection-start-line="517" selection-start-column="35" selection-end-line="517" selection-end-column="35" />
+        <state relative-caret-position="1746">
+          <caret line="465" selection-start-line="465" selection-end-line="465" />
         </state>
       </provider>
     </entry>

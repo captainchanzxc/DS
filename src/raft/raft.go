@@ -197,7 +197,7 @@ func (rf *Raft) RequestVote(args *RequestVoteArgs, reply *RequestVoteReply) {
 		rf.CurrentTerm = args.Term
 		rf.State = Follower
 	}
-	fmt.Printf("%s peer %d(votedFor %d) current term %d vote peer %d current term %d: %t\n", time.Now().Format("2006/01/02/ 15:03:04.000"), rf.me, rf.VotedFor, rf.CurrentTerm, args.CandidateId, args.Term, reply.VoterGranted)
+	fmt.Printf("%s peer %d(votedFor %d) current term %d vote peer %d current term %d: %t\n", time.Now().Format("2006/01/02/ 15:03:04.000"), rf.me, rf.VotedFor, reply.Term, args.CandidateId, args.Term, reply.VoterGranted)
 	rf.mu.Unlock()
 	if reply.VoterGranted {
 		rf.resetElectionTimeOut()
@@ -362,9 +362,9 @@ func (rf *Raft) AppendEntries(args *AppendEntryArgs, reply *AppendEntryReply) {
 	rf.resetElectionTimeOut()
 	rf.mu.Lock()
 	defer rf.mu.Unlock()
-
+	fmt.Printf("before: peer %d logs: %v\n",rf.me,rf.Logs)
 	reply.Term = rf.CurrentTerm
-	//fmt.Printf("%s leader %d(prev Index: %d) send peer %d: %v\n ", time.Now().Format("2006/01/02/ 15:03:04.000"), args.LeaderId, args.PrevLogIndex,rf.me, args.Entries)
+	fmt.Printf("%s leader %d(prev Index: %d, current Term: %d) send peer %d(current term: %d): %v\n ", time.Now().Format("2006/01/02/ 15:03:04.000"), args.LeaderId, args.PrevLogIndex,args.Term,rf.me, rf.CurrentTerm,args.Entries)
 	if args.Term < rf.CurrentTerm ||args.PrevLogIndex>len(rf.Logs)-1|| rf.Logs[args.PrevLogIndex].Term != args.PrevLogTerm {
 		reply.Success = false
 		if args.Term > rf.CurrentTerm {
@@ -388,23 +388,23 @@ func (rf *Raft) AppendEntries(args *AppendEntryArgs, reply *AppendEntryReply) {
 		}
 	}
 	if len(args.Entries) == 0 {
-		//fmt.Printf("%s leader %d send hb to peer %d\n ", time.Now().Format("2006/01/02/ 15:03:04.000"), args.LeaderId, rf.me)
+		fmt.Printf("%s leader %d send hb to peer %d\n ", time.Now().Format("2006/01/02/ 15:03:04.000"), args.LeaderId, rf.me)
 	} else {
-//		fmt.Printf("%s leader %d replicate peer %d: %v\n ", time.Now().Format("2006/01/02/ 15:03:04.000"), args.LeaderId, rf.me, args.Entries[dist:])
+		fmt.Printf("%s leader %d replicate peer %d: %v\n ", time.Now().Format("2006/01/02/ 15:03:04.000"), args.LeaderId, rf.me, args.Entries[dist:])
 	}
 	rf.Logs = append(rf.Logs, args.Entries[dist:]...)
-//	fmt.Printf("peer %d logs: %v\n",rf.me,rf.Logs)
+	fmt.Printf("after: peer %d logs: %v\n",rf.me,rf.Logs)
 	//fmt.Printf("before: leaderCommit: %d, peer %d Commit: %d, applied:%d\n",args.LeaderCommit,rf.me,rf.CommitIndex,rf.LastApplied)
 	//todo
 	if args.LeaderCommit > rf.CommitIndex {
-		if args.LeaderCommit < len(rf.Logs)-1 {
+		if args.LeaderCommit < args.PrevLogIndex+dist {
 			rf.CommitIndex = args.LeaderCommit
 		} else {
-			rf.CommitIndex = len(rf.Logs) - 1
+			rf.CommitIndex = args.PrevLogIndex+dist
 		}
 	}
 	//fmt.Printf("dist : %d, prev index: %d\n",dist,args.PrevLogIndex)
-	//fmt.Printf("after: leaderCommit: %d, peer %d Commit: %d, applied: %d\n",args.LeaderCommit,rf.me,rf.CommitIndex,rf.LastApplied)
+	fmt.Printf("after: leaderCommit: %d, peer %d Commit: %d, applied: %d\n",args.LeaderCommit,rf.me,rf.CommitIndex,rf.LastApplied)
 
 }
 func (rf *Raft) sendAppendEntries(server int, args *AppendEntryArgs, reply *AppendEntryReply) bool {
@@ -414,7 +414,7 @@ func (rf *Raft) sendAppendEntries(server int, args *AppendEntryArgs, reply *Appe
 
 func (rf *Raft) startHeartBeat() {
 	fmt.Println("start hb")
-	rf.heartBeatInterval = 250
+	rf.heartBeatInterval = 300
 	for true {
 		for i := 0; i < len(rf.peers); i++ {
 			rf.mu.Lock()
@@ -459,21 +459,17 @@ func (rf *Raft) startHeartBeat() {
 
 func (rf *Raft) replicateLog() {
 	for true{
-
 		rf.mu.Lock()
-		if rf.State!=Leader{
-			rf.mu.Unlock()
-			return
-		}
 		peersNum := len(rf.peers)
 		rf.mu.Unlock()
 		for i := 0; i < peersNum; i++ {
+
 			go func(peer int) {
 				rf.mu.Lock()
 				nextIndex := rf.NextIndex[peer]
 				isLarge := len(rf.Logs)-1 >= nextIndex
 				//fmt.Printf("%s peer %d in leader %d(last log index %d) nextIndex %d\n",time.Now().Format("2006/01/02/ 15:03:04.000"),peer,rf.me,len(rf.Logs)-1,nextIndex)
-				if !isLarge {
+				if !isLarge || rf.State!=Leader{
 					rf.mu.Unlock()
 					return
 				}
@@ -515,7 +511,7 @@ func (rf *Raft) replicateLog() {
 
 			}(i)
 		}
-		time.Sleep(time.Duration(250) * time.Millisecond)
+		time.Sleep(time.Duration(30) * time.Millisecond)
 	}
 
 
