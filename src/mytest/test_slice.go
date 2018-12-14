@@ -3,11 +3,6 @@ package main
 import "fmt"
 
 func main(){
-	var a []int
-	for i:=0;i<4;i++{
-		a=append(a,i)
-	}
-	fmt.Println(append(a,1,2,3,4,5))
-	var b int
-	fmt.Println(b==0)
+	var a= [4]int{1,2,3,4}
+	fmt.Println(a)
 }

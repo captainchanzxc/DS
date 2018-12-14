@@ -246,7 +246,7 @@ func (rf *Raft) startElection() {
 	fmt.Printf("%s peer %d starts election\n", time.Now().Format("2006/01/02/ 15:03:04.000"), rf.me)
 	rf.mu.Lock()
 	rf.CurrentTerm += 1
-	rf.VotedFor=rf.me
+	rf.VotedFor = rf.me
 	rf.mu.Unlock()
 
 	rf.resetElectionTimeOut()
@@ -285,15 +285,11 @@ func (rf *Raft) startElection() {
 			if rvr.VoterGranted {
 				count += 1
 				if count > len(rf.peers)/2 {
-					for j := 0; j < len(rf.peers); j++ {
-						rf.NextIndex = append(rf.NextIndex, len(rf.Logs))
-						rf.MatchIndex = append(rf.MatchIndex, 0)
-					}
 					fmt.Printf("%s peer %d becomes leader\n", time.Now().Format("2006/01/02/ 15:03:04.000"), rf.me)
 					rf.State = Leader
 					go rf.startHeartBeat()
 					go rf.checkLeaderCommitIndex()
-
+					go rf.replicateLog()
 					//如果不加这一行，则选出的leader会启动多个心跳线程
 					count = 0
 				}
@@ -386,18 +382,19 @@ func (rf *Raft) AppendEntries(args *AppendEntryArgs, reply *AppendEntryReply) {
 		}
 	}
 	if len(args.Entries) == 0 {
-		fmt.Printf("%s leader %d send hb to peer %d\n ", time.Now().Format("2006/01/02/ 15:03:04.000"), args.LeaderId, rf.me)
+		//fmt.Printf("%s leader %d send hb to peer %d\n ", time.Now().Format("2006/01/02/ 15:03:04.000"), args.LeaderId, rf.me)
 	} else {
-		fmt.Printf("%s leader %d replicate peer %d: %v\n ", time.Now().Format("2006/01/02/ 15:03:04.000"), args.LeaderId, rf.me, args.Entries)
+		fmt.Printf("%s leader %d replicate send %d: %v\n ", time.Now().Format("2006/01/02/ 15:03:04.000"), args.LeaderId, rf.me, args.Entries)
+		fmt.Printf("%s leader %d replicate peer %d: %v\n ", time.Now().Format("2006/01/02/ 15:03:04.000"), args.LeaderId, rf.me, args.Entries[dist:])
 	}
 	rf.Logs = append(rf.Logs, args.Entries[dist:]...)
 	//fmt.Printf("before: leaderCommit: %d, peer %d Commit: %d, applied:%d\n",args.LeaderCommit,rf.me,rf.CommitIndex,rf.LastApplied)
 	//todo
 	if args.LeaderCommit > rf.CommitIndex {
-		if args.LeaderCommit < args.PrevLogIndex+dist+1 {
+		if args.LeaderCommit < len(rf.Logs)-1 {
 			rf.CommitIndex = args.LeaderCommit
 		} else {
-			rf.CommitIndex = args.PrevLogIndex + dist + 1
+			rf.CommitIndex = len(rf.Logs) - 1
 		}
 	}
 	//fmt.Printf("dist : %d, prev index: %d\n",dist,args.PrevLogIndex)
@@ -455,55 +452,62 @@ func (rf *Raft) startHeartBeat() {
 }
 
 func (rf *Raft) replicateLog() {
+	for true{
+		rf.mu.Lock()
+		peersNum := len(rf.peers)
+		rf.mu.Unlock()
+		for i := 0; i < peersNum; i++ {
+			go func(peer int) {
+				rf.mu.Lock()
+				nextIndex := rf.NextIndex[peer]
+				isLarge := len(rf.Logs)-1 >= nextIndex
+				fmt.Printf("%s peer %d in leader %d(last log index %d) nextIndex %d\n",time.Now().Format("2006/01/02/ 15:03:04.000"),peer,rf.me,len(rf.Logs)-1,nextIndex)
+				if !isLarge {
+					rf.mu.Unlock()
+					return
+				}
+				args := AppendEntryArgs{}
+				reply := AppendEntryReply{}
+				args.Term = rf.CurrentTerm
+				args.PrevLogIndex = rf.NextIndex[peer] - 1
+				args.PrevLogTerm = rf.Logs[args.PrevLogIndex].Term
 
-	rf.mu.Lock()
-	peersNum := len(rf.peers)
-	rf.mu.Unlock()
-	for i := 0; i < peersNum; i++ {
-		go func(peer int) {
-			rf.mu.Lock()
-			nextIndex := rf.NextIndex[peer]
-			isLarge := len(rf.Logs)-1 >= nextIndex
-			if !isLarge {
+				args.LeaderCommit = rf.CommitIndex
+				args.LeaderId = rf.me
+				entries := rf.Logs[nextIndex : nextIndex+1]
+				args.Entries = append(args.Entries, entries...)
+				//		fmt.Printf("leader %d append to peer %d: %v\n", rf.me, peer, entries)
 				rf.mu.Unlock()
-				return
-			}
-			args := AppendEntryArgs{}
-			reply := AppendEntryReply{}
-			args.Term = rf.CurrentTerm
-			args.PrevLogIndex = rf.NextIndex[peer] - 1
-			args.PrevLogTerm = rf.Logs[args.PrevLogIndex].Term
+				ok := rf.sendAppendEntries(peer, &args, &reply)
+				if ok {
+					rf.mu.Lock()
+					fmt.Printf("peer %d %t!!!!!!!\n",peer,reply.Success)
+					if reply.Term > rf.CurrentTerm {
+						rf.CurrentTerm = reply.Term
+						fmt.Printf("leader %d becomes follower in replicate\n", rf.me)
+						rf.State = Follower
+						rf.mu.Unlock()
+						rf.resetElectionTimeOut()
+						rf.startElectionTimeOut()
+						return
+					}
+					if reply.Success {
+						rf.NextIndex[peer] += len(entries)
+						rf.MatchIndex[peer] += len(entries)
+					} else {
+						rf.NextIndex[peer] -= 1
+					}
+					fmt.Printf("match index: %v\n", rf.MatchIndex)
+					fmt.Printf("next index: %v\n", rf.NextIndex)
+					rf.mu.Unlock()
+				}
 
-			args.LeaderCommit = rf.CommitIndex
-			args.LeaderId = rf.me
-			entries := rf.Logs[nextIndex : nextIndex+1]
-			args.Entries = append(args.Entries, entries...)
-			//		fmt.Printf("leader %d append to peer %d: %v\n", rf.me, peer, entries)
-			rf.mu.Unlock()
-			rf.sendAppendEntries(peer, &args, &reply)
-
-			rf.mu.Lock()
-			if reply.Term > rf.CurrentTerm {
-				rf.CurrentTerm = reply.Term
-				fmt.Printf("leader %d becomes follower in replicate\n", rf.me)
-				rf.State = Follower
-				rf.mu.Unlock()
-				rf.resetElectionTimeOut()
-				rf.startElectionTimeOut()
-				return
-			}
-
-			if reply.Success {
-				rf.NextIndex[peer] += len(entries)
-				rf.MatchIndex[peer] += len(entries)
-			} else {
-				rf.NextIndex[peer] -= 1
-			}
-			fmt.Printf("match index: %v\n", rf.MatchIndex)
-			fmt.Printf("next index: %v\n", rf.NextIndex)
-			rf.mu.Unlock()
-		}(i)
+			}(i)
+		}
+		time.Sleep(time.Duration(30) * time.Millisecond)
 	}
+
+
 
 	//todo
 
@@ -512,6 +516,7 @@ func (rf *Raft) replicateLog() {
 func (rf *Raft) checkApplied() {
 	for true {
 		rf.mu.Lock()
+		//		fmt.Printf("%s peer %d commitIndex: %d, appliedIndex: %d\n", time.Now().Format("2006/01/02/ 15:03:04.000"), rf.me, rf.CommitIndex, rf.LastApplied)
 		if rf.CommitIndex > rf.LastApplied {
 			rf.LastApplied += 1
 			applyMsg := ApplyMsg{Command: rf.Logs[rf.LastApplied].Command, CommandIndex: rf.LastApplied, CommandValid: true}
@@ -571,14 +576,14 @@ func (rf *Raft) Start(command interface{}) (int, int, bool) {
 	term := -1
 	isLeader := true
 	// Your code here (2B).
+	rf.mu.Lock()
+	defer rf.mu.Unlock()
 	if rf.State != Leader {
 		isLeader = false
 	} else {
 		index = len(rf.Logs)
-		rf.mu.Lock()
-		defer rf.mu.Unlock()
+
 		rf.Logs = append(rf.Logs, Log{Term: rf.CurrentTerm, Command: command})
-		go rf.replicateLog()
 		term = rf.CurrentTerm
 		fmt.Println(rf.Logs)
 
@@ -623,6 +628,10 @@ func Make(peers []*labrpc.ClientEnd, me int,
 	rf.VotedFor = -1
 	rf.applyCh = applyCh
 	rf.Logs = append(rf.Logs, Log{0, 0})
+	for j := 0; j < len(rf.peers); j++ {
+		rf.NextIndex = append(rf.NextIndex, len(rf.Logs))
+		rf.MatchIndex = append(rf.MatchIndex, 0)
+	}
 	go rf.startElectionTimeOut()
 	go rf.checkApplied()
 	fmt.Printf("last heard time %d, timeout %d\n", rf.lastHeardTime, rf.electionTimeOut)
