@@ -1,0 +1,40 @@
+last heard time 1544769687194, timeout 484
+last heard time 1544769687194, timeout 423
+last heard time 1544769687194, timeout 469
+Test (2B): agreement despite follower disconnection ...
+2018/12/14/ 14:02:41.620 peer 1 starts election
+2018/12/14/ 14:02:41.621 peer 2(votedFor 1) current term 1 vote peer 1 current term 1: true
+2018/12/14/ 14:02:41.621 peer 1 becomes leader
+2018/12/14/ 14:02:41.621 peer 0(votedFor 1) current term 1 vote peer 1 current term 1: true
+start hb
+peer 2 logs: [{0 0}]
+peer 0 logs: [{0 0}]
+[{0 0} {1 101}]
+2018/12/14/ 14:02:41.652 leader 1 replicate peer 2: [{1 101}]
+ peer 2 logs: [{0 0} {1 101}]
+2018/12/14/ 14:02:41.652 leader 1 replicate peer 0: [{1 101}]
+ peer 0 logs: [{0 0} {1 101}]
+2018/12/14/ 14:02:41.652 leader 1 replicate peer 1: []
+ peer 1 logs: [{0 0} {1 101}]
+peer 2 true!!!!!!!
+match index: [0 0 1]
+next index: [1 1 2]
+peer 0 true!!!!!!!
+match index: [1 0 1]
+next index: [2 1 2]
+peer 1 true!!!!!!!
+match index: [1 1 1]
+next index: [2 2 2]
+peer 1 applied: 101
+peer 2 logs: [{0 0} {1 101}]
+peer 0 logs: [{0 0} {1 101}]
+peer 2 applied: 101
+peer 0 applied: 101
+peer 2 logs: [{0 0} {1 101}]
+peer 0 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101}]
+peer 0 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101}]
+peer 0 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101}]
+peer 0 logs: [{0 0} {1 101}]

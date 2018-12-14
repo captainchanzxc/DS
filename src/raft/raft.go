@@ -287,6 +287,11 @@ func (rf *Raft) startElection() {
 				if count > len(rf.peers)/2 {
 					fmt.Printf("%s peer %d becomes leader\n", time.Now().Format("2006/01/02/ 15:03:04.000"), rf.me)
 					rf.State = Leader
+					//这个地方当初没写也允许通过了TestBasicAgree2B 和 TestFailAgree2B，值得思考
+					for j:=0;j<len(rf.NextIndex);j++{
+						rf.MatchIndex[j]=0
+						rf.NextIndex[j]=len(rf.Logs)
+					}
 					go rf.startHeartBeat()
 					go rf.checkLeaderCommitIndex()
 					go rf.replicateLog()
@@ -359,7 +364,8 @@ func (rf *Raft) AppendEntries(args *AppendEntryArgs, reply *AppendEntryReply) {
 	defer rf.mu.Unlock()
 
 	reply.Term = rf.CurrentTerm
-	if args.Term < rf.CurrentTerm || rf.Logs[args.PrevLogIndex].Term != args.PrevLogTerm {
+	//fmt.Printf("%s leader %d(prev Index: %d) send peer %d: %v\n ", time.Now().Format("2006/01/02/ 15:03:04.000"), args.LeaderId, args.PrevLogIndex,rf.me, args.Entries)
+	if args.Term < rf.CurrentTerm ||args.PrevLogIndex>len(rf.Logs)-1|| rf.Logs[args.PrevLogIndex].Term != args.PrevLogTerm {
 		reply.Success = false
 		if args.Term > rf.CurrentTerm {
 			rf.CurrentTerm = args.Term
@@ -377,17 +383,17 @@ func (rf *Raft) AppendEntries(args *AppendEntryArgs, reply *AppendEntryReply) {
 	dist := 0
 	for ; dist < len(args.Entries) && (startPosition+dist) < len(rf.Logs); dist++ {
 		if rf.Logs[startPosition+dist].Term != args.Entries[dist].Term {
-			rf.Logs = rf.Logs[:startPosition+dist-1]
+			rf.Logs = rf.Logs[:startPosition+dist]
 			break
 		}
 	}
 	if len(args.Entries) == 0 {
 		//fmt.Printf("%s leader %d send hb to peer %d\n ", time.Now().Format("2006/01/02/ 15:03:04.000"), args.LeaderId, rf.me)
 	} else {
-		fmt.Printf("%s leader %d replicate send %d: %v\n ", time.Now().Format("2006/01/02/ 15:03:04.000"), args.LeaderId, rf.me, args.Entries)
-		fmt.Printf("%s leader %d replicate peer %d: %v\n ", time.Now().Format("2006/01/02/ 15:03:04.000"), args.LeaderId, rf.me, args.Entries[dist:])
+//		fmt.Printf("%s leader %d replicate peer %d: %v\n ", time.Now().Format("2006/01/02/ 15:03:04.000"), args.LeaderId, rf.me, args.Entries[dist:])
 	}
 	rf.Logs = append(rf.Logs, args.Entries[dist:]...)
+//	fmt.Printf("peer %d logs: %v\n",rf.me,rf.Logs)
 	//fmt.Printf("before: leaderCommit: %d, peer %d Commit: %d, applied:%d\n",args.LeaderCommit,rf.me,rf.CommitIndex,rf.LastApplied)
 	//todo
 	if args.LeaderCommit > rf.CommitIndex {
@@ -408,7 +414,7 @@ func (rf *Raft) sendAppendEntries(server int, args *AppendEntryArgs, reply *Appe
 
 func (rf *Raft) startHeartBeat() {
 	fmt.Println("start hb")
-	rf.heartBeatInterval = 100
+	rf.heartBeatInterval = 250
 	for true {
 		for i := 0; i < len(rf.peers); i++ {
 			rf.mu.Lock()
@@ -453,7 +459,12 @@ func (rf *Raft) startHeartBeat() {
 
 func (rf *Raft) replicateLog() {
 	for true{
+
 		rf.mu.Lock()
+		if rf.State!=Leader{
+			rf.mu.Unlock()
+			return
+		}
 		peersNum := len(rf.peers)
 		rf.mu.Unlock()
 		for i := 0; i < peersNum; i++ {
@@ -461,7 +472,7 @@ func (rf *Raft) replicateLog() {
 				rf.mu.Lock()
 				nextIndex := rf.NextIndex[peer]
 				isLarge := len(rf.Logs)-1 >= nextIndex
-				fmt.Printf("%s peer %d in leader %d(last log index %d) nextIndex %d\n",time.Now().Format("2006/01/02/ 15:03:04.000"),peer,rf.me,len(rf.Logs)-1,nextIndex)
+				//fmt.Printf("%s peer %d in leader %d(last log index %d) nextIndex %d\n",time.Now().Format("2006/01/02/ 15:03:04.000"),peer,rf.me,len(rf.Logs)-1,nextIndex)
 				if !isLarge {
 					rf.mu.Unlock()
 					return
@@ -469,7 +480,7 @@ func (rf *Raft) replicateLog() {
 				args := AppendEntryArgs{}
 				reply := AppendEntryReply{}
 				args.Term = rf.CurrentTerm
-				args.PrevLogIndex = rf.NextIndex[peer] - 1
+				args.PrevLogIndex = nextIndex - 1
 				args.PrevLogTerm = rf.Logs[args.PrevLogIndex].Term
 
 				args.LeaderCommit = rf.CommitIndex
@@ -492,10 +503,10 @@ func (rf *Raft) replicateLog() {
 						return
 					}
 					if reply.Success {
-						rf.NextIndex[peer] += len(entries)
-						rf.MatchIndex[peer] += len(entries)
+						rf.NextIndex[peer]=nextIndex+ len(entries)
+						rf.MatchIndex[peer] =args.PrevLogIndex+len(entries)
 					} else {
-						rf.NextIndex[peer] -= 1
+						rf.NextIndex[peer] =nextIndex-1
 					}
 					fmt.Printf("match index: %v\n", rf.MatchIndex)
 					fmt.Printf("next index: %v\n", rf.NextIndex)
@@ -504,7 +515,7 @@ func (rf *Raft) replicateLog() {
 
 			}(i)
 		}
-		time.Sleep(time.Duration(30) * time.Millisecond)
+		time.Sleep(time.Duration(250) * time.Millisecond)
 	}
 
 

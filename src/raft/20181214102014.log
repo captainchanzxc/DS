@@ -1,0 +1,361 @@
+last heard time 1544754016331, timeout 446
+last heard time 1544754016332, timeout 482
+last heard time 1544754016332, timeout 484
+Test (2B): agreement despite follower disconnection ...
+2018/12/14/ 10:10:20.781 peer 0 starts election
+2018/12/14/ 10:10:20.786 peer 2(votedFor 0) current term 1 vote peer 0 current term 1: true
+2018/12/14/ 10:10:20.786 peer 1(votedFor 0) current term 1 vote peer 0 current term 1: true
+2018/12/14/ 10:10:20.786 peer 0 becomes leader
+start hb
+[{0 0} {1 101}]
+2018/12/14/ 10:10:20.817 leader 0 replicate send 0: [{1 101}]
+ 2018/12/14/ 10:10:20.818 leader 0 replicate peer 0: []
+ 2018/12/14/ 10:10:20.818 leader 0 replicate send 2: [{1 101}]
+ 2018/12/14/ 10:10:20.822 leader 0 replicate peer 2: [{1 101}]
+ peer 0 true!!!!!!!
+match index: [2 0 0]
+next index: [2 1 1]
+2018/12/14/ 10:10:20.818 leader 0 replicate send 1: [{1 101}]
+ 2018/12/14/ 10:10:20.823 leader 0 replicate peer 1: [{1 101}]
+ peer 2 true!!!!!!!
+match index: [2 0 2]
+next index: [2 1 2]
+peer 1 true!!!!!!!
+match index: [2 2 2]
+next index: [2 2 2]
+peer 0 applied: 101
+peer 1 applied: 101
+peer 2 applied: 101
+1------------------------
+[{0 0} {1 101} {1 102}]
+2018/12/14/ 10:10:20.487 leader 0 replicate send 0: [{1 102}]
+ 2018/12/14/ 10:10:20.487 leader 0 replicate peer 0: []
+ 2018/12/14/ 10:10:20.488 leader 0 replicate send 2: [{1 102}]
+ 2018/12/14/ 10:10:20.488 leader 0 replicate peer 2: [{1 102}]
+ peer 0 true!!!!!!!
+match index: [3 2 2]
+next index: [3 2 2]
+peer 2 true!!!!!!!
+match index: [3 2 3]
+next index: [3 2 3]
+peer 0 applied: 102
+peer 2 applied: 102
+[{0 0} {1 101} {1 102} {1 103}]
+2018/12/14/ 10:10:20.517 leader 0 replicate send 0: [{1 103}]
+ 2018/12/14/ 10:10:20.518 leader 0 replicate peer 0: []
+ peer 0 true!!!!!!!
+match index: [4 2 3]
+next index: [4 2 3]
+2018/12/14/ 10:10:20.518 leader 0 replicate send 2: [{1 103}]
+ 2018/12/14/ 10:10:20.518 leader 0 replicate peer 2: [{1 103}]
+ peer 2 true!!!!!!!
+match index: [4 2 4]
+next index: [4 2 4]
+peer 0 applied: 103
+peer 2 applied: 103
+2------------------------
+2018/12/14/ 10:10:20.837 peer 1 starts election
+2018/12/14/ 10:10:20.247 peer 1 starts election
+[{0 0} {1 101} {1 102} {1 103} {1 104}]
+2018/12/14/ 10:10:20.644 leader 0 replicate send 0: [{1 104}]
+ 2018/12/14/ 10:10:20.644 leader 0 replicate send 2: [{1 104}]
+ 2018/12/14/ 10:10:20.644 leader 0 replicate peer 2: [{1 104}]
+ 2018/12/14/ 10:10:20.644 leader 0 replicate peer 0: []
+ peer 0 true!!!!!!!
+match index: [5 2 4]
+next index: [5 2 4]
+peer 2 true!!!!!!!
+match index: [5 2 5]
+next index: [5 2 5]
+peer 0 applied: 104
+peer 2 applied: 104
+[{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+2018/12/14/ 10:10:20.674 leader 0 replicate send 0: [{1 105}]
+ 2018/12/14/ 10:10:20.674 leader 0 replicate peer 0: []
+ 2018/12/14/ 10:10:20.675 leader 0 replicate send 2: [{1 105}]
+ 2018/12/14/ 10:10:20.675 leader 0 replicate peer 2: [{1 105}]
+ peer 0 true!!!!!!!
+match index: [6 2 5]
+next index: [6 2 5]
+peer 2 true!!!!!!!
+match index: [6 2 6]
+next index: [6 2 6]
+peer 0 applied: 105
+peer 2 applied: 105
+3------------------------
+[{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+leader 0 becomes follower
+leader 0 return !!!
+2018/12/14/ 10:10:20.095 peer 1 starts election
+2018/12/14/ 10:10:20.096 peer 2(votedFor 0) current term 4 vote peer 1 current term 4: false
+2018/12/14/ 10:10:20.096 peer 0(votedFor 0) current term 4 vote peer 1 current term 4: false
+2018/12/14/ 10:10:20.138 peer 2 starts election
+2018/12/14/ 10:10:20.139 peer 0(votedFor 0) current term 5 vote peer 2 current term 5: false
+2018/12/14/ 10:10:20.139 peer 1(votedFor 2) current term 5 vote peer 2 current term 5: true
+2018/12/14/ 10:10:20.139 peer 2 becomes leader
+start hb
+2018/12/14/ 10:10:20.140 leader 2 replicate send 2: [{1 101}]
+ 2018/12/14/ 10:10:20.140 leader 2 replicate peer 2: []
+ peer 2 true!!!!!!!
+match index: [0 0 2]
+next index: [1 1 2]
+2018/12/14/ 10:10:20.141 leader 2 replicate send 0: [{1 101}]
+ 2018/12/14/ 10:10:20.141 leader 2 replicate peer 0: []
+ 2018/12/14/ 10:10:20.141 leader 2 replicate send 1: [{1 101}]
+ 2018/12/14/ 10:10:20.141 leader 2 replicate peer 1: []
+ peer 0 true!!!!!!!
+match index: [2 0 2]
+next index: [2 1 2]
+peer 1 true!!!!!!!
+match index: [2 2 2]
+next index: [2 2 2]
+2018/12/14/ 10:10:20.171 leader 2 replicate send 0: [{1 102}]
+ 2018/12/14/ 10:10:20.171 leader 2 replicate peer 0: []
+ 2018/12/14/ 10:10:20.171 leader 2 replicate send 2: [{1 102}]
+ 2018/12/14/ 10:10:20.171 leader 2 replicate peer 2: []
+ peer 0 true!!!!!!!
+match index: [3 2 2]
+next index: [3 2 2]
+peer 2 true!!!!!!!
+match index: [3 2 3]
+next index: [3 2 3]
+2018/12/14/ 10:10:20.171 leader 2 replicate send 1: [{1 102}]
+ 2018/12/14/ 10:10:20.172 leader 2 replicate peer 1: [{1 102}]
+ peer 1 true!!!!!!!
+match index: [3 3 3]
+next index: [3 3 3]
+peer 1 applied: 102
+2018/12/14/ 10:10:20.201 leader 2 replicate send 2: [{1 103}]
+ 2018/12/14/ 10:10:20.201 leader 2 replicate peer 2: []
+ 2018/12/14/ 10:10:20.201 leader 2 replicate send 0: [{1 103}]
+ 2018/12/14/ 10:10:20.201 leader 2 replicate peer 0: []
+ peer 2 true!!!!!!!
+match index: [3 3 4]
+next index: [3 3 4]
+2018/12/14/ 10:10:20.202 leader 2 replicate send 1: [{1 103}]
+ peer 0 true!!!!!!!
+match index: [4 3 4]
+next index: [4 3 4]
+2018/12/14/ 10:10:20.202 leader 2 replicate peer 1: [{1 103}]
+ peer 1 true!!!!!!!
+match index: [4 4 4]
+next index: [4 4 4]
+peer 1 applied: 103
+2018/12/14/ 10:10:20.231 leader 2 replicate send 2: [{1 104}]
+ 2018/12/14/ 10:10:20.231 leader 2 replicate send 1: [{1 104}]
+ 2018/12/14/ 10:10:20.231 leader 2 replicate send 0: [{1 104}]
+ 2018/12/14/ 10:10:20.231 leader 2 replicate peer 0: []
+ 2018/12/14/ 10:10:20.231 leader 2 replicate peer 1: [{1 104}]
+ 2018/12/14/ 10:10:20.231 leader 2 replicate peer 2: []
+ peer 1 true!!!!!!!
+match index: [4 5 4]
+next index: [4 5 4]
+peer 2 true!!!!!!!
+match index: [4 5 5]
+next index: [4 5 5]
+peer 0 true!!!!!!!
+match index: [5 5 5]
+next index: [5 5 5]
+peer 1 applied: 104
+2018/12/14/ 10:10:20.261 leader 2 replicate send 0: [{1 105}]
+ 2018/12/14/ 10:10:20.262 leader 2 replicate peer 0: []
+ 2018/12/14/ 10:10:20.262 leader 2 replicate send 2: [{1 105}]
+ 2018/12/14/ 10:10:20.262 leader 2 replicate peer 2: []
+ 2018/12/14/ 10:10:20.262 leader 2 replicate send 1: [{1 105}]
+ 2018/12/14/ 10:10:20.263 leader 2 replicate peer 1: [{1 105}]
+ peer 0 true!!!!!!!
+match index: [6 5 5]
+next index: [6 5 5]
+peer 2 true!!!!!!!
+match index: [6 5 6]
+next index: [6 5 6]
+peer 1 true!!!!!!!
+match index: [6 6 6]
+next index: [6 6 6]
+peer 1 applied: 105
+[{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {5 106}]
+2018/12/14/ 10:10:20.693 leader 2 replicate send 2: [{5 106}]
+ 2018/12/14/ 10:10:20.693 leader 2 replicate peer 2: []
+ 2018/12/14/ 10:10:20.693 leader 2 replicate send 0: [{5 106}]
+ 2018/12/14/ 10:10:20.693 leader 2 replicate peer 0: [{5 106}]
+ peer 2 true!!!!!!!
+match index: [6 6 7]
+next index: [6 6 7]
+2018/12/14/ 10:10:20.693 leader 2 replicate send 1: [{5 106}]
+ peer 0 true!!!!!!!
+match index: [7 6 7]
+next index: [7 6 7]
+2018/12/14/ 10:10:20.694 leader 2 replicate peer 1: [{5 106}]
+ peer 1 true!!!!!!!
+match index: [7 7 7]
+next index: [7 7 7]
+peer 2 applied: 106
+peer 1 applied: 106
+exit status 2
+FAIL	raft	4.476s
+=======================
+last heard time 1544754022511, timeout 370
+last heard time 1544754022512, timeout 484
+last heard time 1544754022512, timeout 499
+Test (2B): agreement despite follower disconnection ...
+2018/12/14/ 10:10:20.887 peer 0 starts election
+2018/12/14/ 10:10:20.890 peer 2(votedFor 0) current term 1 vote peer 0 current term 1: true
+2018/12/14/ 10:10:20.891 peer 1(votedFor 0) current term 1 vote peer 0 current term 1: true
+2018/12/14/ 10:10:20.891 peer 0 becomes leader
+start hb
+[{0 0} {1 101}]
+2018/12/14/ 10:10:20.922 leader 0 replicate send 2: [{1 101}]
+ 2018/12/14/ 10:10:20.922 leader 0 replicate peer 2: [{1 101}]
+ 2018/12/14/ 10:10:20.923 leader 0 replicate send 0: [{1 101}]
+ 2018/12/14/ 10:10:20.923 leader 0 replicate peer 0: []
+ peer 2 true!!!!!!!
+match index: [0 0 2]
+next index: [1 1 2]
+peer 0 true!!!!!!!
+match index: [2 0 2]
+next index: [2 1 2]
+2018/12/14/ 10:10:20.923 leader 0 replicate send 1: [{1 101}]
+ 2018/12/14/ 10:10:20.923 leader 0 replicate peer 1: [{1 101}]
+ peer 1 true!!!!!!!
+match index: [2 2 2]
+next index: [2 2 2]
+peer 0 applied: 101
+peer 1 applied: 101
+peer 2 applied: 101
+1------------------------
+[{0 0} {1 101} {1 102}]
+2018/12/14/ 10:10:20.532 leader 0 replicate send 0: [{1 102}]
+ 2018/12/14/ 10:10:20.533 leader 0 replicate peer 0: []
+ 2018/12/14/ 10:10:20.532 leader 0 replicate send 2: [{1 102}]
+ peer 0 true!!!!!!!
+match index: [3 2 2]
+next index: [3 2 2]
+2018/12/14/ 10:10:20.533 leader 0 replicate peer 2: [{1 102}]
+ peer 2 true!!!!!!!
+match index: [3 2 3]
+next index: [3 2 3]
+peer 2 applied: 102
+peer 0 applied: 102
+[{0 0} {1 101} {1 102} {1 103}]
+2018/12/14/ 10:10:20.593 leader 0 replicate send 0: [{1 103}]
+ 2018/12/14/ 10:10:20.593 leader 0 replicate peer 0: []
+ 2018/12/14/ 10:10:20.593 leader 0 replicate send 2: [{1 103}]
+ 2018/12/14/ 10:10:20.593 leader 0 replicate peer 2: [{1 103}]
+ peer 0 true!!!!!!!
+match index: [4 2 3]
+next index: [4 2 3]
+peer 2 true!!!!!!!
+match index: [4 2 4]
+next index: [4 2 4]
+peer 2 applied: 103
+peer 0 applied: 103
+2------------------------
+2018/12/14/ 10:10:20.988 peer 1 starts election
+2018/12/14/ 10:10:20.449 peer 1 starts election
+[{0 0} {1 101} {1 102} {1 103} {1 104}]
+2018/12/14/ 10:10:20.626 leader 0 replicate send 0: [{1 104}]
+ 2018/12/14/ 10:10:20.626 leader 0 replicate send 2: [{1 104}]
+ 2018/12/14/ 10:10:20.626 leader 0 replicate peer 2: [{1 104}]
+ 2018/12/14/ 10:10:20.626 leader 0 replicate peer 0: []
+ peer 0 true!!!!!!!
+match index: [5 2 4]
+next index: [5 2 4]
+peer 2 true!!!!!!!
+match index: [5 2 5]
+next index: [5 2 5]
+peer 0 applied: 104
+peer 2 applied: 104
+[{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+2018/12/14/ 10:10:20.717 leader 0 replicate send 0: [{1 105}]
+ 2018/12/14/ 10:10:20.717 leader 0 replicate peer 0: []
+ peer 0 true!!!!!!!
+match index: [6 2 5]
+next index: [6 2 5]
+2018/12/14/ 10:10:20.717 leader 0 replicate send 2: [{1 105}]
+ 2018/12/14/ 10:10:20.717 leader 0 replicate peer 2: [{1 105}]
+ peer 2 true!!!!!!!
+match index: [6 2 6]
+next index: [6 2 6]
+peer 2 applied: 105
+peer 0 applied: 105
+3------------------------
+[{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+2018/12/14/ 10:10:20.778 leader 0 replicate send 2: [{1 106}]
+ 2018/12/14/ 10:10:20.778 leader 0 replicate peer 2: [{1 106}]
+ 2018/12/14/ 10:10:20.779 leader 0 replicate send 0: [{1 106}]
+ 2018/12/14/ 10:10:20.779 leader 0 replicate peer 0: []
+ peer 1 false!!!!!!!
+leader 0 becomes follower in replicate
+peer 0 true!!!!!!!
+match index: [7 2 6]
+next index: [7 2 6]
+peer 2 true!!!!!!!
+match index: [7 2 7]
+next index: [7 2 7]
+peer 2 applied: 106
+peer 0 applied: 106
+leader 0 return !!!
+2018/12/14/ 10:10:20.200 peer 2 starts election
+2018/12/14/ 10:10:20.201 peer 1(votedFor 1) current term 3 vote peer 2 current term 2: false
+2018/12/14/ 10:10:20.201 peer 0(votedFor 0) current term 3 vote peer 2 current term 2: false
+2018/12/14/ 10:10:20.241 peer 1 starts election
+2018/12/14/ 10:10:20.242 peer 2(votedFor 2) current term 4 vote peer 1 current term 4: false
+2018/12/14/ 10:10:20.242 peer 0(votedFor 0) current term 4 vote peer 1 current term 4: false
+2018/12/14/ 10:10:20.280 peer 0 starts election
+2018/12/14/ 10:10:20.281 peer 1(votedFor 0) current term 5 vote peer 0 current term 5: true
+2018/12/14/ 10:10:20.282 peer 0 becomes leader
+2018/12/14/ 10:10:20.281 peer 2(votedFor 0) current term 5 vote peer 0 current term 5: true
+start hb
+2018/12/14/ 10:10:20.283 leader 0 replicate send 1: [{1 102}]
+ 2018/12/14/ 10:10:20.283 leader 0 replicate peer 1: [{1 102}]
+ peer 1 true!!!!!!!
+match index: [7 3 7]
+next index: [7 3 7]
+peer 1 applied: 102
+2018/12/14/ 10:10:20.313 leader 0 replicate send 1: [{1 103}]
+ 2018/12/14/ 10:10:20.313 leader 0 replicate peer 1: [{1 103}]
+ peer 1 true!!!!!!!
+match index: [7 4 7]
+next index: [7 4 7]
+peer 1 applied: 103
+2018/12/14/ 10:10:20.343 leader 0 replicate send 1: [{1 104}]
+ 2018/12/14/ 10:10:20.343 leader 0 replicate peer 1: [{1 104}]
+ peer 1 true!!!!!!!
+match index: [7 5 7]
+next index: [7 5 7]
+peer 1 applied: 104
+2018/12/14/ 10:10:20.373 leader 0 replicate send 1: [{1 105}]
+ 2018/12/14/ 10:10:20.373 leader 0 replicate peer 1: [{1 105}]
+ peer 1 true!!!!!!!
+match index: [7 6 7]
+next index: [7 6 7]
+2018/12/14/ 10:10:20.403 leader 0 replicate send 1: [{1 106}]
+ 2018/12/14/ 10:10:20.404 leader 0 replicate peer 1: [{1 106}]
+ peer 1 true!!!!!!!
+match index: [7 7 7]
+next index: [7 7 7]
+peer 1 applied: 105
+peer 1 applied: 106
+[{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 107}]
+peer 0 applied: 107
+2018/12/14/ 10:10:20.470 leader 0 replicate send 1: [{5 107}]
+ 2018/12/14/ 10:10:20.470 leader 0 replicate peer 1: [{5 107}]
+ 2018/12/14/ 10:10:20.470 leader 0 replicate send 2: [{5 107}]
+ 2018/12/14/ 10:10:20.470 leader 0 replicate peer 2: [{5 107}]
+ 2018/12/14/ 10:10:20.470 leader 0 replicate send 0: [{5 107}]
+ 2018/12/14/ 10:10:20.470 leader 0 replicate peer 0: []
+ peer 2 true!!!!!!!
+match index: [7 7 8]
+next index: [7 7 8]
+peer 1 true!!!!!!!
+match index: [7 8 8]
+next index: [7 8 8]
+peer 0 true!!!!!!!
+match index: [8 8 8]
+next index: [8 8 8]
+peer 1 applied: 107
+peer 2 applied: 107
+  ... Passed --   4.0  3  139    7
+PASS
+ok  	raft	4.013s
+=======================

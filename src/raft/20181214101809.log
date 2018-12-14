@@ -1,0 +1,110 @@
+last heard time 1544753891428, timeout 423
+last heard time 1544753891429, timeout 493
+last heard time 1544753891429, timeout 474
+last heard time 1544753891429, timeout 453
+last heard time 1544753891429, timeout 472
+Test (2B): basic agreement ...
+2018/12/14/ 10:10:18.858 peer 0 starts election
+2018/12/14/ 10:10:18.863 peer 3(votedFor 0) current term 1 vote peer 0 current term 1: true
+2018/12/14/ 10:10:18.864 peer 2(votedFor 0) current term 1 vote peer 0 current term 1: true
+2018/12/14/ 10:10:18.864 peer 1(votedFor 0) current term 1 vote peer 0 current term 1: true
+2018/12/14/ 10:10:18.864 peer 0 becomes leader
+2018/12/14/ 10:10:18.863 peer 4(votedFor 0) current term 1 vote peer 0 current term 1: true
+start hb
+[{0 0} {1 100}]
+2018/12/14/ 10:10:18.900 leader 0 replicate send 0: [{1 100}]
+ 2018/12/14/ 10:10:18.900 leader 0 replicate peer 0: []
+ 2018/12/14/ 10:10:18.901 leader 0 replicate send 2: [{1 100}]
+ 2018/12/14/ 10:10:18.901 leader 0 replicate peer 2: [{1 100}]
+ peer 0 true!!!!!!!
+match index: [2 0 0 0 0]
+next index: [2 1 1 1 1]
+2018/12/14/ 10:10:18.900 leader 0 replicate send 3: [{1 100}]
+ 2018/12/14/ 10:10:18.901 leader 0 replicate peer 3: [{1 100}]
+ peer 2 true!!!!!!!
+match index: [2 0 2 0 0]
+next index: [2 1 2 1 1]
+2018/12/14/ 10:10:18.901 leader 0 replicate send 4: [{1 100}]
+ 2018/12/14/ 10:10:18.901 leader 0 replicate peer 4: [{1 100}]
+ 2018/12/14/ 10:10:18.901 leader 0 replicate send 1: [{1 100}]
+ 2018/12/14/ 10:10:18.902 leader 0 replicate peer 1: [{1 100}]
+ peer 3 true!!!!!!!
+match index: [2 0 2 2 0]
+next index: [2 1 2 2 1]
+peer 4 true!!!!!!!
+match index: [2 0 2 2 2]
+next index: [2 1 2 2 2]
+peer 1 true!!!!!!!
+match index: [2 2 2 2 2]
+next index: [2 2 2 2 2]
+peer 0 applied: 100
+peer 2 applied: 100
+peer 4 applied: 100
+peer 3 applied: 100
+peer 1 applied: 100
+[{0 0} {1 100} {1 200}]
+2018/12/14/ 10:10:18.991 leader 0 replicate send 4: [{1 200}]
+ 2018/12/14/ 10:10:18.992 leader 0 replicate peer 4: [{1 200}]
+ 2018/12/14/ 10:10:18.992 leader 0 replicate send 1: [{1 200}]
+ 2018/12/14/ 10:10:18.992 leader 0 replicate peer 1: [{1 200}]
+ 2018/12/14/ 10:10:18.992 leader 0 replicate send 2: [{1 200}]
+ 2018/12/14/ 10:10:18.992 leader 0 replicate send 3: [{1 200}]
+ 2018/12/14/ 10:10:18.992 leader 0 replicate peer 3: [{1 200}]
+ peer 4 true!!!!!!!
+match index: [2 2 2 2 3]
+next index: [2 2 2 2 3]
+peer 1 true!!!!!!!
+match index: [2 3 2 2 3]
+next index: [2 3 2 2 3]
+2018/12/14/ 10:10:18.993 leader 0 replicate send 0: [{1 200}]
+ 2018/12/14/ 10:10:18.993 leader 0 replicate peer 0: []
+ 2018/12/14/ 10:10:18.992 leader 0 replicate peer 2: [{1 200}]
+ peer 3 true!!!!!!!
+match index: [2 3 2 3 3]
+next index: [2 3 2 3 3]
+peer 0 true!!!!!!!
+match index: [3 3 2 3 3]
+next index: [3 3 2 3 3]
+peer 2 true!!!!!!!
+match index: [3 3 3 3 3]
+next index: [3 3 3 3 3]
+peer 2 applied: 200
+peer 0 applied: 200
+peer 4 applied: 200
+peer 3 applied: 200
+peer 1 applied: 200
+[{0 0} {1 100} {1 200} {1 300}]
+2018/12/14/ 10:10:18.022 leader 0 replicate send 4: [{1 300}]
+ 2018/12/14/ 10:10:18.022 leader 0 replicate peer 4: [{1 300}]
+ 2018/12/14/ 10:10:18.022 leader 0 replicate send 2: [{1 300}]
+ 2018/12/14/ 10:10:18.022 leader 0 replicate peer 2: [{1 300}]
+ 2018/12/14/ 10:10:18.023 leader 0 replicate send 1: [{1 300}]
+ 2018/12/14/ 10:10:18.023 leader 0 replicate peer 1: [{1 300}]
+ 2018/12/14/ 10:10:18.023 leader 0 replicate send 3: [{1 300}]
+ 2018/12/14/ 10:10:18.023 leader 0 replicate peer 3: [{1 300}]
+ peer 4 true!!!!!!!
+match index: [3 3 3 3 4]
+next index: [3 3 3 3 4]
+2018/12/14/ 10:10:18.023 leader 0 replicate send 0: [{1 300}]
+ 2018/12/14/ 10:10:18.023 leader 0 replicate peer 0: []
+ peer 2 true!!!!!!!
+match index: [3 3 4 3 4]
+next index: [3 3 4 3 4]
+peer 3 true!!!!!!!
+match index: [3 3 4 4 4]
+next index: [3 3 4 4 4]
+peer 1 true!!!!!!!
+match index: [3 4 4 4 4]
+next index: [3 4 4 4 4]
+peer 0 true!!!!!!!
+match index: [4 4 4 4 4]
+next index: [4 4 4 4 4]
+peer 0 applied: 300
+peer 1 applied: 300
+peer 4 applied: 300
+peer 3 applied: 300
+peer 2 applied: 300
+  ... Passed --   0.6  5   27    3
+PASS
+ok  	raft	0.634s
+=======================

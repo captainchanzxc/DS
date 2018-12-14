@@ -1,0 +1,2842 @@
+last heard time 1544756835426, timeout 496
+last heard time 1544756835427, timeout 388
+last heard time 1544756835427, timeout 411
+Test (2B): agreement despite follower disconnection ...
+2018/12/14/ 11:11:07.824 peer 1 starts election
+2018/12/14/ 11:11:07.827 peer 0(votedFor 1) current term 1 vote peer 1 current term 1: true
+2018/12/14/ 11:11:07.828 peer 2(votedFor 1) current term 1 vote peer 1 current term 1: true
+2018/12/14/ 11:11:07.828 peer 1 becomes leader
+start hb
+peer 2 logs: [{0 0}]
+peer 0 logs: [{0 0}]
+[{0 0} {1 101}]
+2018/12/14/ 11:11:07.859 leader 1 replicate peer 1: []
+ 2018/12/14/ 11:11:07.860 leader 1 replicate peer 2: [{1 101}]
+ peer 2 logs: [{0 0} {1 101}]
+peer 1 logs: [{0 0} {1 101}]
+2018/12/14/ 11:11:07.860 leader 1 replicate peer 0: [{1 101}]
+ peer 0 logs: [{0 0} {1 101}]
+peer 2 true!!!!!!!
+match index: [0 0 1]
+next index: [1 1 2]
+peer 1 true!!!!!!!
+match index: [0 1 1]
+next index: [1 2 2]
+peer 0 true!!!!!!!
+match index: [1 1 1]
+next index: [2 2 2]
+peer 1 applied: 101
+peer 0 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101}]
+peer 0 applied: 101
+peer 2 applied: 101
+peer 0 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101}]
+peer 0 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101}]
+peer 0 logs: [{0 0} {1 101}]
+peer 0 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101}]
+peer 0 logs: [{0 0} {1 101}]
+1------------------------
+[{0 0} {1 101} {1 102}]
+2018/12/14/ 11:11:07.468 leader 1 replicate peer 1: []
+ peer 1 logs: [{0 0} {1 101} {1 102}]
+peer 1 true!!!!!!!
+match index: [1 2 1]
+next index: [2 3 2]
+2018/12/14/ 11:11:07.468 leader 1 replicate peer 0: [{1 102}]
+ peer 0 logs: [{0 0} {1 101} {1 102}]
+peer 0 true!!!!!!!
+match index: [2 2 1]
+next index: [3 3 2]
+peer 1 applied: 102
+peer 0 logs: [{0 0} {1 101} {1 102}]
+peer 0 applied: 102
+[{0 0} {1 101} {1 102} {1 103}]
+2018/12/14/ 11:11:07.590 leader 1 replicate peer 1: []
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103}]
+2018/12/14/ 11:11:07.590 leader 1 replicate peer 0: [{1 103}]
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 1 true!!!!!!!
+match index: [2 3 1]
+next index: [3 4 2]
+peer 0 true!!!!!!!
+match index: [3 3 1]
+next index: [4 4 2]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 0 applied: 103
+peer 1 applied: 103
+2------------------------
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+2018/12/14/ 11:11:07.807 peer 2 starts election
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+2018/12/14/ 11:11:07.183 peer 2 starts election
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+2018/12/14/ 11:11:07.574 peer 2 starts election
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+[{0 0} {1 101} {1 102} {1 103} {1 104}]
+2018/12/14/ 11:11:07.659 leader 1 replicate peer 1: []
+ 2018/12/14/ 11:11:07.659 leader 1 replicate peer 0: [{1 104}]
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104}]
+peer 0 true!!!!!!!
+match index: [4 3 1]
+next index: [5 4 2]
+peer 1 true!!!!!!!
+match index: [4 4 1]
+next index: [5 5 2]
+peer 1 applied: 104
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104}]
+peer 0 applied: 104
+[{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+2018/12/14/ 11:11:07.781 leader 1 replicate peer 1: []
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 1 true!!!!!!!
+match index: [4 5 1]
+next index: [5 6 2]
+2018/12/14/ 11:11:07.781 leader 1 replicate peer 0: [{1 105}]
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 0 true!!!!!!!
+match index: [5 5 1]
+next index: [6 6 2]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 1 applied: 105
+peer 0 applied: 105
+3------------------------
+[{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+2018/12/14/ 11:11:07.872 leader 1 replicate peer 1: []
+ 2018/12/14/ 11:11:07.872 leader 1 replicate peer 0: [{1 106}]
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 false!!!!!!!
+leader 1 becomes follower in replicate
+peer 0 true!!!!!!!
+match index: [6 5 1]
+next index: [7 6 2]
+peer 1 true!!!!!!!
+match index: [6 6 1]
+next index: [7 7 2]
+leader 1 return !!!
+2018/12/14/ 11:11:07.276 peer 2 starts election
+2018/12/14/ 11:11:07.277 peer 1(votedFor 1) current term 5 vote peer 2 current term 5: false
+2018/12/14/ 11:11:07.277 peer 0(votedFor 1) current term 5 vote peer 2 current term 5: false
+2018/12/14/ 11:11:07.360 peer 0 starts election
+2018/12/14/ 11:11:07.360 peer 2(votedFor 0) current term 6 vote peer 0 current term 6: true
+2018/12/14/ 11:11:07.360 peer 1(votedFor 0) current term 6 vote peer 0 current term 6: true
+2018/12/14/ 11:11:07.361 peer 0 becomes leader
+start hb
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+2018/12/14/ 11:11:07.362 leader 0 replicate peer 2: []
+ peer 2 logs: [{0 0} {1 101}]
+2018/12/14/ 11:11:07.362 leader 0 replicate peer 1: []
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101}]
+peer 2 true!!!!!!!
+match index: [0 0 1]
+next index: [1 1 2]
+peer 1 true!!!!!!!
+match index: [0 1 1]
+next index: [1 2 2]
+2018/12/14/ 11:11:07.363 leader 0 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 true!!!!!!!
+match index: [1 1 1]
+next index: [2 2 2]
+2018/12/14/ 11:11:07.392 leader 0 replicate peer 1: []
+ 2018/12/14/ 11:11:07.393 leader 0 replicate peer 2: [{1 102}]
+ peer 2 logs: [{0 0} {1 101} {1 102}]
+2018/12/14/ 11:11:07.393 leader 0 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 true!!!!!!!
+match index: [2 1 1]
+next index: [3 2 2]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 true!!!!!!!
+match index: [2 1 2]
+next index: [3 2 3]
+peer 1 true!!!!!!!
+match index: [2 2 2]
+next index: [3 3 3]
+peer 2 applied: 102
+2018/12/14/ 11:11:07.423 leader 0 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 true!!!!!!!
+match index: [3 2 2]
+2018/12/14/ 11:11:07.423 leader 0 replicate peer 1: []
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+next index: [4 3 3]
+2018/12/14/ 11:11:07.423 leader 0 replicate peer 2: [{1 103}]
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 1 true!!!!!!!
+match index: [3 3 2]
+next index: [4 4 3]
+peer 2 true!!!!!!!
+match index: [3 3 3]
+next index: [4 4 4]
+peer 2 applied: 103
+2018/12/14/ 11:11:07.453 leader 0 replicate peer 2: [{1 104}]
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104}]
+2018/12/14/ 11:11:07.454 leader 0 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 true!!!!!!!
+match index: [3 3 4]
+next index: [4 4 5]
+2018/12/14/ 11:11:07.454 leader 0 replicate peer 1: []
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 true!!!!!!!
+match index: [4 3 4]
+next index: [5 4 5]
+peer 1 true!!!!!!!
+match index: [4 4 4]
+next index: [5 5 5]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 applied: 104
+2018/12/14/ 11:11:07.483 leader 0 replicate peer 1: []
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+2018/12/14/ 11:11:07.483 leader 0 replicate peer 2: [{1 105}]
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+2018/12/14/ 11:11:07.483 leader 0 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 true!!!!!!!
+match index: [5 4 4]
+next index: [6 5 5]
+peer 1 true!!!!!!!
+match index: [5 5 4]
+next index: [6 6 5]
+peer 2 true!!!!!!!
+match index: [5 5 5]
+next index: [6 6 6]
+peer 2 applied: 105
+2018/12/14/ 11:11:07.514 leader 0 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+2018/12/14/ 11:11:07.514 leader 0 replicate peer 2: [{1 106}]
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+2018/12/14/ 11:11:07.514 leader 0 replicate peer 1: []
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 true!!!!!!!
+match index: [6 5 5]
+next index: [7 6 6]
+peer 2 true!!!!!!!
+match index: [6 5 6]
+next index: [7 6 7]
+peer 1 true!!!!!!!
+match index: [6 6 6]
+next index: [7 7 7]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+[{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+2018/12/14/ 11:11:07.880 leader 0 replicate peer 2: [{6 106}]
+ 2018/12/14/ 11:11:07.880 leader 0 replicate peer 1: [{6 106}]
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+2018/12/14/ 11:11:07.880 leader 0 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 0 true!!!!!!!
+match index: [7 6 6]
+next index: [8 7 7]
+peer 1 true!!!!!!!
+match index: [7 7 6]
+next index: [8 8 7]
+peer 2 true!!!!!!!
+match index: [7 7 7]
+next index: [8 8 8]
+peer 0 applied: 106
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 1 applied: 106
+peer 0 applied: 106
+peer 2 applied: 106
+peer 2 applied: 106
+peer 1 applied: 106
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+[{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106} {6 107}]
+2018/12/14/ 11:11:07.028 leader 0 replicate peer 1: [{6 107}]
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106} {6 107}]
+2018/12/14/ 11:11:07.028 leader 0 replicate peer 2: [{6 107}]
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106} {6 107}]
+2018/12/14/ 11:11:07.028 leader 0 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106} {6 107}]
+peer 1 true!!!!!!!
+match index: [7 8 7]
+next index: [8 9 8]
+peer 2 true!!!!!!!
+match index: [7 8 8]
+next index: [8 9 9]
+peer 0 true!!!!!!!
+match index: [8 8 8]
+next index: [9 9 9]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106} {6 107}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106} {6 107}]
+peer 0 applied: 107
+peer 1 applied: 107
+peer 2 applied: 107
+  ... Passed --   5.7  3  194    8
+PASS
+ok  	raft	5.703s
+=======================
+last heard time 1544756842961, timeout 477
+last heard time 1544756842962, timeout 357
+last heard time 1544756842962, timeout 447
+Test (2B): agreement despite follower disconnection ...
+2018/12/14/ 11:11:07.326 peer 1 starts election
+2018/12/14/ 11:11:07.329 peer 2(votedFor 1) current term 1 vote peer 1 current term 1: true
+2018/12/14/ 11:11:07.329 peer 1 becomes leader
+start hb
+2018/12/14/ 11:11:07.330 peer 0(votedFor 1) current term 1 vote peer 1 current term 1: true
+peer 2 logs: [{0 0}]
+peer 0 logs: [{0 0}]
+[{0 0} {1 101}]
+2018/12/14/ 11:11:07.392 leader 1 replicate peer 0: [{1 101}]
+ peer 0 logs: [{0 0} {1 101}]
+2018/12/14/ 11:11:07.392 leader 1 replicate peer 1: []
+ peer 1 logs: [{0 0} {1 101}]
+peer 0 true!!!!!!!
+match index: [1 0 0]
+next index: [2 1 1]
+peer 1 true!!!!!!!
+match index: [1 1 0]
+next index: [2 2 1]
+2018/12/14/ 11:11:07.392 leader 1 replicate peer 2: [{1 101}]
+ peer 2 logs: [{0 0} {1 101}]
+peer 2 true!!!!!!!
+match index: [1 1 1]
+next index: [2 2 2]
+peer 0 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101}]
+peer 1 applied: 101
+peer 0 applied: 101
+peer 2 applied: 101
+peer 0 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101}]
+peer 0 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101}]
+peer 0 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101}]
+peer 0 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101}]
+peer 0 logs: [{0 0} {1 101}]
+1------------------------
+[{0 0} {1 101} {1 102}]
+2018/12/14/ 11:11:07.030 leader 1 replicate peer 1: []
+ peer 1 logs: [{0 0} {1 101} {1 102}]
+2018/12/14/ 11:11:07.030 leader 1 replicate peer 0: [{1 102}]
+ peer 0 logs: [{0 0} {1 101} {1 102}]
+peer 1 true!!!!!!!
+match index: [1 2 1]
+next index: [2 3 2]
+peer 0 true!!!!!!!
+match index: [2 2 1]
+next index: [3 3 2]
+peer 0 logs: [{0 0} {1 101} {1 102}]
+peer 1 applied: 102
+peer 0 logs: [{0 0} {1 101} {1 102}]
+peer 0 applied: 102
+[{0 0} {1 101} {1 102} {1 103}]
+2018/12/14/ 11:11:07.182 leader 1 replicate peer 1: []
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103}]
+2018/12/14/ 11:11:07.183 leader 1 replicate peer 0: [{1 103}]
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 1 true!!!!!!!
+match index: [2 3 1]
+next index: [3 4 2]
+peer 0 true!!!!!!!
+match index: [3 3 1]
+next index: [4 4 2]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 1 applied: 103
+peer 0 applied: 103
+2------------------------
+2018/12/14/ 11:11:07.329 peer 2 starts election
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+2018/12/14/ 11:11:07.714 peer 2 starts election
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+2018/12/14/ 11:11:07.070 peer 2 starts election
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+[{0 0} {1 101} {1 102} {1 103} {1 104}]
+2018/12/14/ 11:11:07.279 leader 1 replicate peer 0: [{1 104}]
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104}]
+2018/12/14/ 11:11:07.279 leader 1 replicate peer 1: []
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104}]
+peer 0 true!!!!!!!
+match index: [4 3 1]
+next index: [5 4 2]
+peer 1 true!!!!!!!
+match index: [4 4 1]
+next index: [5 5 2]
+peer 1 applied: 104
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104}]
+peer 0 applied: 104
+[{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+2018/12/14/ 11:11:07.400 leader 1 replicate peer 1: []
+ 2018/12/14/ 11:11:07.401 leader 1 replicate peer 0: [{1 105}]
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 1 true!!!!!!!
+match index: [4 5 1]
+next index: [5 6 2]
+peer 0 true!!!!!!!
+match index: [5 5 1]
+next index: [6 6 2]
+peer 1 applied: 105
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 0 applied: 105
+3------------------------
+[{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+2018/12/14/ 11:11:07.492 leader 1 replicate peer 0: [{1 106}]
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+2018/12/14/ 11:11:07.493 leader 1 replicate peer 1: []
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 false!!!!!!!
+leader 1 becomes follower in replicate
+peer 0 true!!!!!!!
+match index: [6 5 1]
+next index: [7 6 2]
+peer 1 true!!!!!!!
+match index: [6 6 1]
+next index: [7 7 2]
+leader 1 return !!!
+2018/12/14/ 11:11:07.857 peer 0 starts election
+2018/12/14/ 11:11:07.858 peer 2(votedFor 2) current term 4 vote peer 0 current term 2: false
+2018/12/14/ 11:11:07.858 peer 1(votedFor 1) current term 4 vote peer 0 current term 2: false
+2018/12/14/ 11:11:07.899 peer 2 starts election
+2018/12/14/ 11:11:07.900 peer 1(votedFor 1) current term 5 vote peer 2 current term 5: false
+2018/12/14/ 11:11:07.900 peer 0(votedFor 0) current term 5 vote peer 2 current term 5: false
+2018/12/14/ 11:11:07.986 peer 1 starts election
+2018/12/14/ 11:11:07.986 peer 2(votedFor 1) current term 6 vote peer 1 current term 6: true
+2018/12/14/ 11:11:07.987 peer 0(votedFor 1) current term 6 vote peer 1 current term 6: true
+2018/12/14/ 11:11:07.987 peer 1 becomes leader
+start hb
+peer 2 logs: [{0 0} {1 101}]
+2018/12/14/ 11:11:07.988 leader 1 replicate peer 2: [{1 102}]
+ peer 2 logs: [{0 0} {1 101} {1 102}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 true!!!!!!!
+match index: [6 6 2]
+next index: [7 7 3]
+peer 2 applied: 102
+2018/12/14/ 11:11:07.019 leader 1 replicate peer 2: [{1 103}]
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 2 true!!!!!!!
+match index: [6 6 3]
+next index: [7 7 4]
+peer 2 applied: 103
+2018/12/14/ 11:11:07.049 leader 1 replicate peer 2: [{1 104}]
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104}]
+peer 2 true!!!!!!!
+match index: [6 6 4]
+next index: [7 7 5]
+peer 2 applied: 104
+2018/12/14/ 11:11:07.080 leader 1 replicate peer 2: [{1 105}]
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 2 true!!!!!!!
+match index: [6 6 5]
+next index: [7 7 6]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 applied: 105
+2018/12/14/ 11:11:07.110 leader 1 replicate peer 2: [{1 106}]
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 true!!!!!!!
+match index: [6 6 6]
+next index: [7 7 7]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+[{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+2018/12/14/ 11:11:07.514 leader 1 replicate peer 2: [{6 106}]
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+2018/12/14/ 11:11:07.515 leader 1 replicate peer 1: []
+ 2018/12/14/ 11:11:07.515 leader 1 replicate peer 0: [{6 106}]
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 1 true!!!!!!!
+match index: [6 7 6]
+next index: [7 8 7]
+peer 2 true!!!!!!!
+match index: [6 7 7]
+next index: [7 8 8]
+peer 0 true!!!!!!!
+match index: [7 7 7]
+next index: [8 8 8]
+peer 1 applied: 106
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 1 applied: 106
+peer 2 applied: 106
+peer 0 applied: 106
+peer 2 applied: 106
+peer 0 applied: 106
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+[{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106} {6 107}]
+2018/12/14/ 11:11:07.672 leader 1 replicate peer 2: [{6 107}]
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106} {6 107}]
+2018/12/14/ 11:11:07.672 leader 1 replicate peer 1: []
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106} {6 107}]
+peer 2 true!!!!!!!
+match index: [7 7 8]
+next index: [8 8 9]
+peer 1 true!!!!!!!
+match index: [7 8 8]
+next index: [8 9 9]
+2018/12/14/ 11:11:07.673 leader 1 replicate peer 0: [{6 107}]
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106} {6 107}]
+peer 0 true!!!!!!!
+match index: [8 8 8]
+next index: [9 9 9]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106} {6 107}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106} {6 107}]
+peer 1 applied: 107
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106} {6 107}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106} {6 107}]
+peer 0 applied: 107
+peer 2 applied: 107
+  ... Passed --   5.9  3  189    8
+PASS
+ok  	raft	5.869s
+=======================
+last heard time 1544756850601, timeout 479
+last heard time 1544756850601, timeout 381
+last heard time 1544756850601, timeout 373
+Test (2B): agreement despite follower disconnection ...
+2018/12/14/ 11:11:07.977 peer 2 starts election
+2018/12/14/ 11:11:07.978 peer 1(votedFor 2) current term 1 vote peer 2 current term 1: true
+2018/12/14/ 11:11:07.978 peer 0(votedFor 2) current term 1 vote peer 2 current term 1: true
+2018/12/14/ 11:11:07.978 peer 2 becomes leader
+start hb
+peer 1 logs: [{0 0}]
+peer 0 logs: [{0 0}]
+[{0 0} {1 101}]
+2018/12/14/ 11:11:07.009 leader 2 replicate peer 1: [{1 101}]
+ peer 1 logs: [{0 0} {1 101}]
+2018/12/14/ 11:11:07.009 leader 2 replicate peer 2: []
+ peer 2 logs: [{0 0} {1 101}]
+peer 1 true!!!!!!!
+match index: [0 1 0]
+next index: [1 2 1]
+peer 2 true!!!!!!!
+match index: [0 1 1]
+next index: [1 2 2]
+2018/12/14/ 11:11:07.010 leader 2 replicate peer 0: [{1 101}]
+ peer 0 logs: [{0 0} {1 101}]
+peer 0 true!!!!!!!
+match index: [1 1 1]
+next index: [2 2 2]
+peer 2 applied: 101
+peer 1 logs: [{0 0} {1 101}]
+peer 0 logs: [{0 0} {1 101}]
+peer 1 applied: 101
+peer 0 applied: 101
+peer 0 logs: [{0 0} {1 101}]
+peer 1 logs: [{0 0} {1 101}]
+peer 1 logs: [{0 0} {1 101}]
+peer 0 logs: [{0 0} {1 101}]
+peer 1 logs: [{0 0} {1 101}]
+peer 0 logs: [{0 0} {1 101}]
+peer 1 logs: [{0 0} {1 101}]
+peer 0 logs: [{0 0} {1 101}]
+peer 0 logs: [{0 0} {1 101}]
+peer 1 logs: [{0 0} {1 101}]
+1------------------------
+[{0 0} {1 101} {1 102}]
+2018/12/14/ 11:11:07.618 leader 2 replicate peer 1: [{1 102}]
+ peer 1 logs: [{0 0} {1 101} {1 102}]
+2018/12/14/ 11:11:07.618 leader 2 replicate peer 2: []
+ peer 2 logs: [{0 0} {1 101} {1 102}]
+peer 1 true!!!!!!!
+match index: [1 2 1]
+next index: [2 3 2]
+peer 2 true!!!!!!!
+match index: [1 2 2]
+next index: [2 3 3]
+peer 2 applied: 102
+peer 1 logs: [{0 0} {1 101} {1 102}]
+peer 1 applied: 102
+[{0 0} {1 101} {1 102} {1 103}]
+2018/12/14/ 11:11:07.740 leader 2 replicate peer 1: [{1 103}]
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103}]
+2018/12/14/ 11:11:07.740 leader 2 replicate peer 2: []
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 1 true!!!!!!!
+match index: [1 3 2]
+next index: [2 4 3]
+peer 2 true!!!!!!!
+match index: [1 3 3]
+next index: [2 4 4]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 1 applied: 103
+peer 2 applied: 103
+2------------------------
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103}]
+2018/12/14/ 11:11:07.064 peer 0 starts election
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103}]
+2018/12/14/ 11:11:07.526 peer 0 starts election
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103}]
+[{0 0} {1 101} {1 102} {1 103} {1 104}]
+2018/12/14/ 11:11:07.807 leader 2 replicate peer 1: [{1 104}]
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104}]
+2018/12/14/ 11:11:07.807 leader 2 replicate peer 2: []
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104}]
+peer 1 true!!!!!!!
+match index: [1 4 3]
+next index: [2 5 4]
+peer 2 true!!!!!!!
+match index: [1 4 4]
+next index: [2 5 5]
+peer 2 applied: 104
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104}]
+2018/12/14/ 11:11:07.894 peer 0 starts election
+peer 1 applied: 104
+[{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+2018/12/14/ 11:11:07.928 leader 2 replicate peer 1: [{1 105}]
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+2018/12/14/ 11:11:07.928 leader 2 replicate peer 2: []
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 1 true!!!!!!!
+match index: [1 5 4]
+next index: [2 6 5]
+peer 2 true!!!!!!!
+match index: [1 5 5]
+next index: [2 6 6]
+peer 2 applied: 105
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 1 applied: 105
+3------------------------
+[{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+2018/12/14/ 11:11:07.020 leader 2 replicate peer 2: []
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+2018/12/14/ 11:11:07.020 leader 2 replicate peer 1: [{1 106}]
+ peer 2 true!!!!!!!
+match index: [1 5 6]
+next index: [2 6 7]
+peer 0 false!!!!!!!
+leader 2 becomes follower in replicate
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 true!!!!!!!
+match index: [1 6 6]
+next index: [2 7 7]
+leader 2 return !!!
+2018/12/14/ 11:11:07.376 peer 2 starts election
+2018/12/14/ 11:11:07.376 peer 1(votedFor 2) current term 5 vote peer 2 current term 5: true
+2018/12/14/ 11:11:07.377 peer 0(votedFor 2) current term 5 vote peer 2 current term 5: true
+2018/12/14/ 11:11:07.377 peer 2 becomes leader
+start hb
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+2018/12/14/ 11:11:07.378 leader 2 replicate peer 0: [{1 102}]
+ peer 0 logs: [{0 0} {1 101} {1 102}]
+peer 0 logs: [{0 0} {1 101} {1 102}]
+peer 0 true!!!!!!!
+match index: [2 6 6]
+next index: [3 7 7]
+peer 0 applied: 102
+2018/12/14/ 11:11:07.408 leader 2 replicate peer 0: [{1 103}]
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 0 true!!!!!!!
+match index: [3 6 6]
+next index: [4 7 7]
+peer 0 applied: 103
+2018/12/14/ 11:11:07.439 leader 2 replicate peer 0: [{1 104}]
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104}]
+peer 0 true!!!!!!!
+match index: [4 6 6]
+next index: [5 7 7]
+peer 0 applied: 104
+2018/12/14/ 11:11:07.469 leader 2 replicate peer 0: [{1 105}]
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 0 true!!!!!!!
+match index: [5 6 6]
+next index: [6 7 7]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 0 applied: 105
+2018/12/14/ 11:11:07.500 leader 2 replicate peer 0: [{1 106}]
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 true!!!!!!!
+match index: [6 6 6]
+next index: [7 7 7]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+[{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+2018/12/14/ 11:11:07.052 leader 2 replicate peer 0: [{5 106}]
+ 2018/12/14/ 11:11:07.052 leader 2 replicate peer 2: []
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 true!!!!!!!
+match index: [6 6 7]
+next index: [7 7 8]
+2018/12/14/ 11:11:07.052 leader 2 replicate peer 1: [{5 106}]
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 0 true!!!!!!!
+match index: [7 6 7]
+next index: [8 7 8]
+peer 1 true!!!!!!!
+match index: [7 7 7]
+next index: [8 8 8]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 0 applied: 106
+peer 1 applied: 106
+peer 2 applied: 106
+peer 1 applied: 106
+peer 0 applied: 106
+peer 2 applied: 106
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+[{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106} {5 107}]
+2018/12/14/ 11:11:07.150 leader 2 replicate peer 2: []
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106} {5 107}]
+2018/12/14/ 11:11:07.151 leader 2 replicate peer 1: [{5 107}]
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106} {5 107}]
+2018/12/14/ 11:11:07.150 leader 2 replicate peer 0: [{5 107}]
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106} {5 107}]
+peer 2 true!!!!!!!
+match index: [7 7 8]
+next index: [8 8 9]
+peer 1 true!!!!!!!
+match index: [7 8 8]
+next index: [8 9 9]
+peer 0 true!!!!!!!
+match index: [8 8 8]
+next index: [9 9 9]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106} {5 107}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106} {5 107}]
+peer 1 applied: 107
+peer 0 applied: 107
+peer 2 applied: 107
+  ... Passed --   5.6  3  181    8
+PASS
+ok  	raft	5.620s
+=======================
+last heard time 1544756858195, timeout 364
+last heard time 1544756858195, timeout 493
+last heard time 1544756858196, timeout 384
+Test (2B): agreement despite follower disconnection ...
+2018/12/14/ 11:11:07.561 peer 0 starts election
+2018/12/14/ 11:11:07.566 peer 2(votedFor 0) current term 1 vote peer 0 current term 1: true
+2018/12/14/ 11:11:07.566 peer 1(votedFor 0) current term 1 vote peer 0 current term 1: true
+2018/12/14/ 11:11:07.566 peer 0 becomes leader
+start hb
+peer 2 logs: [{0 0}]
+peer 1 logs: [{0 0}]
+[{0 0} {1 101}]
+2018/12/14/ 11:11:07.628 leader 0 replicate peer 2: [{1 101}]
+ peer 2 logs: [{0 0} {1 101}]
+2018/12/14/ 11:11:07.629 leader 0 replicate peer 1: [{1 101}]
+ peer 1 logs: [{0 0} {1 101}]
+peer 2 true!!!!!!!
+match index: [0 0 1]
+next index: [1 1 2]
+2018/12/14/ 11:11:07.629 leader 0 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101}]
+peer 1 true!!!!!!!
+match index: [0 1 1]
+next index: [1 2 2]
+peer 0 true!!!!!!!
+match index: [1 1 1]
+next index: [2 2 2]
+peer 2 logs: [{0 0} {1 101}]
+peer 1 logs: [{0 0} {1 101}]
+peer 2 applied: 101
+peer 0 applied: 101
+peer 1 applied: 101
+peer 2 logs: [{0 0} {1 101}]
+peer 1 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101}]
+peer 1 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101}]
+peer 1 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101}]
+peer 1 logs: [{0 0} {1 101}]
+1------------------------
+[{0 0} {1 101} {1 102}]
+peer 2 logs: [{0 0} {1 101}]
+2018/12/14/ 11:11:07.177 leader 0 replicate peer 2: [{1 102}]
+ peer 2 logs: [{0 0} {1 101} {1 102}]
+2018/12/14/ 11:11:07.177 leader 0 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102}]
+peer 2 true!!!!!!!
+match index: [1 1 2]
+next index: [2 2 3]
+peer 0 true!!!!!!!
+match index: [2 1 2]
+next index: [3 2 3]
+peer 0 applied: 102
+peer 2 logs: [{0 0} {1 101} {1 102}]
+peer 2 applied: 102
+[{0 0} {1 101} {1 102} {1 103}]
+2018/12/14/ 11:11:07.329 leader 0 replicate peer 2: [{1 103}]
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+2018/12/14/ 11:11:07.330 leader 0 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 2 true!!!!!!!
+match index: [2 1 3]
+next index: [3 2 4]
+peer 0 true!!!!!!!
+match index: [3 1 3]
+next index: [4 2 4]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 2 applied: 103
+peer 0 applied: 103
+2------------------------
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+2018/12/14/ 11:11:07.557 peer 1 starts election
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+2018/12/14/ 11:11:07.005 peer 1 starts election
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+[{0 0} {1 101} {1 102} {1 103} {1 104}]
+2018/12/14/ 11:11:07.391 leader 0 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104}]
+2018/12/14/ 11:11:07.391 leader 0 replicate peer 2: [{1 104}]
+ peer 0 true!!!!!!!
+match index: [4 1 3]
+next index: [5 2 4]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104}]
+peer 2 true!!!!!!!
+match index: [4 1 4]
+next index: [5 2 5]
+2018/12/14/ 11:11:07.402 peer 1 starts election
+peer 0 applied: 104
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104}]
+peer 2 applied: 104
+[{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+2018/12/14/ 11:11:07.542 leader 0 replicate peer 2: [{1 105}]
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+2018/12/14/ 11:11:07.543 leader 0 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 2 true!!!!!!!
+match index: [4 1 5]
+next index: [5 2 6]
+peer 0 true!!!!!!!
+match index: [5 1 5]
+next index: [6 2 6]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 0 applied: 105
+peer 2 applied: 105
+3------------------------
+[{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+2018/12/14/ 11:11:07.634 leader 0 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+2018/12/14/ 11:11:07.634 leader 0 replicate peer 2: [{1 106}]
+ peer 0 true!!!!!!!
+match index: [6 1 5]
+next index: [7 2 6]
+peer 1 false!!!!!!!
+leader 0 becomes follower in replicate
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 true!!!!!!!
+match index: [6 1 6]
+next index: [7 2 7]
+leader 0 return !!!
+2018/12/14/ 11:11:07.991 peer 2 starts election
+2018/12/14/ 11:11:07.991 peer 0(votedFor 0) current term 4 vote peer 2 current term 2: false
+2018/12/14/ 11:11:07.992 peer 1(votedFor 1) current term 4 vote peer 2 current term 2: false
+2018/12/14/ 11:11:07.022 peer 0 starts election
+2018/12/14/ 11:11:07.023 peer 2(votedFor 0) current term 5 vote peer 0 current term 5: true
+2018/12/14/ 11:11:07.023 peer 1(votedFor 0) current term 5 vote peer 0 current term 5: true
+2018/12/14/ 11:11:07.023 peer 0 becomes leader
+start hb
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101}]
+2018/12/14/ 11:11:07.024 leader 0 replicate peer 1: [{1 102}]
+ peer 1 logs: [{0 0} {1 101} {1 102}]
+peer 1 true!!!!!!!
+match index: [6 2 6]
+next index: [7 3 7]
+peer 1 applied: 102
+2018/12/14/ 11:11:07.055 leader 0 replicate peer 1: [{1 103}]
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 1 true!!!!!!!
+match index: [6 3 6]
+next index: [7 4 7]
+peer 1 applied: 103
+2018/12/14/ 11:11:07.085 leader 0 replicate peer 1: [{1 104}]
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104}]
+peer 1 true!!!!!!!
+match index: [6 4 6]
+next index: [7 5 7]
+peer 1 applied: 104
+2018/12/14/ 11:11:07.115 leader 0 replicate peer 1: [{1 105}]
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 1 true!!!!!!!
+match index: [6 5 6]
+next index: [7 6 7]
+peer 1 applied: 105
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+2018/12/14/ 11:11:07.146 leader 0 replicate peer 1: [{1 106}]
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 true!!!!!!!
+match index: [6 6 6]
+next index: [7 7 7]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+[{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+2018/12/14/ 11:11:07.636 leader 0 replicate peer 2: [{5 106}]
+ 2018/12/14/ 11:11:07.636 leader 0 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 0 true!!!!!!!
+match index: [7 6 6]
+next index: [8 7 7]
+2018/12/14/ 11:11:07.636 leader 0 replicate peer 1: [{5 106}]
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 true!!!!!!!
+match index: [7 6 7]
+next index: [8 7 8]
+peer 1 true!!!!!!!
+match index: [7 7 7]
+next index: [8 8 8]
+peer 0 applied: 106
+peer 0 applied: 106
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 applied: 106
+peer 1 applied: 106
+peer 2 applied: 106
+peer 1 applied: 106
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+[{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106} {5 107}]
+2018/12/14/ 11:11:07.820 leader 0 replicate peer 2: [{5 107}]
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106} {5 107}]
+2018/12/14/ 11:11:07.820 leader 0 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106} {5 107}]
+2018/12/14/ 11:11:07.821 leader 0 replicate peer 1: [{5 107}]
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106} {5 107}]
+peer 2 true!!!!!!!
+match index: [7 7 8]
+next index: [8 8 9]
+peer 0 true!!!!!!!
+match index: [8 7 8]
+next index: [9 8 9]
+peer 1 true!!!!!!!
+match index: [8 8 8]
+next index: [9 9 9]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106} {5 107}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106} {5 107}]
+peer 0 applied: 107
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106} {5 107}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106} {5 107}]
+peer 1 applied: 107
+peer 2 applied: 107
+  ... Passed --   5.8  3  187    8
+PASS
+ok  	raft	5.807s
+=======================
+last heard time 1544756865731, timeout 379
+last heard time 1544756865732, timeout 441
+last heard time 1544756865732, timeout 463
+Test (2B): agreement despite follower disconnection ...
+2018/12/14/ 11:11:07.110 peer 0 starts election
+2018/12/14/ 11:11:07.114 peer 2(votedFor 0) current term 1 vote peer 0 current term 1: true
+2018/12/14/ 11:11:07.115 peer 0 becomes leader
+start hb
+2018/12/14/ 11:11:07.115 peer 1(votedFor 0) current term 1 vote peer 0 current term 1: true
+peer 2 logs: [{0 0}]
+peer 1 logs: [{0 0}]
+[{0 0} {1 101}]
+2018/12/14/ 11:11:07.146 leader 0 replicate peer 2: [{1 101}]
+ peer 2 logs: [{0 0} {1 101}]
+2018/12/14/ 11:11:07.147 leader 0 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101}]
+2018/12/14/ 11:11:07.147 leader 0 replicate peer 1: [{1 101}]
+ peer 2 true!!!!!!!
+match index: [0 0 1]
+next index: [1 1 2]
+peer 0 true!!!!!!!
+match index: [1 0 1]
+next index: [2 1 2]
+peer 1 logs: [{0 0} {1 101}]
+peer 1 true!!!!!!!
+match index: [1 1 1]
+next index: [2 2 2]
+peer 0 applied: 101
+peer 2 logs: [{0 0} {1 101}]
+peer 1 logs: [{0 0} {1 101}]
+peer 2 applied: 101
+peer 1 applied: 101
+peer 2 logs: [{0 0} {1 101}]
+peer 1 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101}]
+peer 1 logs: [{0 0} {1 101}]
+peer 1 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101}]
+peer 1 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101}]
+peer 1 logs: [{0 0} {1 101}]
+1------------------------
+[{0 0} {1 101} {1 102}]
+2018/12/14/ 11:11:07.784 leader 0 replicate peer 2: [{1 102}]
+ peer 2 logs: [{0 0} {1 101} {1 102}]
+2018/12/14/ 11:11:07.784 leader 0 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102}]
+peer 0 true!!!!!!!
+match index: [2 1 1]
+next index: [3 2 2]
+peer 2 true!!!!!!!
+match index: [2 1 2]
+next index: [3 2 3]
+peer 2 logs: [{0 0} {1 101} {1 102}]
+peer 2 applied: 102
+peer 0 applied: 102
+[{0 0} {1 101} {1 102} {1 103}]
+2018/12/14/ 11:11:07.845 leader 0 replicate peer 2: [{1 103}]
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 2 true!!!!!!!
+match index: [2 1 3]
+next index: [3 2 4]
+2018/12/14/ 11:11:07.846 leader 0 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 0 true!!!!!!!
+match index: [3 1 3]
+next index: [4 2 4]
+peer 0 applied: 103
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 2 applied: 103
+2------------------------
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+2018/12/14/ 11:11:07.093 peer 1 starts election
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+2018/12/14/ 11:11:07.501 peer 1 starts election
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+[{0 0} {1 101} {1 102} {1 103} {1 104}]
+2018/12/14/ 11:11:07.971 leader 0 replicate peer 2: [{1 104}]
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104}]
+2018/12/14/ 11:11:07.971 leader 0 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104}]
+peer 2 true!!!!!!!
+match index: [3 1 4]
+next index: [4 2 5]
+peer 0 true!!!!!!!
+match index: [4 1 4]
+next index: [5 2 5]
+2018/12/14/ 11:11:07.003 peer 1 starts election
+peer 0 applied: 104
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104}]
+peer 2 applied: 104
+[{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+2018/12/14/ 11:11:07.062 leader 0 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+2018/12/14/ 11:11:07.063 leader 0 replicate peer 2: [{1 105}]
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 0 true!!!!!!!
+match index: [5 1 4]
+next index: [6 2 5]
+peer 2 true!!!!!!!
+match index: [5 1 5]
+next index: [6 2 6]
+peer 0 applied: 105
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 2 applied: 105
+3------------------------
+[{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 false!!!!!!!
+leader 0 becomes follower in replicate
+leader 0 return !!!
+2018/12/14/ 11:11:07.529 peer 2 starts election
+2018/12/14/ 11:11:07.530 peer 0(votedFor 0) current term 4 vote peer 2 current term 2: false
+2018/12/14/ 11:11:07.530 peer 1(votedFor 1) current term 4 vote peer 2 current term 2: false
+2018/12/14/ 11:11:07.573 peer 0 starts election
+2018/12/14/ 11:11:07.575 peer 2(votedFor 0) current term 5 vote peer 0 current term 5: true
+2018/12/14/ 11:11:07.575 peer 1(votedFor 0) current term 5 vote peer 0 current term 5: true
+2018/12/14/ 11:11:07.575 peer 0 becomes leader
+start hb
+2018/12/14/ 11:11:07.576 leader 0 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+2018/12/14/ 11:11:07.576 leader 0 replicate peer 1: [{1 102}]
+ peer 1 logs: [{0 0} {1 101} {1 102}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 1 logs: [{0 0} {1 101} {1 102}]
+2018/12/14/ 11:11:07.577 leader 0 replicate peer 2: [{1 106}]
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 true!!!!!!!
+match index: [6 1 5]
+next index: [7 2 6]
+peer 1 true!!!!!!!
+match index: [6 2 5]
+next index: [7 3 6]
+peer 2 true!!!!!!!
+match index: [6 2 6]
+next index: [7 3 7]
+peer 1 applied: 102
+2018/12/14/ 11:11:07.606 leader 0 replicate peer 1: [{1 103}]
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 1 true!!!!!!!
+match index: [6 3 6]
+next index: [7 4 7]
+peer 1 applied: 103
+2018/12/14/ 11:11:07.637 leader 0 replicate peer 1: [{1 104}]
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104}]
+peer 1 true!!!!!!!
+match index: [6 4 6]
+next index: [7 5 7]
+peer 1 applied: 104
+2018/12/14/ 11:11:07.667 leader 0 replicate peer 1: [{1 105}]
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 1 true!!!!!!!
+match index: [6 5 6]
+next index: [7 6 7]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 1 applied: 105
+2018/12/14/ 11:11:07.697 leader 0 replicate peer 1: [{1 106}]
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 true!!!!!!!
+match index: [6 6 6]
+next index: [7 7 7]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+[{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+2018/12/14/ 11:11:07.156 leader 0 replicate peer 2: [{5 106}]
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+2018/12/14/ 11:11:07.157 leader 0 replicate peer 1: [{5 106}]
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+2018/12/14/ 11:11:07.157 leader 0 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 1 true!!!!!!!
+match index: [6 7 6]
+next index: [7 8 7]
+peer 0 true!!!!!!!
+match index: [7 7 6]
+next index: [8 8 7]
+peer 2 true!!!!!!!
+match index: [7 7 7]
+next index: [8 8 8]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 0 applied: 106
+peer 0 applied: 106
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 1 applied: 106
+peer 2 applied: 106
+peer 1 applied: 106
+peer 2 applied: 106
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+[{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106} {5 107}]
+2018/12/14/ 11:11:07.344 leader 0 replicate peer 1: [{5 107}]
+ 2018/12/14/ 11:11:07.344 leader 0 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106} {5 107}]
+peer 0 true!!!!!!!
+match index: [8 7 7]
+next index: [9 8 8]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106} {5 107}]
+peer 1 true!!!!!!!
+match index: [8 8 7]
+next index: [9 9 8]
+2018/12/14/ 11:11:07.344 leader 0 replicate peer 2: [{5 107}]
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106} {5 107}]
+peer 2 true!!!!!!!
+match index: [8 8 8]
+next index: [9 9 9]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106} {5 107}]
+peer 0 applied: 107
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106} {5 107}]
+peer 2 applied: 107
+peer 1 applied: 107
+  ... Passed --   5.7  3  182    8
+PASS
+ok  	raft	5.709s
+=======================
+last heard time 1544756873126, timeout 491
+last heard time 1544756873127, timeout 352
+last heard time 1544756873127, timeout 392
+Test (2B): agreement despite follower disconnection ...
+2018/12/14/ 11:11:07.482 peer 1 starts election
+2018/12/14/ 11:11:07.486 peer 2(votedFor 1) current term 1 vote peer 1 current term 1: true
+2018/12/14/ 11:11:07.486 peer 0(votedFor 1) current term 1 vote peer 1 current term 1: true
+2018/12/14/ 11:11:07.486 peer 1 becomes leader
+start hb
+peer 2 logs: [{0 0}]
+peer 0 logs: [{0 0}]
+[{0 0} {1 101}]
+2018/12/14/ 11:11:07.549 leader 1 replicate peer 2: [{1 101}]
+ peer 2 logs: [{0 0} {1 101}]
+2018/12/14/ 11:11:07.549 leader 1 replicate peer 0: [{1 101}]
+ peer 0 logs: [{0 0} {1 101}]
+2018/12/14/ 11:11:07.549 leader 1 replicate peer 1: []
+ peer 1 logs: [{0 0} {1 101}]
+peer 0 true!!!!!!!
+match index: [1 0 0]
+next index: [2 1 1]
+peer 2 true!!!!!!!
+match index: [1 0 1]
+next index: [2 1 2]
+peer 1 true!!!!!!!
+match index: [1 1 1]
+next index: [2 2 2]
+peer 1 applied: 101
+peer 2 logs: [{0 0} {1 101}]
+peer 0 logs: [{0 0} {1 101}]
+peer 0 applied: 101
+peer 2 applied: 101
+peer 2 logs: [{0 0} {1 101}]
+peer 0 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101}]
+peer 0 logs: [{0 0} {1 101}]
+peer 0 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101}]
+peer 0 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101}]
+peer 0 logs: [{0 0} {1 101}]
+1------------------------
+[{0 0} {1 101} {1 102}]
+2018/12/14/ 11:11:07.126 leader 1 replicate peer 1: []
+ peer 1 logs: [{0 0} {1 101} {1 102}]
+peer 1 true!!!!!!!
+match index: [1 2 1]
+next index: [2 3 2]
+2018/12/14/ 11:11:07.127 leader 1 replicate peer 0: [{1 102}]
+ peer 0 logs: [{0 0} {1 101} {1 102}]
+peer 0 true!!!!!!!
+match index: [2 2 1]
+next index: [3 3 2]
+peer 1 applied: 102
+peer 0 logs: [{0 0} {1 101} {1 102}]
+peer 0 applied: 102
+[{0 0} {1 101} {1 102} {1 103}]
+2018/12/14/ 11:11:07.218 leader 1 replicate peer 0: [{1 103}]
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+2018/12/14/ 11:11:07.218 leader 1 replicate peer 1: []
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 0 true!!!!!!!
+match index: [3 2 1]
+next index: [4 3 2]
+peer 1 true!!!!!!!
+match index: [3 3 1]
+next index: [4 4 2]
+peer 1 applied: 103
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 0 applied: 103
+2------------------------
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+2018/12/14/ 11:11:07.484 peer 2 starts election
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+2018/12/14/ 11:11:07.881 peer 2 starts election
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+[{0 0} {1 101} {1 102} {1 103} {1 104}]
+2018/12/14/ 11:11:07.343 leader 1 replicate peer 1: []
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104}]
+peer 1 true!!!!!!!
+match index: [3 4 1]
+next index: [4 5 2]
+2018/12/14/ 11:11:07.343 leader 1 replicate peer 0: [{1 104}]
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104}]
+peer 0 true!!!!!!!
+match index: [4 4 1]
+next index: [5 5 2]
+2018/12/14/ 11:11:07.375 peer 2 starts election
+peer 1 applied: 104
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104}]
+peer 0 applied: 104
+[{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+2018/12/14/ 11:11:07.435 leader 1 replicate peer 1: []
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 1 true!!!!!!!
+match index: [4 5 1]
+next index: [5 6 2]
+2018/12/14/ 11:11:07.435 leader 1 replicate peer 0: [{1 105}]
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 0 true!!!!!!!
+match index: [5 5 1]
+next index: [6 6 2]
+peer 1 applied: 105
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 0 applied: 105
+3------------------------
+[{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+2018/12/14/ 11:11:07.526 leader 1 replicate peer 0: [{1 106}]
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+2018/12/14/ 11:11:07.526 leader 1 replicate peer 1: []
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 false!!!!!!!
+leader 1 becomes follower in replicate
+peer 1 true!!!!!!!
+match index: [5 6 1]
+next index: [6 7 2]
+peer 0 true!!!!!!!
+match index: [6 6 1]
+next index: [7 7 2]
+leader 1 return !!!
+2018/12/14/ 11:11:07.000 peer 1 starts election
+2018/12/14/ 11:11:07.001 peer 0(votedFor 1) current term 5 vote peer 1 current term 5: true
+2018/12/14/ 11:11:07.001 peer 2(votedFor 1) current term 5 vote peer 1 current term 5: true
+2018/12/14/ 11:11:07.001 peer 1 becomes leader
+start hb
+2018/12/14/ 11:11:07.002 leader 1 replicate peer 2: [{1 102}]
+ peer 2 logs: [{0 0} {1 101} {1 102}]
+peer 2 logs: [{0 0} {1 101} {1 102}]
+peer 2 true!!!!!!!
+match index: [6 6 2]
+next index: [7 7 3]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 applied: 102
+2018/12/14/ 11:11:07.032 leader 1 replicate peer 2: [{1 103}]
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 2 true!!!!!!!
+match index: [6 6 3]
+next index: [7 7 4]
+peer 2 applied: 103
+2018/12/14/ 11:11:07.063 leader 1 replicate peer 2: [{1 104}]
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104}]
+peer 2 true!!!!!!!
+match index: [6 6 4]
+next index: [7 7 5]
+peer 2 applied: 104
+2018/12/14/ 11:11:07.093 leader 1 replicate peer 2: [{1 105}]
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 2 true!!!!!!!
+match index: [6 6 5]
+next index: [7 7 6]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 2 applied: 105
+2018/12/14/ 11:11:07.124 leader 1 replicate peer 2: [{1 106}]
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 true!!!!!!!
+match index: [6 6 6]
+next index: [7 7 7]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+[{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+2018/12/14/ 11:11:07.525 leader 1 replicate peer 1: []
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+2018/12/14/ 11:11:07.525 leader 1 replicate peer 2: [{5 106}]
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 1 true!!!!!!!
+match index: [6 7 6]
+next index: [7 8 7]
+2018/12/14/ 11:11:07.525 leader 1 replicate peer 0: [{5 106}]
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 true!!!!!!!
+match index: [6 7 7]
+next index: [7 8 8]
+peer 0 true!!!!!!!
+match index: [7 7 7]
+next index: [8 8 8]
+peer 1 applied: 106
+peer 1 applied: 106
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 applied: 106
+peer 0 applied: 106
+peer 0 applied: 106
+peer 2 applied: 106
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+[{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106} {5 107}]
+2018/12/14/ 11:11:07.684 leader 1 replicate peer 1: []
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106} {5 107}]
+2018/12/14/ 11:11:07.684 leader 1 replicate peer 0: [{5 107}]
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106} {5 107}]
+peer 1 true!!!!!!!
+match index: [7 8 7]
+next index: [8 9 8]
+peer 0 true!!!!!!!
+match index: [8 8 7]
+next index: [9 9 8]
+2018/12/14/ 11:11:07.684 leader 1 replicate peer 2: [{5 107}]
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106} {5 107}]
+peer 2 true!!!!!!!
+match index: [8 8 8]
+next index: [9 9 9]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106} {5 107}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106} {5 107}]
+peer 0 applied: 107
+peer 1 applied: 107
+peer 2 applied: 107
+  ... Passed --   5.6  3  179    8
+PASS
+ok  	raft	5.631s
+=======================
+last heard time 1544756880599, timeout 372
+last heard time 1544756880600, timeout 373
+last heard time 1544756880600, timeout 388
+Test (2B): agreement despite follower disconnection ...
+2018/12/14/ 11:11:08.975 peer 0 starts election
+2018/12/14/ 11:11:08.975 peer 1 starts election
+2018/12/14/ 11:11:08.980 peer 2(votedFor 0) current term 1 vote peer 0 current term 1: true
+2018/12/14/ 11:11:08.980 peer 0 becomes leader
+start hb
+2018/12/14/ 11:11:08.980 peer 2(votedFor 0) current term 1 vote peer 1 current term 1: false
+2018/12/14/ 11:11:08.980 peer 1(votedFor 1) current term 1 vote peer 0 current term 1: false
+2018/12/14/ 11:11:08.981 peer 0(votedFor 0) current term 1 vote peer 1 current term 1: false
+peer 2 logs: [{0 0}]
+peer 1 logs: [{0 0}]
+[{0 0} {1 101}]
+2018/12/14/ 11:11:08.012 leader 0 replicate peer 2: [{1 101}]
+ peer 2 logs: [{0 0} {1 101}]
+2018/12/14/ 11:11:08.012 leader 0 replicate peer 1: [{1 101}]
+ peer 1 logs: [{0 0} {1 101}]
+2018/12/14/ 11:11:08.012 leader 0 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101}]
+peer 2 true!!!!!!!
+match index: [0 0 1]
+next index: [1 1 2]
+peer 1 true!!!!!!!
+match index: [0 1 1]
+next index: [1 2 2]
+peer 0 true!!!!!!!
+match index: [1 1 1]
+next index: [2 2 2]
+peer 0 applied: 101
+peer 2 logs: [{0 0} {1 101}]
+peer 1 logs: [{0 0} {1 101}]
+peer 2 applied: 101
+peer 1 applied: 101
+peer 2 logs: [{0 0} {1 101}]
+peer 1 logs: [{0 0} {1 101}]
+peer 1 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101}]
+peer 1 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101}]
+peer 1 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101}]
+peer 1 logs: [{0 0} {1 101}]
+1------------------------
+[{0 0} {1 101} {1 102}]
+2018/12/14/ 11:11:08.620 leader 0 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102}]
+2018/12/14/ 11:11:08.621 leader 0 replicate peer 2: [{1 102}]
+ peer 2 logs: [{0 0} {1 101} {1 102}]
+peer 0 true!!!!!!!
+match index: [2 1 1]
+next index: [3 2 2]
+peer 2 true!!!!!!!
+match index: [2 1 2]
+next index: [3 2 3]
+peer 0 applied: 102
+peer 2 logs: [{0 0} {1 101} {1 102}]
+peer 2 applied: 102
+[{0 0} {1 101} {1 102} {1 103}]
+2018/12/14/ 11:11:08.743 leader 0 replicate peer 2: [{1 103}]
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+2018/12/14/ 11:11:08.743 leader 0 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 0 true!!!!!!!
+match index: [3 1 2]
+next index: [4 2 3]
+peer 2 true!!!!!!!
+match index: [3 1 3]
+next index: [4 2 4]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 2 applied: 103
+peer 0 applied: 103
+2------------------------
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+2018/12/14/ 11:11:08.027 peer 1 starts election
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+2018/12/14/ 11:11:08.428 peer 1 starts election
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+[{0 0} {1 101} {1 102} {1 103} {1 104}]
+2018/12/14/ 11:11:08.808 leader 0 replicate peer 2: [{1 104}]
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104}]
+2018/12/14/ 11:11:08.808 leader 0 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104}]
+peer 2 true!!!!!!!
+match index: [3 1 4]
+next index: [4 2 5]
+peer 0 true!!!!!!!
+match index: [4 1 4]
+next index: [5 2 5]
+2018/12/14/ 11:11:08.837 peer 1 starts election
+peer 0 applied: 104
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104}]
+peer 2 applied: 104
+[{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+2018/12/14/ 11:11:08.929 leader 0 replicate peer 2: [{1 105}]
+ 2018/12/14/ 11:11:08.929 leader 0 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 0 true!!!!!!!
+match index: [5 1 4]
+next index: [6 2 5]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 2 true!!!!!!!
+match index: [5 1 5]
+next index: [6 2 6]
+peer 0 applied: 105
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 2 applied: 105
+3------------------------
+[{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+2018/12/14/ 11:11:08.051 leader 0 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+2018/12/14/ 11:11:08.052 leader 0 replicate peer 2: [{1 106}]
+ peer 0 true!!!!!!!
+match index: [6 1 5]
+next index: [7 2 6]
+peer 1 false!!!!!!!
+leader 0 becomes follower in replicate
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 true!!!!!!!
+match index: [6 1 6]
+next index: [7 2 7]
+leader 0 return !!!
+2018/12/14/ 11:11:08.481 peer 0 starts election
+2018/12/14/ 11:11:08.481 peer 2(votedFor 0) current term 5 vote peer 0 current term 5: true
+2018/12/14/ 11:11:08.481 peer 1(votedFor 0) current term 5 vote peer 0 current term 5: true
+2018/12/14/ 11:11:08.482 peer 0 becomes leader
+start hb
+2018/12/14/ 11:11:08.482 leader 0 replicate peer 1: [{1 102}]
+ peer 1 logs: [{0 0} {1 101} {1 102}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102}]
+peer 1 true!!!!!!!
+match index: [6 2 6]
+next index: [7 3 7]
+peer 1 applied: 102
+2018/12/14/ 11:11:08.514 leader 0 replicate peer 1: [{1 103}]
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 1 true!!!!!!!
+match index: [6 3 6]
+next index: [7 4 7]
+peer 1 applied: 103
+2018/12/14/ 11:11:08.544 leader 0 replicate peer 1: [{1 104}]
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104}]
+peer 1 true!!!!!!!
+match index: [6 4 6]
+next index: [7 5 7]
+peer 1 applied: 104
+2018/12/14/ 11:11:08.574 leader 0 replicate peer 1: [{1 105}]
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 1 true!!!!!!!
+match index: [6 5 6]
+next index: [7 6 7]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 1 applied: 105
+2018/12/14/ 11:11:08.605 leader 0 replicate peer 1: [{1 106}]
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 true!!!!!!!
+match index: [6 6 6]
+next index: [7 7 7]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+[{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+2018/12/14/ 11:11:08.036 leader 0 replicate peer 1: [{5 106}]
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+2018/12/14/ 11:11:08.036 leader 0 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+2018/12/14/ 11:11:08.036 leader 0 replicate peer 2: [{5 106}]
+ peer 1 true!!!!!!!
+match index: [6 7 6]
+next index: [7 8 7]
+peer 0 true!!!!!!!
+match index: [7 7 6]
+next index: [8 8 7]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 true!!!!!!!
+match index: [7 7 7]
+next index: [8 8 8]
+peer 0 applied: 106
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 applied: 106
+peer 0 applied: 106
+peer 1 applied: 106
+peer 2 applied: 106
+peer 1 applied: 106
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+[{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106} {5 107}]
+2018/12/14/ 11:11:08.162 leader 0 replicate peer 2: [{5 107}]
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106} {5 107}]
+2018/12/14/ 11:11:08.162 leader 0 replicate peer 1: [{5 107}]
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106} {5 107}]
+2018/12/14/ 11:11:08.163 leader 0 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106} {5 107}]
+peer 1 true!!!!!!!
+match index: [7 8 7]
+next index: [8 9 8]
+peer 2 true!!!!!!!
+match index: [7 8 8]
+next index: [8 9 9]
+peer 0 true!!!!!!!
+match index: [8 8 8]
+next index: [9 9 9]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106} {5 107}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106} {5 107}]
+peer 2 applied: 107
+peer 0 applied: 107
+peer 1 applied: 107
+  ... Passed --   5.6  3  182    8
+PASS
+ok  	raft	5.629s
+=======================
+last heard time 1544756888272, timeout 354
+last heard time 1544756888273, timeout 417
+last heard time 1544756888273, timeout 453
+Test (2B): agreement despite follower disconnection ...
+2018/12/14/ 11:11:08.627 peer 0 starts election
+2018/12/14/ 11:11:08.631 peer 1(votedFor 0) current term 1 vote peer 0 current term 1: true
+2018/12/14/ 11:11:08.631 peer 2(votedFor 0) current term 1 vote peer 0 current term 1: true
+2018/12/14/ 11:11:08.631 peer 0 becomes leader
+start hb
+peer 2 logs: [{0 0}]
+peer 1 logs: [{0 0}]
+[{0 0} {1 101}]
+2018/12/14/ 11:11:08.694 leader 0 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101}]
+2018/12/14/ 11:11:08.694 leader 0 replicate peer 2: [{1 101}]
+ peer 2 logs: [{0 0} {1 101}]
+peer 0 true!!!!!!!
+match index: [1 0 0]
+next index: [2 1 1]
+peer 2 true!!!!!!!
+match index: [1 0 1]
+next index: [2 1 2]
+2018/12/14/ 11:11:08.694 leader 0 replicate peer 1: [{1 101}]
+ peer 1 logs: [{0 0} {1 101}]
+peer 1 true!!!!!!!
+match index: [1 1 1]
+next index: [2 2 2]
+peer 0 applied: 101
+peer 2 logs: [{0 0} {1 101}]
+peer 1 logs: [{0 0} {1 101}]
+peer 1 applied: 101
+peer 2 applied: 101
+peer 2 logs: [{0 0} {1 101}]
+peer 1 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101}]
+peer 1 logs: [{0 0} {1 101}]
+peer 1 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101}]
+peer 1 logs: [{0 0} {1 101}]
+peer 1 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101}]
+1------------------------
+[{0 0} {1 101} {1 102}]
+2018/12/14/ 11:11:08.334 leader 0 replicate peer 2: [{1 102}]
+ peer 2 logs: [{0 0} {1 101} {1 102}]
+2018/12/14/ 11:11:08.334 leader 0 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102}]
+peer 0 true!!!!!!!
+match index: [2 1 1]
+next index: [3 2 2]
+peer 2 true!!!!!!!
+match index: [2 1 2]
+next index: [3 2 3]
+peer 2 logs: [{0 0} {1 101} {1 102}]
+peer 0 applied: 102
+peer 2 logs: [{0 0} {1 101} {1 102}]
+peer 2 applied: 102
+[{0 0} {1 101} {1 102} {1 103}]
+2018/12/14/ 11:11:08.486 leader 0 replicate peer 2: [{1 103}]
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+2018/12/14/ 11:11:08.486 leader 0 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 2 true!!!!!!!
+match index: [2 1 3]
+next index: [3 2 4]
+peer 0 true!!!!!!!
+match index: [3 1 3]
+next index: [4 2 4]
+peer 0 applied: 103
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 2 applied: 103
+2------------------------
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+2018/12/14/ 11:11:08.682 peer 1 starts election
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+2018/12/14/ 11:11:08.082 peer 1 starts election
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+2018/12/14/ 11:11:08.449 peer 1 starts election
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+[{0 0} {1 101} {1 102} {1 103} {1 104}]
+2018/12/14/ 11:11:08.578 leader 0 replicate peer 2: [{1 104}]
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104}]
+2018/12/14/ 11:11:08.578 leader 0 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104}]
+peer 2 true!!!!!!!
+match index: [3 1 4]
+next index: [4 2 5]
+peer 0 true!!!!!!!
+match index: [4 1 4]
+next index: [5 2 5]
+peer 0 applied: 104
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104}]
+peer 2 applied: 104
+[{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+2018/12/14/ 11:11:08.670 leader 0 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+2018/12/14/ 11:11:08.670 leader 0 replicate peer 2: [{1 105}]
+ peer 0 true!!!!!!!
+match index: [5 1 4]
+next index: [6 2 5]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 2 true!!!!!!!
+match index: [5 1 5]
+next index: [6 2 6]
+peer 0 applied: 105
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 2 applied: 105
+3------------------------
+[{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+2018/12/14/ 11:11:08.792 leader 0 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+2018/12/14/ 11:11:08.792 leader 0 replicate peer 2: [{1 106}]
+ peer 0 true!!!!!!!
+match index: [6 1 5]
+next index: [7 2 6]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 false!!!!!!!
+leader 0 becomes follower in replicate
+peer 2 true!!!!!!!
+match index: [6 1 6]
+next index: [7 2 7]
+leader 0 return !!!
+2018/12/14/ 11:11:08.204 peer 1 starts election
+2018/12/14/ 11:11:08.205 peer 0(votedFor 0) current term 5 vote peer 1 current term 5: false
+2018/12/14/ 11:11:08.205 peer 2(votedFor 0) current term 5 vote peer 1 current term 5: false
+2018/12/14/ 11:11:08.215 peer 2 starts election
+2018/12/14/ 11:11:08.216 peer 1(votedFor 2) current term 6 vote peer 2 current term 6: true
+2018/12/14/ 11:11:08.216 peer 0(votedFor 2) current term 6 vote peer 2 current term 6: true
+2018/12/14/ 11:11:08.216 peer 2 becomes leader
+start hb
+2018/12/14/ 11:11:08.217 leader 2 replicate peer 2: []
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+2018/12/14/ 11:11:08.217 leader 2 replicate peer 1: []
+ peer 1 logs: [{0 0} {1 101}]
+2018/12/14/ 11:11:08.217 leader 2 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101}]
+peer 2 true!!!!!!!
+match index: [0 0 1]
+next index: [1 1 2]
+peer 1 true!!!!!!!
+match index: [0 1 1]
+next index: [1 2 2]
+peer 0 true!!!!!!!
+match index: [1 1 1]
+next index: [2 2 2]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+2018/12/14/ 11:11:08.247 leader 2 replicate peer 1: [{1 102}]
+ peer 1 logs: [{0 0} {1 101} {1 102}]
+2018/12/14/ 11:11:08.248 leader 2 replicate peer 2: []
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 true!!!!!!!
+match index: [1 2 1]
+next index: [2 3 2]
+2018/12/14/ 11:11:08.248 leader 2 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 true!!!!!!!
+match index: [1 2 2]
+next index: [2 3 3]
+peer 0 true!!!!!!!
+match index: [2 2 2]
+next index: [3 3 3]
+peer 1 applied: 102
+2018/12/14/ 11:11:08.277 leader 2 replicate peer 2: []
+ 2018/12/14/ 11:11:08.278 leader 2 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+2018/12/14/ 11:11:08.278 leader 2 replicate peer 1: [{1 103}]
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 true!!!!!!!
+match index: [3 2 2]
+next index: [4 3 3]
+peer 1 true!!!!!!!
+match index: [3 3 2]
+next index: [4 4 3]
+peer 2 true!!!!!!!
+match index: [3 3 3]
+next index: [4 4 4]
+peer 1 applied: 103
+2018/12/14/ 11:11:08.308 leader 2 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+2018/12/14/ 11:11:08.308 leader 2 replicate peer 1: [{1 104}]
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104}]
+2018/12/14/ 11:11:08.308 leader 2 replicate peer 2: []
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 true!!!!!!!
+match index: [3 4 3]
+next index: [4 5 4]
+peer 0 true!!!!!!!
+match index: [4 4 3]
+next index: [5 5 4]
+peer 2 true!!!!!!!
+match index: [4 4 4]
+next index: [5 5 5]
+peer 1 applied: 104
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+2018/12/14/ 11:11:08.338 leader 2 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+2018/12/14/ 11:11:08.339 leader 2 replicate peer 2: []
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 true!!!!!!!
+match index: [5 4 4]
+next index: [6 5 5]
+2018/12/14/ 11:11:08.338 leader 2 replicate peer 1: [{1 105}]
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 2 true!!!!!!!
+match index: [5 4 5]
+next index: [6 5 6]
+peer 1 true!!!!!!!
+match index: [5 5 5]
+next index: [6 6 6]
+peer 1 applied: 105
+2018/12/14/ 11:11:08.368 leader 2 replicate peer 1: [{1 106}]
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+2018/12/14/ 11:11:08.369 leader 2 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+2018/12/14/ 11:11:08.369 leader 2 replicate peer 2: []
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 true!!!!!!!
+match index: [6 5 5]
+next index: [7 6 6]
+peer 1 true!!!!!!!
+match index: [6 6 5]
+next index: [7 7 6]
+peer 2 true!!!!!!!
+match index: [6 6 6]
+next index: [7 7 7]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+[{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+2018/12/14/ 11:11:08.800 leader 2 replicate peer 0: [{6 106}]
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+2018/12/14/ 11:11:08.800 leader 2 replicate peer 1: [{6 106}]
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+2018/12/14/ 11:11:08.801 leader 2 replicate peer 2: []
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 0 true!!!!!!!
+match index: [7 6 6]
+next index: [8 7 7]
+peer 1 true!!!!!!!
+match index: [7 7 6]
+next index: [8 8 7]
+peer 2 true!!!!!!!
+match index: [7 7 7]
+next index: [8 8 8]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 2 applied: 106
+peer 2 applied: 106
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 1 applied: 106
+peer 0 applied: 106
+peer 1 applied: 106
+peer 0 applied: 106
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106}]
+[{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106} {6 107}]
+2018/12/14/ 11:11:08.990 leader 2 replicate peer 1: [{6 107}]
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106} {6 107}]
+2018/12/14/ 11:11:08.990 leader 2 replicate peer 2: []
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106} {6 107}]
+peer 1 true!!!!!!!
+match index: [7 8 7]
+next index: [8 9 8]
+2018/12/14/ 11:11:08.990 leader 2 replicate peer 0: [{6 107}]
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106} {6 107}]
+peer 2 true!!!!!!!
+match index: [7 8 8]
+next index: [8 9 9]
+peer 0 true!!!!!!!
+match index: [8 8 8]
+next index: [9 9 9]
+peer 2 applied: 107
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106} {6 107}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {6 106} {6 107}]
+peer 1 applied: 107
+peer 0 applied: 107
+  ... Passed --   5.8  3  200    8
+PASS
+ok  	raft	5.795s
+=======================
+last heard time 1544756895927, timeout 469
+last heard time 1544756895928, timeout 350
+last heard time 1544756895928, timeout 365
+Test (2B): agreement despite follower disconnection ...
+2018/12/14/ 11:11:08.281 peer 1 starts election
+2018/12/14/ 11:11:08.285 peer 2(votedFor 1) current term 1 vote peer 1 current term 1: true
+2018/12/14/ 11:11:08.285 peer 0(votedFor 1) current term 1 vote peer 1 current term 1: true
+2018/12/14/ 11:11:08.286 peer 1 becomes leader
+start hb
+peer 2 logs: [{0 0}]
+peer 0 logs: [{0 0}]
+[{0 0} {1 101}]
+2018/12/14/ 11:11:08.348 leader 1 replicate peer 2: [{1 101}]
+ peer 2 logs: [{0 0} {1 101}]
+2018/12/14/ 11:11:08.348 leader 1 replicate peer 1: []
+ peer 1 logs: [{0 0} {1 101}]
+2018/12/14/ 11:11:08.348 leader 1 replicate peer 0: [{1 101}]
+ peer 0 logs: [{0 0} {1 101}]
+peer 2 true!!!!!!!
+match index: [0 0 1]
+next index: [1 1 2]
+peer 1 true!!!!!!!
+match index: [0 1 1]
+next index: [1 2 2]
+peer 0 true!!!!!!!
+match index: [1 1 1]
+next index: [2 2 2]
+peer 1 applied: 101
+peer 2 logs: [{0 0} {1 101}]
+peer 0 logs: [{0 0} {1 101}]
+peer 0 applied: 101
+peer 2 applied: 101
+peer 2 logs: [{0 0} {1 101}]
+peer 0 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101}]
+peer 0 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101}]
+peer 0 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101}]
+peer 0 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101}]
+peer 0 logs: [{0 0} {1 101}]
+1------------------------
+[{0 0} {1 101} {1 102}]
+2018/12/14/ 11:11:08.956 leader 1 replicate peer 1: []
+ peer 1 logs: [{0 0} {1 101} {1 102}]
+peer 1 true!!!!!!!
+match index: [1 2 1]
+next index: [2 3 2]
+2018/12/14/ 11:11:08.956 leader 1 replicate peer 0: [{1 102}]
+ peer 0 logs: [{0 0} {1 101} {1 102}]
+peer 0 true!!!!!!!
+match index: [2 2 1]
+next index: [3 3 2]
+peer 0 logs: [{0 0} {1 101} {1 102}]
+peer 1 applied: 102
+peer 0 applied: 102
+[{0 0} {1 101} {1 102} {1 103}]
+2018/12/14/ 11:11:08.017 leader 1 replicate peer 0: [{1 103}]
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+2018/12/14/ 11:11:08.017 leader 1 replicate peer 1: []
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 0 true!!!!!!!
+match index: [3 2 1]
+next index: [4 3 2]
+peer 1 true!!!!!!!
+match index: [3 3 1]
+next index: [4 4 2]
+peer 1 applied: 103
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 0 applied: 103
+2------------------------
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+2018/12/14/ 11:11:08.260 peer 2 starts election
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+2018/12/14/ 11:11:08.670 peer 2 starts election
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+2018/12/14/ 11:11:08.048 peer 2 starts election
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+[{0 0} {1 101} {1 102} {1 103} {1 104}]
+2018/12/14/ 11:11:08.145 leader 1 replicate peer 0: [{1 104}]
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104}]
+2018/12/14/ 11:11:08.146 leader 1 replicate peer 1: []
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104}]
+peer 0 true!!!!!!!
+match index: [4 3 1]
+next index: [5 4 2]
+peer 1 true!!!!!!!
+match index: [4 4 1]
+next index: [5 5 2]
+peer 1 applied: 104
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104}]
+peer 0 applied: 104
+[{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+2018/12/14/ 11:11:08.237 leader 1 replicate peer 1: []
+ 2018/12/14/ 11:11:08.237 leader 1 replicate peer 0: [{1 105}]
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 0 true!!!!!!!
+match index: [5 4 1]
+next index: [6 5 2]
+peer 1 true!!!!!!!
+match index: [5 5 1]
+next index: [6 6 2]
+peer 1 applied: 105
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 0 applied: 105
+3------------------------
+[{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+2018/12/14/ 11:11:08.329 leader 1 replicate peer 0: [{1 106}]
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 false!!!!!!!
+leader 1 becomes follower in replicate
+peer 0 true!!!!!!!
+match index: [6 5 1]
+next index: [7 6 2]
+peer 1 false!!!!!!!
+match index: [6 5 1]
+next index: [7 5 2]
+leader 1 return !!!
+2018/12/14/ 11:11:08.680 peer 0 starts election
+2018/12/14/ 11:11:08.681 peer 2(votedFor 2) current term 4 vote peer 0 current term 2: false
+2018/12/14/ 11:11:08.682 peer 1(votedFor 1) current term 4 vote peer 0 current term 2: false
+2018/12/14/ 11:11:08.712 peer 1 starts election
+2018/12/14/ 11:11:08.713 peer 2(votedFor 1) current term 5 vote peer 1 current term 5: true
+2018/12/14/ 11:11:08.713 peer 0(votedFor 1) current term 5 vote peer 1 current term 5: true
+2018/12/14/ 11:11:08.713 peer 1 becomes leader
+start hb
+2018/12/14/ 11:11:08.714 leader 1 replicate peer 2: [{1 102}]
+ peer 2 logs: [{0 0} {1 101} {1 102}]
+2018/12/14/ 11:11:08.715 leader 1 replicate peer 1: []
+ peer 2 logs: [{0 0} {1 101} {1 102}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 true!!!!!!!
+match index: [6 5 2]
+next index: [7 5 3]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 true!!!!!!!
+match index: [6 6 2]
+next index: [7 6 3]
+peer 2 applied: 102
+2018/12/14/ 11:11:08.745 leader 1 replicate peer 2: [{1 103}]
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+2018/12/14/ 11:11:08.745 leader 1 replicate peer 1: []
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 true!!!!!!!
+match index: [6 6 3]
+next index: [7 6 4]
+peer 1 true!!!!!!!
+match index: [6 7 3]
+next index: [7 7 4]
+peer 2 applied: 103
+2018/12/14/ 11:11:08.775 leader 1 replicate peer 2: [{1 104}]
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104}]
+peer 2 true!!!!!!!
+match index: [6 7 4]
+next index: [7 7 5]
+peer 2 applied: 104
+2018/12/14/ 11:11:08.805 leader 1 replicate peer 2: [{1 105}]
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 2 true!!!!!!!
+match index: [6 7 5]
+next index: [7 7 6]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 applied: 105
+2018/12/14/ 11:11:08.836 leader 1 replicate peer 2: [{1 106}]
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 true!!!!!!!
+match index: [6 7 6]
+next index: [7 7 7]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+[{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+2018/12/14/ 11:11:08.323 leader 1 replicate peer 0: [{5 106}]
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 0 true!!!!!!!
+match index: [7 7 6]
+next index: [8 7 7]
+2018/12/14/ 11:11:08.326 leader 1 replicate peer 2: [{5 106}]
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 true!!!!!!!
+match index: [7 7 7]
+next index: [8 7 8]
+2018/12/14/ 11:11:08.329 leader 1 replicate peer 1: []
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 1 true!!!!!!!
+match index: [7 8 7]
+next index: [8 8 8]
+peer 1 applied: 106
+peer 1 applied: 106
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 0 applied: 106
+peer 2 applied: 106
+peer 0 applied: 106
+peer 2 applied: 106
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106}]
+[{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106} {5 107}]
+2018/12/14/ 11:11:08.483 leader 1 replicate peer 1: []
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106} {5 107}]
+2018/12/14/ 11:11:08.483 leader 1 replicate peer 2: [{5 107}]
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106} {5 107}]
+2018/12/14/ 11:11:08.484 leader 1 replicate peer 0: [{5 107}]
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106} {5 107}]
+peer 1 true!!!!!!!
+match index: [7 9 7]
+next index: [8 9 8]
+peer 2 true!!!!!!!
+match index: [7 9 8]
+next index: [8 9 9]
+peer 0 true!!!!!!!
+match index: [8 9 8]
+next index: [9 9 9]
+peer 1 applied: 107
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106} {5 107}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106} {5 106} {5 107}]
+peer 0 applied: 107
+peer 2 applied: 107
+  ... Passed --   5.6  3  184    8
+PASS
+ok  	raft	5.637s
+=======================
+last heard time 1544756903550, timeout 407
+last heard time 1544756903550, timeout 410
+last heard time 1544756903551, timeout 446
+Test (2B): agreement despite follower disconnection ...
+2018/12/14/ 11:11:08.957 peer 0 starts election
+2018/12/14/ 11:11:08.960 peer 2(votedFor 0) current term 1 vote peer 0 current term 1: true
+2018/12/14/ 11:11:08.960 peer 1(votedFor 0) current term 1 vote peer 0 current term 1: true
+2018/12/14/ 11:11:08.960 peer 0 becomes leader
+start hb
+peer 1 logs: [{0 0}]
+peer 2 logs: [{0 0}]
+[{0 0} {1 101}]
+2018/12/14/ 11:11:08.021 leader 0 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101}]
+2018/12/14/ 11:11:08.021 leader 0 replicate peer 2: [{1 101}]
+ 2018/12/14/ 11:11:08.021 leader 0 replicate peer 1: [{1 101}]
+ peer 1 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101}]
+peer 0 true!!!!!!!
+match index: [1 0 0]
+next index: [2 1 1]
+peer 1 true!!!!!!!
+match index: [1 1 0]
+next index: [2 2 1]
+peer 2 true!!!!!!!
+match index: [1 1 1]
+next index: [2 2 2]
+peer 1 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101}]
+peer 0 applied: 101
+peer 2 applied: 101
+peer 1 applied: 101
+peer 2 logs: [{0 0} {1 101}]
+peer 1 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101}]
+peer 1 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101}]
+peer 1 logs: [{0 0} {1 101}]
+peer 1 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101}]
+peer 1 logs: [{0 0} {1 101}]
+1------------------------
+[{0 0} {1 101} {1 102}]
+2018/12/14/ 11:11:08.599 leader 0 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102}]
+peer 0 true!!!!!!!
+match index: [2 1 1]
+next index: [3 2 2]
+2018/12/14/ 11:11:08.599 leader 0 replicate peer 2: [{1 102}]
+ peer 2 logs: [{0 0} {1 101} {1 102}]
+peer 2 true!!!!!!!
+match index: [2 1 2]
+next index: [3 2 3]
+peer 0 applied: 102
+peer 2 logs: [{0 0} {1 101} {1 102}]
+peer 2 applied: 102
+[{0 0} {1 101} {1 102} {1 103}]
+2018/12/14/ 11:11:08.720 leader 0 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 0 true!!!!!!!
+match index: [3 1 2]
+next index: [4 2 3]
+2018/12/14/ 11:11:08.720 leader 0 replicate peer 2: [{1 103}]
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 2 true!!!!!!!
+match index: [3 1 3]
+next index: [4 2 4]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 0 applied: 103
+peer 2 applied: 103
+2------------------------
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+2018/12/14/ 11:11:08.054 peer 1 starts election
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+2018/12/14/ 11:11:08.544 peer 1 starts election
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103}]
+[{0 0} {1 101} {1 102} {1 103} {1 104}]
+2018/12/14/ 11:11:08.786 leader 0 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104}]
+2018/12/14/ 11:11:08.786 leader 0 replicate peer 2: [{1 104}]
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104}]
+peer 0 true!!!!!!!
+match index: [4 1 3]
+next index: [5 2 4]
+peer 2 true!!!!!!!
+match index: [4 1 4]
+next index: [5 2 5]
+peer 0 applied: 104
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104}]
+peer 2 applied: 104
+[{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+2018/12/14/ 11:11:08.908 leader 0 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+2018/12/14/ 11:11:08.908 leader 0 replicate peer 2: [{1 105}]
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 0 true!!!!!!!
+match index: [5 1 4]
+next index: [6 2 5]
+peer 2 true!!!!!!!
+match index: [5 1 5]
+next index: [6 2 6]
+peer 0 applied: 105
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 2 applied: 105
+3------------------------
+[{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+2018/12/14/ 11:11:08.003 peer 1 starts election
+2018/12/14/ 11:11:08.004 peer 2(votedFor 0) current term 4 vote peer 1 current term 4: false
+2018/12/14/ 11:11:08.004 peer 0(votedFor 0) current term 4 vote peer 1 current term 4: false
+leader 0 return !!!
+2018/12/14/ 11:11:08.410 peer 2 starts election
+2018/12/14/ 11:11:08.411 peer 0(votedFor 0) current term 5 vote peer 2 current term 5: false
+2018/12/14/ 11:11:08.411 peer 1(votedFor 2) current term 5 vote peer 2 current term 5: true
+2018/12/14/ 11:11:08.412 peer 2 becomes leader
+start hb
+2018/12/14/ 11:11:08.412 leader 2 replicate peer 1: []
+ peer 1 logs: [{0 0} {1 101}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 true!!!!!!!
+2018/12/14/ 11:11:08.413 leader 2 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+match index: [0 1 0]
+next index: [1 2 1]
+2018/12/14/ 11:11:08.414 leader 2 replicate peer 2: []
+ peer 1 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 0 true!!!!!!!
+match index: [1 1 0]
+next index: [2 2 1]
+peer 2 true!!!!!!!
+match index: [1 1 1]
+next index: [2 2 2]
+2018/12/14/ 11:11:08.443 leader 2 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+2018/12/14/ 11:11:08.443 leader 2 replicate peer 1: [{1 102}]
+ peer 1 logs: [{0 0} {1 101} {1 102}]
+2018/12/14/ 11:11:08.443 leader 2 replicate peer 2: []
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 2 true!!!!!!!
+match index: [1 1 2]
+next index: [2 2 3]
+peer 0 true!!!!!!!
+match index: [2 1 2]
+next index: [3 2 3]
+peer 1 true!!!!!!!
+match index: [2 2 2]
+next index: [3 3 3]
+peer 1 applied: 102
+2018/12/14/ 11:11:08.473 leader 2 replicate peer 2: []
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+2018/12/14/ 11:11:08.473 leader 2 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 2 true!!!!!!!
+match index: [2 2 3]
+next index: [3 3 4]
+2018/12/14/ 11:11:08.474 leader 2 replicate peer 1: [{1 103}]
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103}]
+peer 0 true!!!!!!!
+match index: [3 2 3]
+next index: [4 3 4]
+peer 1 true!!!!!!!
+match index: [3 3 3]
+next index: [4 4 4]
+peer 1 applied: 103
+2018/12/14/ 11:11:08.503 leader 2 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+2018/12/14/ 11:11:08.504 leader 2 replicate peer 1: [{1 104}]
+ 2018/12/14/ 11:11:08.504 leader 2 replicate peer 2: []
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104}]
+peer 0 true!!!!!!!
+match index: [4 3 3]
+next index: [5 4 4]
+peer 2 true!!!!!!!
+match index: [4 3 4]
+next index: [5 4 5]
+peer 1 true!!!!!!!
+match index: [4 4 4]
+next index: [5 5 5]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 applied: 104
+2018/12/14/ 11:11:08.533 leader 2 replicate peer 2: []
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 2 true!!!!!!!
+match index: [4 4 5]
+next index: [5 5 6]
+2018/12/14/ 11:11:08.534 leader 2 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+2018/12/14/ 11:11:08.534 leader 2 replicate peer 1: [{1 105}]
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 0 true!!!!!!!
+match index: [5 4 5]
+next index: [6 5 6]
+peer 1 true!!!!!!!
+match index: [5 5 5]
+next index: [6 6 6]
+peer 1 applied: 105
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+[{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {5 106}]
+peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {1 106}]
+peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105}]
+2018/12/14/ 11:11:08.025 leader 2 replicate peer 2: []
+ peer 2 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {5 106}]
+2018/12/14/ 11:11:08.025 leader 2 replicate peer 1: [{5 106}]
+ peer 1 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {1 105} {5 106}]
+2018/12/14/ 11:11:08.026 leader 2 replicate peer 0: [{5 106}]
+ peer 0 logs: [{0 0} {1 101} {1 102} {1 103} {1 104} {5 106}]
+peer 2 true!!!!!!!
+match index: [5 5 6]
+next index: [6 6 7]
+peer 1 true!!!!!!!
+match index: [5 6 6]
+next index: [6 7 7]
+peer 0 true!!!!!!!
+match index: [6 6 6]
+next index: [7 7 7]
+peer 2 applied: 106
+exit status 2
+FAIL	raft	4.641s
+=======================
+last heard time 1544756909964, timeout 417
+last heard time 1544756909965, timeout 419
+last heard time 1544756909965, timeout 431
+Test (2B): agreement despite follower disconnection ...
+2018/12/14/ 11:11:08.382 peer 0 starts election
+2018/12/14/ 11:11:08.386 peer 2(votedFor 0) current term 1 vote peer 0 current term 1: true
+2018/12/14/ 11:11:08.386 peer 1(votedFor 0) current term 1 vote peer 0 current term 1: true
+2018/12/14/ 11:11:08.387 peer 0 becomes leader
+start hb
+peer 2 logs: [{0 0}]
+peer 1 logs: [{0 0}]
+[{0 0} {1 101}]
+2018/12/14/ 11:11:08.449 leader 0 replicate peer 2: [{1 101}]
+ peer 2 logs: [{0 0} {1 101}]
+2018/12/14/ 11:11:08.449 leader 0 replicate peer 1: [{1 101}]
+ peer 1 logs: [{0 0} {1 101}]
+2018/12/14/ 11:11:08.449 leader 0 replicate peer 0: []
+ peer 0 logs: [{0 0} {1 101}]
+peer 1 true!!!!!!!
+match index: [0 1 0]
+next index: [1 2 1]
+peer 2 true!!!!!!!
+match index: [0 1 1]
+next index: [1 2 2]
+peer 0 true!!!!!!!
+match index: [1 1 1]
+next index: [2 2 2]
+peer 0 applied: 101
+peer 2 logs: [{0 0} {1 101}]
+peer 1 logs: [{0 0} {1 101}]
+peer 1 applied: 101
+peer 2 applied: 101
+peer 2 logs: [{0 0} {1 101}]
+peer 1 logs: [{0 0} {1 101}]
+peer 1 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101}]
+peer 1 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101}]
+peer 1 logs: [{0 0} {1 101}]
+peer 2 logs: [{0 0} {1 101}]
+peer 1 logs: [{0 0} {1 101}]
