@@ -247,11 +247,6 @@ func (rf *Raft) startElection() {
 	rf.mu.Lock()
 	rf.CurrentTerm += 1
 	rf.VotedFor = rf.me
-	rf.mu.Unlock()
-
-	rf.resetElectionTimeOut()
-	go rf.startElectionTimeOut()
-
 	rva := RequestVoteArgs{}
 	rva.Term = rf.CurrentTerm
 
@@ -259,6 +254,11 @@ func (rf *Raft) startElection() {
 	rva.LastLogTerm = rf.Logs[len(rf.Logs)-1].Term
 
 	rva.CandidateId = rf.me
+	rf.mu.Unlock()
+
+	rf.resetElectionTimeOut()
+	go rf.startElectionTimeOut()
+
 	count := 1
 
 	//fmt.Println("start")
@@ -339,7 +339,7 @@ func (rf *Raft) resetElectionTimeOut() {
 	//fmt.Printf("peer %d reset timeout1\n",rf.me)
 	rf.mu.Lock()
 	rf.lastHeardTime = time.Now().UnixNano() / int64(time.Millisecond)
-	rf.electionTimeOut = rand.Int63n(150) + 350
+	rf.electionTimeOut = rand.Int63n(200) + 350
 	rf.mu.Unlock()
 	//fmt.Printf("peer %d reset timeout2\n",rf.me)
 }
@@ -362,9 +362,9 @@ func (rf *Raft) AppendEntries(args *AppendEntryArgs, reply *AppendEntryReply) {
 	rf.resetElectionTimeOut()
 	rf.mu.Lock()
 	defer rf.mu.Unlock()
-	fmt.Printf("before: peer %d logs: %v\n",rf.me,rf.Logs)
+//	fmt.Printf("before: peer %d logs: %v\n",rf.me,rf.Logs)
 	reply.Term = rf.CurrentTerm
-	fmt.Printf("%s leader %d(prev Index: %d, current Term: %d) send peer %d(current term: %d): %v\n ", time.Now().Format("2006/01/02/ 15:03:04.000"), args.LeaderId, args.PrevLogIndex,args.Term,rf.me, rf.CurrentTerm,args.Entries)
+//	fmt.Printf("%s leader %d(prev Index: %d, current Term: %d) send peer %d(current term: %d): %v\n ", time.Now().Format("2006/01/02/ 15:03:04.000"), args.LeaderId, args.PrevLogIndex,args.Term,rf.me, rf.CurrentTerm,args.Entries)
 	if args.Term < rf.CurrentTerm ||args.PrevLogIndex>len(rf.Logs)-1|| rf.Logs[args.PrevLogIndex].Term != args.PrevLogTerm {
 		reply.Success = false
 		if args.Term > rf.CurrentTerm {
@@ -388,12 +388,12 @@ func (rf *Raft) AppendEntries(args *AppendEntryArgs, reply *AppendEntryReply) {
 		}
 	}
 	if len(args.Entries) == 0 {
-		fmt.Printf("%s leader %d send hb to peer %d\n ", time.Now().Format("2006/01/02/ 15:03:04.000"), args.LeaderId, rf.me)
+	//	fmt.Printf("%s leader %d send hb to peer %d\n ", time.Now().Format("2006/01/02/ 15:03:04.000"), args.LeaderId, rf.me)
 	} else {
-		fmt.Printf("%s leader %d replicate peer %d: %v\n ", time.Now().Format("2006/01/02/ 15:03:04.000"), args.LeaderId, rf.me, args.Entries[dist:])
+	//	fmt.Printf("%s leader %d replicate peer %d: %v\n ", time.Now().Format("2006/01/02/ 15:03:04.000"), args.LeaderId, rf.me, args.Entries[dist:])
 	}
 	rf.Logs = append(rf.Logs, args.Entries[dist:]...)
-	fmt.Printf("after: peer %d logs: %v\n",rf.me,rf.Logs)
+	//fmt.Printf("after: peer %d logs: %v\n",rf.me,rf.Logs)
 	//fmt.Printf("before: leaderCommit: %d, peer %d Commit: %d, applied:%d\n",args.LeaderCommit,rf.me,rf.CommitIndex,rf.LastApplied)
 	//todo
 	if args.LeaderCommit > rf.CommitIndex {
@@ -404,7 +404,7 @@ func (rf *Raft) AppendEntries(args *AppendEntryArgs, reply *AppendEntryReply) {
 		}
 	}
 	//fmt.Printf("dist : %d, prev index: %d\n",dist,args.PrevLogIndex)
-	fmt.Printf("after: leaderCommit: %d, peer %d Commit: %d, applied: %d\n",args.LeaderCommit,rf.me,rf.CommitIndex,rf.LastApplied)
+	//fmt.Printf("after: leaderCommit: %d, peer %d Commit: %d, applied: %d\n",args.LeaderCommit,rf.me,rf.CommitIndex,rf.LastApplied)
 
 }
 func (rf *Raft) sendAppendEntries(server int, args *AppendEntryArgs, reply *AppendEntryReply) bool {
