@@ -520,17 +520,19 @@ func TestPersist12C(t *testing.T) {
 	cfg.begin("Test (2C): basic persistence")
 
 	cfg.one(11, servers, true)
-
+fmt.Println("1-------------------------")
 	// crash and re-start all
 	for i := 0; i < servers; i++ {
 		cfg.start1(i)
 	}
+	fmt.Println("2-------------------------")
 	for i := 0; i < servers; i++ {
 		cfg.disconnect(i)
 		cfg.connect(i)
 	}
 
 	cfg.one(12, servers, true)
+	fmt.Println("3-------------------------")
 
 	leader1 := cfg.checkOneLeader()
 	cfg.disconnect(leader1)

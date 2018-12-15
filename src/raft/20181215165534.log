@@ -1,7 +1,0 @@
-Test (2B): basic agreement ...
-start hb
-[{0 0} {1 100}]
---- FAIL: TestBasicAgree2B (2.47s)
-	config.go:465: one(100) failed to reach agreement
-Test (2B): agreement despite follower disconnection ...
-start hb

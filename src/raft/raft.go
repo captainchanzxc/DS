@@ -19,6 +19,7 @@ package raft
 
 import (
 	"bytes"
+	"fmt"
 	"labgob"
 	"math/rand"
 	"sync"
@@ -122,7 +123,20 @@ func (rf *Raft) persist() {
 	// e.Encode(rf.yyy)
 	// data := w.Bytes()
 	// rf.persister.SaveRaftState(data)
-	
+	w := new(bytes.Buffer)
+	e := labgob.NewEncoder(w)
+	e.Encode(rf.CurrentTerm)
+	e.Encode(rf.VotedFor)
+	e.Encode(rf.Logs)
+	data := w.Bytes()
+	rf.persister.SaveRaftState(data)
+
+	fmt.Printf("peer %d persist:" +
+		"logs: %v\n" +
+		"voted for: %d\n" +
+		"current term: %d\n\n",
+		rf.me,rf.Logs,rf.VotedFor,rf.CurrentTerm)
+
 }
 
 //
@@ -145,6 +159,25 @@ func (rf *Raft) readPersist(data []byte) {
 	//   rf.xxx = xxx
 	//   rf.yyy = yyy
 	// }
+	r := bytes.NewBuffer(data)
+	d := labgob.NewDecoder(r)
+	var currentTerm int
+	var votedFor int
+	var logs []Log
+	if d.Decode(&currentTerm) != nil ||
+		d.Decode(&votedFor) != nil || d.Decode(&logs) != nil {
+		fmt.Println("decode error!")
+	} else {
+		rf.CurrentTerm = currentTerm
+		rf.VotedFor = votedFor
+		rf.Logs = logs
+	}
+	fmt.Printf("peer %d read persist:" +
+		"logs: %v\n" +
+		"voted for: %d\n" +
+		"current term: %d\n\n",
+		rf.me,rf.Logs,rf.VotedFor,rf.CurrentTerm)
+
 }
 
 //
@@ -196,6 +229,7 @@ func (rf *Raft) RequestVote(args *RequestVoteArgs, reply *RequestVoteReply) {
 		rf.CurrentTerm = args.Term
 		rf.State = Follower
 	}
+rf.persist()
 	//fmt.Printf("%s peer %d(votedFor %d) current term %d vote peer %d current term %d: %t\n", time.Now().Format("2006/01/02/ 15:03:04.000"), rf.me, rf.VotedFor, reply.Term, args.CandidateId, args.Term, reply.VoterGranted)
 	rf.mu.Unlock()
 	if reply.VoterGranted {
@@ -241,10 +275,10 @@ func (rf *Raft) sendRequestVote(server int, args *RequestVoteArgs, reply *Reques
 }
 
 func (rf *Raft) startElection() {
-
 	//	fmt.Printf("%s peer %d starts election\n", time.Now().Format("2006/01/02/ 15:03:04.000"), rf.me)
 	rf.mu.Lock()
 	rf.CurrentTerm += 1
+rf.persist()
 	rf.VotedFor = rf.me
 	rva := RequestVoteArgs{}
 	rva.Term = rf.CurrentTerm
@@ -271,6 +305,7 @@ func (rf *Raft) startElection() {
 			if rvr.Term > rf.CurrentTerm {
 				rf.CurrentTerm = rvr.Term
 				rf.State = Follower
+rf.persist()
 				rf.mu.Unlock()
 				rf.resetElectionTimeOut()
 				rf.startElectionTimeOut()
@@ -358,8 +393,9 @@ type AppendEntryReply struct {
 func (rf *Raft) AppendEntries(args *AppendEntryArgs, reply *AppendEntryReply) {
 	rf.mu.Lock()
 	defer rf.mu.Unlock()
+	rf.printState()
 	//	fmt.Printf("before: peer %d logs: %v\n",rf.me,rf.Logs)
-	if args.Term>=rf.CurrentTerm{
+	if args.Term >= rf.CurrentTerm {
 		go rf.resetElectionTimeOut()
 	}
 	reply.Term = rf.CurrentTerm
@@ -370,6 +406,7 @@ func (rf *Raft) AppendEntries(args *AppendEntryArgs, reply *AppendEntryReply) {
 		if args.Term > rf.CurrentTerm {
 			rf.CurrentTerm = args.Term
 			rf.State = Follower
+rf.persist()
 		}
 		return
 	}
@@ -392,6 +429,7 @@ func (rf *Raft) AppendEntries(args *AppendEntryArgs, reply *AppendEntryReply) {
 		//	fmt.Printf("%s leader %d replicate peer %d: %v\n ", time.Now().Format("2006/01/02/ 15:03:04.000"), args.LeaderId, rf.me, args.Entries[dist:])
 	}
 	rf.Logs = append(rf.Logs, args.Entries[dist:]...)
+rf.persist()
 	//fmt.Printf("after: peer %d logs: %v\n",rf.me,rf.Logs)
 	//fmt.Printf("before: leaderCommit: %d, peer %d Commit: %d, applied:%d\n",args.LeaderCommit,rf.me,rf.CommitIndex,rf.LastApplied)
 	if args.LeaderCommit > rf.CommitIndex {
@@ -438,8 +476,9 @@ func (rf *Raft) startHeartBeat() {
 					rf.mu.Lock()
 					if reply.Term > rf.CurrentTerm {
 						rf.CurrentTerm = reply.Term
-				//		fmt.Printf("leader %d becomes follower\n", rf.me)
+						//		fmt.Printf("leader %d becomes follower\n", rf.me)
 						rf.State = Follower
+rf.persist()
 						rf.mu.Unlock()
 						rf.resetElectionTimeOut()
 						rf.startElectionTimeOut()
@@ -471,6 +510,7 @@ func (rf *Raft) replicateLog() {
 					rf.mu.Unlock()
 					return
 				}
+				rf.printState()
 				args := AppendEntryArgs{}
 				reply := AppendEntryReply{}
 				args.Term = rf.CurrentTerm
@@ -491,6 +531,7 @@ func (rf *Raft) replicateLog() {
 						rf.CurrentTerm = reply.Term
 						//	fmt.Printf("leader %d becomes follower in replicate\n", rf.me)
 						rf.State = Follower
+rf.persist()
 						rf.mu.Unlock()
 						rf.resetElectionTimeOut()
 						rf.startElectionTimeOut()
@@ -525,7 +566,7 @@ func (rf *Raft) checkApplied() {
 			rf.applyCh <- applyMsg
 		}
 		rf.mu.Unlock()
-		time.Sleep(time.Duration(30) * time.Millisecond)
+		time.Sleep(time.Duration(10) * time.Millisecond)
 	}
 }
 
@@ -553,7 +594,7 @@ func (rf *Raft) checkLeaderCommitIndex() {
 			}
 		}
 		rf.mu.Unlock()
-		time.Sleep(time.Duration(30) * time.Millisecond)
+		time.Sleep(time.Duration(10) * time.Millisecond)
 
 	}
 }
@@ -585,6 +626,7 @@ func (rf *Raft) Start(command interface{}) (int, int, bool) {
 		index = len(rf.Logs)
 
 		rf.Logs = append(rf.Logs, Log{Term: rf.CurrentTerm, Command: command})
+rf.persist()
 		term = rf.CurrentTerm
 	//	fmt.Println(rf.Logs)
 
@@ -602,6 +644,31 @@ func (rf *Raft) Start(command interface{}) (int, int, bool) {
 func (rf *Raft) Kill() {
 	// Your code here, if desired.
 }
+
+func (rf *Raft)printState(){
+	fmt.Printf(">>>>>>>>peer %d state start print\n" +
+		"state: %s\n" +
+		"current term: %d\n" +
+		"voted for: %d\n" +
+		"commit inex: %d\n" +
+		"last applied: %d\n" +
+		"logs: %v\n" +
+		"next index: %v\n" +
+		"match index: %v\n" +
+		"<<<<<<<<<peer %d state end print\n\n",
+
+		rf.me,
+		rf.State,
+		rf.CurrentTerm,
+		rf.VotedFor,
+		rf.CommitIndex,
+		rf.LastApplied,
+		rf.Logs,
+		rf.NextIndex,
+		rf.MatchIndex,
+		rf.me)
+}
+
 
 //
 // the service or tester wants to create a Raft server. the ports
@@ -633,6 +700,7 @@ func Make(peers []*labrpc.ClientEnd, me int,
 		rf.NextIndex = append(rf.NextIndex, len(rf.Logs))
 		rf.MatchIndex = append(rf.MatchIndex, 0)
 	}
+//rf.persist()
 	go rf.startElectionTimeOut()
 	go rf.checkApplied()
 	//fmt.Printf("last heard time %d, timeout %d\n", rf.lastHeardTime, rf.electionTimeOut)
