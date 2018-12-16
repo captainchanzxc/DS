@@ -229,7 +229,7 @@ func (rf *Raft) RequestVote(args *RequestVoteArgs, reply *RequestVoteReply) {
 		rf.CurrentTerm = args.Term
 		rf.State = Follower
 	}
-rf.persist()
+	rf.persist()
 	//fmt.Printf("%s peer %d(votedFor %d) current term %d vote peer %d current term %d: %t\n", time.Now().Format("2006/01/02/ 15:03:04.000"), rf.me, rf.VotedFor, reply.Term, args.CandidateId, args.Term, reply.VoterGranted)
 	rf.mu.Unlock()
 	if reply.VoterGranted {
@@ -278,7 +278,7 @@ func (rf *Raft) startElection() {
 	//	fmt.Printf("%s peer %d starts election\n", time.Now().Format("2006/01/02/ 15:03:04.000"), rf.me)
 	rf.mu.Lock()
 	rf.CurrentTerm += 1
-rf.persist()
+	rf.persist()
 	rf.VotedFor = rf.me
 	rva := RequestVoteArgs{}
 	rva.Term = rf.CurrentTerm
@@ -305,10 +305,10 @@ rf.persist()
 			if rvr.Term > rf.CurrentTerm {
 				rf.CurrentTerm = rvr.Term
 				rf.State = Follower
-rf.persist()
+				rf.persist()
 				rf.mu.Unlock()
-				//rf.resetElectionTimeOut()
-				//rf.startElectionTimeOut()
+				rf.resetElectionTimeOut()
+				rf.startElectionTimeOut()
 				return
 			}
 			rf.mu.Unlock()
@@ -371,7 +371,7 @@ func (rf *Raft) resetElectionTimeOut() {
 	//fmt.Printf("peer %d reset timeout1\n",rf.me)
 	rf.mu.Lock()
 	rf.lastHeardTime = time.Now().UnixNano() / int64(time.Millisecond)
-	rf.electionTimeOut = rand.Int63n(150) + 150
+	rf.electionTimeOut = rand.Int63n(200) + 350
 	rf.mu.Unlock()
 	//fmt.Printf("peer %d reset timeout2\n",rf.me)
 }
@@ -388,9 +388,6 @@ type AppendEntryArgs struct {
 type AppendEntryReply struct {
 	Term    int
 	Success bool
-	InConsistency bool
-	ConflictTermIndex int
-	ConflictTerm int
 }
 
 func (rf *Raft) AppendEntries(args *AppendEntryArgs, reply *AppendEntryReply) {
@@ -401,28 +398,15 @@ func (rf *Raft) AppendEntries(args *AppendEntryArgs, reply *AppendEntryReply) {
 	if args.Term >= rf.CurrentTerm {
 		go rf.resetElectionTimeOut()
 	}
-	reply.Term = rf.CurrentTerm
-	reply.InConsistency=false
 	if args.Term > rf.CurrentTerm {
 		rf.CurrentTerm = args.Term
 		rf.State = Follower
 		rf.persist()
 	}
+	reply.Term = rf.CurrentTerm
 	//	fmt.Printf("%s leader %d(prev Index: %d, current Term: %d) send peer %d(current term: %d): %v\n ", time.Now().Format("2006/01/02/ 15:03:04.000"), args.LeaderId, args.PrevLogIndex,args.Term,rf.me, rf.CurrentTerm,args.Entries)
 	//args.PrevLogIndex>len(rf.Logs)-1这种情况也算不match
 	if args.Term < rf.CurrentTerm || args.PrevLogIndex > len(rf.Logs)-1 || rf.Logs[args.PrevLogIndex].Term != args.PrevLogTerm {
-		if args.PrevLogIndex>len(rf.Logs)-1{
-			reply.InConsistency=true
-			reply.ConflictTerm=-1
-			reply.ConflictTermIndex=len(rf.Logs)-1
-		}else if rf.Logs[args.PrevLogIndex].Term != args.PrevLogTerm{
-			reply.InConsistency=true
-			reply.ConflictTerm=rf.Logs[args.PrevLogIndex].Term
-			conflictTermIndex:=0
-			for ;rf.Logs[conflictTermIndex].Term!=reply.ConflictTerm;conflictTermIndex++{}
-			reply.ConflictTermIndex=conflictTermIndex
-		}
-
 		reply.Success = false
 		return
 	}
@@ -435,7 +419,6 @@ func (rf *Raft) AppendEntries(args *AppendEntryArgs, reply *AppendEntryReply) {
 	dist := 0
 	for ; dist < len(args.Entries) && (startPosition+dist) < len(rf.Logs); dist++ {
 		if rf.Logs[startPosition+dist].Term != args.Entries[dist].Term {
-
 			rf.Logs = rf.Logs[:startPosition+dist]
 			break
 		}
@@ -446,7 +429,7 @@ func (rf *Raft) AppendEntries(args *AppendEntryArgs, reply *AppendEntryReply) {
 		//	fmt.Printf("%s leader %d replicate peer %d: %v\n ", time.Now().Format("2006/01/02/ 15:03:04.000"), args.LeaderId, rf.me, args.Entries[dist:])
 	}
 	rf.Logs = append(rf.Logs, args.Entries[dist:]...)
-rf.persist()
+	rf.persist()
 	//fmt.Printf("after: peer %d logs: %v\n",rf.me,rf.Logs)
 	//fmt.Printf("before: leaderCommit: %d, peer %d Commit: %d, applied:%d\n",args.LeaderCommit,rf.me,rf.CommitIndex,rf.LastApplied)
 	if args.LeaderCommit > rf.CommitIndex {
@@ -467,7 +450,7 @@ func (rf *Raft) sendAppendEntries(server int, args *AppendEntryArgs, reply *Appe
 
 func (rf *Raft) startHeartBeat() {
 	//fmt.Println("start hb")
-	rf.heartBeatInterval = 50
+	rf.heartBeatInterval = 300
 	for true {
 		for i := 0; i < len(rf.peers); i++ {
 			rf.mu.Lock()
@@ -495,9 +478,9 @@ func (rf *Raft) startHeartBeat() {
 						rf.CurrentTerm = reply.Term
 						//		fmt.Printf("leader %d becomes follower\n", rf.me)
 						rf.State = Follower
-rf.persist()
+						rf.persist()
 						rf.mu.Unlock()
-						//rf.resetElectionTimeOut()
+						rf.resetElectionTimeOut()
 						rf.startElectionTimeOut()
 						return
 					}
@@ -532,7 +515,6 @@ func (rf *Raft) replicateLog() {
 				reply := AppendEntryReply{}
 				args.Term = rf.CurrentTerm
 				args.PrevLogIndex = nextIndex - 1
-				//fmt.Println(args.PrevLogIndex)
 				args.PrevLogTerm = rf.Logs[args.PrevLogIndex].Term
 
 				args.LeaderCommit = rf.CommitIndex
@@ -547,43 +529,19 @@ func (rf *Raft) replicateLog() {
 					//fmt.Printf("peer %d %t!!!!!!!\n",peer,reply.Success)
 					if reply.Term > rf.CurrentTerm {
 						rf.CurrentTerm = reply.Term
-				//		fmt.Printf("leader %d becomes follower in replicate, %t %t\n", rf.me,reply.InConsistency,reply.Success)
+						//	fmt.Printf("leader %d becomes follower in replicate\n", rf.me)
 						rf.State = Follower
-rf.persist()
+						rf.persist()
 						rf.mu.Unlock()
-					//	rf.resetElectionTimeOut()
+						rf.resetElectionTimeOut()
 						rf.startElectionTimeOut()
 						return
 					}
-				//	fmt.Printf("leader %d in replicate, %t %t,%d %d\n", rf.me,reply.InConsistency,reply.Success,rf.CurrentTerm,reply.Term)
 					if reply.Success {
 						rf.NextIndex[peer] = nextIndex + len(entries)
 						rf.MatchIndex[peer] = args.PrevLogIndex + len(entries)
 					} else {
-						//if rf.Logs[reply.ConflictTermIndex].Term!=reply.ConflictTerm{
-						//	for unConflictIndex:=reply.ConflictTermIndex-1;rf.Logs[unConflictIndex].Term
-						//}else{
-						//	rf.NextIndex[peer] = reply.ConflictTermIndex-1
-						//}
-						//termIndex:=rf.NextIndex[peer]-1
-						//for ;termIndex>=1&&rf.Logs[termIndex].Term!=reply.ConflictTerm;termIndex--{}
-						if reply.InConsistency{
-							termIndex:=reply.ConflictTermIndex
-							for ind:=len(rf.Logs)-1;ind>=0;ind--{
-								if rf.Logs[ind].Term==reply.ConflictTerm{
-									termIndex=ind+1
-									break
-								}
-							}
-						//	fmt.Println(termIndex)
-							rf.NextIndex[peer]=termIndex
-						}else {
-							fmt.Println("sss")
-							//rf.NextIndex[peer]=nextIndex-1
-						}
-
-
-
+						rf.NextIndex[peer] = nextIndex - 1
 					}
 					//	fmt.Printf("match index: %v\n", rf.MatchIndex)
 					//	fmt.Printf("next index: %v\n", rf.NextIndex)
@@ -592,7 +550,7 @@ rf.persist()
 
 			}(i)
 		}
-		time.Sleep(time.Duration(10) * time.Millisecond)
+		time.Sleep(time.Duration(30) * time.Millisecond)
 	}
 
 }
@@ -668,9 +626,9 @@ func (rf *Raft) Start(command interface{}) (int, int, bool) {
 		index = len(rf.Logs)
 
 		rf.Logs = append(rf.Logs, Log{Term: rf.CurrentTerm, Command: command})
-rf.persist()
+		rf.persist()
 		term = rf.CurrentTerm
-	//	fmt.Println(rf.Logs)
+		//	fmt.Println(rf.Logs)
 
 	}
 
@@ -731,7 +689,7 @@ func Make(peers []*labrpc.ClientEnd, me int,
 	rf.me = me
 	// Your initialization code here (2A, 2B, 2C).
 	rf.CurrentTerm = 0
-//	rf.resetElectionTimeOut()
+	rf.resetElectionTimeOut()
 	rf.State = Follower
 	rf.CommitIndex = 0
 	rf.LastApplied = 0
@@ -742,7 +700,7 @@ func Make(peers []*labrpc.ClientEnd, me int,
 		rf.NextIndex = append(rf.NextIndex, len(rf.Logs))
 		rf.MatchIndex = append(rf.MatchIndex, 0)
 	}
-//rf.persist()
+	//rf.persist()
 	go rf.startElectionTimeOut()
 	go rf.checkApplied()
 	//fmt.Printf("last heard time %d, timeout %d\n", rf.lastHeardTime, rf.electionTimeOut)

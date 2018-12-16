@@ -13,11 +13,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/raft/raft.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
-              <caret line="575" column="33" lean-forward="true" selection-start-line="575" selection-start-column="33" selection-end-line="575" selection-end-column="33" />
+            <state relative-caret-position="247">
+              <caret line="174" column="4" selection-start-line="174" selection-start-column="6" selection-end-line="178" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -49,11 +49,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/raft/test_test.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="721" column="23" lean-forward="true" selection-start-line="721" selection-start-column="23" selection-end-line="721" selection-end-column="23" />
+            <state relative-caret-position="159">
+              <caret line="725" lean-forward="true" selection-end-line="940" />
             </state>
           </provider>
         </entry>
@@ -93,6 +93,8 @@
       <find>rf.Logs</find>
       <find>fmt.Printf(&quot;leader %d becomes follower in replicate\n&quot;, rf.me)</find>
       <find>resetElectionTimeOut</find>
+      <find>rf.pr</find>
+      <find>Test</find>
     </findStrings>
   </component>
   <component name="GOROOT" path="C:\Go" />
@@ -274,8 +276,8 @@
       <item itemvalue="Go Build.go build test_rand.go" />
       <item itemvalue="Go Build.go build test_sleep.go" />
       <item itemvalue="Go Build.go build test_slice.go" />
-      <item itemvalue="Go Build.go build test_time.go" />
       <item itemvalue="Go Build.go build test_strcut.go" />
+      <item itemvalue="Go Build.go build test_time.go" />
     </list>
     <recent_temporary>
       <list>
@@ -298,7 +300,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.16897655" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -312,7 +313,7 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3286334" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" visible="true" weight="0.329718" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -573,17 +574,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/raft/test_test.go">
+    <entry file="file://$PROJECT_DIR$/src/raft/raft.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="721" column="23" lean-forward="true" selection-start-line="721" selection-start-column="23" selection-end-line="721" selection-end-column="23" />
+        <state relative-caret-position="247">
+          <caret line="174" column="4" selection-start-line="174" selection-start-column="6" selection-end-line="178" selection-end-column="49" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/raft/raft.go">
+    <entry file="file://$PROJECT_DIR$/src/raft/test_test.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="575" column="33" lean-forward="true" selection-start-line="575" selection-start-column="33" selection-end-line="575" selection-end-column="33" />
+        <state relative-caret-position="159">
+          <caret line="725" lean-forward="true" selection-end-line="940" />
         </state>
       </provider>
     </entry>
