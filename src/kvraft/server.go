@@ -10,6 +10,14 @@ import (
 
 const Debug = 0
 
+type OpType string
+
+const (
+	putOp    OpType = "put"
+	appendOp        = "append"
+	getOp           = "get"
+)
+
 func DPrintf(format string, a ...interface{}) (n int, err error) {
 	if Debug > 0 {
 		log.Printf(format, a...)
@@ -17,11 +25,13 @@ func DPrintf(format string, a ...interface{}) (n int, err error) {
 	return
 }
 
-
 type Op struct {
 	// Your definitions here.
 	// Field names must start with capital letters,
 	// otherwise RPC will break.
+	Type  OpType
+	Key   string
+	Value string
 }
 
 type KVServer struct {
@@ -35,13 +45,47 @@ type KVServer struct {
 	// Your definitions here.
 }
 
-
 func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 	// Your code here.
+	op := Op{Type: getOp, Key: args.Key, Value: ""}
+	_, _, isLeader := kv.rf.Start(&op)
+	reply.WrongLeader = !isLeader
+	reply.Err = ""
+	if !isLeader {
+		reply.Err = "kvserver is not a leader."
+	}
+	reply.Value = "1234"
 }
 
 func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 	// Your code here.
+	op := Op{Key: args.Key, Value: args.Value}
+	if args.Op == "Put" {
+		op.Type = putOp
+	} else {
+		op.Type = appendOp
+	}
+	_, _, isLeader := kv.rf.Start(op)
+	reply.WrongLeader = !isLeader
+	reply.Err = ""
+	if !isLeader {
+		reply.Err = "kvserver is not a leader."
+	}
+}
+
+func (kv *KVServer) apply() {
+	for true {
+		applyMsg := <-kv.applyCh
+		command := applyMsg.Command.(Op)
+		switch command.Type {
+		case putOp:
+
+		case appendOp:
+			//todo
+		case getOp:
+			//todo
+		}
+	}
 }
 
 //

@@ -1,9 +1,11 @@
 package raftkv
 
-import "labrpc"
+import (
+	"labrpc"
+	"time"
+)
 import "crypto/rand"
 import "math/big"
-
 
 type Clerk struct {
 	servers []*labrpc.ClientEnd
@@ -39,6 +41,23 @@ func MakeClerk(servers []*labrpc.ClientEnd) *Clerk {
 func (ck *Clerk) Get(key string) string {
 
 	// You will have to modify this function.
+	//ck.servers[0].Call()
+	args := GetArgs{Key: key}
+	for true{
+		for i := 0; i < len(ck.servers); i++ {
+			reply := GetReply{}
+			ok := ck.servers[i].Call("KVServer.Get", &args, &reply)
+			if ok {
+				if reply.Err == "" {
+					return reply.Value
+				}else {
+				//	fmt.Printf("%d Error: %s\n",i,reply.Err)
+				}
+			}
+		}
+		time.Sleep(time.Duration(30)*time.Microsecond)
+	}
+
 	return ""
 }
 

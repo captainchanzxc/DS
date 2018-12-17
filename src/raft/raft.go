@@ -629,7 +629,6 @@ func (rf *Raft) Start(command interface{}) (int, int, bool) {
 		rf.persist()
 		term = rf.CurrentTerm
 		//	fmt.Println(rf.Logs)
-
 	}
 
 	return index, term, isLeader

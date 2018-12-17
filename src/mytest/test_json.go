@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"os"
 	"strconv"
 )
@@ -24,26 +23,24 @@ func main(){
 	enc.Encode(t[0])
 	enc.Encode(t[1])
 	f.Close()
-
-	ff,_:=os.Open(path)
-
-	dec:=json.NewDecoder(ff)
-	var dv Test
-	var err error
-	err=dec.Decode(&dv)
-	fmt.Println(err)
-	fmt.Println(dv.Age)
-	fmt.Println(dv.Id)
-
-	err=dec.Decode(&dv)
-	fmt.Println(err)
-	fmt.Println(dv.Age)
-	fmt.Println(dv.Id)
-
-	err=dec.Decode(&dv)
-	fmt.Println(err)
-	fmt.Println(dv.Age)
-	fmt.Println(dv.Id)
-
-
+	//
+	//ff,_:=os.Open(path)
+	//
+	//dec:=json.NewDecoder(ff)
+	//var dv Test
+	//var err error
+	//err=dec.Decode(&dv)
+	//fmt.Println(err)
+	//fmt.Println(dv.Age)
+	//fmt.Println(dv.Id)
+	//
+	//err=dec.Decode(&dv)
+	//fmt.Println(err)
+	//fmt.Println(dv.Age)
+	//fmt.Println(dv.Id)
+	//
+	//err=dec.Decode(&dv)
+	//fmt.Println(err)
+	//fmt.Println(dv.Age)
+	//fmt.Println(dv.Id)
 }
