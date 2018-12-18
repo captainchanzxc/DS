@@ -2,6 +2,9 @@ package raftkv
 
 import (
 	"labrpc"
+	"log"
+	"os"
+	"strconv"
 	"time"
 )
 import "crypto/rand"
@@ -10,6 +13,7 @@ import "math/big"
 type Clerk struct {
 	servers []*labrpc.ClientEnd
 	// You will have to modify this struct.
+	ckLog *log.Logger
 }
 
 func nrand() int64 {
@@ -23,6 +27,7 @@ func MakeClerk(servers []*labrpc.ClientEnd) *Clerk {
 	ck := new(Clerk)
 	ck.servers = servers
 	// You'll have to add code here.
+	ck.ckLog=log.New(os.Stdout,"[client "+strconv.Itoa(0)+"] ",log.Lmicroseconds)
 	return ck
 }
 
@@ -43,19 +48,22 @@ func (ck *Clerk) Get(key string) string {
 	// You will have to modify this function.
 	//ck.servers[0].Call()
 	args := GetArgs{Key: key}
-	for true{
+	defer time.Sleep(3*time.Second)
+	for true {
 		for i := 0; i < len(ck.servers); i++ {
 			reply := GetReply{}
 			ok := ck.servers[i].Call("KVServer.Get", &args, &reply)
 			if ok {
 				if reply.Err == "" {
+					ck.ckLog.Printf("send to [server %d] GetArgs: %v\n",i,args)
+					ck.ckLog.Printf("receive from [server %d] ReplyArgs: %v\n",i,reply)
 					return reply.Value
-				}else {
-				//	fmt.Printf("%d Error: %s\n",i,reply.Err)
+				} else {
+					//	fmt.Printf("%d Error: %s\n",i,reply.Err)
 				}
 			}
 		}
-		time.Sleep(time.Duration(30)*time.Microsecond)
+		time.Sleep(time.Duration(30) * time.Microsecond)
 	}
 
 	return ""
@@ -73,6 +81,22 @@ func (ck *Clerk) Get(key string) string {
 //
 func (ck *Clerk) PutAppend(key string, value string, op string) {
 	// You will have to modify this function.
+	args := PutAppendArgs{Key: key, Value: value, Op: op}
+	for {
+		for i := 0; i < len(ck.servers); i++ {
+			reply := PutAppendReply{}
+			ok := ck.servers[i].Call("KVServer.PutAppend", &args, &reply)
+			if ok {
+				if reply.Err == "" {
+					ck.ckLog.Printf("send to [server %d] PutAppendArgs: %v\n",i,args)
+					return
+				} else {
+				}
+			}
+		}
+		time.Sleep(time.Duration(30) * time.Microsecond)
+	}
+
 }
 
 func (ck *Clerk) Put(key string, value string) {

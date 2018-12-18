@@ -4,7 +4,9 @@ import (
 	"labgob"
 	"labrpc"
 	"log"
+	"os"
 	"raft"
+	"strconv"
 	"sync"
 )
 
@@ -43,6 +45,9 @@ type KVServer struct {
 	maxraftstate int // snapshot if log grows this big
 
 	// Your definitions here.
+	logFile  string
+	kvLog *log.Logger
+	mapDb map[string]string
 }
 
 func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
@@ -51,10 +56,14 @@ func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 	_, _, isLeader := kv.rf.Start(&op)
 	reply.WrongLeader = !isLeader
 	reply.Err = ""
+	kv.mu.Lock()
+	reply.Value = kv.mapDb[args.Key]
+	kv.mu.Unlock()
 	if !isLeader {
 		reply.Err = "kvserver is not a leader."
 	}
-	reply.Value = "1234"
+	kv.kvLog.Printf("return: %v \n",reply)
+
 }
 
 func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
@@ -71,22 +80,51 @@ func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 	if !isLeader {
 		reply.Err = "kvserver is not a leader."
 	}
+
 }
 
 func (kv *KVServer) apply() {
 	for true {
 		applyMsg := <-kv.applyCh
 		command := applyMsg.Command.(Op)
+		kv.kvLog.Printf("apply: %v\n",command)
+		kv.mu.Lock()
 		switch command.Type {
 		case putOp:
-
+			kv.mapDb[command.Key] = command.Value
 		case appendOp:
-			//todo
+			kv.mapDb[command.Key] += command.Value
 		case getOp:
-			//todo
+			//do nothing
 		}
+		kv.mu.Lock()
 	}
 }
+
+//func (kv *KVServer) putToFile(key string, value string) {
+//	//f, err := os.OpenFile(kv.file,os.O_APPEND|os.O_RDWR,0666)
+//	//if err != nil {
+//	//	panic(err)
+//	//}
+//	//defer f.Close()
+//	//rd := bufio.NewReader(f)
+//	//kvMap := make(map[string]string)
+//	//for {
+//	//	line, err := rd.ReadString('\n')
+//	//	if err != nil || io.EOF == err {
+//	//		break
+//	//	}
+//	//	line = line[0 : len(line)-1]
+//	//	keyValue := strings.Split(line, ",")
+//	//	kvMap[keyValue[0]] = keyValue[1]
+//	//}
+//	//kvMap[key]=value
+//	//wr:=bufio.NewWriter(f)
+//	//for k,v:=range kvMap{
+//	//	wr.WriteString(k+","+v+"\n")
+//	//}
+//	//wr.Flush()
+//}
 
 //
 // the tester calls Kill() when a KVServer instance won't
@@ -121,13 +159,27 @@ func StartKVServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persiste
 	kv := new(KVServer)
 	kv.me = me
 	kv.maxraftstate = maxraftstate
-
 	// You may need initialization code here.
+	//kv.file="src/kvraft/"+strconv.Itoa(kv.me)+".txt"
+	//_,err:=os.Create(kv.file)
+	//if err!=nil{
+	//	panic(err)
+	//}
+	//kv.logFile="F:/Projects/MIT6_824/code/DS/src/kvraft/"+strconv.Itoa(kv.me)+".log"
+	//f,err:=os.Create(kv.logFile)
+	//if err!=nil{
+	//	panic(err)
+	//}
+	kv.kvLog=log.New(os.Stdout,"[server "+strconv.Itoa(kv.me)+"] ",log.Lmicroseconds)
+
+	kv.kvLog.Printf("servers number: %d\n",len(servers))
+	kv.mapDb = make(map[string]string)
 
 	kv.applyCh = make(chan raft.ApplyMsg)
 	kv.rf = raft.Make(servers, me, persister, kv.applyCh)
 
 	// You may need initialization code here.
+	go kv.apply()
 
 	return kv
 }

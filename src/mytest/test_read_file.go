@@ -1,21 +1,37 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
-	"io/ioutil"
+	"io"
+	"os"
 )
 
 func main(){
-	fileName:="./inter_files/rr.txt"
-	contents,err:=ioutil.ReadFile(fileName)
+	fileName:="./src/mytest/test.txt"
+	//contents,err:=ioutil.ReadFile(fileName)
+	//if err!=nil{
+	//	fmt.Println("file not exist")
+	//	fmt.Println(err)
+	//	return
+	//}
+	//fmt.Println(contents)
+	//fmt.Println(len(contents))
+	//fmt.Println(string(contents))
+	//
+	//
+	f,err:=os.Open(fileName)
 	if err!=nil{
-		fmt.Println("file not exist")
-		fmt.Println(err)
-		return
+		panic(err)
 	}
-	fmt.Println(contents)
-	fmt.Println(len(contents))
-	fmt.Println(string(contents))
+	rd:=bufio.NewReader(f)
+	for {
+		line,err:=rd.ReadString('\n')
+		if err!=nil||io.EOF==err{
+			break
+		}
+		fmt.Print(line)
+	}
 
 	//toFile:="./src/mytest/tfile.txt"
 
