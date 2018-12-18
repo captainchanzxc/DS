@@ -21,7 +21,10 @@ import (
 	"bytes"
 	"fmt"
 	"labgob"
+	"log"
 	"math/rand"
+	"os"
+	"strconv"
 	"sync"
 	"time"
 )
@@ -88,6 +91,9 @@ type Raft struct {
 	//volatile state on leaders
 	NextIndex  []int
 	MatchIndex []int
+
+	//use to debug
+	rfLog *log.Logger
 }
 
 // return currentTerm and whether this server
@@ -317,6 +323,7 @@ func (rf *Raft) startElection() {
 			if rvr.VoterGranted {
 				count += 1
 				if count > len(rf.peers)/2 {
+					rf.rfLog.Println("becomes leader")
 					//fmt.Printf("%s peer %d becomes leader\n", time.Now().Format("2006/01/02/ 15:03:04.000"), rf.me)
 					rf.State = Leader
 					//这个地方当初没写也允许通过了TestBasicAgree2B 和 TestFailAgree2B，值得思考
@@ -687,6 +694,7 @@ func Make(peers []*labrpc.ClientEnd, me int,
 	rf.persister = persister
 	rf.me = me
 	// Your initialization code here (2A, 2B, 2C).
+	rf.rfLog=log.New(os.Stdout,"[raft "+strconv.Itoa(rf.me)+"] ",log.Lmicroseconds)
 	rf.CurrentTerm = 0
 	rf.resetElectionTimeOut()
 	rf.State = Follower

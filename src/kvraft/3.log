@@ -1,0 +1,926 @@
+[server 3] 22:02:00.368914 servers number: 5
+[server 3] 22:02:00.369474 start to apply
+[server 3] 22:02:00.796698 apply: {put 0 }
+[server 3] 22:02:00.796761 map[0:]
+[server 3] 22:02:00.796802 start to apply
+[server 3] 22:02:00.831467 apply: {append 0 x 0 0 y}
+[server 3] 22:02:00.831547 map[0:x 0 0 y]
+[server 3] 22:02:00.831586 start to apply
+[server 3] 22:02:00.864755 apply: {append 0 x 0 1 y}
+[server 3] 22:02:00.864816 map[0:x 0 0 yx 0 1 y]
+[server 3] 22:02:00.864843 start to apply
+[server 3] 22:02:00.902180 apply: {append 0 x 0 2 y}
+[server 3] 22:02:00.902260 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:00.902296 start to apply
+[server 3] 22:02:00.920645 apply: {get 0 }
+[server 3] 22:02:00.920705 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:00.920733 start to apply
+[server 3] 22:02:00.920783 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:00.952317 apply: {get 0 }
+[server 3] 22:02:00.952385 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:00.952413 start to apply
+[server 3] 22:02:00.952604 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:01.010700 apply: {get 0 }
+[server 3] 22:02:01.010774 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:01.010813 start to apply
+[server 3] 22:02:01.010915 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:01.021456 apply: {get 0 }
+[server 3] 22:02:01.021531 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:01.021568 start to apply
+[server 3] 22:02:01.021612 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:01.079399 apply: {get 0 }
+[server 3] 22:02:01.079482 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:01.079526 start to apply
+[server 3] 22:02:01.079569 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:01.138692 apply: {get 0 }
+[server 3] 22:02:01.138737 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:01.138756 start to apply
+[server 3] 22:02:01.138777 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:01.265064 apply: {get 0 }
+[server 3] 22:02:01.265116 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:01.265137 start to apply
+[server 3] 22:02:01.265161 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:02.018222 apply: {get 0 }
+[server 3] 22:02:02.018274 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:02.018298 start to apply
+[server 3] 22:02:02.018320 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:02.029332 apply: {get 0 }
+[server 3] 22:02:02.029384 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:02.029404 start to apply
+[server 3] 22:02:02.029426 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:02.040295 apply: {get 0 }
+[server 3] 22:02:02.040358 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:02.040385 start to apply
+[server 3] 22:02:02.040416 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:02.063598 apply: {get 0 }
+[server 3] 22:02:02.063661 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:02.063686 start to apply
+[server 3] 22:02:02.063750 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:02.089067 apply: {get 0 }
+[server 3] 22:02:02.089111 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:02.089130 start to apply
+[server 3] 22:02:02.089151 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:02.129878 apply: {get 0 }
+[server 3] 22:02:02.129943 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:02.129967 start to apply
+[server 3] 22:02:02.130239 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:02.268893 apply: {get 0 }
+[server 3] 22:02:02.268926 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:02.268943 start to apply
+[server 3] 22:02:02.268963 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:02.279633 apply: {get 0 }
+[server 3] 22:02:02.279672 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:02.279703 start to apply
+[server 3] 22:02:02.279735 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:02.321401 apply: {get 0 }
+[server 3] 22:02:02.321458 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:02.321478 start to apply
+[server 3] 22:02:02.321499 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:02.382366 apply: {get 0 }
+[server 3] 22:02:02.382414 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:02.382434 start to apply
+[server 3] 22:02:02.382455 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:02.394561 apply: {get 0 }
+[server 3] 22:02:02.394609 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:02.394629 start to apply
+[server 3] 22:02:02.394651 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:02.419955 apply: {get 0 }
+[server 3] 22:02:02.420017 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:02.420047 start to apply
+[server 3] 22:02:02.420080 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:02.458735 apply: {get 0 }
+[server 3] 22:02:02.458799 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:02.458829 start to apply
+[server 3] 22:02:02.458863 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:02.486062 apply: {get 0 }
+[server 3] 22:02:02.486105 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:02.486124 start to apply
+[server 3] 22:02:02.486145 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:02.731641 apply: {get 0 }
+[server 3] 22:02:02.731705 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:02.731730 start to apply
+[server 3] 22:02:02.731759 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:02.783666 apply: {get 0 }
+[server 3] 22:02:02.783731 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:02.783759 start to apply
+[server 3] 22:02:02.783790 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:02.895269 apply: {get 0 }
+[server 3] 22:02:02.895332 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:02.895352 start to apply
+[server 3] 22:02:02.895374 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:03.329993 apply: {get 0 }
+[server 3] 22:02:03.330035 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:03.330063 start to apply
+[server 3] 22:02:03.330098 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:03.340309 apply: {get 0 }
+[server 3] 22:02:03.340362 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:03.340381 start to apply
+[server 3] 22:02:03.340403 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:03.350644 apply: {get 0 }
+[server 3] 22:02:03.350704 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:03.350731 start to apply
+[server 3] 22:02:03.350761 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:03.361410 apply: {get 0 }
+[server 3] 22:02:03.361457 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:03.361476 start to apply
+[server 3] 22:02:03.361497 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:03.396943 apply: {get 0 }
+[server 3] 22:02:03.396997 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:03.397021 start to apply
+[server 3] 22:02:03.397056 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:03.423998 apply: {get 0 }
+[server 3] 22:02:03.424051 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:03.424071 start to apply
+[server 3] 22:02:03.424094 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:03.468211 apply: {get 0 }
+[server 3] 22:02:03.468253 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:03.468276 start to apply
+[server 3] 22:02:03.468297 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:03.492988 apply: {get 0 }
+[server 3] 22:02:03.493030 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:03.493052 start to apply
+[server 3] 22:02:03.493073 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:03.529224 apply: {get 0 }
+[server 3] 22:02:03.529256 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:03.529337 start to apply
+[server 3] 22:02:03.529367 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:03.574043 apply: {get 0 }
+[server 3] 22:02:03.574090 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:03.574118 start to apply
+[server 3] 22:02:03.574150 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:03.610654 apply: {get 0 }
+[server 3] 22:02:03.610734 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:03.610767 start to apply
+[server 3] 22:02:03.610803 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:03.634223 apply: {get 0 }
+[server 3] 22:02:03.634266 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:03.634293 start to apply
+[server 3] 22:02:03.634322 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:03.872174 apply: {get 0 }
+[server 3] 22:02:03.872251 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:03.872281 start to apply
+[server 3] 22:02:03.872315 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:04.065430 apply: {get 0 }
+[server 3] 22:02:04.065487 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:04.065505 start to apply
+[server 3] 22:02:04.065528 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:04.078468 apply: {get 0 }
+[server 3] 22:02:04.078520 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:04.078539 start to apply
+[server 3] 22:02:04.078562 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:04.317575 apply: {get 0 }
+[server 3] 22:02:04.317653 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:04.317674 start to apply
+[server 3] 22:02:04.317696 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:04.569034 apply: {get 0 }
+[server 3] 22:02:04.569090 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:04.569117 start to apply
+[server 3] 22:02:04.569151 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:04.639120 apply: {get 0 }
+[server 3] 22:02:04.639189 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:04.639214 start to apply
+[server 3] 22:02:04.639373 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:05.117555 apply: {get 0 }
+[server 3] 22:02:05.117596 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:05.117614 start to apply
+[server 3] 22:02:05.117635 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:05.129284 apply: {get 0 }
+[server 3] 22:02:05.129334 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:05.129355 start to apply
+[server 3] 22:02:05.129379 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:05.141109 apply: {get 0 }
+[server 3] 22:02:05.141153 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:05.141172 start to apply
+[server 3] 22:02:05.141191 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:05.153676 apply: {get 0 }
+[server 3] 22:02:05.153731 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:05.153749 start to apply
+[server 3] 22:02:05.153784 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:05.166891 apply: {get 0 }
+[server 3] 22:02:05.166934 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:05.166953 start to apply
+[server 3] 22:02:05.166974 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:05.179962 apply: {get 0 }
+[server 3] 22:02:05.180005 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:05.180023 start to apply
+[server 3] 22:02:05.180044 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:05.193375 apply: {get 0 }
+[server 3] 22:02:05.193419 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:05.193437 start to apply
+[server 3] 22:02:05.193459 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:05.221893 apply: {get 0 }
+[server 3] 22:02:05.221962 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:05.221984 start to apply
+[server 3] 22:02:05.222006 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:05.233814 apply: {get 0 }
+[server 3] 22:02:05.233862 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:05.233881 start to apply
+[server 3] 22:02:05.233903 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:05.245311 apply: {get 0 }
+[server 3] 22:02:05.245365 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:05.245391 start to apply
+[server 3] 22:02:05.245422 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:05.257945 apply: {get 0 }
+[server 3] 22:02:05.257990 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:05.258009 start to apply
+[server 3] 22:02:05.258030 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:05.270753 apply: {get 0 }
+[server 3] 22:02:05.270816 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:05.270844 start to apply
+[server 3] 22:02:05.270878 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:05.282699 apply: {get 0 }
+[server 3] 22:02:05.282761 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:05.282815 start to apply
+[server 3] 22:02:05.282848 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:05.306861 apply: {get 0 }
+[server 3] 22:02:05.306905 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:05.306924 start to apply
+[server 3] 22:02:05.306945 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:05.319871 apply: {get 0 }
+[server 3] 22:02:05.319923 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:05.319952 start to apply
+[server 3] 22:02:05.319975 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:05.330983 apply: {get 0 }
+[server 3] 22:02:05.331025 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:05.331055 start to apply
+[server 3] 22:02:05.331086 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:05.342109 apply: {get 0 }
+[server 3] 22:02:05.342150 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:05.342169 start to apply
+[server 3] 22:02:05.342190 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:05.366621 apply: {get 0 }
+[server 3] 22:02:05.366676 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:05.366697 start to apply
+[server 3] 22:02:05.366719 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:05.378395 apply: {get 0 }
+[server 3] 22:02:05.378888 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:05.378910 start to apply
+[server 3] 22:02:05.378931 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:05.408587 apply: {get 0 }
+[server 3] 22:02:05.408643 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:05.408671 start to apply
+[server 3] 22:02:05.408704 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:05.422416 apply: {get 0 }
+[server 3] 22:02:05.422477 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:05.422514 start to apply
+[server 3] 22:02:05.422559 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:05.436435 apply: {get 0 }
+[server 3] 22:02:05.436500 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:05.436529 start to apply
+[server 3] 22:02:05.436564 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:05.446985 apply: {get 0 }
+[server 3] 22:02:05.447037 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:05.447056 start to apply
+[server 3] 22:02:05.447077 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:05.471132 apply: {get 0 }
+[server 3] 22:02:05.471190 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:05.471211 start to apply
+[server 3] 22:02:05.471233 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:05.484191 apply: {get 0 }
+[server 3] 22:02:05.484250 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:05.484278 start to apply
+[server 3] 22:02:05.484311 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:05.496040 apply: {get 0 }
+[server 3] 22:02:05.496082 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:05.496101 start to apply
+[server 3] 22:02:05.496213 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:05.509551 apply: {get 0 }
+[server 3] 22:02:05.509585 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:05.509602 start to apply
+[server 3] 22:02:05.509622 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:05.539277 apply: {get 0 }
+[server 3] 22:02:05.539318 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:05.539337 start to apply
+[server 3] 22:02:05.539359 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:05.551280 apply: {get 0 }
+[server 3] 22:02:05.551335 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:05.551364 start to apply
+[server 3] 22:02:05.551386 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:05.571507 apply: {get 0 }
+[server 3] 22:02:05.571563 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:05.571583 start to apply
+[server 3] 22:02:05.571605 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:05.585695 apply: {get 0 }
+[server 3] 22:02:05.585758 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:05.585779 start to apply
+[server 3] 22:02:05.585802 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:05.602719 apply: {get 0 }
+[server 3] 22:02:05.602762 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:05.602781 start to apply
+[server 3] 22:02:05.602803 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:05.620601 apply: {get 0 }
+[server 3] 22:02:05.620675 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:05.620704 start to apply
+[server 3] 22:02:05.620737 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:05.650211 apply: {get 0 }
+[server 3] 22:02:05.650300 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:05.650329 start to apply
+[server 3] 22:02:05.650364 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:05.663219 apply: {get 0 }
+[server 3] 22:02:05.663295 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:05.663326 start to apply
+[server 3] 22:02:05.663358 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:05.676317 apply: {get 0 }
+[server 3] 22:02:05.676381 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:05.676410 start to apply
+[server 3] 22:02:05.676433 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:05.689015 apply: {get 0 }
+[server 3] 22:02:05.689067 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:05.689084 start to apply
+[server 3] 22:02:05.689104 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:05.704682 apply: {get 0 }
+[server 3] 22:02:05.704724 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:05.704741 start to apply
+[server 3] 22:02:05.704758 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:05.715658 apply: {get 0 }
+[server 3] 22:02:05.715727 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:05.715756 start to apply
+[server 3] 22:02:05.715801 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:05.742702 apply: {get 0 }
+[server 3] 22:02:05.742746 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:05.742766 start to apply
+[server 3] 22:02:05.742787 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:05.757858 apply: {get 0 }
+[server 3] 22:02:05.757903 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:05.757921 start to apply
+[server 3] 22:02:05.757942 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:05.773487 apply: {get 0 }
+[server 3] 22:02:05.773555 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:05.773599 start to apply
+[server 3] 22:02:05.773631 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:06.063848 apply: {get 0 }
+[server 3] 22:02:06.063924 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:06.063954 start to apply
+[server 3] 22:02:06.063974 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:06.143594 apply: {get 0 }
+[server 3] 22:02:06.143701 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:06.143723 start to apply
+[server 3] 22:02:06.143741 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:06.173084 apply: {get 0 }
+[server 3] 22:02:06.173139 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:06.173157 start to apply
+[server 3] 22:02:06.173178 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:06.231351 apply: {get 0 }
+[server 3] 22:02:06.231418 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:06.231445 start to apply
+[server 3] 22:02:06.231475 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:06.279681 apply: {get 0 }
+[server 3] 22:02:06.279752 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:06.279781 start to apply
+[server 3] 22:02:06.279816 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:06.296296 apply: {get 0 }
+[server 3] 22:02:06.296391 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:06.296421 start to apply
+[server 3] 22:02:06.296457 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:06.325715 apply: {get 0 }
+[server 3] 22:02:06.325782 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:06.325804 start to apply
+[server 3] 22:02:06.325831 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:06.339552 apply: {get 0 }
+[server 3] 22:02:06.339591 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:06.339609 start to apply
+[server 3] 22:02:06.339630 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:06.353567 apply: {get 0 }
+[server 3] 22:02:06.353617 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:06.353643 start to apply
+[server 3] 22:02:06.353677 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:06.370300 apply: {get 0 }
+[server 3] 22:02:06.370348 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:06.370368 start to apply
+[server 3] 22:02:06.370388 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:06.402546 apply: {get 0 }
+[server 3] 22:02:06.402577 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:06.402594 start to apply
+[server 3] 22:02:06.402614 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:06.454303 apply: {get 0 }
+[server 3] 22:02:06.454347 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:06.454373 start to apply
+[server 3] 22:02:06.454405 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:06.500530 apply: {get 0 }
+[server 3] 22:02:06.500581 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:06.500600 start to apply
+[server 3] 22:02:06.500622 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:06.515139 apply: {get 0 }
+[server 3] 22:02:06.515180 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:06.515198 start to apply
+[server 3] 22:02:06.515219 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:06.529354 apply: {get 0 }
+[server 3] 22:02:06.529395 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:06.529414 start to apply
+[server 3] 22:02:06.529436 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:06.545612 apply: {get 0 }
+[server 3] 22:02:06.545685 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:06.545715 start to apply
+[server 3] 22:02:06.545750 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:06.562300 apply: {get 0 }
+[server 3] 22:02:06.562350 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:06.562368 start to apply
+[server 3] 22:02:06.562391 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:06.581437 apply: {get 0 }
+[server 3] 22:02:06.581488 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:06.581508 start to apply
+[server 3] 22:02:06.581530 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:06.598281 apply: {get 0 }
+[server 3] 22:02:06.598334 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:06.598354 start to apply
+[server 3] 22:02:06.598376 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:06.613847 apply: {get 0 }
+[server 3] 22:02:06.613906 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:06.613927 start to apply
+[server 3] 22:02:06.613950 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:06.627655 apply: {get 0 }
+[server 3] 22:02:06.627719 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:06.627749 start to apply
+[server 3] 22:02:06.627784 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:06.642972 apply: {get 0 }
+[server 3] 22:02:06.643037 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:06.643057 start to apply
+[server 3] 22:02:06.643081 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:06.674386 apply: {get 0 }
+[server 3] 22:02:06.674436 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:06.674456 start to apply
+[server 3] 22:02:06.674478 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:06.691736 apply: {get 0 }
+[server 3] 22:02:06.691804 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:06.691828 start to apply
+[server 3] 22:02:06.691850 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:06.710260 apply: {get 0 }
+[server 3] 22:02:06.710327 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:06.710360 start to apply
+[server 3] 22:02:06.710403 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:06.735069 apply: {get 0 }
+[server 3] 22:02:06.735128 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:06.735154 start to apply
+[server 3] 22:02:06.735197 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:06.757556 apply: {get 0 }
+[server 3] 22:02:06.757625 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:06.757653 start to apply
+[server 3] 22:02:06.757686 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:06.777655 apply: {get 0 }
+[server 3] 22:02:06.777708 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:06.777727 start to apply
+[server 3] 22:02:06.777752 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:06.794964 apply: {get 0 }
+[server 3] 22:02:06.795025 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:06.795045 start to apply
+[server 3] 22:02:06.795067 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:06.810377 apply: {get 0 }
+[server 3] 22:02:06.810436 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:06.810455 start to apply
+[server 3] 22:02:06.810476 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:06.826641 apply: {get 0 }
+[server 3] 22:02:06.826702 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:06.826731 start to apply
+[server 3] 22:02:06.826764 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:06.842818 apply: {get 0 }
+[server 3] 22:02:06.842862 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:06.842881 start to apply
+[server 3] 22:02:06.842902 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:06.858486 apply: {get 0 }
+[server 3] 22:02:06.858538 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:06.858557 start to apply
+[server 3] 22:02:06.858578 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:06.873320 apply: {get 0 }
+[server 3] 22:02:06.873420 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:06.873454 start to apply
+[server 3] 22:02:06.873476 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:06.909284 apply: {get 0 }
+[server 3] 22:02:06.909333 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:06.909352 start to apply
+[server 3] 22:02:06.909373 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:06.927599 apply: {get 0 }
+[server 3] 22:02:06.927641 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:06.927660 start to apply
+[server 3] 22:02:06.927681 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:06.942924 apply: {get 0 }
+[server 3] 22:02:06.942970 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:06.942997 start to apply
+[server 3] 22:02:06.943023 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:06.959711 apply: {get 0 }
+[server 3] 22:02:06.959741 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:06.959759 start to apply
+[server 3] 22:02:06.959792 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:06.975655 apply: {get 0 }
+[server 3] 22:02:06.975708 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:06.975728 start to apply
+[server 3] 22:02:06.975750 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:06.994655 apply: {get 0 }
+[server 3] 22:02:06.994713 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:06.994742 start to apply
+[server 3] 22:02:06.994772 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:07.014578 apply: {get 0 }
+[server 3] 22:02:07.014658 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:07.014689 start to apply
+[server 3] 22:02:07.014713 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:07.035285 apply: {get 0 }
+[server 3] 22:02:07.035334 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:07.035362 start to apply
+[server 3] 22:02:07.035395 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:07.057295 apply: {get 0 }
+[server 3] 22:02:07.057338 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:07.057357 start to apply
+[server 3] 22:02:07.057379 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:07.075877 apply: {get 0 }
+[server 3] 22:02:07.075935 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:07.075955 start to apply
+[server 3] 22:02:07.075977 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:07.092900 apply: {get 0 }
+[server 3] 22:02:07.092954 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:07.092972 start to apply
+[server 3] 22:02:07.092995 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:07.109727 apply: {get 0 }
+[server 3] 22:02:07.109779 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:07.109798 start to apply
+[server 3] 22:02:07.109819 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:07.124790 apply: {get 0 }
+[server 3] 22:02:07.124861 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:07.124890 start to apply
+[server 3] 22:02:07.124925 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:07.140577 apply: {get 0 }
+[server 3] 22:02:07.140649 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:07.140676 start to apply
+[server 3] 22:02:07.140711 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:07.153325 apply: {get 0 }
+[server 3] 22:02:07.153385 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:07.153406 start to apply
+[server 3] 22:02:07.153436 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:07.168627 apply: {get 0 }
+[server 3] 22:02:07.168690 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:07.168710 start to apply
+[server 3] 22:02:07.168735 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:07.182318 apply: {get 0 }
+[server 3] 22:02:07.182386 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:07.182415 start to apply
+[server 3] 22:02:07.182450 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:07.196366 apply: {get 0 }
+[server 3] 22:02:07.196415 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:07.196433 start to apply
+[server 3] 22:02:07.196454 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:07.225347 apply: {get 0 }
+[server 3] 22:02:07.225423 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:07.225446 start to apply
+[server 3] 22:02:07.225470 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:07.244232 apply: {get 0 }
+[server 3] 22:02:07.244283 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:07.244303 start to apply
+[server 3] 22:02:07.244324 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:07.260169 apply: {get 0 }
+[server 3] 22:02:07.260248 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:07.260278 start to apply
+[server 3] 22:02:07.260309 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:07.279165 apply: {get 0 }
+[server 3] 22:02:07.279213 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:07.279232 start to apply
+[server 3] 22:02:07.279253 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:07.295781 apply: {get 0 }
+[server 3] 22:02:07.295844 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:07.295871 start to apply
+[server 3] 22:02:07.295903 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:07.316079 apply: {get 0 }
+[server 3] 22:02:07.316148 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:07.316276 start to apply
+[server 3] 22:02:07.316320 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:07.336159 apply: {get 0 }
+[server 3] 22:02:07.336218 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:07.336239 start to apply
+[server 3] 22:02:07.336262 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:07.353984 apply: {get 0 }
+[server 3] 22:02:07.354028 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:07.354047 start to apply
+[server 3] 22:02:07.354081 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:07.370103 apply: {get 0 }
+[server 3] 22:02:07.370175 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:07.370205 start to apply
+[server 3] 22:02:07.370238 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:07.384781 apply: {get 0 }
+[server 3] 22:02:07.384846 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:07.384866 start to apply
+[server 3] 22:02:07.384890 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:07.404983 apply: {get 0 }
+[server 3] 22:02:07.405084 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:07.405116 start to apply
+[server 3] 22:02:07.405166 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:07.420915 apply: {get 0 }
+[server 3] 22:02:07.420984 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:07.421005 start to apply
+[server 3] 22:02:07.421030 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:07.462413 apply: {get 0 }
+[server 3] 22:02:07.462475 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:07.462506 start to apply
+[server 3] 22:02:07.462540 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:07.482705 apply: {get 0 }
+[server 3] 22:02:07.482774 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:07.482795 start to apply
+[server 3] 22:02:07.482818 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:07.501569 apply: {get 0 }
+[server 3] 22:02:07.501624 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:07.501644 start to apply
+[server 3] 22:02:07.501665 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:07.516472 apply: {get 0 }
+[server 3] 22:02:07.516526 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:07.516546 start to apply
+[server 3] 22:02:07.516568 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:07.535378 apply: {get 0 }
+[server 3] 22:02:07.535414 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:07.535429 start to apply
+[server 3] 22:02:07.535445 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:07.551879 apply: {get 0 }
+[server 3] 22:02:07.551921 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:07.551940 start to apply
+[server 3] 22:02:07.551961 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:07.570317 apply: {get 0 }
+[server 3] 22:02:07.570368 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:07.570396 start to apply
+[server 3] 22:02:07.570430 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:07.587001 apply: {get 0 }
+[server 3] 22:02:07.587052 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:07.587078 start to apply
+[server 3] 22:02:07.587120 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:07.607417 apply: {get 0 }
+[server 3] 22:02:07.607471 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:07.607486 start to apply
+[server 3] 22:02:07.607504 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:07.900132 apply: {get 0 }
+[server 3] 22:02:07.900171 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:07.900189 start to apply
+[server 3] 22:02:07.900209 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:07.985918 apply: {get 0 }
+[server 3] 22:02:07.985960 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:07.985980 start to apply
+[server 3] 22:02:07.986001 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:08.036639 apply: {get 0 }
+[server 3] 22:02:08.036704 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:08.036723 start to apply
+[server 3] 22:02:08.036745 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:08.055819 apply: {get 0 }
+[server 3] 22:02:08.055871 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:08.055898 start to apply
+[server 3] 22:02:08.055920 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:08.074672 apply: {get 0 }
+[server 3] 22:02:08.074755 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:08.074792 start to apply
+[server 3] 22:02:08.074837 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:08.096558 apply: {get 0 }
+[server 3] 22:02:08.096608 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:08.096627 start to apply
+[server 3] 22:02:08.096649 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:08.109297 apply: {get 0 }
+[server 3] 22:02:08.109375 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:08.109405 start to apply
+[server 3] 22:02:08.109442 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:08.122752 apply: {get 0 }
+[server 3] 22:02:08.122811 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:08.122830 start to apply
+[server 3] 22:02:08.122851 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:08.142523 apply: {get 0 }
+[server 3] 22:02:08.142555 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:08.142571 start to apply
+[server 3] 22:02:08.142591 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:08.172798 apply: {get 0 }
+[server 3] 22:02:08.172866 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:08.172893 start to apply
+[server 3] 22:02:08.172934 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:08.186783 apply: {get 0 }
+[server 3] 22:02:08.186837 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:08.186857 start to apply
+[server 3] 22:02:08.186879 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:08.204364 apply: {get 0 }
+[server 3] 22:02:08.204424 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:08.204454 start to apply
+[server 3] 22:02:08.204487 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:08.222586 apply: {get 0 }
+[server 3] 22:02:08.222638 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:08.222656 start to apply
+[server 3] 22:02:08.222678 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:08.241101 apply: {get 0 }
+[server 3] 22:02:08.241157 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:08.241177 start to apply
+[server 3] 22:02:08.241198 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:08.260576 apply: {get 0 }
+[server 3] 22:02:08.260625 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:08.260644 start to apply
+[server 3] 22:02:08.260667 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:08.280750 apply: {get 0 }
+[server 3] 22:02:08.280821 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:08.280841 start to apply
+[server 3] 22:02:08.280863 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:08.297617 apply: {get 0 }
+[server 3] 22:02:08.297692 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:08.297742 start to apply
+[server 3] 22:02:08.297779 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:08.312529 apply: {get 0 }
+[server 3] 22:02:08.312579 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:08.312597 start to apply
+[server 3] 22:02:08.312621 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:08.327723 apply: {get 0 }
+[server 3] 22:02:08.327769 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:08.327788 start to apply
+[server 3] 22:02:08.327813 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:08.343519 apply: {get 0 }
+[server 3] 22:02:08.343581 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:08.343608 start to apply
+[server 3] 22:02:08.343641 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:08.362100 apply: {get 0 }
+[server 3] 22:02:08.362145 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:08.362163 start to apply
+[server 3] 22:02:08.362184 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:08.381710 apply: {get 0 }
+[server 3] 22:02:08.381778 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:08.381847 start to apply
+[server 3] 22:02:08.381890 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:08.403138 apply: {get 0 }
+[server 3] 22:02:08.403188 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:08.403206 start to apply
+[server 3] 22:02:08.403229 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:08.424041 apply: {get 0 }
+[server 3] 22:02:08.424115 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:08.424140 start to apply
+[server 3] 22:02:08.424174 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:08.444607 apply: {get 0 }
+[server 3] 22:02:08.444658 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:08.444677 start to apply
+[server 3] 22:02:08.444699 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:08.466498 apply: {get 0 }
+[server 3] 22:02:08.466555 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:08.466574 start to apply
+[server 3] 22:02:08.466598 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:08.484885 apply: {get 0 }
+[server 3] 22:02:08.484936 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:08.484955 start to apply
+[server 3] 22:02:08.484986 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:08.506136 apply: {get 0 }
+[server 3] 22:02:08.506179 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:08.506197 start to apply
+[server 3] 22:02:08.506221 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:08.520956 apply: {get 0 }
+[server 3] 22:02:08.520995 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:08.521014 start to apply
+[server 3] 22:02:08.521035 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:08.538380 apply: {get 0 }
+[server 3] 22:02:08.538412 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:08.538440 start to apply
+[server 3] 22:02:08.538459 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:08.557669 apply: {get 0 }
+[server 3] 22:02:08.557716 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:08.557743 start to apply
+[server 3] 22:02:08.557775 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:08.573635 apply: {get 0 }
+[server 3] 22:02:08.573686 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:08.573714 start to apply
+[server 3] 22:02:08.573745 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:08.592618 apply: {get 0 }
+[server 3] 22:02:08.592668 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:08.592694 start to apply
+[server 3] 22:02:08.592726 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:08.610296 apply: {get 0 }
+[server 3] 22:02:08.610350 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:08.610369 start to apply
+[server 3] 22:02:08.610390 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:08.641214 apply: {get 0 }
+[server 3] 22:02:08.641275 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:08.641296 start to apply
+[server 3] 22:02:08.641318 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:08.684223 apply: {get 0 }
+[server 3] 22:02:08.684320 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:08.684350 start to apply
+[server 3] 22:02:08.684384 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:08.710007 apply: {get 0 }
+[server 3] 22:02:08.710053 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:08.710071 start to apply
+[server 3] 22:02:08.710092 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:08.727896 apply: {get 0 }
+[server 3] 22:02:08.727942 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:08.727962 start to apply
+[server 3] 22:02:08.727982 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:08.744096 apply: {get 0 }
+[server 3] 22:02:08.744146 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:08.744173 start to apply
+[server 3] 22:02:08.744205 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:08.759878 apply: {get 0 }
+[server 3] 22:02:08.759935 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:08.759954 start to apply
+[server 3] 22:02:08.760006 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:08.790111 apply: {get 0 }
+[server 3] 22:02:08.790162 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:08.790186 start to apply
+[server 3] 22:02:08.790214 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:08.808367 apply: {get 0 }
+[server 3] 22:02:08.808405 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:08.808423 start to apply
+[server 3] 22:02:08.808443 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:08.825068 apply: {get 0 }
+[server 3] 22:02:08.825130 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:08.825159 start to apply
+[server 3] 22:02:08.825191 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:08.842955 apply: {get 0 }
+[server 3] 22:02:08.842996 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:08.843015 start to apply
+[server 3] 22:02:08.843037 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:08.864379 apply: {get 0 }
+[server 3] 22:02:08.864413 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:08.864431 start to apply
+[server 3] 22:02:08.864452 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:08.883366 apply: {get 0 }
+[server 3] 22:02:08.883416 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:08.883436 start to apply
+[server 3] 22:02:08.883463 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:08.899856 apply: {get 0 }
+[server 3] 22:02:08.899918 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:08.899932 start to apply
+[server 3] 22:02:08.899950 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:08.914432 apply: {get 0 }
+[server 3] 22:02:08.914468 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:08.914486 start to apply
+[server 3] 22:02:08.914507 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:08.933819 apply: {get 0 }
+[server 3] 22:02:08.933868 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:08.933887 start to apply
+[server 3] 22:02:08.933908 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:08.969537 apply: {get 0 }
+[server 3] 22:02:08.969579 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:08.969599 start to apply
+[server 3] 22:02:08.969621 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:09.023775 apply: {get 0 }
+[server 3] 22:02:09.023819 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:09.023845 start to apply
+[server 3] 22:02:09.023875 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:09.041570 apply: {get 0 }
+[server 3] 22:02:09.041606 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:09.041631 start to apply
+[server 3] 22:02:09.041657 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:09.058423 apply: {get 0 }
+[server 3] 22:02:09.058467 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:09.058494 start to apply
+[server 3] 22:02:09.058516 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:09.074771 apply: {get 0 }
+[server 3] 22:02:09.074828 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:09.074857 start to apply
+[server 3] 22:02:09.074890 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:09.087832 apply: {get 0 }
+[server 3] 22:02:09.087871 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:09.087890 start to apply
+[server 3] 22:02:09.087910 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:09.101722 apply: {get 0 }
+[server 3] 22:02:09.101775 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:09.101803 start to apply
+[server 3] 22:02:09.101835 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:09.119326 apply: {get 0 }
+[server 3] 22:02:09.119383 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:09.119402 start to apply
+[server 3] 22:02:09.119423 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:09.159816 apply: {get 0 }
+[server 3] 22:02:09.159880 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:09.159898 start to apply
+[server 3] 22:02:09.159920 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:09.181265 apply: {get 0 }
+[server 3] 22:02:09.181328 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:09.181354 start to apply
+[server 3] 22:02:09.181387 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:09.202495 apply: {get 0 }
+[server 3] 22:02:09.202564 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:09.202584 start to apply
+[server 3] 22:02:09.202609 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:09.218625 apply: {get 0 }
+[server 3] 22:02:09.218689 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:09.218709 start to apply
+[server 3] 22:02:09.218730 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:09.235495 apply: {get 0 }
+[server 3] 22:02:09.235547 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:09.235566 start to apply
+[server 3] 22:02:09.235588 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:09.252936 apply: {get 0 }
+[server 3] 22:02:09.252971 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:09.252988 start to apply
+[server 3] 22:02:09.253009 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:09.271112 apply: {get 0 }
+[server 3] 22:02:09.271199 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:09.271228 start to apply
+[server 3] 22:02:09.271263 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:09.289110 apply: {get 0 }
+[server 3] 22:02:09.289155 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:09.289176 start to apply
+[server 3] 22:02:09.289198 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:09.305546 apply: {get 0 }
+[server 3] 22:02:09.305586 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:09.305608 start to apply
+[server 3] 22:02:09.305632 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:09.323841 apply: {get 0 }
+[server 3] 22:02:09.323879 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:09.323898 start to apply
+[server 3] 22:02:09.323919 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:09.345222 apply: {get 0 }
+[server 3] 22:02:09.345280 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:09.345300 start to apply
+[server 3] 22:02:09.345323 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:09.364292 apply: {get 0 }
+[server 3] 22:02:09.364345 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:09.364374 start to apply
+[server 3] 22:02:09.364406 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:09.389322 apply: {get 0 }
+[server 3] 22:02:09.389416 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:09.389438 start to apply
+[server 3] 22:02:09.389460 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 
+[server 3] 22:02:09.414906 apply: {get 0 }
+[server 3] 22:02:09.414989 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:02:09.415018 start to apply
+[server 3] 22:02:09.415051 return: &{true kvserver is not a leader. x 0 0 yx 0 1 yx 0 2 y} 

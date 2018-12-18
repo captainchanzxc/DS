@@ -45,30 +45,31 @@ type KVServer struct {
 	maxraftstate int // snapshot if log grows this big
 
 	// Your definitions here.
-	logFile  string
-	kvLog *log.Logger
-	mapDb map[string]string
+	logFile string
+	kvLog   *log.Logger
+	mapDb   map[string]string
+	readCh  chan string
 }
 
 func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 	// Your code here.
 	op := Op{Type: getOp, Key: args.Key, Value: ""}
-	_, _, isLeader := kv.rf.Start(&op)
+	_, _, isLeader := kv.rf.Start(op)
 	reply.WrongLeader = !isLeader
 	reply.Err = ""
-	kv.mu.Lock()
-	reply.Value = kv.mapDb[args.Key]
-	kv.mu.Unlock()
+	reply.Value = <-kv.readCh
 	if !isLeader {
 		reply.Err = "kvserver is not a leader."
+	} else {
 	}
-	kv.kvLog.Printf("return: %v \n",reply)
+	kv.kvLog.Printf("return: %v \n", reply)
 
 }
 
 func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 	// Your code here.
 	op := Op{Key: args.Key, Value: args.Value}
+
 	if args.Op == "Put" {
 		op.Type = putOp
 	} else {
@@ -85,19 +86,22 @@ func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 
 func (kv *KVServer) apply() {
 	for true {
+		kv.kvLog.Println("start to apply")
 		applyMsg := <-kv.applyCh
 		command := applyMsg.Command.(Op)
-		kv.kvLog.Printf("apply: %v\n",command)
-		kv.mu.Lock()
+		kv.kvLog.Printf("apply: %v\n", command)
+
+		//kv.kvLog.Println("lock mapDb")
 		switch command.Type {
 		case putOp:
 			kv.mapDb[command.Key] = command.Value
 		case appendOp:
 			kv.mapDb[command.Key] += command.Value
 		case getOp:
-			//do nothing
+			kv.readCh <- kv.mapDb[command.Key]
 		}
-		kv.mu.Lock()
+		kv.kvLog.Println(kv.mapDb)
+		//kv.kvLog.Println("unlock mapDb")
 	}
 }
 
@@ -165,15 +169,16 @@ func StartKVServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persiste
 	//if err!=nil{
 	//	panic(err)
 	//}
-	//kv.logFile="F:/Projects/MIT6_824/code/DS/src/kvraft/"+strconv.Itoa(kv.me)+".log"
-	//f,err:=os.Create(kv.logFile)
-	//if err!=nil{
-	//	panic(err)
-	//}
-	kv.kvLog=log.New(os.Stdout,"[server "+strconv.Itoa(kv.me)+"] ",log.Lmicroseconds)
+	kv.logFile = strconv.Itoa(kv.me) + ".log"
+	f, err := os.Create(kv.logFile)
+	if err != nil {
+		panic(err)
+	}
+	kv.kvLog = log.New(f, "[server "+strconv.Itoa(kv.me)+"] ", log.Lmicroseconds)
 
-	kv.kvLog.Printf("servers number: %d\n",len(servers))
+	kv.kvLog.Printf("servers number: %d\n", len(servers))
 	kv.mapDb = make(map[string]string)
+	kv.readCh = make(chan string)
 
 	kv.applyCh = make(chan raft.ApplyMsg)
 	kv.rf = raft.Make(servers, me, persister, kv.applyCh)
