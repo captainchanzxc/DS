@@ -94,6 +94,7 @@ type Raft struct {
 
 	//use to debug
 	rfLog *log.Logger
+	isAlive bool
 }
 
 // return currentTerm and whether this server
@@ -366,8 +367,8 @@ func (rf *Raft) startElectionTimeOut() {
 	//只有Follower和Candidate在election time out后才会发起投票，由于本程序的原因，在candidate选举时也会启动
 	//一个electionTimeOut线程，其在成为Leader不应该再次进行投票了
 	if rf.State == Follower || rf.State == Candidate {
-		rf.mu.Unlock()
 		rf.State = Candidate
+		rf.mu.Unlock()
 		rf.startElection()
 		return
 	}
@@ -466,7 +467,7 @@ func (rf *Raft) startHeartBeat() {
 	for true {
 		for i := 0; i < len(rf.peers); i++ {
 			rf.mu.Lock()
-			if rf.State != Leader {
+			if rf.State != Leader || rf.isAlive==false{
 				//fmt.Printf("leader %d return !!!\n", rf.me)
 				rf.mu.Unlock()
 				return
@@ -499,6 +500,7 @@ func (rf *Raft) startHeartBeat() {
 					rf.mu.Unlock()
 
 				}(i)
+
 			}
 
 		}
@@ -536,8 +538,12 @@ func (rf *Raft) replicateLog() {
 				//		fmt.Printf("leader %d append to peer %d: %v\n", rf.me, peer, entries)
 				rf.mu.Unlock()
 				ok := rf.sendAppendEntries(peer, &args, &reply)
-				if ok &&reply.ReceivedTerm==rf.CurrentTerm{
+				if ok {
 					rf.mu.Lock()
+					if reply.ReceivedTerm!=rf.CurrentTerm{
+						rf.mu.Unlock()
+						return
+					}
 					//fmt.Printf("peer %d %t!!!!!!!\n",peer,reply.Success)
 					if reply.Term > rf.CurrentTerm {
 						rf.CurrentTerm = reply.Term
@@ -561,7 +567,14 @@ func (rf *Raft) replicateLog() {
 				}
 
 			}(i)
+			rf.mu.Lock()
+			if rf.State!=Leader || rf.isAlive==false{
+				rf.mu.Unlock()
+				return
+			}
+			rf.mu.Unlock()
 		}
+
 		time.Sleep(time.Duration(30) * time.Millisecond)
 	}
 
@@ -569,7 +582,12 @@ func (rf *Raft) replicateLog() {
 
 func (rf *Raft) checkApplied() {
 	for true {
+
 		rf.mu.Lock()
+		if rf.isAlive==false{
+			rf.mu.Unlock()
+			break
+		}
 		//		fmt.Printf("%s peer %d commitIndex: %d, appliedIndex: %d\n", time.Now().Format("2006/01/02/ 15:03:04.000"), rf.me, rf.CommitIndex, rf.LastApplied)
 		if rf.CommitIndex > rf.LastApplied {
 			rf.LastApplied += 1
@@ -585,9 +603,8 @@ func (rf *Raft) checkApplied() {
 func (rf *Raft) checkLeaderCommitIndex() {
 	for true {
 		rf.mu.Lock()
-		if rf.State != Leader {
+		if rf.State != Leader || rf.isAlive==false {
 			rf.mu.Unlock()
-
 			break
 		}
 		for N := rf.CommitIndex + 1; N < len(rf.Logs); N++ {
@@ -607,7 +624,6 @@ func (rf *Raft) checkLeaderCommitIndex() {
 		}
 		rf.mu.Unlock()
 		time.Sleep(time.Duration(10) * time.Millisecond)
-
 	}
 }
 
@@ -654,6 +670,9 @@ func (rf *Raft) Start(command interface{}) (int, int, bool) {
 //
 func (rf *Raft) Kill() {
 	// Your code here, if desired.
+	rf.mu.Lock()
+	rf.isAlive=false
+	rf.mu.Unlock()
 }
 
 func (rf *Raft)printState(){
@@ -706,6 +725,7 @@ func Make(peers []*labrpc.ClientEnd, me int,
 	rf.CommitIndex = 0
 	rf.LastApplied = 0
 	rf.VotedFor = -1
+	rf.isAlive=true
 	rf.applyCh = applyCh
 	rf.Logs = append(rf.Logs, Log{0, 0})
 	for j := 0; j < len(rf.peers); j++ {
@@ -717,7 +737,9 @@ func Make(peers []*labrpc.ClientEnd, me int,
 	go rf.checkApplied()
 	//fmt.Printf("last heard time %d, timeout %d\n", rf.lastHeardTime, rf.electionTimeOut)
 	// initialize from state persisted before a crash
+	rf.mu.Lock()
 	rf.readPersist(persister.ReadRaftState())
+	rf.mu.Unlock()
 
 	return rf
 }

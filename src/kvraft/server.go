@@ -56,7 +56,7 @@ type KVServer struct {
 
 func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 	// Your code here.
-	op := Op{Type: getOp, Key: args.Key, Value: "",SerialNum:args.SerialNum,ClerkId:args.ClerkId}
+	op := Op{Type: getOp, Key: args.Key, Value: "", SerialNum: args.SerialNum, ClerkId: args.ClerkId}
 	_, _, isLeader := kv.rf.Start(op)
 	reply.WrongLeader = !isLeader
 	reply.Err = ""
@@ -76,8 +76,8 @@ func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 	} else {
 		op.Type = appendOp
 	}
-	if op.SerialNum<=kv.serialNums[op.ClerkId]{
-		reply.Err=""
+	if op.SerialNum <= kv.serialNums[op.ClerkId] {
+		reply.Err = ""
 		return
 	}
 	_, _, isLeader := kv.rf.Start(op)
@@ -97,51 +97,25 @@ func (kv *KVServer) apply() {
 		applyMsg := <-kv.applyCh
 		command := applyMsg.Command.(Op)
 		kv.kvLog.Printf("apply: %v\n", command)
-		if kv.serialNums[command.ClerkId] < command.SerialNum{
-			kv.serialNums[command.ClerkId] = command.SerialNum
-
-			switch command.Type {
-			case putOp:
-				kv.mapDb[command.Key] = command.Value
-			case appendOp:
-				kv.mapDb[command.Key] += command.Value
-			case getOp:
-				_, isLeader := kv.rf.GetState()
-				if isLeader {
-					kv.readCh <- kv.mapDb[command.Key]
+		if command.Type == putOp || command.Type == appendOp {
+			if kv.serialNums[command.ClerkId] < command.SerialNum {
+				kv.serialNums[command.ClerkId] = command.SerialNum
+				switch command.Type {
+				case putOp:
+					kv.mapDb[command.Key] = command.Value
+				case appendOp:
+					kv.mapDb[command.Key] += command.Value
 				}
 			}
-			kv.kvLog.Println(kv.mapDb)
+		} else {
+			_, isLeader := kv.rf.GetState()
+			if isLeader {
+				kv.readCh <- kv.mapDb[command.Key]
+			}
 		}
-
-
+		kv.kvLog.Println(kv.mapDb)
 	}
 }
-
-//func (kv *KVServer) putToFile(key string, value string) {
-//	//f, err := os.OpenFile(kv.file,os.O_APPEND|os.O_RDWR,0666)
-//	//if err != nil {
-//	//	panic(err)
-//	//}
-//	//defer f.Close()
-//	//rd := bufio.NewReader(f)
-//	//kvMap := make(map[string]string)
-//	//for {
-//	//	line, err := rd.ReadString('\n')
-//	//	if err != nil || io.EOF == err {
-//	//		break
-//	//	}
-//	//	line = line[0 : len(line)-1]
-//	//	keyValue := strings.Split(line, ",")
-//	//	kvMap[keyValue[0]] = keyValue[1]
-//	//}
-//	//kvMap[key]=value
-//	//wr:=bufio.NewWriter(f)
-//	//for k,v:=range kvMap{
-//	//	wr.WriteString(k+","+v+"\n")
-//	//}
-//	//wr.Flush()
-//}
 
 //
 // the tester calls Kill() when a KVServer instance won't
