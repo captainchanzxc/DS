@@ -205,6 +205,7 @@ type RequestVoteArgs struct {
 type RequestVoteReply struct {
 	// Your data here (2A).
 	Term         int
+	ReceivedTerm int
 	VoterGranted bool
 }
 
@@ -214,6 +215,7 @@ type RequestVoteReply struct {
 func (rf *Raft) RequestVote(args *RequestVoteArgs, reply *RequestVoteReply) {
 	// Your code here (2A, 2B).
 	rf.mu.Lock()
+	reply.ReceivedTerm=args.Term
 	reply.Term = rf.CurrentTerm
 	if args.Term < rf.CurrentTerm {
 		reply.VoterGranted = false
@@ -320,7 +322,7 @@ func (rf *Raft) startElection() {
 			rf.mu.Unlock()
 			rf.mu.Lock()
 			defer rf.mu.Unlock()
-			if rvr.VoterGranted {
+			if rvr.VoterGranted&&rvr.ReceivedTerm==rf.CurrentTerm {
 				count += 1
 				if count > len(rf.peers)/2 {
 					rf.rfLog.Println("becomes leader")
@@ -394,6 +396,7 @@ type AppendEntryArgs struct {
 
 type AppendEntryReply struct {
 	Term    int
+	ReceivedTerm int
 	Success bool
 }
 
@@ -405,11 +408,13 @@ func (rf *Raft) AppendEntries(args *AppendEntryArgs, reply *AppendEntryReply) {
 	if args.Term >= rf.CurrentTerm {
 		go rf.resetElectionTimeOut()
 	}
+
 	if args.Term > rf.CurrentTerm {
 		rf.CurrentTerm = args.Term
 		rf.State = Follower
 		rf.persist()
 	}
+	reply.ReceivedTerm=args.Term
 	reply.Term = rf.CurrentTerm
 	//	fmt.Printf("%s leader %d(prev Index: %d, current Term: %d) send peer %d(current term: %d): %v\n ", time.Now().Format("2006/01/02/ 15:03:04.000"), args.LeaderId, args.PrevLogIndex,args.Term,rf.me, rf.CurrentTerm,args.Entries)
 	//args.PrevLogIndex>len(rf.Logs)-1这种情况也算不match
@@ -531,7 +536,7 @@ func (rf *Raft) replicateLog() {
 				//		fmt.Printf("leader %d append to peer %d: %v\n", rf.me, peer, entries)
 				rf.mu.Unlock()
 				ok := rf.sendAppendEntries(peer, &args, &reply)
-				if ok {
+				if ok &&reply.ReceivedTerm==rf.CurrentTerm{
 					rf.mu.Lock()
 					//fmt.Printf("peer %d %t!!!!!!!\n",peer,reply.Success)
 					if reply.Term > rf.CurrentTerm {
