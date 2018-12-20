@@ -57,13 +57,12 @@ func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 	_, _, isLeader := kv.rf.Start(op)
 	reply.WrongLeader = !isLeader
 	reply.Err = ""
-	reply.Value = <-kv.readCh
 	if !isLeader {
 		reply.Err = "kvserver is not a leader."
 	} else {
+		reply.Value = <-kv.readCh
 	}
-	kv.kvLog.Printf("return: %v \n", reply)
-
+	kv.kvLog.Printf("return: %v\n", reply)
 }
 
 func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
@@ -91,17 +90,18 @@ func (kv *KVServer) apply() {
 		command := applyMsg.Command.(Op)
 		kv.kvLog.Printf("apply: %v\n", command)
 
-		//kv.kvLog.Println("lock mapDb")
 		switch command.Type {
 		case putOp:
 			kv.mapDb[command.Key] = command.Value
 		case appendOp:
 			kv.mapDb[command.Key] += command.Value
 		case getOp:
-			kv.readCh <- kv.mapDb[command.Key]
+			_, isLeader := kv.rf.GetState()
+			if isLeader {
+				kv.readCh <- kv.mapDb[command.Key]
+			}
 		}
 		kv.kvLog.Println(kv.mapDb)
-		//kv.kvLog.Println("unlock mapDb")
 	}
 }
 

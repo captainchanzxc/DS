@@ -14,6 +14,8 @@ type Clerk struct {
 	servers []*labrpc.ClientEnd
 	// You will have to modify this struct.
 	ckLog *log.Logger
+	logFile string
+	lastLeader int
 }
 
 func nrand() int64 {
@@ -27,6 +29,12 @@ func MakeClerk(servers []*labrpc.ClientEnd) *Clerk {
 	ck := new(Clerk)
 	ck.servers = servers
 	// You'll have to add code here.
+	ck.logFile="client_0.log"
+	_,err:=os.Create(ck.logFile)
+
+	if err!=nil{
+		panic(err)
+	}
 	ck.ckLog = log.New(os.Stdout, "[client "+strconv.Itoa(0)+"] ", log.Lmicroseconds)
 	return ck
 }
@@ -49,30 +57,33 @@ func (ck *Clerk) Get(key string) string {
 	//ck.servers[0].Call()
 	args := GetArgs{Key: key}
 	//defer time.Sleep(3*time.Second)
-	ck.ckLog.Println("---start to send get command")
-	valueCh:=make(chan string)
-	for true {
+	ck.ckLog.Println("----------------------start to send get command")
+	reply := GetReply{}
+	ok:=ck.servers[ck.lastLeader].Call("KVServer.Get", &args, &reply)
+	if ok{
+		if reply.Err==""{
+			ck.ckLog.Printf("send GetArgs: %v\n", args)
+			ck.ckLog.Printf("receive ReplyArgs: %v\n", reply)
+			return reply.Value
+		}
+	}
+
+	for  {
 		for i := 0; i < len(ck.servers); i++ {
-			go func(server int) {
-				reply := GetReply{}
-				ok := ck.servers[server].Call("KVServer.Get", &args, &reply)
-				if ok {
-					if reply.Err == "" {
-						ck.ckLog.Printf("send GetArgs: %v\n", args)
-						ck.ckLog.Printf("receive ReplyArgs: %v\n", reply)
-						valueCh<-reply.Value
-					} else {
-						//	fmt.Printf("%d Error: %s\n",i,reply.Err)
-					}
+
+			reply := GetReply{}
+			ck.ckLog.Println("call server get")
+			ok := ck.servers[i].Call("KVServer.Get", &args, &reply)
+			ck.ckLog.Println("reply from server get")
+			if ok {
+				if reply.Err == "" {
+					ck.ckLog.Printf("send GetArgs: %v\n", args)
+					ck.ckLog.Printf("receive ReplyArgs: %v\n", reply)
+					ck.lastLeader=i
+					return reply.Value
+				} else {
+					//	fmt.Printf("%d Error: %s\n",i,reply.Err)
 				}
-			}(i)
-
-			select {
-			case value:=<-valueCh:
-				return value
-			default:
-
-
 			}
 		}
 		time.Sleep(time.Duration(30) * time.Microsecond)
@@ -93,7 +104,18 @@ func (ck *Clerk) Get(key string) string {
 //
 func (ck *Clerk) PutAppend(key string, value string, op string) {
 	// You will have to modify this function.
+
+
 	args := PutAppendArgs{Key: key, Value: value, Op: op}
+	reply := PutAppendReply{}
+	ok := ck.servers[ck.lastLeader].Call("KVServer.PutAppend", &args, &reply)
+	if ok {
+		if reply.Err == "" {
+			ck.ckLog.Printf("send PutAppendArgs: %v\n", args)
+			return
+		}
+	}
+
 	for {
 		for i := 0; i < len(ck.servers); i++ {
 			reply := PutAppendReply{}
@@ -102,7 +124,6 @@ func (ck *Clerk) PutAppend(key string, value string, op string) {
 				if reply.Err == "" {
 					ck.ckLog.Printf("send PutAppendArgs: %v\n", args)
 					return
-				} else {
 				}
 			}
 		}
