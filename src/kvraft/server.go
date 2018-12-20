@@ -31,9 +31,11 @@ type Op struct {
 	// Your definitions here.
 	// Field names must start with capital letters,
 	// otherwise RPC will break.
-	Type  OpType
-	Key   string
-	Value string
+	Type      OpType
+	Key       string
+	Value     string
+	SerialNum int
+	ClerkId   int64
 }
 
 type KVServer struct {
@@ -45,15 +47,16 @@ type KVServer struct {
 	maxraftstate int // snapshot if log grows this big
 
 	// Your definitions here.
-	logFile string
-	kvLog   *log.Logger
-	mapDb   map[string]string
-	readCh  chan string
+	logFile    string
+	kvLog      *log.Logger
+	mapDb      map[string]string
+	serialNums map[int64]int
+	readCh     chan string
 }
 
 func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 	// Your code here.
-	op := Op{Type: getOp, Key: args.Key, Value: ""}
+	op := Op{Type: getOp, Key: args.Key, Value: "",SerialNum:args.SerialNum,ClerkId:args.ClerkId}
 	_, _, isLeader := kv.rf.Start(op)
 	reply.WrongLeader = !isLeader
 	reply.Err = ""
@@ -67,18 +70,23 @@ func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 
 func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 	// Your code here.
-	op := Op{Key: args.Key, Value: args.Value}
-
+	op := Op{Key: args.Key, Value: args.Value, ClerkId: args.ClerkId, SerialNum: args.SerialNum}
 	if args.Op == "Put" {
 		op.Type = putOp
 	} else {
 		op.Type = appendOp
+	}
+	if op.SerialNum<=kv.serialNums[op.ClerkId]{
+		reply.Err=""
+		return
 	}
 	_, _, isLeader := kv.rf.Start(op)
 	reply.WrongLeader = !isLeader
 	reply.Err = ""
 	if !isLeader {
 		reply.Err = "kvserver is not a leader."
+	} else {
+		kv.kvLog.Printf("receive op: %v\n", op)
 	}
 
 }
@@ -89,19 +97,24 @@ func (kv *KVServer) apply() {
 		applyMsg := <-kv.applyCh
 		command := applyMsg.Command.(Op)
 		kv.kvLog.Printf("apply: %v\n", command)
+		if kv.serialNums[command.ClerkId] < command.SerialNum{
+			kv.serialNums[command.ClerkId] = command.SerialNum
 
-		switch command.Type {
-		case putOp:
-			kv.mapDb[command.Key] = command.Value
-		case appendOp:
-			kv.mapDb[command.Key] += command.Value
-		case getOp:
-			_, isLeader := kv.rf.GetState()
-			if isLeader {
-				kv.readCh <- kv.mapDb[command.Key]
+			switch command.Type {
+			case putOp:
+				kv.mapDb[command.Key] = command.Value
+			case appendOp:
+				kv.mapDb[command.Key] += command.Value
+			case getOp:
+				_, isLeader := kv.rf.GetState()
+				if isLeader {
+					kv.readCh <- kv.mapDb[command.Key]
+				}
 			}
+			kv.kvLog.Println(kv.mapDb)
 		}
-		kv.kvLog.Println(kv.mapDb)
+
+
 	}
 }
 
@@ -179,8 +192,8 @@ func StartKVServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persiste
 	kv.kvLog.Printf("servers number: %d\n", len(servers))
 	kv.mapDb = make(map[string]string)
 	kv.readCh = make(chan string)
-
 	kv.applyCh = make(chan raft.ApplyMsg)
+	kv.serialNums = make(map[int64]int)
 	kv.rf = raft.Make(servers, me, persister, kv.applyCh)
 
 	// You may need initialization code here.

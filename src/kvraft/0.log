@@ -1,58 +1,94 @@
-[server 0] 15:41:08.225893 servers number: 5
-[server 0] 15:41:08.227204 start to apply
-[server 0] 15:41:08.738843 return: &{true kvserver is not a leader. }
-[server 0] 15:41:08.741523 apply: {put 2 }
-[server 0] 15:41:08.741615 map[2:]
-[server 0] 15:41:08.741652 start to apply
-[server 0] 15:41:08.754101 return: &{true kvserver is not a leader. }
-[server 0] 15:41:08.783608 apply: {put 1 }
-[server 0] 15:41:08.783637 map[1: 2:]
-[server 0] 15:41:08.783650 start to apply
-[server 0] 15:41:08.846502 apply: {append 2 x 2 0 y}
-[server 0] 15:41:08.846550 map[2:x 2 0 y 1:]
-[server 0] 15:41:08.846560 start to apply
-[server 0] 15:41:08.905686 return: &{true kvserver is not a leader. }
-[server 0] 15:41:08.908269 return: &{true kvserver is not a leader. }
-[server 0] 15:41:08.940873 apply: {put 3 }
-[server 0] 15:41:08.940896 map[2:x 2 0 y 1: 3:]
-[server 0] 15:41:08.940919 start to apply
-[server 0] 15:41:08.951240 apply: {append 2 x 2 1 y}
-[server 0] 15:41:08.951331 map[2:x 2 0 yx 2 1 y 1: 3:]
-[server 0] 15:41:08.951369 start to apply
-[server 0] 15:41:08.993195 apply: {put 0 }
-[server 0] 15:41:08.993245 map[2:x 2 0 yx 2 1 y 1: 3: 0:]
-[server 0] 15:41:08.993265 start to apply
-[server 0] 15:41:09.055943 apply: {append 3 x 3 0 y}
-[server 0] 15:41:09.055966 map[2:x 2 0 yx 2 1 y 1: 3:x 3 0 y 0:]
-[server 0] 15:41:09.055977 start to apply
-[server 0] 15:41:09.086944 apply: {append 2 x 2 2 y}
-[server 0] 15:41:09.086990 map[1: 3:x 3 0 y 0: 2:x 2 0 yx 2 1 yx 2 2 y]
-[server 0] 15:41:09.087000 start to apply
-[server 0] 15:41:09.118279 apply: {get 2 }
-[server 0] 15:41:09.118316 map[0: 2:x 2 0 yx 2 1 yx 2 2 y 1: 3:x 3 0 y]
-[server 0] 15:41:09.118329 start to apply
-[server 0] 15:41:09.180757 apply: {put 4 }
-[server 0] 15:41:09.180790 map[3:x 3 0 y 0: 4: 2:x 2 0 yx 2 1 yx 2 2 y 1:]
-[server 0] 15:41:09.180805 start to apply
-[server 0] 15:41:09.211509 apply: {append 1 x 1 0 y}
-[server 0] 15:41:09.211547 map[1:x 1 0 y 3:x 3 0 y 0: 4: 2:x 2 0 yx 2 1 yx 2 2 y]
-[server 0] 15:41:09.211565 start to apply
-[server 0] 15:41:09.253081 apply: {append 3 x 3 1 y}
-[server 0] 15:41:09.253120 map[3:x 3 0 yx 3 1 y 0: 4: 2:x 2 0 yx 2 1 yx 2 2 y 1:x 1 0 y]
-[server 0] 15:41:09.253132 start to apply
-[server 0] 15:41:09.266135 return: &{true kvserver is not a leader. }
-[server 0] 15:41:09.294763 apply: {get 0 }
-[server 0] 15:41:09.294804 map[2:x 2 0 yx 2 1 yx 2 2 y 1:x 1 0 y 3:x 3 0 yx 3 1 y 0: 4:]
-[server 0] 15:41:09.294821 start to apply
-[server 0] 15:41:09.336621 apply: {append 4 x 4 0 y}
-[server 0] 15:41:09.336651 map[2:x 2 0 yx 2 1 yx 2 2 y 1:x 1 0 y 3:x 3 0 yx 3 1 y 0: 4:x 4 0 y]
-[server 0] 15:41:09.336676 start to apply
-[server 0] 15:41:09.389916 apply: {append 1 x 1 0 y}
-[server 0] 15:41:09.389952 map[1:x 1 0 yx 1 0 y 3:x 3 0 yx 3 1 y 0: 4:x 4 0 y 2:x 2 0 yx 2 1 yx 2 2 y]
-[server 0] 15:41:09.389964 start to apply
-[server 0] 15:41:09.421940 apply: {append 1 x 1 0 y}
-[server 0] 15:41:09.422030 map[2:x 2 0 yx 2 1 yx 2 2 y 1:x 1 0 yx 1 0 yx 1 0 y 3:x 3 0 yx 3 1 y 0: 4:x 4 0 y]
-[server 0] 15:41:09.422070 start to apply
-[server 0] 15:41:09.443401 apply: {append 4 x 4 1 y}
-[server 0] 15:41:09.443497 map[2:x 2 0 yx 2 1 yx 2 2 y 1:x 1 0 yx 1 0 yx 1 0 y 3:x 3 0 yx 3 1 y 0: 4:x 4 0 yx 4 1 y]
-[server 0] 15:41:09.443535 start to apply
+[server 0] 17:46:48.109499 servers number: 5
+[server 0] 17:46:48.110624 start to apply
+[server 0] 17:46:48.622225 return: &{true kvserver is not a leader. }
+[server 0] 17:46:48.635151 return: &{true kvserver is not a leader. }
+[server 0] 17:46:48.643543 return: &{true kvserver is not a leader. }
+[server 0] 17:46:48.661621 return: &{true kvserver is not a leader. }
+[server 0] 17:46:48.686881 apply: {put 4  1 4588544272653632336}
+[server 0] 17:46:48.686940 map[4:]
+[server 0] 17:46:48.686949 start to apply
+[server 0] 17:46:48.717828 apply: {put 3  1 1184041303210569359}
+[server 0] 17:46:48.717858 map[4: 3:]
+[server 0] 17:46:48.717868 start to apply
+[server 0] 17:46:48.721360 return: &{true kvserver is not a leader. }
+[server 0] 17:46:48.738544 apply: {append 3 x 3 0 y 2 1184041303210569359}
+[server 0] 17:46:48.738577 map[4: 3:x 3 0 y]
+[server 0] 17:46:48.738588 start to apply
+[server 0] 17:46:48.745148 return: &{true kvserver is not a leader. }
+[server 0] 17:46:48.773317 return: &{true kvserver is not a leader. }
+[server 0] 17:46:48.780039 apply: {put 1  1 2620322128211609544}
+[server 0] 17:46:48.780074 map[4: 3:x 3 0 y 1:]
+[server 0] 17:46:48.780083 start to apply
+[server 0] 17:46:48.821846 apply: {append 3 x 3 1 y 3 1184041303210569359}
+[server 0] 17:46:48.821868 map[4: 3:x 3 0 yx 3 1 y 1:]
+[server 0] 17:46:48.821879 start to apply
+[server 0] 17:46:48.832197 apply: {append 3 x 3 2 y 4 1184041303210569359}
+[server 0] 17:46:48.832236 map[4: 3:x 3 0 yx 3 1 yx 3 2 y 1:]
+[server 0] 17:46:48.832248 start to apply
+[server 0] 17:46:48.873428 apply: {put 2  1 3605985134234678806}
+[server 0] 17:46:48.873497 map[4: 3:x 3 0 yx 3 1 yx 3 2 y 1: 2:]
+[server 0] 17:46:48.873507 start to apply
+[server 0] 17:46:48.904556 apply: {append 3 x 3 2 y 4 1184041303210569359}
+[server 0] 17:46:48.904599 start to apply
+[server 0] 17:46:48.925287 apply: {append 4 x 4 0 y 2 4588544272653632336}
+[server 0] 17:46:48.925322 map[4:x 4 0 y 3:x 3 0 yx 3 1 yx 3 2 y 1: 2:]
+[server 0] 17:46:48.925334 start to apply
+[server 0] 17:46:48.956047 apply: {put 2  1 3605985134234678806}
+[server 0] 17:46:48.956092 start to apply
+[server 0] 17:46:48.987135 apply: {put 0  1 2034194426872508346}
+[server 0] 17:46:48.987159 map[4:x 4 0 y 3:x 3 0 yx 3 1 yx 3 2 y 1: 2: 0:]
+[server 0] 17:46:48.987170 start to apply
+[server 0] 17:46:49.060098 apply: {put 1  1 2620322128211609544}
+[server 0] 17:46:49.060144 start to apply
+[server 0] 17:46:49.113619 apply: {append 3 x 3 3 y 5 1184041303210569359}
+[server 0] 17:46:49.113654 map[4:x 4 0 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 y 1: 2: 0:]
+[server 0] 17:46:49.113677 start to apply
+[server 0] 17:46:49.123903 apply: {get 3  6 1184041303210569359}
+[server 0] 17:46:49.123955 map[3:x 3 0 yx 3 1 yx 3 2 yx 3 3 y 1: 2: 0: 4:x 4 0 y]
+[server 0] 17:46:49.123972 start to apply
+[server 0] 17:46:49.145188 apply: {append 4 x 4 1 y 3 4588544272653632336}
+[server 0] 17:46:49.145221 map[4:x 4 0 yx 4 1 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 y 1: 2: 0:]
+[server 0] 17:46:49.145231 start to apply
+[server 0] 17:46:49.208307 apply: {get 1  2 2620322128211609544}
+[server 0] 17:46:49.208382 map[4:x 4 0 yx 4 1 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 y 1: 2: 0:]
+[server 0] 17:46:49.208426 start to apply
+[server 0] 17:46:49.240307 apply: {put 2  1 3605985134234678806}
+[server 0] 17:46:49.240338 start to apply
+[server 0] 17:46:49.250635 apply: {put 0  1 2034194426872508346}
+[server 0] 17:46:49.250669 start to apply
+[server 0] 17:46:49.303515 apply: {get 4  4 4588544272653632336}
+[server 0] 17:46:49.303605 map[2: 0: 4:x 4 0 yx 4 1 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 y 1:]
+[server 0] 17:46:49.303629 start to apply
+[server 0] 17:46:49.345836 apply: {append 0 x 0 0 y 2 2034194426872508346}
+[server 0] 17:46:49.345860 map[3:x 3 0 yx 3 1 yx 3 2 yx 3 3 y 1: 2: 0:x 0 0 y 4:x 4 0 yx 4 1 y]
+[server 0] 17:46:49.345871 start to apply
+[server 0] 17:46:49.347583 return: &{true kvserver is not a leader. }
+[server 0] 17:46:49.399274 apply: {append 2 x 2 0 y 2 3605985134234678806}
+[server 0] 17:46:49.399324 map[4:x 4 0 yx 4 1 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 y 1: 2:x 2 0 y 0:x 0 0 y]
+[server 0] 17:46:49.399348 start to apply
+[server 0] 17:46:49.409503 apply: {get 0  3 2034194426872508346}
+[server 0] 17:46:49.409534 map[4:x 4 0 yx 4 1 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 y 1: 2:x 2 0 y 0:x 0 0 y]
+[server 0] 17:46:49.409545 start to apply
+[server 0] 17:46:49.441189 apply: {get 2  3 3605985134234678806}
+[server 0] 17:46:49.441224 map[4:x 4 0 yx 4 1 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 y 1: 2:x 2 0 y 0:x 0 0 y]
+[server 0] 17:46:49.441240 start to apply
+[server 0] 17:46:49.448378 return: &{true kvserver is not a leader. }
+[server 0] 17:46:49.472756 apply: {get 3  7 1184041303210569359}
+[server 0] 17:46:49.472783 map[0:x 0 0 y 4:x 4 0 yx 4 1 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 y 1: 2:x 2 0 y]
+[server 0] 17:46:49.472794 start to apply
+[server 0] 17:46:49.545349 apply: {get 1  3 2620322128211609544}
+[server 0] 17:46:49.545387 map[1: 2:x 2 0 y 0:x 0 0 y 4:x 4 0 yx 4 1 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 y]
+[server 0] 17:46:49.545401 start to apply
+[server 0] 17:46:49.618992 apply: {append 4 x 4 2 y 5 4588544272653632336}
+[server 0] 17:46:49.619059 map[4:x 4 0 yx 4 1 yx 4 2 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 y 1: 2:x 2 0 y 0:x 0 0 y]
+[server 0] 17:46:49.619085 start to apply
+[server 0] 17:46:49.639990 apply: {append 4 x 4 3 y 6 4588544272653632336}
+[server 0] 17:46:49.640069 map[4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 y 1: 2:x 2 0 y 0:x 0 0 y]
+[server 0] 17:46:49.640108 start to apply
+[server 0] 17:46:49.661390 apply: {get 4  7 4588544272653632336}
+[server 0] 17:46:49.661450 map[0:x 0 0 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 y 1: 2:x 2 0 y]
+[server 0] 17:46:49.661485 start to apply
+[server 0] 17:46:49.692057 return: &{true kvserver is not a leader. }
+[server 0] 17:46:49.692874 apply: {get 2  4 3605985134234678806}
+[server 0] 17:46:49.692904 map[1: 2:x 2 0 y 0:x 0 0 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 y]
+[server 0] 17:46:49.692920 start to apply

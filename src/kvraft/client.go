@@ -13,9 +13,11 @@ import "math/big"
 type Clerk struct {
 	servers []*labrpc.ClientEnd
 	// You will have to modify this struct.
-	ckLog *log.Logger
-	logFile string
+	ckLog      *log.Logger
+	logFile    string
 	lastLeader int
+	serialNum  int
+	id int64
 }
 
 func nrand() int64 {
@@ -29,12 +31,14 @@ func MakeClerk(servers []*labrpc.ClientEnd) *Clerk {
 	ck := new(Clerk)
 	ck.servers = servers
 	// You'll have to add code here.
-	ck.logFile="client_0.log"
-	_,err:=os.Create(ck.logFile)
+	ck.logFile = "client_0.log"
+	_, err := os.Create(ck.logFile)
 
-	if err!=nil{
+	if err != nil {
 		panic(err)
 	}
+	ck.serialNum = 0
+	ck.id=nrand()
 	ck.ckLog = log.New(os.Stdout, "[client "+strconv.Itoa(0)+"] ", log.Lmicroseconds)
 	return ck
 }
@@ -55,20 +59,21 @@ func (ck *Clerk) Get(key string) string {
 
 	// You will have to modify this function.
 	//ck.servers[0].Call()
-	args := GetArgs{Key: key}
+	ck.serialNum++
+	args := GetArgs{Key: key, ClerkId: ck.id, SerialNum: ck.serialNum}
 	//defer time.Sleep(3*time.Second)
 	ck.ckLog.Println("----------------------start to send get command")
 	reply := GetReply{}
-	ok:=ck.servers[ck.lastLeader].Call("KVServer.Get", &args, &reply)
-	if ok{
-		if reply.Err==""{
+	ok := ck.servers[ck.lastLeader].Call("KVServer.Get", &args, &reply)
+	if ok {
+		if reply.Err == "" {
 			ck.ckLog.Printf("send GetArgs: %v\n", args)
 			ck.ckLog.Printf("receive ReplyArgs: %v\n", reply)
 			return reply.Value
 		}
 	}
 
-	for  {
+	for {
 		for i := 0; i < len(ck.servers); i++ {
 
 			reply := GetReply{}
@@ -79,7 +84,7 @@ func (ck *Clerk) Get(key string) string {
 				if reply.Err == "" {
 					ck.ckLog.Printf("send GetArgs: %v\n", args)
 					ck.ckLog.Printf("receive ReplyArgs: %v\n", reply)
-					ck.lastLeader=i
+					ck.lastLeader = i
 					return reply.Value
 				} else {
 					//	fmt.Printf("%d Error: %s\n",i,reply.Err)
@@ -104,9 +109,8 @@ func (ck *Clerk) Get(key string) string {
 //
 func (ck *Clerk) PutAppend(key string, value string, op string) {
 	// You will have to modify this function.
-
-
-	args := PutAppendArgs{Key: key, Value: value, Op: op}
+	ck.serialNum++
+	args := PutAppendArgs{Key: key, Value: value, Op: op, ClerkId: ck.id, SerialNum: ck.serialNum}
 	reply := PutAppendReply{}
 	ok := ck.servers[ck.lastLeader].Call("KVServer.PutAppend", &args, &reply)
 	if ok {
