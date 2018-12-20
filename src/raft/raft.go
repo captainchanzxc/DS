@@ -93,7 +93,7 @@ type Raft struct {
 	MatchIndex []int
 
 	//use to debug
-	rfLog *log.Logger
+	rfLog   *log.Logger
 	isAlive bool
 }
 
@@ -216,7 +216,7 @@ type RequestVoteReply struct {
 func (rf *Raft) RequestVote(args *RequestVoteArgs, reply *RequestVoteReply) {
 	// Your code here (2A, 2B).
 	rf.mu.Lock()
-	reply.ReceivedTerm=args.Term
+	reply.ReceivedTerm = args.Term
 	reply.Term = rf.CurrentTerm
 	if args.Term < rf.CurrentTerm {
 		reply.VoterGranted = false
@@ -323,7 +323,7 @@ func (rf *Raft) startElection() {
 			rf.mu.Unlock()
 			rf.mu.Lock()
 			defer rf.mu.Unlock()
-			if rvr.VoterGranted&&rvr.ReceivedTerm==rf.CurrentTerm {
+			if rvr.VoterGranted && rvr.ReceivedTerm == rf.CurrentTerm {
 				count += 1
 				if count > len(rf.peers)/2 {
 					rf.rfLog.Println("becomes leader")
@@ -396,9 +396,9 @@ type AppendEntryArgs struct {
 }
 
 type AppendEntryReply struct {
-	Term    int
+	Term         int
 	ReceivedTerm int
-	Success bool
+	Success      bool
 }
 
 func (rf *Raft) AppendEntries(args *AppendEntryArgs, reply *AppendEntryReply) {
@@ -415,7 +415,7 @@ func (rf *Raft) AppendEntries(args *AppendEntryArgs, reply *AppendEntryReply) {
 		rf.State = Follower
 		rf.persist()
 	}
-	reply.ReceivedTerm=args.Term
+	reply.ReceivedTerm = args.Term
 	reply.Term = rf.CurrentTerm
 	//	fmt.Printf("%s leader %d(prev Index: %d, current Term: %d) send peer %d(current term: %d): %v\n ", time.Now().Format("2006/01/02/ 15:03:04.000"), args.LeaderId, args.PrevLogIndex,args.Term,rf.me, rf.CurrentTerm,args.Entries)
 	//args.PrevLogIndex>len(rf.Logs)-1这种情况也算不match
@@ -467,7 +467,7 @@ func (rf *Raft) startHeartBeat() {
 	for true {
 		for i := 0; i < len(rf.peers); i++ {
 			rf.mu.Lock()
-			if rf.State != Leader || rf.isAlive==false{
+			if rf.State != Leader || rf.isAlive == false {
 				//fmt.Printf("leader %d return !!!\n", rf.me)
 				rf.mu.Unlock()
 				return
@@ -524,7 +524,7 @@ func (rf *Raft) replicateLog() {
 					rf.mu.Unlock()
 					return
 				}
-			//	rf.printState()
+				//	rf.printState()
 				args := AppendEntryArgs{}
 				reply := AppendEntryReply{}
 				args.Term = rf.CurrentTerm
@@ -540,7 +540,7 @@ func (rf *Raft) replicateLog() {
 				ok := rf.sendAppendEntries(peer, &args, &reply)
 				if ok {
 					rf.mu.Lock()
-					if reply.ReceivedTerm!=rf.CurrentTerm{
+					if reply.ReceivedTerm != rf.CurrentTerm {
 						rf.mu.Unlock()
 						return
 					}
@@ -568,7 +568,7 @@ func (rf *Raft) replicateLog() {
 
 			}(i)
 			rf.mu.Lock()
-			if rf.State!=Leader || rf.isAlive==false{
+			if rf.State != Leader || rf.isAlive == false {
 				rf.mu.Unlock()
 				return
 			}
@@ -584,7 +584,7 @@ func (rf *Raft) checkApplied() {
 	for true {
 
 		rf.mu.Lock()
-		if rf.isAlive==false{
+		if rf.isAlive == false {
 			rf.mu.Unlock()
 			break
 		}
@@ -603,7 +603,7 @@ func (rf *Raft) checkApplied() {
 func (rf *Raft) checkLeaderCommitIndex() {
 	for true {
 		rf.mu.Lock()
-		if rf.State != Leader || rf.isAlive==false {
+		if rf.State != Leader || rf.isAlive == false {
 			rf.mu.Unlock()
 			break
 		}
@@ -671,20 +671,20 @@ func (rf *Raft) Start(command interface{}) (int, int, bool) {
 func (rf *Raft) Kill() {
 	// Your code here, if desired.
 	rf.mu.Lock()
-	rf.isAlive=false
+	rf.isAlive = false
 	rf.mu.Unlock()
 }
 
-func (rf *Raft)printState(){
-	fmt.Printf(">>>>>>>>peer %d state start print\n" +
-		"state: %s\n" +
-		"current term: %d\n" +
-		"voted for: %d\n" +
-		"commit inex: %d\n" +
-		"last applied: %d\n" +
-		"logs: %v\n" +
-		"next index: %v\n" +
-		"match index: %v\n" +
+func (rf *Raft) printState() {
+	fmt.Printf(">>>>>>>>peer %d state start print\n"+
+		"state: %s\n"+
+		"current term: %d\n"+
+		"voted for: %d\n"+
+		"commit inex: %d\n"+
+		"last applied: %d\n"+
+		"logs: %v\n"+
+		"next index: %v\n"+
+		"match index: %v\n"+
 		"<<<<<<<<<peer %d state end print\n\n",
 
 		rf.me,
@@ -698,7 +698,6 @@ func (rf *Raft)printState(){
 		rf.MatchIndex,
 		rf.me)
 }
-
 
 //
 // the service or tester wants to create a Raft server. the ports
@@ -718,14 +717,14 @@ func Make(peers []*labrpc.ClientEnd, me int,
 	rf.persister = persister
 	rf.me = me
 	// Your initialization code here (2A, 2B, 2C).
-	rf.rfLog=log.New(os.Stdout,"[raft "+strconv.Itoa(rf.me)+"] ",log.Lmicroseconds)
+	rf.rfLog = log.New(os.Stdout, "[raft "+strconv.Itoa(rf.me)+"] ", log.Lmicroseconds)
 	rf.CurrentTerm = 0
 	rf.resetElectionTimeOut()
 	rf.State = Follower
 	rf.CommitIndex = 0
 	rf.LastApplied = 0
 	rf.VotedFor = -1
-	rf.isAlive=true
+	rf.isAlive = true
 	rf.applyCh = applyCh
 	rf.Logs = append(rf.Logs, Log{0, 0})
 	for j := 0; j < len(rf.peers); j++ {

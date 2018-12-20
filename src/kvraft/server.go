@@ -47,11 +47,13 @@ type KVServer struct {
 	maxraftstate int // snapshot if log grows this big
 
 	// Your definitions here.
-	logFile    string
+	logFile    *os.File
 	kvLog      *log.Logger
 	mapDb      map[string]string
 	serialNums map[int64]int
 	readCh     chan string
+	writeCompleteCh chan int
+
 }
 
 func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
@@ -63,7 +65,9 @@ func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 	if !isLeader {
 		reply.Err = "kvserver is not a leader."
 	} else {
+		kv.kvLog.Printf("receive op: %v\n", op)
 		reply.Value = <-kv.readCh
+		kv.kvLog.Printf("reply op: %v\n", op)
 	}
 	kv.kvLog.Printf("return: %v\n", reply)
 }
@@ -87,6 +91,8 @@ func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 		reply.Err = "kvserver is not a leader."
 	} else {
 		kv.kvLog.Printf("receive op: %v\n", op)
+		<-kv.writeCompleteCh
+		kv.kvLog.Printf("reply op: %v\n", op)
 	}
 
 }
@@ -97,18 +103,25 @@ func (kv *KVServer) apply() {
 		applyMsg := <-kv.applyCh
 		command := applyMsg.Command.(Op)
 		kv.kvLog.Printf("apply: %v\n", command)
+		_, isLeader := kv.rf.GetState()
 		if command.Type == putOp || command.Type == appendOp {
 			if kv.serialNums[command.ClerkId] < command.SerialNum {
 				kv.serialNums[command.ClerkId] = command.SerialNum
 				switch command.Type {
 				case putOp:
 					kv.mapDb[command.Key] = command.Value
+					if isLeader{
+						kv.writeCompleteCh<-1
+					}
 				case appendOp:
 					kv.mapDb[command.Key] += command.Value
+					if isLeader{
+						kv.writeCompleteCh<-1
+					}
 				}
+
 			}
 		} else {
-			_, isLeader := kv.rf.GetState()
 			if isLeader {
 				kv.readCh <- kv.mapDb[command.Key]
 			}
@@ -126,6 +139,7 @@ func (kv *KVServer) apply() {
 func (kv *KVServer) Kill() {
 	kv.rf.Kill()
 	// Your code here, if desired.
+	kv.logFile.Close()
 }
 
 //
@@ -156,22 +170,22 @@ func StartKVServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persiste
 	//if err!=nil{
 	//	panic(err)
 	//}
-	kv.logFile = strconv.Itoa(kv.me) + ".log"
-	f, err := os.Create(kv.logFile)
+	f, err := os.Create(strconv.Itoa(kv.me) + ".log")
+	kv.logFile=f
 	if err != nil {
 		panic(err)
 	}
-	kv.kvLog = log.New(f, "[server "+strconv.Itoa(kv.me)+"] ", log.Lmicroseconds)
+	kv.kvLog = log.New(kv.logFile, "[server "+strconv.Itoa(kv.me)+"] ", log.Lmicroseconds)
 
 	kv.kvLog.Printf("servers number: %d\n", len(servers))
 	kv.mapDb = make(map[string]string)
 	kv.readCh = make(chan string)
+	kv.writeCompleteCh=make(chan int)
 	kv.applyCh = make(chan raft.ApplyMsg)
 	kv.serialNums = make(map[int64]int)
 	kv.rf = raft.Make(servers, me, persister, kv.applyCh)
 
 	// You may need initialization code here.
 	go kv.apply()
-
 	return kv
 }

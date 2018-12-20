@@ -1,7 +1,6 @@
 package raftkv
 
 import (
-	"io/ioutil"
 	"labrpc"
 	"log"
 	"os"
@@ -15,7 +14,7 @@ type Clerk struct {
 	servers []*labrpc.ClientEnd
 	// You will have to modify this struct.
 	ckLog      *log.Logger
-	logFile    string
+	logFile    *os.File
 	lastLeader int
 	serialNum  int
 	id int64
@@ -32,15 +31,15 @@ func MakeClerk(servers []*labrpc.ClientEnd) *Clerk {
 	ck := new(Clerk)
 	ck.servers = servers
 	// You'll have to add code here.
-	ck.logFile = "client_0.log"
-	_, err := os.Create(ck.logFile)
 
+	f, err := os.Create("client_0.log")
+	ck.logFile =f
 	if err != nil {
 		panic(err)
 	}
 	ck.serialNum = 0
 	ck.id=nrand()
-	ck.ckLog = log.New(ioutil.Discard, "[client "+strconv.Itoa(0)+"] ", log.Lmicroseconds)
+	ck.ckLog = log.New(os.Stdout, "[client "+strconv.FormatInt(ck.id,10)+"] ", log.Lmicroseconds)
 	return ck
 }
 
@@ -63,7 +62,7 @@ func (ck *Clerk) Get(key string) string {
 	ck.serialNum++
 	args := GetArgs{Key: key, ClerkId: ck.id, SerialNum: ck.serialNum}
 	//defer time.Sleep(3*time.Second)
-	ck.ckLog.Println("----------------------start to send get command")
+	ck.ckLog.Printf("----------------------start to send get command: %v\n",args)
 	reply := GetReply{}
 	ok := ck.servers[ck.lastLeader].Call("KVServer.Get", &args, &reply)
 	if ok {
@@ -76,11 +75,10 @@ func (ck *Clerk) Get(key string) string {
 
 	for {
 		for i := 0; i < len(ck.servers); i++ {
-
 			reply := GetReply{}
-			ck.ckLog.Println("call server get")
+			ck.ckLog.Printf("call server get %d\n",i)
 			ok := ck.servers[i].Call("KVServer.Get", &args, &reply)
-			ck.ckLog.Println("reply from server get")
+			ck.ckLog.Printf("reply from server get %d\n",i)
 			if ok {
 				if reply.Err == "" {
 					ck.ckLog.Printf("send GetArgs: %v\n", args)

@@ -1,58 +1,7 @@
-[server 3] 19:47:55.670462 servers number: 5
-[server 3] 19:47:55.670971 start to apply
-[server 3] 19:47:56.108766 return: &{true kvserver is not a leader. }
-[server 3] 19:47:56.109998 return: &{true kvserver is not a leader. }
-[server 3] 19:47:56.147242 apply: {put 0  1 338202081896358288}
-[server 3] 19:47:56.147305 map[0:]
-[server 3] 19:47:56.147333 start to apply
-[server 3] 19:47:56.180123 apply: {get 0  2 338202081896358288}
-[server 3] 19:47:56.180190 map[0:]
-[server 3] 19:47:56.180291 start to apply
-[server 3] 19:47:56.211021 apply: {append 0 x 0 0 y 3 338202081896358288}
-[server 3] 19:47:56.211081 map[0:x 0 0 y]
-[server 3] 19:47:56.211100 start to apply
-[server 3] 19:47:56.232580 apply: {append 0 x 0 1 y 4 338202081896358288}
-[server 3] 19:47:56.232677 map[0:x 0 0 yx 0 1 y]
-[server 3] 19:47:56.232713 start to apply
-[server 3] 19:47:56.263341 apply: {append 0 x 0 2 y 5 338202081896358288}
-[server 3] 19:47:56.263405 map[0:x 0 0 yx 0 1 yx 0 2 y]
-[server 3] 19:47:56.263424 start to apply
-[server 3] 19:47:56.295108 apply: {get 0  6 338202081896358288}
-[server 3] 19:47:56.295178 map[0:x 0 0 yx 0 1 yx 0 2 y]
-[server 3] 19:47:56.295207 start to apply
-[server 3] 19:47:56.325923 apply: {append 0 x 0 3 y 7 338202081896358288}
-[server 3] 19:47:56.325971 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 y]
-[server 3] 19:47:56.325990 start to apply
-[server 3] 19:47:56.356700 apply: {append 0 x 0 4 y 8 338202081896358288}
-[server 3] 19:47:56.356754 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 y]
-[server 3] 19:47:56.356774 start to apply
-[server 3] 19:47:56.387421 apply: {append 0 x 0 5 y 9 338202081896358288}
-[server 3] 19:47:56.387484 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 y]
-[server 3] 19:47:56.387552 start to apply
-[server 3] 19:47:56.408602 apply: {get 0  10 338202081896358288}
-[server 3] 19:47:56.408649 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 y]
-[server 3] 19:47:56.408686 start to apply
-[server 3] 19:47:56.450342 apply: {append 0 x 0 6 y 11 338202081896358288}
-[server 3] 19:47:56.450389 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y]
-[server 3] 19:47:56.450424 start to apply
-[server 3] 19:47:56.481835 apply: {get 0  12 338202081896358288}
-[server 3] 19:47:56.481974 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y]
-[server 3] 19:47:56.482033 start to apply
-[server 3] 19:47:56.513744 apply: {append 0 x 0 7 y 13 338202081896358288}
-[server 3] 19:47:56.513812 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 y]
-[server 3] 19:47:56.513856 start to apply
-[server 3] 19:47:56.545334 apply: {append 0 x 0 8 y 14 338202081896358288}
-[server 3] 19:47:56.545387 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 y]
-[server 3] 19:47:56.545410 start to apply
-[server 3] 19:47:56.576053 apply: {append 0 x 0 9 y 15 338202081896358288}
-[server 3] 19:47:56.576126 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 y]
-[server 3] 19:47:56.576149 start to apply
-[server 3] 19:47:56.607374 apply: {get 0  16 338202081896358288}
-[server 3] 19:47:56.607428 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 y]
-[server 3] 19:47:56.607457 start to apply
-[server 3] 19:47:56.638129 apply: {get 0  17 338202081896358288}
-[server 3] 19:47:56.638202 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 y]
-[server 3] 19:47:56.638231 start to apply
-[server 3] 19:47:56.669396 apply: {append 0 x 0 10 y 18 338202081896358288}
-[server 3] 19:47:56.669473 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 y]
-[server 3] 19:47:56.669497 start to apply
+[server 3] 22:13:00.886903 servers number: 5
+[server 3] 22:13:00.886985 start to apply
+[server 3] 22:13:01.276850 receive op: {put 1 13 1 2918507214573468313}
+[server 3] 22:13:01.307356 apply: {put 1 13 1 2918507214573468313}
+[server 3] 22:13:01.307381 map[1:13]
+[server 3] 22:13:01.307391 start to apply
+[server 3] 22:13:01.307399 reply op: {put 1 13 1 2918507214573468313}

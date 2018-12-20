@@ -1,56 +1,9 @@
-[server 1] 19:47:55.667415 servers number: 5
-[server 1] 19:47:55.667950 start to apply
-[server 1] 19:47:56.143447 apply: {put 0  1 338202081896358288}
-[server 1] 19:47:56.143511 map[0:]
-[server 1] 19:47:56.143530 start to apply
-[server 1] 19:47:56.174808 apply: {get 0  2 338202081896358288}
-[server 1] 19:47:56.174876 map[0:]
-[server 1] 19:47:56.174906 start to apply
-[server 1] 19:47:56.205843 apply: {append 0 x 0 0 y 3 338202081896358288}
-[server 1] 19:47:56.205954 map[0:x 0 0 y]
-[server 1] 19:47:56.205985 start to apply
-[server 1] 19:47:56.236863 apply: {append 0 x 0 1 y 4 338202081896358288}
-[server 1] 19:47:56.236966 map[0:x 0 0 yx 0 1 y]
-[server 1] 19:47:56.237014 start to apply
-[server 1] 19:47:56.267465 apply: {append 0 x 0 2 y 5 338202081896358288}
-[server 1] 19:47:56.267545 map[0:x 0 0 yx 0 1 yx 0 2 y]
-[server 1] 19:47:56.267565 start to apply
-[server 1] 19:47:56.298320 apply: {get 0  6 338202081896358288}
-[server 1] 19:47:56.298384 map[0:x 0 0 yx 0 1 yx 0 2 y]
-[server 1] 19:47:56.298406 start to apply
-[server 1] 19:47:56.329118 apply: {append 0 x 0 3 y 7 338202081896358288}
-[server 1] 19:47:56.329183 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 y]
-[server 1] 19:47:56.329212 start to apply
-[server 1] 19:47:56.359492 apply: {append 0 x 0 4 y 8 338202081896358288}
-[server 1] 19:47:56.359547 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 y]
-[server 1] 19:47:56.359566 start to apply
-[server 1] 19:47:56.390156 apply: {append 0 x 0 5 y 9 338202081896358288}
-[server 1] 19:47:56.390207 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 y]
-[server 1] 19:47:56.390227 start to apply
-[server 1] 19:47:56.411015 apply: {get 0  10 338202081896358288}
-[server 1] 19:47:56.411062 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 y]
-[server 1] 19:47:56.411091 start to apply
-[server 1] 19:47:56.451758 apply: {append 0 x 0 6 y 11 338202081896358288}
-[server 1] 19:47:56.451837 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y]
-[server 1] 19:47:56.451899 start to apply
-[server 1] 19:47:56.483419 apply: {get 0  12 338202081896358288}
-[server 1] 19:47:56.483469 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y]
-[server 1] 19:47:56.483511 start to apply
-[server 1] 19:47:56.515426 apply: {append 0 x 0 7 y 13 338202081896358288}
-[server 1] 19:47:56.515655 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 y]
-[server 1] 19:47:56.515712 start to apply
-[server 1] 19:47:56.546502 apply: {append 0 x 0 8 y 14 338202081896358288}
-[server 1] 19:47:56.546552 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 y]
-[server 1] 19:47:56.546600 start to apply
-[server 1] 19:47:56.577616 apply: {append 0 x 0 9 y 15 338202081896358288}
-[server 1] 19:47:56.577670 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 y]
-[server 1] 19:47:56.577698 start to apply
-[server 1] 19:47:56.608950 apply: {get 0  16 338202081896358288}
-[server 1] 19:47:56.609024 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 y]
-[server 1] 19:47:56.609055 start to apply
-[server 1] 19:47:56.639715 apply: {get 0  17 338202081896358288}
-[server 1] 19:47:56.639768 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 y]
-[server 1] 19:47:56.639791 start to apply
-[server 1] 19:47:56.670907 apply: {append 0 x 0 10 y 18 338202081896358288}
-[server 1] 19:47:56.670984 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 y]
-[server 1] 19:47:56.671003 start to apply
+[server 1] 22:13:00.884937 servers number: 5
+[server 1] 22:13:00.885377 start to apply
+[server 1] 22:13:01.752921 receive op: {put 1 14 1 1409959839773587676}
+[server 1] 22:13:01.769463 apply: {put 1 13 1 2918507214573468313}
+[server 1] 22:13:01.769512 map[1:13]
+[server 1] 22:13:01.769518 start to apply
+[server 1] 22:13:01.769526 reply op: {put 1 14 1 1409959839773587676}
+[server 1] 22:13:01.779845 apply: {put 1 14 1 1409959839773587676}
+[server 1] 22:13:01.888892 receive op: {get 1  2 1409959839773587676}
