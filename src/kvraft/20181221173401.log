@@ -1,0 +1,25 @@
+Test: concurrent append to same key, unreliable (3A) ...
+  ... Passed --   2.6  3   328   52
+PASS
+ok  	kvraft	2.610s
+=======================
+Test: concurrent append to same key, unreliable (3A) ...
+  ... Passed --   2.6  3   385   52
+PASS
+ok  	kvraft	2.651s
+=======================
+Test: concurrent append to same key, unreliable (3A) ...
+  ... Passed --   2.6  3   387   52
+PASS
+ok  	kvraft	2.578s
+=======================
+Test: concurrent append to same key, unreliable (3A) ...
+  ... Passed --   2.7  3   391   52
+PASS
+ok  	kvraft	2.767s
+=======================
+Test: concurrent append to same key, unreliable (3A) ...
+  ... Passed --   2.6  3   416   52
+PASS
+ok  	kvraft	2.635s
+=======================

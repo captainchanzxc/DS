@@ -1,6 +1,7 @@
 package raftkv
 
 import (
+	"io/ioutil"
 	"labrpc"
 	"log"
 	"os"
@@ -39,7 +40,7 @@ func MakeClerk(servers []*labrpc.ClientEnd) *Clerk {
 	}
 	ck.serialNum = 0
 	ck.id=nrand()
-	ck.ckLog = log.New(os.Stdout, "[client "+strconv.FormatInt(ck.id,10)+"] ", log.Lmicroseconds)
+	ck.ckLog = log.New(ioutil.Discard, "[client "+strconv.FormatInt(ck.id,10)+"] ", log.Lmicroseconds)
 	return ck
 }
 

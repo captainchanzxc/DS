@@ -20,10 +20,10 @@ package raft
 import (
 	"bytes"
 	"fmt"
+	"io/ioutil"
 	"labgob"
 	"log"
 	"math/rand"
-	"os"
 	"strconv"
 	"sync"
 	"time"
@@ -284,6 +284,7 @@ func (rf *Raft) sendRequestVote(server int, args *RequestVoteArgs, reply *Reques
 }
 
 func (rf *Raft) startElection() {
+	rf.rfLog.Println("start a new election")
 	//	fmt.Printf("%s peer %d starts election\n", time.Now().Format("2006/01/02/ 15:03:04.000"), rf.me)
 	rf.mu.Lock()
 	rf.CurrentTerm += 1
@@ -411,6 +412,7 @@ func (rf *Raft) AppendEntries(args *AppendEntryArgs, reply *AppendEntryReply) {
 	}
 
 	if args.Term > rf.CurrentTerm {
+		rf.rfLog.Println("becomes follower in AppendEntries")
 		rf.CurrentTerm = args.Term
 		rf.State = Follower
 		rf.persist()
@@ -489,6 +491,7 @@ func (rf *Raft) startHeartBeat() {
 					rf.mu.Lock()
 					if reply.Term > rf.CurrentTerm {
 						rf.CurrentTerm = reply.Term
+						rf.rfLog.Println("becomes follower in startHeartBeat")
 						//		fmt.Printf("leader %d becomes follower\n", rf.me)
 						rf.State = Follower
 						rf.persist()
@@ -547,6 +550,7 @@ func (rf *Raft) replicateLog() {
 					//fmt.Printf("peer %d %t!!!!!!!\n",peer,reply.Success)
 					if reply.Term > rf.CurrentTerm {
 						rf.CurrentTerm = reply.Term
+						rf.rfLog.Println("becomes follower in replicateLog")
 						//	fmt.Printf("leader %d becomes follower in replicate\n", rf.me)
 						rf.State = Follower
 						rf.persist()
@@ -717,7 +721,7 @@ func Make(peers []*labrpc.ClientEnd, me int,
 	rf.persister = persister
 	rf.me = me
 	// Your initialization code here (2A, 2B, 2C).
-	rf.rfLog = log.New(os.Stdout, "[raft "+strconv.Itoa(rf.me)+"] ", log.Lmicroseconds)
+	rf.rfLog = log.New(ioutil.Discard, "[raft "+strconv.Itoa(rf.me)+"] ", log.Lmicroseconds)
 	rf.CurrentTerm = 0
 	rf.resetElectionTimeOut()
 	rf.State = Follower

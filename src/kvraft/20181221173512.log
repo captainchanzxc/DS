@@ -1,0 +1,65 @@
+Test: progress in majority (3A) ...
+  ... Passed --   0.4  5    46    2
+Test: no progress in minority (3A) ...
+  ... Passed --   1.1  5   229    3
+Test: completion after heal (3A) ...
+--- FAIL: TestOnePartition3A (2.99s)
+	test_test.go:42: Get(1): expected:
+		15
+		received:
+		16
+FAIL
+exit status 1
+FAIL	kvraft	2.995s
+=======================
+Test: progress in majority (3A) ...
+  ... Passed --   0.6  5    44    2
+Test: no progress in minority (3A) ...
+  ... Passed --   1.1  5   228    3
+Test: completion after heal (3A) ...
+--- FAIL: TestOnePartition3A (3.18s)
+	test_test.go:42: Get(1): expected:
+		15
+		received:
+		16
+FAIL
+exit status 1
+FAIL	kvraft	3.187s
+=======================
+Test: progress in majority (3A) ...
+  ... Passed --   0.6  5    56    2
+Test: no progress in minority (3A) ...
+  ... Passed --   1.1  5   244    3
+Test: completion after heal (3A) ...
+  ... Passed --   1.0  5    38    3
+PASS
+ok  	kvraft	3.079s
+=======================
+Test: progress in majority (3A) ...
+  ... Passed --   0.6  5    48    2
+Test: no progress in minority (3A) ...
+  ... Passed --   1.1  5   238    3
+Test: completion after heal (3A) ...
+--- FAIL: TestOnePartition3A (3.12s)
+	test_test.go:42: Get(1): expected:
+		15
+		received:
+		16
+FAIL
+exit status 1
+FAIL	kvraft	3.128s
+=======================
+Test: progress in majority (3A) ...
+  ... Passed --   0.5  5    50    2
+Test: no progress in minority (3A) ...
+  ... Passed --   1.1  5   240    3
+Test: completion after heal (3A) ...
+--- FAIL: TestOnePartition3A (3.05s)
+	test_test.go:42: Get(1): expected:
+		15
+		received:
+		16
+FAIL
+exit status 1
+FAIL	kvraft	3.060s
+=======================

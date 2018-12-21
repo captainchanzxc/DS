@@ -1,0 +1,25 @@
+Test: many clients (3A) ...
+  ... Passed --  15.9  5  7984  498
+PASS
+ok  	kvraft	15.950s
+=======================
+Test: many clients (3A) ...
+  ... Passed --  15.9  5  6858  487
+PASS
+ok  	kvraft	15.986s
+=======================
+Test: many clients (3A) ...
+  ... Passed --  15.9  5  6559  499
+PASS
+ok  	kvraft	15.889s
+=======================
+Test: many clients (3A) ...
+  ... Passed --  15.9  5  7005  481
+PASS
+ok  	kvraft	15.956s
+=======================
+Test: many clients (3A) ...
+  ... Passed --  15.9  5  6917  500
+PASS
+ok  	kvraft	15.936s
+=======================

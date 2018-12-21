@@ -5,8 +5,8 @@ import (
 	"time"
 )
 
-func main(){
-	var tc=make(chan  int)
+func main() {
+	var tc = make(chan int)
 	//var ac=make(chan  int)
 	//go func() {
 	//	select {
@@ -21,16 +21,20 @@ func main(){
 	//<-ac
 	//time.Sleep(3*time.Second)
 	//fmt.Println("exit")
-	for{
-		select {
-		case tc<-1:
-		default:
-			fmt.Println("default")
-			break
 
-		}
+	select {
+	case tc <- 1:
+	default:
+		fmt.Println("default")
+		break
+
 	}
 
+	go func() {
+		time.Sleep(3 * time.Second)
+		a := <-tc
+		fmt.Println(a)
+	}()
+	time.Sleep(6 * time.Second)
 	fmt.Println("return")
-	time.Sleep(3*time.Second)
 }

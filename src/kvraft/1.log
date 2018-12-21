@@ -1,9 +1,353 @@
-[server 1] 22:13:00.884937 servers number: 5
-[server 1] 22:13:00.885377 start to apply
-[server 1] 22:13:01.752921 receive op: {put 1 14 1 1409959839773587676}
-[server 1] 22:13:01.769463 apply: {put 1 13 1 2918507214573468313}
-[server 1] 22:13:01.769512 map[1:13]
-[server 1] 22:13:01.769518 start to apply
-[server 1] 22:13:01.769526 reply op: {put 1 14 1 1409959839773587676}
-[server 1] 22:13:01.779845 apply: {put 1 14 1 1409959839773587676}
-[server 1] 22:13:01.888892 receive op: {get 1  2 1409959839773587676}
+[server 1] 17:39:11.544609 servers number: 5
+[server 1] 17:39:11.547517 start to apply
+[server 1] 17:39:12.013138 apply: {put 3  1 2019183452465306093}
+[server 1] 17:39:12.013169 map[3:]
+[server 1] 17:39:12.013179 start to apply
+[server 1] 17:39:12.058910 apply: {put 4  1 962852489277244575}
+[server 1] 17:39:12.058924 map[3: 4:]
+[server 1] 17:39:12.058933 start to apply
+[server 1] 17:39:12.080060 apply: {put 0  1 4466244089962267029}
+[server 1] 17:39:12.080074 map[3: 4: 0:]
+[server 1] 17:39:12.080083 start to apply
+[server 1] 17:39:12.111753 apply: {put 1  1 1503984714073230548}
+[server 1] 17:39:12.111776 map[3: 4: 0: 1:]
+[server 1] 17:39:12.111786 start to apply
+[server 1] 17:39:12.144487 apply: {put 2  1 2005886353239344110}
+[server 1] 17:39:12.144503 map[3: 4: 0: 1: 2:]
+[server 1] 17:39:12.144512 start to apply
+[server 1] 17:39:12.176218 apply: {get 3  2 2019183452465306093}
+[server 1] 17:39:12.176232 map[3: 4: 0: 1: 2:]
+[server 1] 17:39:12.176241 start to apply
+[server 1] 17:39:12.207736 apply: {append 4 x 4 0 y 2 962852489277244575}
+[server 1] 17:39:12.207751 map[4:x 4 0 y 0: 1: 2: 3:]
+[server 1] 17:39:12.207759 start to apply
+[server 1] 17:39:12.241778 apply: {append 0 x 0 0 y 2 4466244089962267029}
+[server 1] 17:39:12.241813 map[3: 4:x 4 0 y 0:x 0 0 y 1: 2:]
+[server 1] 17:39:12.241823 start to apply
+[server 1] 17:39:12.274196 apply: {append 1 x 1 0 y 2 1503984714073230548}
+[server 1] 17:39:12.274225 map[3: 4:x 4 0 y 0:x 0 0 y 1:x 1 0 y 2:]
+[server 1] 17:39:12.274235 start to apply
+[server 1] 17:39:12.288003 apply: {append 2 x 2 0 y 2 2005886353239344110}
+[server 1] 17:39:12.288020 map[3: 4:x 4 0 y 0:x 0 0 y 1:x 1 0 y 2:x 2 0 y]
+[server 1] 17:39:12.288029 start to apply
+[server 1] 17:39:12.330539 apply: {get 3  3 2019183452465306093}
+[server 1] 17:39:12.330555 map[2:x 2 0 y 3: 4:x 4 0 y 0:x 0 0 y 1:x 1 0 y]
+[server 1] 17:39:12.330564 start to apply
+[server 1] 17:39:12.362523 apply: {append 4 x 4 1 y 3 962852489277244575}
+[server 1] 17:39:12.362553 map[3: 4:x 4 0 yx 4 1 y 0:x 0 0 y 1:x 1 0 y 2:x 2 0 y]
+[server 1] 17:39:12.362564 start to apply
+[server 1] 17:39:12.367694 return: &{true not leader }
+[server 1] 17:39:12.367814 return: &{true not leader }
+[server 1] 17:39:12.387979 apply: {append 0 x 0 1 y 3 4466244089962267029}
+[server 1] 17:39:12.388013 map[3: 4:x 4 0 yx 4 1 y 0:x 0 0 yx 0 1 y 1:x 1 0 y 2:x 2 0 y]
+[server 1] 17:39:12.388023 start to apply
+[server 1] 17:39:12.420563 apply: {append 1 x 1 1 y 3 1503984714073230548}
+[server 1] 17:39:12.420579 map[2:x 2 0 y 3: 4:x 4 0 yx 4 1 y 0:x 0 0 yx 0 1 y 1:x 1 0 yx 1 1 y]
+[server 1] 17:39:12.420627 start to apply
+[server 1] 17:39:12.420896 return: &{true not leader }
+[server 1] 17:39:12.421000 return: &{true not leader }
+[server 1] 17:39:12.453794 apply: {append 2 x 2 1 y 3 2005886353239344110}
+[server 1] 17:39:12.453829 map[4:x 4 0 yx 4 1 y 0:x 0 0 yx 0 1 y 1:x 1 0 yx 1 1 y 2:x 2 0 yx 2 1 y 3:]
+[server 1] 17:39:12.453839 start to apply
+[server 1] 17:39:12.485493 apply: {append 3 x 3 0 y 4 2019183452465306093}
+[server 1] 17:39:12.485527 map[4:x 4 0 yx 4 1 y 0:x 0 0 yx 0 1 y 1:x 1 0 yx 1 1 y 2:x 2 0 yx 2 1 y 3:x 3 0 y]
+[server 1] 17:39:12.485581 start to apply
+[server 1] 17:39:12.522171 apply: {get 4  4 962852489277244575}
+[server 1] 17:39:12.522188 map[3:x 3 0 y 4:x 4 0 yx 4 1 y 0:x 0 0 yx 0 1 y 1:x 1 0 yx 1 1 y 2:x 2 0 yx 2 1 y]
+[server 1] 17:39:12.522197 start to apply
+[server 1] 17:39:12.543289 apply: {get 0  4 4466244089962267029}
+[server 1] 17:39:12.543305 map[3:x 3 0 y 4:x 4 0 yx 4 1 y 0:x 0 0 yx 0 1 y 1:x 1 0 yx 1 1 y 2:x 2 0 yx 2 1 y]
+[server 1] 17:39:12.543314 start to apply
+[server 1] 17:39:12.576013 apply: {append 1 x 1 2 y 4 1503984714073230548}
+[server 1] 17:39:12.576031 map[0:x 0 0 yx 0 1 y 1:x 1 0 yx 1 1 yx 1 2 y 2:x 2 0 yx 2 1 y 3:x 3 0 y 4:x 4 0 yx 4 1 y]
+[server 1] 17:39:12.576040 start to apply
+[server 1] 17:39:12.586381 apply: {get 2  4 2005886353239344110}
+[server 1] 17:39:12.586411 map[3:x 3 0 y 4:x 4 0 yx 4 1 y 0:x 0 0 yx 0 1 y 1:x 1 0 yx 1 1 yx 1 2 y 2:x 2 0 yx 2 1 y]
+[server 1] 17:39:12.586421 start to apply
+[server 1] 17:39:12.648674 apply: {append 3 x 3 1 y 5 2019183452465306093}
+[server 1] 17:39:12.648769 map[3:x 3 0 yx 3 1 y 4:x 4 0 yx 4 1 y 0:x 0 0 yx 0 1 y 1:x 1 0 yx 1 1 yx 1 2 y 2:x 2 0 yx 2 1 y]
+[server 1] 17:39:12.648781 start to apply
+[server 1] 17:39:12.680065 apply: {get 4  5 962852489277244575}
+[server 1] 17:39:12.680092 map[4:x 4 0 yx 4 1 y 0:x 0 0 yx 0 1 y 1:x 1 0 yx 1 1 yx 1 2 y 2:x 2 0 yx 2 1 y 3:x 3 0 yx 3 1 y]
+[server 1] 17:39:12.680104 start to apply
+[server 1] 17:39:12.701668 apply: {append 0 x 0 2 y 5 4466244089962267029}
+[server 1] 17:39:12.701684 map[3:x 3 0 yx 3 1 y 4:x 4 0 yx 4 1 y 0:x 0 0 yx 0 1 yx 0 2 y 1:x 1 0 yx 1 1 yx 1 2 y 2:x 2 0 yx 2 1 y]
+[server 1] 17:39:12.701692 start to apply
+[server 1] 17:39:12.734147 apply: {append 1 x 1 3 y 5 1503984714073230548}
+[server 1] 17:39:12.734163 map[1:x 1 0 yx 1 1 yx 1 2 yx 1 3 y 2:x 2 0 yx 2 1 y 3:x 3 0 yx 3 1 y 4:x 4 0 yx 4 1 y 0:x 0 0 yx 0 1 yx 0 2 y]
+[server 1] 17:39:12.734172 start to apply
+[server 1] 17:39:12.766663 apply: {get 2  5 2005886353239344110}
+[server 1] 17:39:12.766679 map[1:x 1 0 yx 1 1 yx 1 2 yx 1 3 y 2:x 2 0 yx 2 1 y 3:x 3 0 yx 3 1 y 4:x 4 0 yx 4 1 y 0:x 0 0 yx 0 1 yx 0 2 y]
+[server 1] 17:39:12.766687 start to apply
+[server 1] 17:39:12.799055 apply: {get 3  6 2019183452465306093}
+[server 1] 17:39:12.799070 map[0:x 0 0 yx 0 1 yx 0 2 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 y 2:x 2 0 yx 2 1 y 3:x 3 0 yx 3 1 y 4:x 4 0 yx 4 1 y]
+[server 1] 17:39:12.799079 start to apply
+[server 1] 17:39:12.833012 apply: {append 4 x 4 2 y 6 962852489277244575}
+[server 1] 17:39:12.833028 map[1:x 1 0 yx 1 1 yx 1 2 yx 1 3 y 2:x 2 0 yx 2 1 y 3:x 3 0 yx 3 1 y 4:x 4 0 yx 4 1 yx 4 2 y 0:x 0 0 yx 0 1 yx 0 2 y]
+[server 1] 17:39:12.833037 start to apply
+[server 1] 17:39:12.855053 apply: {get 0  6 4466244089962267029}
+[server 1] 17:39:12.855069 map[2:x 2 0 yx 2 1 y 3:x 3 0 yx 3 1 y 4:x 4 0 yx 4 1 yx 4 2 y 0:x 0 0 yx 0 1 yx 0 2 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 y]
+[server 1] 17:39:12.855078 start to apply
+[server 1] 17:39:12.888019 apply: {append 1 x 1 4 y 6 1503984714073230548}
+[server 1] 17:39:12.888035 map[3:x 3 0 yx 3 1 y 4:x 4 0 yx 4 1 yx 4 2 y 0:x 0 0 yx 0 1 yx 0 2 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 y 2:x 2 0 yx 2 1 y]
+[server 1] 17:39:12.888066 start to apply
+[server 1] 17:39:12.919275 apply: {append 2 x 2 2 y 6 2005886353239344110}
+[server 1] 17:39:12.919290 map[3:x 3 0 yx 3 1 y 4:x 4 0 yx 4 1 yx 4 2 y 0:x 0 0 yx 0 1 yx 0 2 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 y 2:x 2 0 yx 2 1 yx 2 2 y]
+[server 1] 17:39:12.919298 start to apply
+[server 1] 17:39:12.952059 apply: {get 3  7 2019183452465306093}
+[server 1] 17:39:12.952083 map[0:x 0 0 yx 0 1 yx 0 2 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 y 2:x 2 0 yx 2 1 yx 2 2 y 3:x 3 0 yx 3 1 y 4:x 4 0 yx 4 1 yx 4 2 y]
+[server 1] 17:39:12.952094 start to apply
+[server 1] 17:39:12.987648 apply: {get 4  7 962852489277244575}
+[server 1] 17:39:12.987687 map[3:x 3 0 yx 3 1 y 4:x 4 0 yx 4 1 yx 4 2 y 0:x 0 0 yx 0 1 yx 0 2 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 y 2:x 2 0 yx 2 1 yx 2 2 y]
+[server 1] 17:39:12.987698 start to apply
+[server 1] 17:39:13.008432 apply: {get 0  7 4466244089962267029}
+[server 1] 17:39:13.008448 map[3:x 3 0 yx 3 1 y 4:x 4 0 yx 4 1 yx 4 2 y 0:x 0 0 yx 0 1 yx 0 2 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 y 2:x 2 0 yx 2 1 yx 2 2 y]
+[server 1] 17:39:13.008457 start to apply
+[server 1] 17:39:13.055877 apply: {append 1 x 1 5 y 7 1503984714073230548}
+[server 1] 17:39:13.055909 map[3:x 3 0 yx 3 1 y 4:x 4 0 yx 4 1 yx 4 2 y 0:x 0 0 yx 0 1 yx 0 2 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 y 2:x 2 0 yx 2 1 yx 2 2 y]
+[server 1] 17:39:13.055919 start to apply
+[server 1] 17:39:13.078106 apply: {append 2 x 2 3 y 7 2005886353239344110}
+[server 1] 17:39:13.078141 map[3:x 3 0 yx 3 1 y 4:x 4 0 yx 4 1 yx 4 2 y 0:x 0 0 yx 0 1 yx 0 2 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 y]
+[server 1] 17:39:13.078151 start to apply
+[server 1] 17:39:13.109783 apply: {append 3 x 3 2 y 8 2019183452465306093}
+[server 1] 17:39:13.109809 map[3:x 3 0 yx 3 1 yx 3 2 y 4:x 4 0 yx 4 1 yx 4 2 y 0:x 0 0 yx 0 1 yx 0 2 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 y]
+[server 1] 17:39:13.109824 start to apply
+[server 1] 17:39:13.130726 apply: {append 4 x 4 3 y 8 962852489277244575}
+[server 1] 17:39:13.130757 map[3:x 3 0 yx 3 1 yx 3 2 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 y]
+[server 1] 17:39:13.130767 start to apply
+[server 1] 17:39:13.162859 apply: {append 0 x 0 3 y 8 4466244089962267029}
+[server 1] 17:39:13.162889 map[3:x 3 0 yx 3 1 yx 3 2 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 y]
+[server 1] 17:39:13.162900 start to apply
+[server 1] 17:39:13.184949 apply: {append 1 x 1 6 y 8 1503984714073230548}
+[server 1] 17:39:13.184964 map[1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 y 3:x 3 0 yx 3 1 yx 3 2 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 y]
+[server 1] 17:39:13.184973 start to apply
+[server 1] 17:39:13.228685 apply: {get 2  8 2005886353239344110}
+[server 1] 17:39:13.228701 map[2:x 2 0 yx 2 1 yx 2 2 yx 2 3 y 3:x 3 0 yx 3 1 yx 3 2 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 y]
+[server 1] 17:39:13.228710 start to apply
+[server 1] 17:39:13.269952 apply: {get 3  9 2019183452465306093}
+[server 1] 17:39:13.269967 map[4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 y 3:x 3 0 yx 3 1 yx 3 2 y]
+[server 1] 17:39:13.269976 start to apply
+[server 1] 17:39:13.290249 apply: {get 4  9 962852489277244575}
+[server 1] 17:39:13.290299 map[3:x 3 0 yx 3 1 yx 3 2 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 y]
+[server 1] 17:39:13.290310 start to apply
+[server 1] 17:39:13.322294 apply: {get 0  9 4466244089962267029}
+[server 1] 17:39:13.322323 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 y 3:x 3 0 yx 3 1 yx 3 2 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y]
+[server 1] 17:39:13.322333 start to apply
+[server 1] 17:39:13.354301 apply: {append 1 x 1 7 y 9 1503984714073230548}
+[server 1] 17:39:13.354345 map[3:x 3 0 yx 3 1 yx 3 2 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 y]
+[server 1] 17:39:13.354355 start to apply
+[server 1] 17:39:13.386283 apply: {get 2  9 2005886353239344110}
+[server 1] 17:39:13.386336 map[3:x 3 0 yx 3 1 yx 3 2 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 y]
+[server 1] 17:39:13.386346 start to apply
+[server 1] 17:39:13.418259 apply: {append 3 x 3 3 y 10 2019183452465306093}
+[server 1] 17:39:13.418294 map[2:x 2 0 yx 2 1 yx 2 2 yx 2 3 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 y]
+[server 1] 17:39:13.418304 start to apply
+[server 1] 17:39:13.450681 apply: {get 4  10 962852489277244575}
+[server 1] 17:39:13.450720 map[4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 y]
+[server 1] 17:39:13.450731 start to apply
+[server 1] 17:39:13.471934 apply: {append 0 x 0 4 y 10 4466244089962267029}
+[server 1] 17:39:13.471949 map[1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 y]
+[server 1] 17:39:13.471958 start to apply
+[server 1] 17:39:13.492724 apply: {append 1 x 1 8 y 10 1503984714073230548}
+[server 1] 17:39:13.492740 map[2:x 2 0 yx 2 1 yx 2 2 yx 2 3 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 y]
+[server 1] 17:39:13.492775 start to apply
+[server 1] 17:39:13.538071 apply: {append 2 x 2 4 y 10 2005886353239344110}
+[server 1] 17:39:13.538097 map[1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 y]
+[server 1] 17:39:13.538108 start to apply
+[server 1] 17:39:13.569575 apply: {append 3 x 3 4 y 11 2019183452465306093}
+[server 1] 17:39:13.569638 map[3:x 3 0 yx 3 1 yx 3 2 yx 3 3 yx 3 4 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 y]
+[server 1] 17:39:13.569662 start to apply
+[server 1] 17:39:13.606191 apply: {get 4  11 962852489277244575}
+[server 1] 17:39:13.606207 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 yx 3 4 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y]
+[server 1] 17:39:13.606262 start to apply
+[server 1] 17:39:13.627667 apply: {append 0 x 0 5 y 11 4466244089962267029}
+[server 1] 17:39:13.627682 map[3:x 3 0 yx 3 1 yx 3 2 yx 3 3 yx 3 4 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 y]
+[server 1] 17:39:13.627691 start to apply
+[server 1] 17:39:13.651080 return: &{true not leader }
+[server 1] 17:39:13.661431 apply: {append 1 x 1 9 y 11 1503984714073230548}
+[server 1] 17:39:13.661456 map[4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 yx 1 9 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 yx 3 4 y]
+[server 1] 17:39:13.661468 start to apply
+[server 1] 17:39:13.693918 apply: {append 2 x 2 5 y 11 2005886353239344110}
+[server 1] 17:39:13.693942 map[3:x 3 0 yx 3 1 yx 3 2 yx 3 3 yx 3 4 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 yx 1 9 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 yx 2 5 y]
+[server 1] 17:39:13.693997 start to apply
+[server 1] 17:39:14.617707 receive op: {append 0 x 0 6 y 12 4466244089962267029}
+[server 1] 17:39:14.637768 apply: {get 3  12 2019183452465306093}
+[server 1] 17:39:14.637799 map[3:x 3 0 yx 3 1 yx 3 2 yx 3 3 yx 3 4 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 yx 1 9 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 yx 2 5 y]
+[server 1] 17:39:14.637809 start to apply
+[server 1] 17:39:14.650267 apply: {append 0 x 0 6 y 12 4466244089962267029}
+[server 1] 17:39:14.650302 map[3:x 3 0 yx 3 1 yx 3 2 yx 3 3 yx 3 4 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 yx 1 9 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 yx 2 5 y]
+[server 1] 17:39:14.650313 start to apply
+[server 1] 17:39:14.661244 receive op: {get 1  12 1503984714073230548}
+[server 1] 17:39:14.667017 receive op: {append 2 x 2 6 y 12 2005886353239344110}
+[server 1] 17:39:14.671951 apply: {get 1  12 1503984714073230548}
+[server 1] 17:39:14.671965 map[1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 yx 1 9 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 yx 2 5 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 yx 3 4 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y]
+[server 1] 17:39:14.671974 start to apply
+[server 1] 17:39:14.672184 receive op: {get 1  13 1503984714073230548}
+[server 1] 17:39:14.704461 apply: {append 2 x 2 6 y 12 2005886353239344110}
+[server 1] 17:39:14.704477 map[1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 yx 1 9 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 yx 2 5 yx 2 6 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 yx 3 4 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y]
+[server 1] 17:39:14.704491 start to apply
+[server 1] 17:39:14.739107 apply: {get 1  13 1503984714073230548}
+[server 1] 17:39:14.739132 map[3:x 3 0 yx 3 1 yx 3 2 yx 3 3 yx 3 4 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 yx 1 9 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 yx 2 5 yx 2 6 y]
+[server 1] 17:39:14.739143 start to apply
+[server 1] 17:39:14.739384 receive op: {get 1  14 1503984714073230548}
+[server 1] 17:39:14.760164 apply: {get 1  14 1503984714073230548}
+[server 1] 17:39:14.760186 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 yx 1 9 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 yx 2 5 yx 2 6 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 yx 3 4 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y]
+[server 1] 17:39:14.760196 start to apply
+[server 1] 17:39:14.760408 receive op: {get 1  15 1503984714073230548}
+[server 1] 17:39:14.802474 apply: {get 1  15 1503984714073230548}
+[server 1] 17:39:14.802506 map[3:x 3 0 yx 3 1 yx 3 2 yx 3 3 yx 3 4 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 yx 1 9 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 yx 2 5 yx 2 6 y]
+[server 1] 17:39:14.802517 start to apply
+[server 1] 17:39:14.802790 receive op: {append 1 x 1 10 y 16 1503984714073230548}
+[server 1] 17:39:14.823317 apply: {append 1 x 1 10 y 16 1503984714073230548}
+[server 1] 17:39:14.823334 map[3:x 3 0 yx 3 1 yx 3 2 yx 3 3 yx 3 4 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 yx 1 9 yx 1 10 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 yx 2 5 yx 2 6 y]
+[server 1] 17:39:14.823343 start to apply
+[server 1] 17:39:14.823544 receive op: {append 1 x 1 11 y 17 1503984714073230548}
+[server 1] 17:39:14.862549 apply: {append 1 x 1 11 y 17 1503984714073230548}
+[server 1] 17:39:14.862574 map[3:x 3 0 yx 3 1 yx 3 2 yx 3 3 yx 3 4 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 yx 1 9 yx 1 10 yx 1 11 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 yx 2 5 yx 2 6 y]
+[server 1] 17:39:14.862585 start to apply
+[server 1] 17:39:14.862789 receive op: {append 1 x 1 12 y 18 1503984714073230548}
+[server 1] 17:39:14.904471 apply: {append 1 x 1 12 y 18 1503984714073230548}
+[server 1] 17:39:14.904502 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 yx 1 9 yx 1 10 yx 1 11 yx 1 12 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 yx 2 5 yx 2 6 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 yx 3 4 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y]
+[server 1] 17:39:14.904513 start to apply
+[server 1] 17:39:14.904764 receive op: {append 1 x 1 13 y 19 1503984714073230548}
+[server 1] 17:39:14.925575 apply: {append 1 x 1 13 y 19 1503984714073230548}
+[server 1] 17:39:14.925593 map[3:x 3 0 yx 3 1 yx 3 2 yx 3 3 yx 3 4 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 yx 1 9 yx 1 10 yx 1 11 yx 1 12 yx 1 13 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 yx 2 5 yx 2 6 y]
+[server 1] 17:39:14.925602 start to apply
+[server 1] 17:39:14.925809 receive op: {append 1 x 1 14 y 20 1503984714073230548}
+[server 1] 17:39:14.967248 apply: {append 1 x 1 14 y 20 1503984714073230548}
+[server 1] 17:39:14.967270 map[4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 yx 1 9 yx 1 10 yx 1 11 yx 1 12 yx 1 13 yx 1 14 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 yx 2 5 yx 2 6 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 yx 3 4 y]
+[server 1] 17:39:14.967281 start to apply
+[server 1] 17:39:14.967509 receive op: {get 1  21 1503984714073230548}
+[server 1] 17:39:14.989206 apply: {get 1  21 1503984714073230548}
+[server 1] 17:39:14.989237 map[2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 yx 2 5 yx 2 6 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 yx 3 4 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 yx 1 9 yx 1 10 yx 1 11 yx 1 12 yx 1 13 yx 1 14 y]
+[server 1] 17:39:14.989251 start to apply
+[server 1] 17:39:14.989478 receive op: {get 1  22 1503984714073230548}
+[server 1] 17:39:15.009794 apply: {get 1  22 1503984714073230548}
+[server 1] 17:39:15.009813 map[3:x 3 0 yx 3 1 yx 3 2 yx 3 3 yx 3 4 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 yx 1 9 yx 1 10 yx 1 11 yx 1 12 yx 1 13 yx 1 14 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 yx 2 5 yx 2 6 y]
+[server 1] 17:39:15.009822 start to apply
+[server 1] 17:39:15.010029 receive op: {get 1  23 1503984714073230548}
+[server 1] 17:39:15.047060 apply: {get 1  23 1503984714073230548}
+[server 1] 17:39:15.047083 map[2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 yx 2 5 yx 2 6 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 yx 3 4 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 yx 1 9 yx 1 10 yx 1 11 yx 1 12 yx 1 13 yx 1 14 y]
+[server 1] 17:39:15.047095 start to apply
+[server 1] 17:39:15.047419 receive op: {append 1 x 1 15 y 24 1503984714073230548}
+[server 1] 17:39:15.079182 apply: {append 1 x 1 15 y 24 1503984714073230548}
+[server 1] 17:39:15.079198 map[3:x 3 0 yx 3 1 yx 3 2 yx 3 3 yx 3 4 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 yx 1 9 yx 1 10 yx 1 11 yx 1 12 yx 1 13 yx 1 14 yx 1 15 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 yx 2 5 yx 2 6 y]
+[server 1] 17:39:15.079207 start to apply
+[server 1] 17:39:15.079426 receive op: {append 1 x 1 16 y 25 1503984714073230548}
+[server 1] 17:39:15.111248 apply: {append 1 x 1 16 y 25 1503984714073230548}
+[server 1] 17:39:15.111263 map[4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 yx 1 9 yx 1 10 yx 1 11 yx 1 12 yx 1 13 yx 1 14 yx 1 15 yx 1 16 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 yx 2 5 yx 2 6 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 yx 3 4 y]
+[server 1] 17:39:15.111272 start to apply
+[server 1] 17:39:15.111494 receive op: {append 1 x 1 17 y 26 1503984714073230548}
+[server 1] 17:39:15.153799 apply: {append 1 x 1 17 y 26 1503984714073230548}
+[server 1] 17:39:15.153836 map[3:x 3 0 yx 3 1 yx 3 2 yx 3 3 yx 3 4 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 yx 1 9 yx 1 10 yx 1 11 yx 1 12 yx 1 13 yx 1 14 yx 1 15 yx 1 16 yx 1 17 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 yx 2 5 yx 2 6 y]
+[server 1] 17:39:15.153846 start to apply
+[server 1] 17:39:15.154075 receive op: {append 1 x 1 18 y 27 1503984714073230548}
+[server 1] 17:39:15.186286 apply: {append 1 x 1 18 y 27 1503984714073230548}
+[server 1] 17:39:15.186310 map[4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 yx 1 9 yx 1 10 yx 1 11 yx 1 12 yx 1 13 yx 1 14 yx 1 15 yx 1 16 yx 1 17 yx 1 18 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 yx 2 5 yx 2 6 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 yx 3 4 y]
+[server 1] 17:39:15.186320 start to apply
+[server 1] 17:39:15.186553 receive op: {get 1  28 1503984714073230548}
+[server 1] 17:39:15.207922 apply: {get 1  28 1503984714073230548}
+[server 1] 17:39:15.207959 map[3:x 3 0 yx 3 1 yx 3 2 yx 3 3 yx 3 4 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 yx 1 9 yx 1 10 yx 1 11 yx 1 12 yx 1 13 yx 1 14 yx 1 15 yx 1 16 yx 1 17 yx 1 18 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 yx 2 5 yx 2 6 y]
+[server 1] 17:39:15.207970 start to apply
+[server 1] 17:39:15.208226 receive op: {get 1  29 1503984714073230548}
+[server 1] 17:39:15.241455 apply: {get 1  29 1503984714073230548}
+[server 1] 17:39:15.241531 map[2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 yx 2 5 yx 2 6 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 yx 3 4 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 yx 1 9 yx 1 10 yx 1 11 yx 1 12 yx 1 13 yx 1 14 yx 1 15 yx 1 16 yx 1 17 yx 1 18 y]
+[server 1] 17:39:15.241545 start to apply
+[server 1] 17:39:15.241808 receive op: {get 1  30 1503984714073230548}
+[server 1] 17:39:15.268802 apply: {get 1  30 1503984714073230548}
+[server 1] 17:39:15.268889 map[3:x 3 0 yx 3 1 yx 3 2 yx 3 3 yx 3 4 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 yx 1 9 yx 1 10 yx 1 11 yx 1 12 yx 1 13 yx 1 14 yx 1 15 yx 1 16 yx 1 17 yx 1 18 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 yx 2 5 yx 2 6 y]
+[server 1] 17:39:15.268902 start to apply
+[server 1] 17:39:15.269166 receive op: {append 1 x 1 19 y 31 1503984714073230548}
+[server 1] 17:39:15.301216 apply: {append 1 x 1 19 y 31 1503984714073230548}
+[server 1] 17:39:15.301264 map[4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 yx 1 9 yx 1 10 yx 1 11 yx 1 12 yx 1 13 yx 1 14 yx 1 15 yx 1 16 yx 1 17 yx 1 18 yx 1 19 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 yx 2 5 yx 2 6 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 yx 3 4 y]
+[server 1] 17:39:15.301276 start to apply
+[server 1] 17:39:15.301565 receive op: {get 1  32 1503984714073230548}
+[server 1] 17:39:15.336892 apply: {get 1  32 1503984714073230548}
+[server 1] 17:39:15.336930 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 yx 1 9 yx 1 10 yx 1 11 yx 1 12 yx 1 13 yx 1 14 yx 1 15 yx 1 16 yx 1 17 yx 1 18 yx 1 19 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 yx 2 5 yx 2 6 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 yx 3 4 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y]
+[server 1] 17:39:15.336941 start to apply
+[server 1] 17:39:15.337313 receive op: {get 1  33 1503984714073230548}
+[server 1] 17:39:15.357913 apply: {get 1  33 1503984714073230548}
+[server 1] 17:39:15.357929 map[1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 yx 1 9 yx 1 10 yx 1 11 yx 1 12 yx 1 13 yx 1 14 yx 1 15 yx 1 16 yx 1 17 yx 1 18 yx 1 19 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 yx 2 5 yx 2 6 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 yx 3 4 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y]
+[server 1] 17:39:15.357938 start to apply
+[server 1] 17:39:15.358231 receive op: {append 1 x 1 20 y 34 1503984714073230548}
+[server 1] 17:39:15.401787 apply: {append 1 x 1 20 y 34 1503984714073230548}
+[server 1] 17:39:15.401820 map[1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 yx 1 9 yx 1 10 yx 1 11 yx 1 12 yx 1 13 yx 1 14 yx 1 15 yx 1 16 yx 1 17 yx 1 18 yx 1 19 yx 1 20 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 yx 2 5 yx 2 6 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 yx 3 4 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y]
+[server 1] 17:39:15.401830 start to apply
+[server 1] 17:39:15.402081 receive op: {get 1  35 1503984714073230548}
+[server 1] 17:39:15.422295 apply: {get 1  35 1503984714073230548}
+[server 1] 17:39:15.422311 map[3:x 3 0 yx 3 1 yx 3 2 yx 3 3 yx 3 4 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 yx 1 9 yx 1 10 yx 1 11 yx 1 12 yx 1 13 yx 1 14 yx 1 15 yx 1 16 yx 1 17 yx 1 18 yx 1 19 yx 1 20 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 yx 2 5 yx 2 6 y]
+[server 1] 17:39:15.422320 start to apply
+[server 1] 17:39:15.422587 receive op: {get 1  36 1503984714073230548}
+[server 1] 17:39:15.454460 apply: {get 1  36 1503984714073230548}
+[server 1] 17:39:15.454488 map[2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 yx 2 5 yx 2 6 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 yx 3 4 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 yx 1 9 yx 1 10 yx 1 11 yx 1 12 yx 1 13 yx 1 14 yx 1 15 yx 1 16 yx 1 17 yx 1 18 yx 1 19 yx 1 20 y]
+[server 1] 17:39:15.454503 start to apply
+[server 1] 17:39:15.454766 receive op: {append 1 x 1 21 y 37 1503984714073230548}
+[server 1] 17:39:15.479145 apply: {append 1 x 1 21 y 37 1503984714073230548}
+[server 1] 17:39:15.479177 map[1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 yx 1 9 yx 1 10 yx 1 11 yx 1 12 yx 1 13 yx 1 14 yx 1 15 yx 1 16 yx 1 17 yx 1 18 yx 1 19 yx 1 20 yx 1 21 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 yx 2 5 yx 2 6 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 yx 3 4 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y]
+[server 1] 17:39:15.479188 start to apply
+[server 1] 17:39:15.479407 receive op: {get 1  38 1503984714073230548}
+[server 1] 17:39:15.525371 apply: {get 1  38 1503984714073230548}
+[server 1] 17:39:15.525399 map[4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 yx 1 9 yx 1 10 yx 1 11 yx 1 12 yx 1 13 yx 1 14 yx 1 15 yx 1 16 yx 1 17 yx 1 18 yx 1 19 yx 1 20 yx 1 21 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 yx 2 5 yx 2 6 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 yx 3 4 y]
+[server 1] 17:39:15.525409 start to apply
+[server 1] 17:39:15.525667 receive op: {get 1  39 1503984714073230548}
+[server 1] 17:39:15.552223 apply: {get 1  39 1503984714073230548}
+[server 1] 17:39:15.552256 map[2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 yx 2 5 yx 2 6 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 yx 3 4 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 yx 1 9 yx 1 10 yx 1 11 yx 1 12 yx 1 13 yx 1 14 yx 1 15 yx 1 16 yx 1 17 yx 1 18 yx 1 19 yx 1 20 yx 1 21 y]
+[server 1] 17:39:15.552265 start to apply
+[server 1] 17:39:15.552511 receive op: {get 1  40 1503984714073230548}
+[server 1] 17:39:15.582135 receive op: {get 4  12 962852489277244575}
+[server 1] 17:39:15.583710 apply: {get 1  40 1503984714073230548}
+[server 1] 17:39:15.583728 map[1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 yx 1 9 yx 1 10 yx 1 11 yx 1 12 yx 1 13 yx 1 14 yx 1 15 yx 1 16 yx 1 17 yx 1 18 yx 1 19 yx 1 20 yx 1 21 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 yx 2 5 yx 2 6 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 yx 3 4 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y]
+[server 1] 17:39:15.583738 start to apply
+[server 1] 17:39:15.583957 receive op: {append 1 x 1 22 y 41 1503984714073230548}
+[server 1] 17:39:15.615501 apply: {get 4  12 962852489277244575}
+[server 1] 17:39:15.615528 map[3:x 3 0 yx 3 1 yx 3 2 yx 3 3 yx 3 4 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 yx 1 9 yx 1 10 yx 1 11 yx 1 12 yx 1 13 yx 1 14 yx 1 15 yx 1 16 yx 1 17 yx 1 18 yx 1 19 yx 1 20 yx 1 21 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 yx 2 5 yx 2 6 y]
+[server 1] 17:39:15.615538 start to apply
+[server 1] 17:39:15.615809 receive op: {get 4  13 962852489277244575}
+[server 1] 17:39:15.651887 apply: {append 1 x 1 22 y 41 1503984714073230548}
+[server 1] 17:39:15.651928 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 yx 1 9 yx 1 10 yx 1 11 yx 1 12 yx 1 13 yx 1 14 yx 1 15 yx 1 16 yx 1 17 yx 1 18 yx 1 19 yx 1 20 yx 1 21 yx 1 22 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 yx 2 5 yx 2 6 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 yx 3 4 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y]
+[server 1] 17:39:15.651938 start to apply
+[server 1] 17:39:15.652757 receive op: {append 0 x 0 7 y 13 4466244089962267029}
+[server 1] 17:39:15.652883 receive op: {append 1 x 1 23 y 42 1503984714073230548}
+[server 1] 17:39:15.674698 apply: {get 4  13 962852489277244575}
+[server 1] 17:39:15.674714 map[3:x 3 0 yx 3 1 yx 3 2 yx 3 3 yx 3 4 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 yx 1 9 yx 1 10 yx 1 11 yx 1 12 yx 1 13 yx 1 14 yx 1 15 yx 1 16 yx 1 17 yx 1 18 yx 1 19 yx 1 20 yx 1 21 yx 1 22 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 yx 2 5 yx 2 6 y]
+[server 1] 17:39:15.674727 start to apply
+[server 1] 17:39:15.674996 receive op: {append 4 x 4 4 y 14 962852489277244575}
+[server 1] 17:39:15.697230 apply: {append 0 x 0 7 y 13 4466244089962267029}
+[server 1] 17:39:15.697245 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 yx 1 9 yx 1 10 yx 1 11 yx 1 12 yx 1 13 yx 1 14 yx 1 15 yx 1 16 yx 1 17 yx 1 18 yx 1 19 yx 1 20 yx 1 21 yx 1 22 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 yx 2 5 yx 2 6 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 yx 3 4 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y]
+[server 1] 17:39:15.697254 start to apply
+[server 1] 17:39:15.697609 receive op: {get 0  14 4466244089962267029}
+[server 1] 17:39:15.700778 receive op: {get 3  13 2019183452465306093}
+[server 1] 17:39:15.705878 receive op: {append 2 x 2 7 y 13 2005886353239344110}
+[server 1] 17:39:15.739644 apply: {append 1 x 1 23 y 42 1503984714073230548}
+[server 1] 17:39:15.739674 map[3:x 3 0 yx 3 1 yx 3 2 yx 3 3 yx 3 4 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 yx 1 9 yx 1 10 yx 1 11 yx 1 12 yx 1 13 yx 1 14 yx 1 15 yx 1 16 yx 1 17 yx 1 18 yx 1 19 yx 1 20 yx 1 21 yx 1 22 yx 1 23 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 yx 2 5 yx 2 6 y]
+[server 1] 17:39:15.739685 start to apply
+[server 1] 17:39:15.739949 receive op: {get 1  43 1503984714073230548}
+[server 1] 17:39:15.760008 apply: {append 4 x 4 4 y 14 962852489277244575}
+[server 1] 17:39:15.760023 map[3:x 3 0 yx 3 1 yx 3 2 yx 3 3 yx 3 4 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 yx 4 4 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 yx 1 9 yx 1 10 yx 1 11 yx 1 12 yx 1 13 yx 1 14 yx 1 15 yx 1 16 yx 1 17 yx 1 18 yx 1 19 yx 1 20 yx 1 21 yx 1 22 yx 1 23 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 yx 2 5 yx 2 6 y]
+[server 1] 17:39:15.760032 start to apply
+[server 1] 17:39:15.760271 receive op: {append 4 x 4 5 y 15 962852489277244575}
+[server 1] 17:39:15.807640 apply: {get 0  14 4466244089962267029}
+[server 1] 17:39:15.807671 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 yx 1 9 yx 1 10 yx 1 11 yx 1 12 yx 1 13 yx 1 14 yx 1 15 yx 1 16 yx 1 17 yx 1 18 yx 1 19 yx 1 20 yx 1 21 yx 1 22 yx 1 23 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 yx 2 5 yx 2 6 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 yx 3 4 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 yx 4 4 y]
+[server 1] 17:39:15.807681 start to apply
+[server 1] 17:39:15.807966 receive op: {get 0  15 4466244089962267029}
+[server 1] 17:39:15.828709 apply: {get 3  13 2019183452465306093}
+[server 1] 17:39:15.828742 map[3:x 3 0 yx 3 1 yx 3 2 yx 3 3 yx 3 4 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 yx 4 4 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 yx 1 9 yx 1 10 yx 1 11 yx 1 12 yx 1 13 yx 1 14 yx 1 15 yx 1 16 yx 1 17 yx 1 18 yx 1 19 yx 1 20 yx 1 21 yx 1 22 yx 1 23 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 yx 2 5 yx 2 6 y]
+[server 1] 17:39:15.828753 start to apply
+[server 1] 17:39:15.829058 receive op: {get 3  14 2019183452465306093}
+[server 1] 17:39:15.876961 apply: {append 2 x 2 7 y 13 2005886353239344110}
+[server 1] 17:39:15.876995 map[1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 yx 1 9 yx 1 10 yx 1 11 yx 1 12 yx 1 13 yx 1 14 yx 1 15 yx 1 16 yx 1 17 yx 1 18 yx 1 19 yx 1 20 yx 1 21 yx 1 22 yx 1 23 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 yx 2 5 yx 2 6 yx 2 7 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 yx 3 4 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 yx 4 4 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 y]
+[server 1] 17:39:15.877006 start to apply
+[server 1] 17:39:15.877374 receive op: {append 2 x 2 8 y 14 2005886353239344110}
+[server 1] 17:39:15.888887 apply: {get 1  43 1503984714073230548}
+[server 1] 17:39:15.888925 map[4:x 4 0 yx 4 1 yx 4 2 yx 4 3 yx 4 4 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 yx 1 9 yx 1 10 yx 1 11 yx 1 12 yx 1 13 yx 1 14 yx 1 15 yx 1 16 yx 1 17 yx 1 18 yx 1 19 yx 1 20 yx 1 21 yx 1 22 yx 1 23 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 yx 2 5 yx 2 6 yx 2 7 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 yx 3 4 y]
+[server 1] 17:39:15.888941 start to apply
+[server 1] 17:39:15.889278 receive op: {append 1 x 1 24 y 44 1503984714073230548}
+[server 1] 17:39:15.930893 apply: {append 4 x 4 5 y 15 962852489277244575}
+[server 1] 17:39:15.930932 map[4:x 4 0 yx 4 1 yx 4 2 yx 4 3 yx 4 4 yx 4 5 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 yx 1 8 yx 1 9 yx 1 10 yx 1 11 yx 1 12 yx 1 13 yx 1 14 yx 1 15 yx 1 16 yx 1 17 yx 1 18 yx 1 19 yx 1 20 yx 1 21 yx 1 22 yx 1 23 y 2:x 2 0 yx 2 1 yx 2 2 yx 2 3 yx 2 4 yx 2 5 yx 2 6 yx 2 7 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 yx 3 4 y]
+[server 1] 17:39:15.930943 start to apply
+[server 1] 17:39:15.931220 receive op: {get 4  16 962852489277244575}
+[server 1] 17:39:16.809283 receive op: {get 0  15 4466244089962267029}
+[server 1] 17:39:16.831329 receive op: {get 3  14 2019183452465306093}
+[server 1] 17:39:16.882870 receive op: {append 2 x 2 8 y 14 2005886353239344110}
+[server 1] 17:39:16.889828 receive op: {append 1 x 1 24 y 44 1503984714073230548}
+[server 1] 17:39:16.932405 receive op: {get 4  16 962852489277244575}

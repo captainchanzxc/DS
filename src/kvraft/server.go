@@ -8,6 +8,7 @@ import (
 	"raft"
 	"strconv"
 	"sync"
+	"time"
 )
 
 const Debug = 0
@@ -18,6 +19,9 @@ const (
 	putOp    OpType = "put"
 	appendOp        = "append"
 	getOp           = "get"
+	ERR_CONNECTION_FAIL ="connection fail"
+	ERR_NOT_COMMIT="not commit"
+	ERR_NOT_LEADER="not leader"
 )
 
 func DPrintf(format string, a ...interface{}) (n int, err error) {
@@ -47,13 +51,13 @@ type KVServer struct {
 	maxraftstate int // snapshot if log grows this big
 
 	// Your definitions here.
-	logFile    *os.File
-	kvLog      *log.Logger
-	mapDb      map[string]string
-	serialNums map[int64]int
-	readCh     chan string
+	logFile         *os.File
+	kvLog           *log.Logger
+	mapDb           map[string]string
+	serialNums      map[int64]int
+	readCh          chan string
 	writeCompleteCh chan int
-
+	timeOut time.Duration
 }
 
 func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
@@ -63,10 +67,17 @@ func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 	reply.WrongLeader = !isLeader
 	reply.Err = ""
 	if !isLeader {
-		reply.Err = "kvserver is not a leader."
+		reply.Err = ERR_NOT_LEADER
 	} else {
 		kv.kvLog.Printf("receive op: %v\n", op)
-		reply.Value = <-kv.readCh
+		select {
+		case reply.Value = <-kv.readCh:
+			return
+		case <-time.After(kv.timeOut):
+			reply.Err=ERR_NOT_COMMIT
+			return
+		}
+
 		kv.kvLog.Printf("reply op: %v\n", op)
 	}
 	kv.kvLog.Printf("return: %v\n", reply)
@@ -88,13 +99,19 @@ func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 	reply.WrongLeader = !isLeader
 	reply.Err = ""
 	if !isLeader {
-		reply.Err = "kvserver is not a leader."
+		reply.Err = ERR_NOT_LEADER
 	} else {
 		kv.kvLog.Printf("receive op: %v\n", op)
-		<-kv.writeCompleteCh
+
+		select {
+		case <-kv.writeCompleteCh:
+			return
+		case <-time.After(kv.timeOut):
+			reply.Err=ERR_NOT_COMMIT
+			return
+		}
 		kv.kvLog.Printf("reply op: %v\n", op)
 	}
-
 }
 
 func (kv *KVServer) apply() {
@@ -103,28 +120,34 @@ func (kv *KVServer) apply() {
 		applyMsg := <-kv.applyCh
 		command := applyMsg.Command.(Op)
 		kv.kvLog.Printf("apply: %v\n", command)
-		_, isLeader := kv.rf.GetState()
+
 		if command.Type == putOp || command.Type == appendOp {
 			if kv.serialNums[command.ClerkId] < command.SerialNum {
 				kv.serialNums[command.ClerkId] = command.SerialNum
 				switch command.Type {
 				case putOp:
 					kv.mapDb[command.Key] = command.Value
-					if isLeader{
-						kv.writeCompleteCh<-1
+					select {
+					case kv.writeCompleteCh <- 1:
+					default:
 					}
+
 				case appendOp:
 					kv.mapDb[command.Key] += command.Value
-					if isLeader{
-						kv.writeCompleteCh<-1
+					select {
+					case kv.writeCompleteCh <- 1:
+					default:
 					}
-				}
+				case getOp:
 
+				}
 			}
 		} else {
-			if isLeader {
-				kv.readCh <- kv.mapDb[command.Key]
+			select {
+			case kv.readCh <- kv.mapDb[command.Key]:
+			default:
 			}
+
 		}
 		kv.kvLog.Println(kv.mapDb)
 	}
@@ -171,7 +194,7 @@ func StartKVServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persiste
 	//	panic(err)
 	//}
 	f, err := os.Create(strconv.Itoa(kv.me) + ".log")
-	kv.logFile=f
+	kv.logFile = f
 	if err != nil {
 		panic(err)
 	}
@@ -180,9 +203,10 @@ func StartKVServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persiste
 	kv.kvLog.Printf("servers number: %d\n", len(servers))
 	kv.mapDb = make(map[string]string)
 	kv.readCh = make(chan string)
-	kv.writeCompleteCh=make(chan int)
+	kv.writeCompleteCh = make(chan int)
 	kv.applyCh = make(chan raft.ApplyMsg)
 	kv.serialNums = make(map[int64]int)
+	kv.timeOut=500*time.Millisecond
 	kv.rf = raft.Make(servers, me, persister, kv.applyCh)
 
 	// You may need initialization code here.
