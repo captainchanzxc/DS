@@ -126,6 +126,7 @@ func (ck *Clerk) PutAppend(key string, value string, op string) {
 			if ok {
 				if reply.Err == "" {
 					ck.ckLog.Printf("send PutAppendArgs: %v\n", args)
+					ck.ckLog.Printf("receive PutAppendReply: %v\n", reply)
 					return
 				}
 			}

@@ -543,10 +543,10 @@ func (rf *Raft) replicateLog() {
 				ok := rf.sendAppendEntries(peer, &args, &reply)
 				if ok {
 					rf.mu.Lock()
-					//if reply.ReceivedTerm != rf.CurrentTerm {
-					//	rf.mu.Unlock()
-					//	return
-					//}
+					if reply.ReceivedTerm != rf.CurrentTerm {
+						rf.mu.Unlock()
+						return
+					}
 					//fmt.Printf("peer %d %t!!!!!!!\n",peer,reply.Success)
 					if reply.Term > rf.CurrentTerm {
 						rf.CurrentTerm = reply.Term

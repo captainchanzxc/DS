@@ -1,173 +1,409 @@
-[server 3] 16:10:11.443083 servers number: 5
-[server 3] 16:10:11.443347 start to apply
-[server 3] 16:10:11.879875 apply: {put 3  1 2274515591309707471}
-[server 3] 16:10:11.879977 map[3:]
-[server 3] 16:10:11.880010 start to apply
-[server 3] 16:10:11.921516 apply: {put 4  1 2119452444694604104}
-[server 3] 16:10:11.921636 map[3: 4:]
-[server 3] 16:10:11.921683 start to apply
-[server 3] 16:10:11.942053 apply: {put 0  1 4346236771741632807}
-[server 3] 16:10:11.942152 map[3: 4: 0:]
-[server 3] 16:10:11.942184 start to apply
-[server 3] 16:10:11.983060 apply: {put 1  1 3159256837126895502}
-[server 3] 16:10:11.983195 map[3: 4: 0: 1:]
-[server 3] 16:10:11.983243 start to apply
-[server 3] 16:10:12.004089 apply: {put 2  1 3850577277643341407}
-[server 3] 16:10:12.004207 map[4: 0: 1: 2: 3:]
-[server 3] 16:10:12.004240 start to apply
-[server 3] 16:10:12.046049 apply: {append 4 x 4 0 y 2 2119452444694604104}
-[server 3] 16:10:12.046199 map[3: 4:x 4 0 y 0: 1: 2:]
-[server 3] 16:10:12.046250 start to apply
-[server 3] 16:10:12.099113 apply: {get 3  2 2274515591309707471}
-[server 3] 16:10:12.099282 map[3: 4:x 4 0 y 0: 1: 2:]
-[server 3] 16:10:12.099360 start to apply
-[server 3] 16:10:12.130922 apply: {get 1  2 3159256837126895502}
-[server 3] 16:10:12.131102 map[1: 2: 3: 4:x 4 0 y 0:]
-[server 3] 16:10:12.131152 start to apply
-[server 3] 16:10:12.166502 apply: {append 0 x 0 0 y 2 4346236771741632807}
-[server 3] 16:10:12.166594 map[3: 4:x 4 0 y 0:x 0 0 y 1: 2:]
-[server 3] 16:10:12.166626 start to apply
-[server 3] 16:10:12.228709 apply: {get 2  2 3850577277643341407}
-[server 3] 16:10:12.228835 map[2: 3: 4:x 4 0 y 0:x 0 0 y 1:]
-[server 3] 16:10:12.228888 start to apply
-[server 3] 16:10:12.249275 apply: {get 4  3 2119452444694604104}
-[server 3] 16:10:12.249380 map[0:x 0 0 y 1: 2: 3: 4:x 4 0 y]
-[server 3] 16:10:12.249414 start to apply
-[server 3] 16:10:12.312376 apply: {append 1 x 1 0 y 3 3159256837126895502}
-[server 3] 16:10:12.312544 map[3: 4:x 4 0 y 0:x 0 0 y 1:x 1 0 y 2:]
-[server 3] 16:10:12.312587 start to apply
-[server 3] 16:10:12.333247 apply: {append 3 x 3 0 y 3 2274515591309707471}
-[server 3] 16:10:12.333335 map[2: 3:x 3 0 y 4:x 4 0 y 0:x 0 0 y 1:x 1 0 y]
-[server 3] 16:10:12.333373 start to apply
-[server 3] 16:10:12.406101 apply: {get 0  3 4346236771741632807}
-[server 3] 16:10:12.406213 map[3:x 3 0 y 4:x 4 0 y 0:x 0 0 y 1:x 1 0 y 2:]
-[server 3] 16:10:12.406245 start to apply
-[server 3] 16:10:12.427116 apply: {get 4  4 2119452444694604104}
-[server 3] 16:10:12.427211 map[3:x 3 0 y 4:x 4 0 y 0:x 0 0 y 1:x 1 0 y 2:]
-[server 3] 16:10:12.427247 start to apply
-[server 3] 16:10:12.469032 apply: {get 2  3 3850577277643341407}
-[server 3] 16:10:12.469219 map[2: 3:x 3 0 y 4:x 4 0 y 0:x 0 0 y 1:x 1 0 y]
-[server 3] 16:10:12.469379 start to apply
-[server 3] 16:10:12.510825 apply: {get 1  4 3159256837126895502}
-[server 3] 16:10:12.510978 map[1:x 1 0 y 2: 3:x 3 0 y 4:x 4 0 y 0:x 0 0 y]
-[server 3] 16:10:12.511032 start to apply
-[server 3] 16:10:12.531576 apply: {append 0 x 0 1 y 4 4346236771741632807}
-[server 3] 16:10:12.531710 map[1:x 1 0 y 2: 3:x 3 0 y 4:x 4 0 y 0:x 0 0 yx 0 1 y]
-[server 3] 16:10:12.531769 start to apply
-[server 3] 16:10:12.562890 apply: {append 3 x 3 1 y 4 2274515591309707471}
-[server 3] 16:10:12.563070 map[3:x 3 0 yx 3 1 y 4:x 4 0 y 0:x 0 0 yx 0 1 y 1:x 1 0 y 2:]
-[server 3] 16:10:12.563133 start to apply
-[server 3] 16:10:12.583632 apply: {get 4  5 2119452444694604104}
-[server 3] 16:10:12.583778 map[3:x 3 0 yx 3 1 y 4:x 4 0 y 0:x 0 0 yx 0 1 y 1:x 1 0 y 2:]
-[server 3] 16:10:12.583842 start to apply
-[server 3] 16:10:12.615132 apply: {get 2  4 3850577277643341407}
-[server 3] 16:10:12.615262 map[3:x 3 0 yx 3 1 y 4:x 4 0 y 0:x 0 0 yx 0 1 y 1:x 1 0 y 2:]
-[server 3] 16:10:12.615321 start to apply
-[server 3] 16:10:12.656592 apply: {append 1 x 1 1 y 5 3159256837126895502}
-[server 3] 16:10:12.656779 map[2: 3:x 3 0 yx 3 1 y 4:x 4 0 y 0:x 0 0 yx 0 1 y 1:x 1 0 yx 1 1 y]
-[server 3] 16:10:12.656903 start to apply
-[server 3] 16:10:12.687719 apply: {append 0 x 0 2 y 5 4346236771741632807}
-[server 3] 16:10:12.687841 map[3:x 3 0 yx 3 1 y 4:x 4 0 y 0:x 0 0 yx 0 1 yx 0 2 y 1:x 1 0 yx 1 1 y 2:]
-[server 3] 16:10:12.688016 start to apply
-[server 3] 16:10:12.718616 apply: {get 3  5 2274515591309707471}
-[server 3] 16:10:12.718760 map[3:x 3 0 yx 3 1 y 4:x 4 0 y 0:x 0 0 yx 0 1 yx 0 2 y 1:x 1 0 yx 1 1 y 2:]
-[server 3] 16:10:12.718816 start to apply
-[server 3] 16:10:12.739502 apply: {get 4  6 2119452444694604104}
-[server 3] 16:10:12.739609 map[4:x 4 0 y 0:x 0 0 yx 0 1 yx 0 2 y 1:x 1 0 yx 1 1 y 2: 3:x 3 0 yx 3 1 y]
-[server 3] 16:10:12.739649 start to apply
-[server 3] 16:10:12.770673 apply: {get 2  5 3850577277643341407}
-[server 3] 16:10:12.770838 map[1:x 1 0 yx 1 1 y 2: 3:x 3 0 yx 3 1 y 4:x 4 0 y 0:x 0 0 yx 0 1 yx 0 2 y]
-[server 3] 16:10:12.770894 start to apply
-[server 3] 16:10:12.801918 apply: {get 1  6 3159256837126895502}
-[server 3] 16:10:12.802045 map[3:x 3 0 yx 3 1 y 4:x 4 0 y 0:x 0 0 yx 0 1 yx 0 2 y 1:x 1 0 yx 1 1 y 2:]
-[server 3] 16:10:12.802105 start to apply
-[server 3] 16:10:12.864392 apply: {get 0  6 4346236771741632807}
-[server 3] 16:10:12.864622 map[3:x 3 0 yx 3 1 y 4:x 4 0 y 0:x 0 0 yx 0 1 yx 0 2 y 1:x 1 0 yx 1 1 y 2:]
-[server 3] 16:10:12.864718 start to apply
-[server 3] 16:10:12.906215 apply: {append 3 x 3 2 y 6 2274515591309707471}
-[server 3] 16:10:12.906306 map[0:x 0 0 yx 0 1 yx 0 2 y 1:x 1 0 yx 1 1 y 2: 3:x 3 0 yx 3 1 yx 3 2 y 4:x 4 0 y]
-[server 3] 16:10:12.906344 start to apply
-[server 3] 16:10:12.948352 apply: {append 4 x 4 1 y 7 2119452444694604104}
-[server 3] 16:10:12.948440 map[3:x 3 0 yx 3 1 yx 3 2 y 4:x 4 0 yx 4 1 y 0:x 0 0 yx 0 1 yx 0 2 y 1:x 1 0 yx 1 1 y 2:]
-[server 3] 16:10:12.948481 start to apply
-[server 3] 16:10:12.968743 apply: {append 2 x 2 0 y 6 3850577277643341407}
-[server 3] 16:10:12.968872 map[3:x 3 0 yx 3 1 yx 3 2 y 4:x 4 0 yx 4 1 y 0:x 0 0 yx 0 1 yx 0 2 y 1:x 1 0 yx 1 1 y 2:x 2 0 y]
-[server 3] 16:10:12.968912 start to apply
-[server 3] 16:10:13.000059 apply: {append 1 x 1 2 y 7 3159256837126895502}
-[server 3] 16:10:13.000171 map[3:x 3 0 yx 3 1 yx 3 2 y 4:x 4 0 yx 4 1 y 0:x 0 0 yx 0 1 yx 0 2 y 1:x 1 0 yx 1 1 yx 1 2 y 2:x 2 0 y]
-[server 3] 16:10:13.000210 start to apply
-[server 3] 16:10:13.041887 apply: {append 0 x 0 3 y 7 4346236771741632807}
-[server 3] 16:10:13.041987 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 y 1:x 1 0 yx 1 1 yx 1 2 y 2:x 2 0 y 3:x 3 0 yx 3 1 yx 3 2 y 4:x 4 0 yx 4 1 y]
-[server 3] 16:10:13.042025 start to apply
-[server 3] 16:10:13.073096 apply: {append 3 x 3 3 y 7 2274515591309707471}
-[server 3] 16:10:13.073221 map[3:x 3 0 yx 3 1 yx 3 2 yx 3 3 y 4:x 4 0 yx 4 1 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 y 1:x 1 0 yx 1 1 yx 1 2 y 2:x 2 0 y]
-[server 3] 16:10:13.073261 start to apply
-[server 3] 16:10:13.104108 apply: {append 4 x 4 2 y 8 2119452444694604104}
-[server 3] 16:10:13.104250 map[4:x 4 0 yx 4 1 yx 4 2 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 y 1:x 1 0 yx 1 1 yx 1 2 y 2:x 2 0 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 y]
-[server 3] 16:10:13.104301 start to apply
-[server 3] 16:10:13.156510 apply: {get 2  7 3850577277643341407}
-[server 3] 16:10:13.156667 map[3:x 3 0 yx 3 1 yx 3 2 yx 3 3 y 4:x 4 0 yx 4 1 yx 4 2 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 y 1:x 1 0 yx 1 1 yx 1 2 y 2:x 2 0 y]
-[server 3] 16:10:13.156720 start to apply
-[server 3] 16:10:13.177603 apply: {append 1 x 1 3 y 8 3159256837126895502}
-[server 3] 16:10:13.177712 map[3:x 3 0 yx 3 1 yx 3 2 yx 3 3 y 4:x 4 0 yx 4 1 yx 4 2 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 y 2:x 2 0 y]
-[server 3] 16:10:13.177750 start to apply
-[server 3] 16:10:13.219959 apply: {append 0 x 0 4 y 8 4346236771741632807}
-[server 3] 16:10:13.220098 map[4:x 4 0 yx 4 1 yx 4 2 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 y 2:x 2 0 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 y]
-[server 3] 16:10:13.220137 start to apply
-[server 3] 16:10:13.241065 apply: {get 3  8 2274515591309707471}
-[server 3] 16:10:13.241182 map[2:x 2 0 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 y 4:x 4 0 yx 4 1 yx 4 2 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 y]
-[server 3] 16:10:13.241227 start to apply
-[server 3] 16:10:13.303741 apply: {get 4  9 2119452444694604104}
-[server 3] 16:10:13.303883 map[4:x 4 0 yx 4 1 yx 4 2 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 y 2:x 2 0 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 y]
-[server 3] 16:10:13.304056 start to apply
-[server 3] 16:10:13.356313 apply: {append 1 x 1 4 y 9 3159256837126895502}
-[server 3] 16:10:13.356501 map[2:x 2 0 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 y 4:x 4 0 yx 4 1 yx 4 2 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 y]
-[server 3] 16:10:13.356581 start to apply
-[server 3] 16:10:13.398216 apply: {append 2 x 2 1 y 8 3850577277643341407}
-[server 3] 16:10:13.398367 map[4:x 4 0 yx 4 1 yx 4 2 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 y 2:x 2 0 yx 2 1 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 y]
-[server 3] 16:10:13.398422 start to apply
-[server 3] 16:10:13.429494 apply: {append 0 x 0 5 y 9 4346236771741632807}
-[server 3] 16:10:13.429596 map[3:x 3 0 yx 3 1 yx 3 2 yx 3 3 y 4:x 4 0 yx 4 1 yx 4 2 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 y 2:x 2 0 yx 2 1 y]
-[server 3] 16:10:13.429634 start to apply
-[server 3] 16:10:13.460642 apply: {get 3  8 2274515591309707471}
-[server 3] 16:10:13.460729 map[3:x 3 0 yx 3 1 yx 3 2 yx 3 3 y 4:x 4 0 yx 4 1 yx 4 2 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 y 2:x 2 0 yx 2 1 y]
-[server 3] 16:10:13.460764 start to apply
-[server 3] 16:10:13.491938 apply: {append 4 x 4 3 y 10 2119452444694604104}
-[server 3] 16:10:13.492067 map[4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 y 2:x 2 0 yx 2 1 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 y]
-[server 3] 16:10:13.492108 start to apply
-[server 3] 16:10:13.512773 apply: {append 1 x 1 5 y 10 3159256837126895502}
-[server 3] 16:10:13.512961 map[3:x 3 0 yx 3 1 yx 3 2 yx 3 3 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 y 2:x 2 0 yx 2 1 y]
-[server 3] 16:10:13.513014 start to apply
-[server 3] 16:10:13.544236 apply: {append 2 x 2 2 y 9 3850577277643341407}
-[server 3] 16:10:13.544398 map[3:x 3 0 yx 3 1 yx 3 2 yx 3 3 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 y 2:x 2 0 yx 2 1 yx 2 2 y]
-[server 3] 16:10:13.544456 start to apply
-[server 3] 16:10:13.596101 apply: {append 0 x 0 6 y 10 4346236771741632807}
-[server 3] 16:10:13.596254 map[4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 y 2:x 2 0 yx 2 1 yx 2 2 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 y]
-[server 3] 16:10:13.596318 start to apply
-[server 3] 16:10:13.627271 apply: {get 3  8 2274515591309707471}
-[server 3] 16:10:13.627360 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 y 2:x 2 0 yx 2 1 yx 2 2 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y]
-[server 3] 16:10:13.627395 start to apply
-[server 3] 16:10:13.648146 apply: {append 1 x 1 6 y 11 3159256837126895502}
-[server 3] 16:10:13.648237 map[1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 y 2:x 2 0 yx 2 1 yx 2 2 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y]
-[server 3] 16:10:13.648273 start to apply
-[server 3] 16:10:13.710905 apply: {get 4  11 2119452444694604104}
-[server 3] 16:10:13.711028 map[3:x 3 0 yx 3 1 yx 3 2 yx 3 3 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 y 2:x 2 0 yx 2 1 yx 2 2 y]
-[server 3] 16:10:13.711065 start to apply
-[server 3] 16:10:13.731947 apply: {get 2  10 3850577277643341407}
-[server 3] 16:10:13.732049 map[3:x 3 0 yx 3 1 yx 3 2 yx 3 3 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 y 2:x 2 0 yx 2 1 yx 2 2 y]
-[server 3] 16:10:13.732088 start to apply
-[server 3] 16:10:13.785138 apply: {get 0  11 4346236771741632807}
-[server 3] 16:10:13.785266 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 y 2:x 2 0 yx 2 1 yx 2 2 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y]
-[server 3] 16:10:13.785334 start to apply
-[server 3] 16:10:13.826969 apply: {append 1 x 1 7 y 12 3159256837126895502}
-[server 3] 16:10:13.827103 map[2:x 2 0 yx 2 1 yx 2 2 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 y]
-[server 3] 16:10:13.827147 start to apply
-[server 3] 16:10:13.858924 apply: {get 4  11 2119452444694604104}
-[server 3] 16:10:13.859056 map[1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 y 2:x 2 0 yx 2 1 yx 2 2 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y]
-[server 3] 16:10:13.859109 start to apply
-[server 3] 16:10:13.890453 apply: {get 3  8 2274515591309707471}
-[server 3] 16:10:13.890567 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 y 2:x 2 0 yx 2 1 yx 2 2 y 3:x 3 0 yx 3 1 yx 3 2 yx 3 3 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y]
-[server 3] 16:10:13.890603 start to apply
-[server 3] 16:10:13.984715 apply: {get 2  10 3850577277643341407}
-[server 3] 16:10:13.984830 map[3:x 3 0 yx 3 1 yx 3 2 yx 3 3 y 4:x 4 0 yx 4 1 yx 4 2 yx 4 3 y 0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y 1:x 1 0 yx 1 1 yx 1 2 yx 1 3 yx 1 4 yx 1 5 yx 1 6 yx 1 7 y 2:x 2 0 yx 2 1 yx 2 2 y]
-[server 3] 16:10:13.984866 start to apply
+[server 3] 22:18:22.484538 servers number: 5
+[server 3] 22:18:22.485146 start to apply
+[server 3] 22:18:22.849411 receive put/append op: {put 0  1 1902443556393758409}
+[server 3] 22:18:22.889564 apply: {put 0  1 1902443556393758409}
+[server 3] 22:18:22.889615 map[0:]
+[server 3] 22:18:22.889622 start to apply
+[server 3] 22:18:22.889632 command: {put 0  1 1902443556393758409}, applyCommand: {put 0  1 1902443556393758409}
+[server 3] 22:18:22.889642 reply put/append op succeed {1 {put 0  1 1902443556393758409} }
+[server 3] 22:18:22.889657 send to client(put/append) reply: &{false }
+[server 3] 22:18:22.890418 receive get op: {get 0  2 1902443556393758409}
+[server 3] 22:18:22.920382 apply: {get 0  2 1902443556393758409}
+[server 3] 22:18:22.920476 map[0:]
+[server 3] 22:18:22.920489 start to apply
+[server 3] 22:18:22.920522 command: {get 0  2 1902443556393758409}, applyCommand: {get 0  2 1902443556393758409}
+[server 3] 22:18:22.920539 reply get op succeed {2 {get 0  2 1902443556393758409} }
+[server 3] 22:18:22.920565 send to client reply: &{false  }
+[server 3] 22:18:22.921576 receive get op: {get 0  3 1902443556393758409}
+[server 3] 22:18:22.951188 apply: {get 0  3 1902443556393758409}
+[server 3] 22:18:22.951205 map[0:]
+[server 3] 22:18:22.951227 start to apply
+[server 3] 22:18:22.951236 command: {get 0  3 1902443556393758409}, applyCommand: {get 0  3 1902443556393758409}
+[server 3] 22:18:22.951244 reply get op succeed {3 {get 0  3 1902443556393758409} }
+[server 3] 22:18:22.951252 send to client reply: &{false  }
+[server 3] 22:18:22.951728 receive put/append op: {append 0 x 0 0 y 4 1902443556393758409}
+[server 3] 22:18:22.982680 apply: {append 0 x 0 0 y 4 1902443556393758409}
+[server 3] 22:18:22.982704 map[0:x 0 0 y]
+[server 3] 22:18:22.982711 start to apply
+[server 3] 22:18:22.982744 command: {append 0 x 0 0 y 4 1902443556393758409}, applyCommand: {append 0 x 0 0 y 4 1902443556393758409}
+[server 3] 22:18:22.982753 reply put/append op succeed {4 {append 0 x 0 0 y 4 1902443556393758409} }
+[server 3] 22:18:22.982776 send to client(put/append) reply: &{false }
+[server 3] 22:18:22.983207 receive put/append op: {append 0 x 0 1 y 5 1902443556393758409}
+[server 3] 22:18:23.014306 apply: {append 0 x 0 1 y 5 1902443556393758409}
+[server 3] 22:18:23.014370 map[0:x 0 0 yx 0 1 y]
+[server 3] 22:18:23.014396 start to apply
+[server 3] 22:18:23.014414 command: {append 0 x 0 1 y 5 1902443556393758409}, applyCommand: {append 0 x 0 1 y 5 1902443556393758409}
+[server 3] 22:18:23.014422 reply put/append op succeed {5 {append 0 x 0 1 y 5 1902443556393758409} }
+[server 3] 22:18:23.014447 send to client(put/append) reply: &{false }
+[server 3] 22:18:23.015009 receive put/append op: {append 0 x 0 2 y 6 1902443556393758409}
+[server 3] 22:18:23.045521 apply: {append 0 x 0 2 y 6 1902443556393758409}
+[server 3] 22:18:23.045659 map[0:x 0 0 yx 0 1 yx 0 2 y]
+[server 3] 22:18:23.045674 start to apply
+[server 3] 22:18:23.045691 command: {append 0 x 0 2 y 6 1902443556393758409}, applyCommand: {append 0 x 0 2 y 6 1902443556393758409}
+[server 3] 22:18:23.045717 reply put/append op succeed {6 {append 0 x 0 2 y 6 1902443556393758409} }
+[server 3] 22:18:23.045730 send to client(put/append) reply: &{false }
+[server 3] 22:18:23.046355 receive put/append op: {append 0 x 0 3 y 7 1902443556393758409}
+[server 3] 22:18:23.076180 apply: {append 0 x 0 3 y 7 1902443556393758409}
+[server 3] 22:18:23.076210 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 y]
+[server 3] 22:18:23.076217 start to apply
+[server 3] 22:18:23.076226 command: {append 0 x 0 3 y 7 1902443556393758409}, applyCommand: {append 0 x 0 3 y 7 1902443556393758409}
+[server 3] 22:18:23.076234 reply put/append op succeed {7 {append 0 x 0 3 y 7 1902443556393758409} }
+[server 3] 22:18:23.076242 send to client(put/append) reply: &{false }
+[server 3] 22:18:23.076799 receive get op: {get 0  8 1902443556393758409}
+[server 3] 22:18:23.107382 apply: {get 0  8 1902443556393758409}
+[server 3] 22:18:23.107479 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 y]
+[server 3] 22:18:23.107505 start to apply
+[server 3] 22:18:23.107517 command: {get 0  8 1902443556393758409}, applyCommand: {get 0  8 1902443556393758409}
+[server 3] 22:18:23.107548 reply get op succeed {8 {get 0  8 1902443556393758409} x 0 0 yx 0 1 yx 0 2 yx 0 3 y}
+[server 3] 22:18:23.107563 send to client reply: &{false  x 0 0 yx 0 1 yx 0 2 yx 0 3 y}
+[server 3] 22:18:23.108332 receive put/append op: {append 0 x 0 4 y 9 1902443556393758409}
+[server 3] 22:18:23.139062 apply: {append 0 x 0 4 y 9 1902443556393758409}
+[server 3] 22:18:23.139147 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 y]
+[server 3] 22:18:23.139155 start to apply
+[server 3] 22:18:23.139164 command: {append 0 x 0 4 y 9 1902443556393758409}, applyCommand: {append 0 x 0 4 y 9 1902443556393758409}
+[server 3] 22:18:23.139172 reply put/append op succeed {9 {append 0 x 0 4 y 9 1902443556393758409} }
+[server 3] 22:18:23.139179 send to client(put/append) reply: &{false }
+[server 3] 22:18:23.139596 receive put/append op: {append 0 x 0 5 y 10 1902443556393758409}
+[server 3] 22:18:23.170124 apply: {append 0 x 0 5 y 10 1902443556393758409}
+[server 3] 22:18:23.170223 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 y]
+[server 3] 22:18:23.170232 start to apply
+[server 3] 22:18:23.170263 command: {append 0 x 0 5 y 10 1902443556393758409}, applyCommand: {append 0 x 0 5 y 10 1902443556393758409}
+[server 3] 22:18:23.170273 reply put/append op succeed {10 {append 0 x 0 5 y 10 1902443556393758409} }
+[server 3] 22:18:23.170285 send to client(put/append) reply: &{false }
+[server 3] 22:18:23.171340 receive put/append op: {append 0 x 0 6 y 11 1902443556393758409}
+[server 3] 22:18:23.201335 apply: {append 0 x 0 6 y 11 1902443556393758409}
+[server 3] 22:18:23.201381 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y]
+[server 3] 22:18:23.201405 start to apply
+[server 3] 22:18:23.201417 command: {append 0 x 0 6 y 11 1902443556393758409}, applyCommand: {append 0 x 0 6 y 11 1902443556393758409}
+[server 3] 22:18:23.201425 reply put/append op succeed {11 {append 0 x 0 6 y 11 1902443556393758409} }
+[server 3] 22:18:23.201433 send to client(put/append) reply: &{false }
+[server 3] 22:18:23.201852 receive put/append op: {append 0 x 0 7 y 12 1902443556393758409}
+[server 3] 22:18:23.233018 apply: {append 0 x 0 7 y 12 1902443556393758409}
+[server 3] 22:18:23.233051 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 y]
+[server 3] 22:18:23.233059 start to apply
+[server 3] 22:18:23.233068 command: {append 0 x 0 7 y 12 1902443556393758409}, applyCommand: {append 0 x 0 7 y 12 1902443556393758409}
+[server 3] 22:18:23.233076 reply put/append op succeed {12 {append 0 x 0 7 y 12 1902443556393758409} }
+[server 3] 22:18:23.233084 send to client(put/append) reply: &{false }
+[server 3] 22:18:23.233660 receive get op: {get 0  13 1902443556393758409}
+[server 3] 22:18:23.253657 apply: {get 0  13 1902443556393758409}
+[server 3] 22:18:23.253824 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 y]
+[server 3] 22:18:23.253850 start to apply
+[server 3] 22:18:23.253884 command: {get 0  13 1902443556393758409}, applyCommand: {get 0  13 1902443556393758409}
+[server 3] 22:18:23.253894 reply get op succeed {13 {get 0  13 1902443556393758409} x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 y}
+[server 3] 22:18:23.253904 send to client reply: &{false  x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 y}
+[server 3] 22:18:23.254496 receive put/append op: {append 0 x 0 8 y 14 1902443556393758409}
+[server 3] 22:18:23.284725 apply: {append 0 x 0 8 y 14 1902443556393758409}
+[server 3] 22:18:23.284789 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 y]
+[server 3] 22:18:23.284796 start to apply
+[server 3] 22:18:23.284806 command: {append 0 x 0 8 y 14 1902443556393758409}, applyCommand: {append 0 x 0 8 y 14 1902443556393758409}
+[server 3] 22:18:23.284813 reply put/append op succeed {14 {append 0 x 0 8 y 14 1902443556393758409} }
+[server 3] 22:18:23.284821 send to client(put/append) reply: &{false }
+[server 3] 22:18:23.285271 receive put/append op: {append 0 x 0 9 y 15 1902443556393758409}
+[server 3] 22:18:23.305270 apply: {append 0 x 0 9 y 15 1902443556393758409}
+[server 3] 22:18:23.305317 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 y]
+[server 3] 22:18:23.305335 start to apply
+[server 3] 22:18:23.305365 command: {append 0 x 0 9 y 15 1902443556393758409}, applyCommand: {append 0 x 0 9 y 15 1902443556393758409}
+[server 3] 22:18:23.305393 reply put/append op succeed {15 {append 0 x 0 9 y 15 1902443556393758409} }
+[server 3] 22:18:23.305400 send to client(put/append) reply: &{false }
+[server 3] 22:18:23.305989 receive put/append op: {append 0 x 0 10 y 16 1902443556393758409}
+[server 3] 22:18:23.335855 apply: {append 0 x 0 10 y 16 1902443556393758409}
+[server 3] 22:18:23.335924 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 y]
+[server 3] 22:18:23.335940 start to apply
+[server 3] 22:18:23.335970 command: {append 0 x 0 10 y 16 1902443556393758409}, applyCommand: {append 0 x 0 10 y 16 1902443556393758409}
+[server 3] 22:18:23.335978 reply put/append op succeed {16 {append 0 x 0 10 y 16 1902443556393758409} }
+[server 3] 22:18:23.335986 send to client(put/append) reply: &{false }
+[server 3] 22:18:23.337137 receive get op: {get 0  17 1902443556393758409}
+[server 3] 22:18:23.377067 apply: {get 0  17 1902443556393758409}
+[server 3] 22:18:23.377113 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 y]
+[server 3] 22:18:23.377140 start to apply
+[server 3] 22:18:23.377170 command: {get 0  17 1902443556393758409}, applyCommand: {get 0  17 1902443556393758409}
+[server 3] 22:18:23.377186 reply get op succeed {17 {get 0  17 1902443556393758409} x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 y}
+[server 3] 22:18:23.377198 send to client reply: &{false  x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 y}
+[server 3] 22:18:23.378093 receive get op: {get 0  18 1902443556393758409}
+[server 3] 22:18:23.397767 apply: {get 0  18 1902443556393758409}
+[server 3] 22:18:23.397843 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 y]
+[server 3] 22:18:23.397870 start to apply
+[server 3] 22:18:23.397885 command: {get 0  18 1902443556393758409}, applyCommand: {get 0  18 1902443556393758409}
+[server 3] 22:18:23.397914 reply get op succeed {18 {get 0  18 1902443556393758409} x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 y}
+[server 3] 22:18:23.397923 send to client reply: &{false  x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 y}
+[server 3] 22:18:23.398642 receive put/append op: {append 0 x 0 11 y 19 1902443556393758409}
+[server 3] 22:18:23.428192 apply: {append 0 x 0 11 y 19 1902443556393758409}
+[server 3] 22:18:23.428218 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 y]
+[server 3] 22:18:23.428226 start to apply
+[server 3] 22:18:23.428236 command: {append 0 x 0 11 y 19 1902443556393758409}, applyCommand: {append 0 x 0 11 y 19 1902443556393758409}
+[server 3] 22:18:23.428243 reply put/append op succeed {19 {append 0 x 0 11 y 19 1902443556393758409} }
+[server 3] 22:18:23.428268 send to client(put/append) reply: &{false }
+[server 3] 22:18:23.428922 receive get op: {get 0  20 1902443556393758409}
+[server 3] 22:18:23.469730 apply: {get 0  20 1902443556393758409}
+[server 3] 22:18:23.469816 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 y]
+[server 3] 22:18:23.469832 start to apply
+[server 3] 22:18:23.469850 command: {get 0  20 1902443556393758409}, applyCommand: {get 0  20 1902443556393758409}
+[server 3] 22:18:23.469864 reply get op succeed {20 {get 0  20 1902443556393758409} x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 y}
+[server 3] 22:18:23.469879 send to client reply: &{false  x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 y}
+[server 3] 22:18:23.477700 receive get op: {get 0  21 1902443556393758409}
+[server 3] 22:18:23.500825 apply: {get 0  21 1902443556393758409}
+[server 3] 22:18:23.500930 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 y]
+[server 3] 22:18:23.500945 start to apply
+[server 3] 22:18:23.500963 command: {get 0  21 1902443556393758409}, applyCommand: {get 0  21 1902443556393758409}
+[server 3] 22:18:23.500974 reply get op succeed {21 {get 0  21 1902443556393758409} x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 y}
+[server 3] 22:18:23.500986 send to client reply: &{false  x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 y}
+[server 3] 22:18:23.502041 receive get op: {get 0  22 1902443556393758409}
+[server 3] 22:18:23.531826 apply: {get 0  22 1902443556393758409}
+[server 3] 22:18:23.531886 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 y]
+[server 3] 22:18:23.531912 start to apply
+[server 3] 22:18:23.531923 command: {get 0  22 1902443556393758409}, applyCommand: {get 0  22 1902443556393758409}
+[server 3] 22:18:23.531931 reply get op succeed {22 {get 0  22 1902443556393758409} x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 y}
+[server 3] 22:18:23.531957 send to client reply: &{false  x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 y}
+[server 3] 22:18:23.532596 receive put/append op: {append 0 x 0 12 y 23 1902443556393758409}
+[server 3] 22:18:23.552473 apply: {append 0 x 0 12 y 23 1902443556393758409}
+[server 3] 22:18:23.552496 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 y]
+[server 3] 22:18:23.552516 start to apply
+[server 3] 22:18:23.552545 command: {append 0 x 0 12 y 23 1902443556393758409}, applyCommand: {append 0 x 0 12 y 23 1902443556393758409}
+[server 3] 22:18:23.552554 reply put/append op succeed {23 {append 0 x 0 12 y 23 1902443556393758409} }
+[server 3] 22:18:23.552563 send to client(put/append) reply: &{false }
+[server 3] 22:18:23.553209 receive put/append op: {append 0 x 0 13 y 24 1902443556393758409}
+[server 3] 22:18:23.583590 apply: {append 0 x 0 13 y 24 1902443556393758409}
+[server 3] 22:18:23.583609 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 y]
+[server 3] 22:18:23.583630 start to apply
+[server 3] 22:18:23.583656 command: {append 0 x 0 13 y 24 1902443556393758409}, applyCommand: {append 0 x 0 13 y 24 1902443556393758409}
+[server 3] 22:18:23.583681 reply put/append op succeed {24 {append 0 x 0 13 y 24 1902443556393758409} }
+[server 3] 22:18:23.583690 send to client(put/append) reply: &{false }
+[server 3] 22:18:23.584249 receive put/append op: {append 0 x 0 14 y 25 1902443556393758409}
+[server 3] 22:18:23.614921 apply: {append 0 x 0 14 y 25 1902443556393758409}
+[server 3] 22:18:23.614955 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 y]
+[server 3] 22:18:23.614964 start to apply
+[server 3] 22:18:23.614974 command: {append 0 x 0 14 y 25 1902443556393758409}, applyCommand: {append 0 x 0 14 y 25 1902443556393758409}
+[server 3] 22:18:23.614982 reply put/append op succeed {25 {append 0 x 0 14 y 25 1902443556393758409} }
+[server 3] 22:18:23.615004 send to client(put/append) reply: &{false }
+[server 3] 22:18:23.615790 receive get op: {get 0  26 1902443556393758409}
+[server 3] 22:18:23.646328 apply: {get 0  26 1902443556393758409}
+[server 3] 22:18:23.646366 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 y]
+[server 3] 22:18:23.646395 start to apply
+[server 3] 22:18:23.646411 command: {get 0  26 1902443556393758409}, applyCommand: {get 0  26 1902443556393758409}
+[server 3] 22:18:23.646457 reply get op succeed {26 {get 0  26 1902443556393758409} x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 y}
+[server 3] 22:18:23.646470 send to client reply: &{false  x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 y}
+[server 3] 22:18:23.647220 receive get op: {get 0  27 1902443556393758409}
+[server 3] 22:18:23.688054 apply: {get 0  27 1902443556393758409}
+[server 3] 22:18:23.688136 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 y]
+[server 3] 22:18:23.688146 start to apply
+[server 3] 22:18:23.688171 command: {get 0  27 1902443556393758409}, applyCommand: {get 0  27 1902443556393758409}
+[server 3] 22:18:23.688198 reply get op succeed {27 {get 0  27 1902443556393758409} x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 y}
+[server 3] 22:18:23.688208 send to client reply: &{false  x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 y}
+[server 3] 22:18:23.689125 receive put/append op: {append 0 x 0 15 y 28 1902443556393758409}
+[server 3] 22:18:23.719023 apply: {append 0 x 0 15 y 28 1902443556393758409}
+[server 3] 22:18:23.719122 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 y]
+[server 3] 22:18:23.719138 start to apply
+[server 3] 22:18:23.719159 command: {append 0 x 0 15 y 28 1902443556393758409}, applyCommand: {append 0 x 0 15 y 28 1902443556393758409}
+[server 3] 22:18:23.719178 reply put/append op succeed {28 {append 0 x 0 15 y 28 1902443556393758409} }
+[server 3] 22:18:23.719197 send to client(put/append) reply: &{false }
+[server 3] 22:18:23.720105 receive get op: {get 0  29 1902443556393758409}
+[server 3] 22:18:23.739701 apply: {get 0  29 1902443556393758409}
+[server 3] 22:18:23.739813 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 y]
+[server 3] 22:18:23.739822 start to apply
+[server 3] 22:18:23.739841 command: {get 0  29 1902443556393758409}, applyCommand: {get 0  29 1902443556393758409}
+[server 3] 22:18:23.739863 reply get op succeed {29 {get 0  29 1902443556393758409} x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 y}
+[server 3] 22:18:23.739877 send to client reply: &{false  x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 y}
+[server 3] 22:18:23.741294 receive get op: {get 0  30 1902443556393758409}
+[server 3] 22:18:23.771082 apply: {get 0  30 1902443556393758409}
+[server 3] 22:18:23.771169 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 y]
+[server 3] 22:18:23.771206 start to apply
+[server 3] 22:18:23.771225 command: {get 0  30 1902443556393758409}, applyCommand: {get 0  30 1902443556393758409}
+[server 3] 22:18:23.771248 reply get op succeed {30 {get 0  30 1902443556393758409} x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 y}
+[server 3] 22:18:23.771273 send to client reply: &{false  x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 y}
+[server 3] 22:18:23.772309 receive get op: {get 0  31 1902443556393758409}
+[server 3] 22:18:23.801889 apply: {get 0  31 1902443556393758409}
+[server 3] 22:18:23.801940 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 y]
+[server 3] 22:18:23.801966 start to apply
+[server 3] 22:18:23.801976 command: {get 0  31 1902443556393758409}, applyCommand: {get 0  31 1902443556393758409}
+[server 3] 22:18:23.801988 reply get op succeed {31 {get 0  31 1902443556393758409} x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 y}
+[server 3] 22:18:23.802012 send to client reply: &{false  x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 y}
+[server 3] 22:18:23.803301 receive get op: {get 0  32 1902443556393758409}
+[server 3] 22:18:23.832554 apply: {get 0  32 1902443556393758409}
+[server 3] 22:18:23.832618 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 y]
+[server 3] 22:18:23.832630 start to apply
+[server 3] 22:18:23.832642 command: {get 0  32 1902443556393758409}, applyCommand: {get 0  32 1902443556393758409}
+[server 3] 22:18:23.832650 reply get op succeed {32 {get 0  32 1902443556393758409} x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 y}
+[server 3] 22:18:23.832659 send to client reply: &{false  x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 y}
+[server 3] 22:18:23.833311 receive put/append op: {append 0 x 0 16 y 33 1902443556393758409}
+[server 3] 22:18:23.863413 apply: {append 0 x 0 16 y 33 1902443556393758409}
+[server 3] 22:18:23.863462 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 y]
+[server 3] 22:18:23.863470 start to apply
+[server 3] 22:18:23.863479 command: {append 0 x 0 16 y 33 1902443556393758409}, applyCommand: {append 0 x 0 16 y 33 1902443556393758409}
+[server 3] 22:18:23.863486 reply put/append op succeed {33 {append 0 x 0 16 y 33 1902443556393758409} }
+[server 3] 22:18:23.863494 send to client(put/append) reply: &{false }
+[server 3] 22:18:23.863986 receive put/append op: {append 0 x 0 17 y 34 1902443556393758409}
+[server 3] 22:18:23.884102 apply: {append 0 x 0 17 y 34 1902443556393758409}
+[server 3] 22:18:23.884150 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 y]
+[server 3] 22:18:23.884157 start to apply
+[server 3] 22:18:23.884166 command: {append 0 x 0 17 y 34 1902443556393758409}, applyCommand: {append 0 x 0 17 y 34 1902443556393758409}
+[server 3] 22:18:23.884173 reply put/append op succeed {34 {append 0 x 0 17 y 34 1902443556393758409} }
+[server 3] 22:18:23.884181 send to client(put/append) reply: &{false }
+[server 3] 22:18:23.884843 receive get op: {get 0  35 1902443556393758409}
+[server 3] 22:18:23.915259 apply: {get 0  35 1902443556393758409}
+[server 3] 22:18:23.915280 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 y]
+[server 3] 22:18:23.915288 start to apply
+[server 3] 22:18:23.915298 command: {get 0  35 1902443556393758409}, applyCommand: {get 0  35 1902443556393758409}
+[server 3] 22:18:23.915310 reply get op succeed {35 {get 0  35 1902443556393758409} x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 y}
+[server 3] 22:18:23.915325 send to client reply: &{false  x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 y}
+[server 3] 22:18:23.915900 receive put/append op: {append 0 x 0 18 y 36 1902443556393758409}
+[server 3] 22:18:23.946466 apply: {append 0 x 0 18 y 36 1902443556393758409}
+[server 3] 22:18:23.946503 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 y]
+[server 3] 22:18:23.946529 start to apply
+[server 3] 22:18:23.946541 command: {append 0 x 0 18 y 36 1902443556393758409}, applyCommand: {append 0 x 0 18 y 36 1902443556393758409}
+[server 3] 22:18:23.946549 reply put/append op succeed {36 {append 0 x 0 18 y 36 1902443556393758409} }
+[server 3] 22:18:23.946558 send to client(put/append) reply: &{false }
+[server 3] 22:18:23.947100 receive put/append op: {append 0 x 0 19 y 37 1902443556393758409}
+[server 3] 22:18:23.977535 apply: {append 0 x 0 19 y 37 1902443556393758409}
+[server 3] 22:18:23.977584 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 y]
+[server 3] 22:18:23.977592 start to apply
+[server 3] 22:18:23.977602 command: {append 0 x 0 19 y 37 1902443556393758409}, applyCommand: {append 0 x 0 19 y 37 1902443556393758409}
+[server 3] 22:18:23.977615 reply put/append op succeed {37 {append 0 x 0 19 y 37 1902443556393758409} }
+[server 3] 22:18:23.977639 send to client(put/append) reply: &{false }
+[server 3] 22:18:23.978032 receive put/append op: {append 0 x 0 20 y 38 1902443556393758409}
+[server 3] 22:18:24.019007 apply: {append 0 x 0 20 y 38 1902443556393758409}
+[server 3] 22:18:24.019072 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 y]
+[server 3] 22:18:24.019100 start to apply
+[server 3] 22:18:24.019110 command: {append 0 x 0 20 y 38 1902443556393758409}, applyCommand: {append 0 x 0 20 y 38 1902443556393758409}
+[server 3] 22:18:24.019118 reply put/append op succeed {38 {append 0 x 0 20 y 38 1902443556393758409} }
+[server 3] 22:18:24.019127 send to client(put/append) reply: &{false }
+[server 3] 22:18:24.019985 receive get op: {get 0  39 1902443556393758409}
+[server 3] 22:18:24.049887 apply: {get 0  39 1902443556393758409}
+[server 3] 22:18:24.049934 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 y]
+[server 3] 22:18:24.049942 start to apply
+[server 3] 22:18:24.049950 command: {get 0  39 1902443556393758409}, applyCommand: {get 0  39 1902443556393758409}
+[server 3] 22:18:24.049958 reply get op succeed {39 {get 0  39 1902443556393758409} x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 y}
+[server 3] 22:18:24.049965 send to client reply: &{false  x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 y}
+[server 3] 22:18:24.050933 receive put/append op: {append 0 x 0 21 y 40 1902443556393758409}
+[server 3] 22:18:24.081197 apply: {append 0 x 0 21 y 40 1902443556393758409}
+[server 3] 22:18:24.081277 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 y]
+[server 3] 22:18:24.081284 start to apply
+[server 3] 22:18:24.081295 command: {append 0 x 0 21 y 40 1902443556393758409}, applyCommand: {append 0 x 0 21 y 40 1902443556393758409}
+[server 3] 22:18:24.081303 reply put/append op succeed {40 {append 0 x 0 21 y 40 1902443556393758409} }
+[server 3] 22:18:24.081310 send to client(put/append) reply: &{false }
+[server 3] 22:18:24.081745 receive put/append op: {append 0 x 0 22 y 41 1902443556393758409}
+[server 3] 22:18:24.112095 apply: {append 0 x 0 22 y 41 1902443556393758409}
+[server 3] 22:18:24.112133 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 y]
+[server 3] 22:18:24.112141 start to apply
+[server 3] 22:18:24.112151 command: {append 0 x 0 22 y 41 1902443556393758409}, applyCommand: {append 0 x 0 22 y 41 1902443556393758409}
+[server 3] 22:18:24.112159 reply put/append op succeed {41 {append 0 x 0 22 y 41 1902443556393758409} }
+[server 3] 22:18:24.112167 send to client(put/append) reply: &{false }
+[server 3] 22:18:24.112656 receive put/append op: {append 0 x 0 23 y 42 1902443556393758409}
+[server 3] 22:18:24.143130 apply: {append 0 x 0 23 y 42 1902443556393758409}
+[server 3] 22:18:24.143199 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 yx 0 23 y]
+[server 3] 22:18:24.143206 start to apply
+[server 3] 22:18:24.143219 command: {append 0 x 0 23 y 42 1902443556393758409}, applyCommand: {append 0 x 0 23 y 42 1902443556393758409}
+[server 3] 22:18:24.143227 reply put/append op succeed {42 {append 0 x 0 23 y 42 1902443556393758409} }
+[server 3] 22:18:24.143234 send to client(put/append) reply: &{false }
+[server 3] 22:18:24.143917 receive get op: {get 0  43 1902443556393758409}
+[server 3] 22:18:24.163916 apply: {get 0  43 1902443556393758409}
+[server 3] 22:18:24.163939 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 yx 0 23 y]
+[server 3] 22:18:24.163948 start to apply
+[server 3] 22:18:24.163972 command: {get 0  43 1902443556393758409}, applyCommand: {get 0  43 1902443556393758409}
+[server 3] 22:18:24.163980 reply get op succeed {43 {get 0  43 1902443556393758409} x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 yx 0 23 y}
+[server 3] 22:18:24.163990 send to client reply: &{false  x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 yx 0 23 y}
+[server 3] 22:18:24.165154 receive get op: {get 0  44 1902443556393758409}
+[server 3] 22:18:24.195200 apply: {get 0  44 1902443556393758409}
+[server 3] 22:18:24.195245 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 yx 0 23 y]
+[server 3] 22:18:24.195252 start to apply
+[server 3] 22:18:24.195261 command: {get 0  44 1902443556393758409}, applyCommand: {get 0  44 1902443556393758409}
+[server 3] 22:18:24.195269 reply get op succeed {44 {get 0  44 1902443556393758409} x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 yx 0 23 y}
+[server 3] 22:18:24.195279 send to client reply: &{false  x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 yx 0 23 y}
+[server 3] 22:18:24.195939 receive put/append op: {append 0 x 0 24 y 45 1902443556393758409}
+[server 3] 22:18:24.225886 apply: {append 0 x 0 24 y 45 1902443556393758409}
+[server 3] 22:18:24.225908 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 yx 0 23 yx 0 24 y]
+[server 3] 22:18:24.225916 start to apply
+[server 3] 22:18:24.225926 command: {append 0 x 0 24 y 45 1902443556393758409}, applyCommand: {append 0 x 0 24 y 45 1902443556393758409}
+[server 3] 22:18:24.225934 reply put/append op succeed {45 {append 0 x 0 24 y 45 1902443556393758409} }
+[server 3] 22:18:24.225956 send to client(put/append) reply: &{false }
+[server 3] 22:18:24.226214 receive put/append op: {append 0 x 0 25 y 46 1902443556393758409}
+[server 3] 22:18:24.257247 apply: {append 0 x 0 25 y 46 1902443556393758409}
+[server 3] 22:18:24.257280 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 yx 0 23 yx 0 24 yx 0 25 y]
+[server 3] 22:18:24.257288 start to apply
+[server 3] 22:18:24.257300 command: {append 0 x 0 25 y 46 1902443556393758409}, applyCommand: {append 0 x 0 25 y 46 1902443556393758409}
+[server 3] 22:18:24.257308 reply put/append op succeed {46 {append 0 x 0 25 y 46 1902443556393758409} }
+[server 3] 22:18:24.257317 send to client(put/append) reply: &{false }
+[server 3] 22:18:24.257739 receive put/append op: {append 0 x 0 26 y 47 1902443556393758409}
+[server 3] 22:18:24.288278 apply: {append 0 x 0 26 y 47 1902443556393758409}
+[server 3] 22:18:24.288360 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 yx 0 23 yx 0 24 yx 0 25 yx 0 26 y]
+[server 3] 22:18:24.288367 start to apply
+[server 3] 22:18:24.288377 command: {append 0 x 0 26 y 47 1902443556393758409}, applyCommand: {append 0 x 0 26 y 47 1902443556393758409}
+[server 3] 22:18:24.288389 reply put/append op succeed {47 {append 0 x 0 26 y 47 1902443556393758409} }
+[server 3] 22:18:24.288399 send to client(put/append) reply: &{false }
+[server 3] 22:18:24.288799 receive put/append op: {append 0 x 0 27 y 48 1902443556393758409}
+[server 3] 22:18:24.319301 apply: {append 0 x 0 27 y 48 1902443556393758409}
+[server 3] 22:18:24.319416 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 yx 0 23 yx 0 24 yx 0 25 yx 0 26 yx 0 27 y]
+[server 3] 22:18:24.319427 start to apply
+[server 3] 22:18:24.319456 command: {append 0 x 0 27 y 48 1902443556393758409}, applyCommand: {append 0 x 0 27 y 48 1902443556393758409}
+[server 3] 22:18:24.319464 reply put/append op succeed {48 {append 0 x 0 27 y 48 1902443556393758409} }
+[server 3] 22:18:24.319473 send to client(put/append) reply: &{false }
+[server 3] 22:18:24.319999 receive put/append op: {append 0 x 0 28 y 49 1902443556393758409}
+[server 3] 22:18:24.350109 apply: {append 0 x 0 28 y 49 1902443556393758409}
+[server 3] 22:18:24.350176 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 yx 0 23 yx 0 24 yx 0 25 yx 0 26 yx 0 27 yx 0 28 y]
+[server 3] 22:18:24.350185 start to apply
+[server 3] 22:18:24.350194 command: {append 0 x 0 28 y 49 1902443556393758409}, applyCommand: {append 0 x 0 28 y 49 1902443556393758409}
+[server 3] 22:18:24.350202 reply put/append op succeed {49 {append 0 x 0 28 y 49 1902443556393758409} }
+[server 3] 22:18:24.350210 send to client(put/append) reply: &{false }
+[server 3] 22:18:24.350854 receive get op: {get 0  50 1902443556393758409}
+[server 3] 22:18:24.381304 apply: {get 0  50 1902443556393758409}
+[server 3] 22:18:24.381334 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 yx 0 23 yx 0 24 yx 0 25 yx 0 26 yx 0 27 yx 0 28 y]
+[server 3] 22:18:24.381341 start to apply
+[server 3] 22:18:24.381351 command: {get 0  50 1902443556393758409}, applyCommand: {get 0  50 1902443556393758409}
+[server 3] 22:18:24.381362 reply get op succeed {50 {get 0  50 1902443556393758409} x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 yx 0 23 yx 0 24 yx 0 25 yx 0 26 yx 0 27 yx 0 28 y}
+[server 3] 22:18:24.381371 send to client reply: &{false  x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 yx 0 23 yx 0 24 yx 0 25 yx 0 26 yx 0 27 yx 0 28 y}
+[server 3] 22:18:24.382095 receive get op: {get 0  51 1902443556393758409}
+[server 3] 22:18:24.412590 apply: {get 0  51 1902443556393758409}
+[server 3] 22:18:24.412639 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 yx 0 23 yx 0 24 yx 0 25 yx 0 26 yx 0 27 yx 0 28 y]
+[server 3] 22:18:24.412660 start to apply
+[server 3] 22:18:24.412669 command: {get 0  51 1902443556393758409}, applyCommand: {get 0  51 1902443556393758409}
+[server 3] 22:18:24.412680 reply get op succeed {51 {get 0  51 1902443556393758409} x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 yx 0 23 yx 0 24 yx 0 25 yx 0 26 yx 0 27 yx 0 28 y}
+[server 3] 22:18:24.412688 send to client reply: &{false  x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 yx 0 23 yx 0 24 yx 0 25 yx 0 26 yx 0 27 yx 0 28 y}
+[server 3] 22:18:24.413431 receive put/append op: {append 0 x 0 29 y 52 1902443556393758409}
+[server 3] 22:18:24.443705 apply: {append 0 x 0 29 y 52 1902443556393758409}
+[server 3] 22:18:24.443765 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 yx 0 23 yx 0 24 yx 0 25 yx 0 26 yx 0 27 yx 0 28 yx 0 29 y]
+[server 3] 22:18:24.443772 start to apply
+[server 3] 22:18:24.443781 command: {append 0 x 0 29 y 52 1902443556393758409}, applyCommand: {append 0 x 0 29 y 52 1902443556393758409}
+[server 3] 22:18:24.443788 reply put/append op succeed {52 {append 0 x 0 29 y 52 1902443556393758409} }
+[server 3] 22:18:24.443796 send to client(put/append) reply: &{false }
+[server 3] 22:18:24.444207 receive put/append op: {append 0 x 0 30 y 53 1902443556393758409}
+[server 3] 22:18:24.474823 apply: {append 0 x 0 30 y 53 1902443556393758409}
+[server 3] 22:18:24.474856 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 yx 0 23 yx 0 24 yx 0 25 yx 0 26 yx 0 27 yx 0 28 yx 0 29 yx 0 30 y]
+[server 3] 22:18:24.474878 start to apply
+[server 3] 22:18:24.474905 command: {append 0 x 0 30 y 53 1902443556393758409}, applyCommand: {append 0 x 0 30 y 53 1902443556393758409}
+[server 3] 22:18:24.474913 reply put/append op succeed {53 {append 0 x 0 30 y 53 1902443556393758409} }
+[server 3] 22:18:24.474921 send to client(put/append) reply: &{false }
+[server 3] 22:18:24.475359 receive put/append op: {append 0 x 0 31 y 54 1902443556393758409}
+[server 3] 22:18:24.505678 apply: {append 0 x 0 31 y 54 1902443556393758409}
+[server 3] 22:18:24.505742 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 yx 0 23 yx 0 24 yx 0 25 yx 0 26 yx 0 27 yx 0 28 yx 0 29 yx 0 30 yx 0 31 y]
+[server 3] 22:18:24.505750 start to apply
+[server 3] 22:18:24.505759 command: {append 0 x 0 31 y 54 1902443556393758409}, applyCommand: {append 0 x 0 31 y 54 1902443556393758409}
+[server 3] 22:18:24.505767 reply put/append op succeed {54 {append 0 x 0 31 y 54 1902443556393758409} }
+[server 3] 22:18:24.505775 send to client(put/append) reply: &{false }
+[server 3] 22:18:24.506433 receive get op: {get 0  55 1902443556393758409}
+[server 3] 22:18:24.536818 apply: {get 0  55 1902443556393758409}
+[server 3] 22:18:24.536909 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 yx 0 23 yx 0 24 yx 0 25 yx 0 26 yx 0 27 yx 0 28 yx 0 29 yx 0 30 yx 0 31 y]
+[server 3] 22:18:24.536917 start to apply
+[server 3] 22:18:24.536943 command: {get 0  55 1902443556393758409}, applyCommand: {get 0  55 1902443556393758409}
+[server 3] 22:18:24.536955 reply get op succeed {55 {get 0  55 1902443556393758409} x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 yx 0 23 yx 0 24 yx 0 25 yx 0 26 yx 0 27 yx 0 28 yx 0 29 yx 0 30 yx 0 31 y}
+[server 3] 22:18:24.536964 send to client reply: &{false  x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 yx 0 23 yx 0 24 yx 0 25 yx 0 26 yx 0 27 yx 0 28 yx 0 29 yx 0 30 yx 0 31 y}
+[server 3] 22:18:24.537650 receive put/append op: {append 0 x 0 32 y 56 1902443556393758409}
+[server 3] 22:18:24.557594 apply: {append 0 x 0 32 y 56 1902443556393758409}
+[server 3] 22:18:24.557680 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 yx 0 23 yx 0 24 yx 0 25 yx 0 26 yx 0 27 yx 0 28 yx 0 29 yx 0 30 yx 0 31 yx 0 32 y]
+[server 3] 22:18:24.557688 start to apply
+[server 3] 22:18:24.557701 command: {append 0 x 0 32 y 56 1902443556393758409}, applyCommand: {append 0 x 0 32 y 56 1902443556393758409}
+[server 3] 22:18:24.557711 reply put/append op succeed {56 {append 0 x 0 32 y 56 1902443556393758409} }
+[server 3] 22:18:24.557719 send to client(put/append) reply: &{false }
+[server 3] 22:18:24.558274 receive get op: {get 0  57 1902443556393758409}
+[server 3] 22:18:24.588460 apply: {get 0  57 1902443556393758409}
+[server 3] 22:18:24.588495 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 yx 0 23 yx 0 24 yx 0 25 yx 0 26 yx 0 27 yx 0 28 yx 0 29 yx 0 30 yx 0 31 yx 0 32 y]
+[server 3] 22:18:24.588518 start to apply
+[server 3] 22:18:24.588526 command: {get 0  57 1902443556393758409}, applyCommand: {get 0  57 1902443556393758409}
+[server 3] 22:18:24.588534 reply get op succeed {57 {get 0  57 1902443556393758409} x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 yx 0 23 yx 0 24 yx 0 25 yx 0 26 yx 0 27 yx 0 28 yx 0 29 yx 0 30 yx 0 31 yx 0 32 y}
+[server 3] 22:18:24.588541 send to client reply: &{false  x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 yx 0 23 yx 0 24 yx 0 25 yx 0 26 yx 0 27 yx 0 28 yx 0 29 yx 0 30 yx 0 31 yx 0 32 y}
+[server 3] 22:18:24.589905 receive get op: {get 0  58 1902443556393758409}
+[server 3] 22:18:24.619340 apply: {get 0  58 1902443556393758409}
+[server 3] 22:18:24.619376 map[0:x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 yx 0 23 yx 0 24 yx 0 25 yx 0 26 yx 0 27 yx 0 28 yx 0 29 yx 0 30 yx 0 31 yx 0 32 y]
+[server 3] 22:18:24.619383 start to apply
+[server 3] 22:18:24.619411 command: {get 0  58 1902443556393758409}, applyCommand: {get 0  58 1902443556393758409}
+[server 3] 22:18:24.619439 reply get op succeed {58 {get 0  58 1902443556393758409} x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 yx 0 23 yx 0 24 yx 0 25 yx 0 26 yx 0 27 yx 0 28 yx 0 29 yx 0 30 yx 0 31 yx 0 32 y}
+[server 3] 22:18:24.619450 send to client reply: &{false  x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 yx 0 23 yx 0 24 yx 0 25 yx 0 26 yx 0 27 yx 0 28 yx 0 29 yx 0 30 yx 0 31 yx 0 32 y}
+[server 3] 22:18:24.620424 receive put/append op: {append 0 x 0 33 y 59 1902443556393758409}

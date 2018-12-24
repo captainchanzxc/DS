@@ -74,17 +74,23 @@ func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 	if !isLeader {
 		reply.Err = ERR_NOT_LEADER
 	} else {
-		applyReplyMsg := <-kv.applyReplyCh
-		if index == applyReplyMsg.CommitIndex && applyReplyMsg.Command.SerialNum == kv.serialNums[op.ClerkId] {
-			reply.Value=applyReplyMsg.Value
-			return
-		} else {
+		kv.kvLog.Printf("receive get op: %v\n", op)
+		select {
+		case applyReplyMsg := <-kv.applyReplyCh:
+			kv.kvLog.Printf("command: %v, applyCommand: %v\n",op,applyReplyMsg.Command)
+			if index == applyReplyMsg.CommitIndex && applyReplyMsg.Command.ClerkId == op.ClerkId && applyReplyMsg.Command.SerialNum == op.SerialNum {
+				kv.kvLog.Printf("reply get op succeed %v\n", applyReplyMsg)
+				reply.Value = applyReplyMsg.Value
+				kv.kvLog.Printf("send to client reply: %v\n", reply)
+			} else {
+				kv.kvLog.Printf("reply get op fail %v\n", applyReplyMsg)
+				reply.Err = ERR_NOT_COMMIT
+			}
+		case <-time.After(kv.timeOut):
+			kv.kvLog.Println("time out")
 			reply.Err = ERR_NOT_COMMIT
-			return
 		}
-
 	}
-	kv.kvLog.Printf("return: %v\n", reply)
 }
 
 func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
@@ -105,12 +111,20 @@ func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 	if !isLeader {
 		reply.Err = ERR_NOT_LEADER
 	} else {
-		applyReplyMsg := <-kv.applyReplyCh
-		if index == applyReplyMsg.CommitIndex && applyReplyMsg.Command.SerialNum == kv.serialNums[op.ClerkId] {
-			return
-		} else {
+		kv.kvLog.Printf("receive put/append op: %v\n", op)
+		select {
+		case applyReplyMsg := <-kv.applyReplyCh:
+			kv.kvLog.Printf("command: %v, applyCommand: %v\n",op,applyReplyMsg.Command)
+			if index == applyReplyMsg.CommitIndex && applyReplyMsg.Command.ClerkId == op.ClerkId && applyReplyMsg.Command.SerialNum == op.SerialNum {
+				kv.kvLog.Printf("reply put/append op succeed %v\n", applyReplyMsg)
+				kv.kvLog.Printf("send to client(put/append) reply: %v\n", reply)
+			} else {
+				reply.Err = ERR_NOT_COMMIT
+				kv.kvLog.Printf("reply put/append op fail %v\n", applyReplyMsg)
+			}
+		case <-time.After(kv.timeOut):
+			kv.kvLog.Println("time out")
 			reply.Err = ERR_NOT_COMMIT
-			return
 		}
 	}
 }
@@ -121,29 +135,33 @@ func (kv *KVServer) apply() {
 		applyMsg := <-kv.applyCh
 		command := applyMsg.Command.(Op)
 		kv.kvLog.Printf("apply: %v\n", command)
-
-		if kv.serialNums[command.ClerkId] < command.SerialNum {
-			kv.serialNums[command.ClerkId] = command.SerialNum
-			switch command.Type {
-			case putOp:
+		switch command.Type {
+		case putOp:
+			if kv.serialNums[command.ClerkId] < command.SerialNum {
+				kv.serialNums[command.ClerkId] = command.SerialNum
 				kv.mapDb[command.Key] = command.Value
 				select {
 				case kv.applyReplyCh <- ApplyReplyArgs{Command: command, CommitIndex: applyMsg.CommandIndex}:
 				default:
 				}
-			case appendOp:
+
+			}
+		case appendOp:
+			if kv.serialNums[command.ClerkId] < command.SerialNum {
+				kv.serialNums[command.ClerkId] = command.SerialNum
 				kv.mapDb[command.Key] += command.Value
 				select {
 				case kv.applyReplyCh <- ApplyReplyArgs{Command: command, CommitIndex: applyMsg.CommandIndex}:
 				default:
 				}
-			case getOp:
-				select {
-				case kv.applyReplyCh <- ApplyReplyArgs{Command: command, CommitIndex: applyMsg.CommandIndex, Value: kv.mapDb[command.Key]}:
-				default:
-				}
+			}
+		case getOp:
+			select {
+			case kv.applyReplyCh <- ApplyReplyArgs{Command: command, CommitIndex: applyMsg.CommandIndex, Value: kv.mapDb[command.Key]}:
+			default:
 			}
 		}
+
 		kv.kvLog.Println(kv.mapDb)
 	}
 }
@@ -200,7 +218,7 @@ func StartKVServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persiste
 	kv.applyReplyCh = make(chan ApplyReplyArgs)
 	kv.applyCh = make(chan raft.ApplyMsg)
 	kv.serialNums = make(map[int64]int)
-	kv.timeOut = 500 * time.Millisecond
+	kv.timeOut = 2000 * time.Millisecond
 	kv.rf = raft.Make(servers, me, persister, kv.applyCh)
 
 	// You may need initialization code here.
