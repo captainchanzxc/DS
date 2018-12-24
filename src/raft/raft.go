@@ -20,10 +20,10 @@ package raft
 import (
 	"bytes"
 	"fmt"
-	"io/ioutil"
 	"labgob"
 	"log"
 	"math/rand"
+	"os"
 	"strconv"
 	"sync"
 	"time"
@@ -543,10 +543,10 @@ func (rf *Raft) replicateLog() {
 				ok := rf.sendAppendEntries(peer, &args, &reply)
 				if ok {
 					rf.mu.Lock()
-					if reply.ReceivedTerm != rf.CurrentTerm {
-						rf.mu.Unlock()
-						return
-					}
+					//if reply.ReceivedTerm != rf.CurrentTerm {
+					//	rf.mu.Unlock()
+					//	return
+					//}
 					//fmt.Printf("peer %d %t!!!!!!!\n",peer,reply.Success)
 					if reply.Term > rf.CurrentTerm {
 						rf.CurrentTerm = reply.Term
@@ -721,7 +721,7 @@ func Make(peers []*labrpc.ClientEnd, me int,
 	rf.persister = persister
 	rf.me = me
 	// Your initialization code here (2A, 2B, 2C).
-	rf.rfLog = log.New(ioutil.Discard, "[raft "+strconv.Itoa(rf.me)+"] ", log.Lmicroseconds)
+	rf.rfLog = log.New(os.Stdout, "[raft "+strconv.Itoa(rf.me)+"] ", log.Lmicroseconds)
 	rf.CurrentTerm = 0
 	rf.resetElectionTimeOut()
 	rf.State = Follower

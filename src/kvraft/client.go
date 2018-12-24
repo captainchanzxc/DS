@@ -1,7 +1,6 @@
 package raftkv
 
 import (
-	"io/ioutil"
 	"labrpc"
 	"log"
 	"os"
@@ -40,7 +39,7 @@ func MakeClerk(servers []*labrpc.ClientEnd) *Clerk {
 	}
 	ck.serialNum = 0
 	ck.id=nrand()
-	ck.ckLog = log.New(ioutil.Discard, "[client "+strconv.FormatInt(ck.id,10)+"] ", log.Lmicroseconds)
+	ck.ckLog = log.New(os.Stdout, "[client "+strconv.FormatInt(ck.id,10)+"] ", log.Lmicroseconds)
 	return ck
 }
 
@@ -77,9 +76,9 @@ func (ck *Clerk) Get(key string) string {
 	for {
 		for i := 0; i < len(ck.servers); i++ {
 			reply := GetReply{}
-			ck.ckLog.Printf("call server get %d\n",i)
+			//ck.ckLog.Printf("call server get %d\n",i)
 			ok := ck.servers[i].Call("KVServer.Get", &args, &reply)
-			ck.ckLog.Printf("reply from server get %d\n",i)
+			//ck.ckLog.Printf("reply from server get %d\n",i)
 			if ok {
 				if reply.Err == "" {
 					ck.ckLog.Printf("send GetArgs: %v\n", args)
