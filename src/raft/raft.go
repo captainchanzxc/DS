@@ -382,7 +382,7 @@ func (rf *Raft) resetElectionTimeOut() {
 	//fmt.Printf("peer %d reset timeout1\n",rf.me)
 	rf.mu.Lock()
 	rf.lastHeardTime = time.Now().UnixNano() / int64(time.Millisecond)
-	rf.electionTimeOut = rand.Int63n(200) + 350
+	rf.electionTimeOut = rand.Int63n(300) + 500
 	rf.mu.Unlock()
 	//fmt.Printf("peer %d reset timeout2\n",rf.me)
 }
@@ -465,7 +465,7 @@ func (rf *Raft) sendAppendEntries(server int, args *AppendEntryArgs, reply *Appe
 
 func (rf *Raft) startHeartBeat() {
 	//fmt.Println("start hb")
-	rf.heartBeatInterval = 300
+	rf.heartBeatInterval = 200
 	for true {
 		for i := 0; i < len(rf.peers); i++ {
 			rf.mu.Lock()
