@@ -225,7 +225,6 @@ func GenericTest(t *testing.T, part string, nclients int, unreliable bool, crash
 			// Allow the clients to perform some operations without interruption
 			time.Sleep(1 * time.Second)
 			go partitioner(t, cfg, ch_partitioner, &done_partitioner)
-			fmt.Println("111111111111111111")
 		}
 		time.Sleep(5 * time.Second)
 
@@ -233,17 +232,14 @@ func GenericTest(t *testing.T, part string, nclients int, unreliable bool, crash
 		atomic.StoreInt32(&done_partitioner, 1) // tell partitioner to quit
 
 		if partitions {
-			fmt.Println("222222222222222222222")
 			 log.Printf("wait for partitioner\n")
 			<-ch_partitioner
 			// reconnect network and submit a request. A client may
 			// have submitted a request in a minority.  That request
 			// won't return until that server discovers a new term
 			// has started.
-			fmt.Println("44444444444444")
 			cfg.ConnectAll()
 			// wait for a while so that we have a new term
-			fmt.Println("55555555555555555555555")
 			time.Sleep(electionTimeout)
 		}
 
@@ -270,11 +266,9 @@ func GenericTest(t *testing.T, part string, nclients int, unreliable bool, crash
 			// if j < 10 {
 			// 	log.Printf("Warning: client %d managed to perform only %d put operations in 1 sec?\n", i, j)
 			// }
-			fmt.Println("666666666666666666666666")
 			key := strconv.Itoa(i)
 			 log.Printf("Check %v for client %d\n", j, i)
 			v := Get(cfg, ck, key)
-			fmt.Println("7777777777777777777777777")
 			checkClntAppends(t, i, v, j)
 		}
 

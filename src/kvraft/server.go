@@ -83,7 +83,7 @@ func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 				select {
 				case applyReplyMsg = <-kv.applyReplyCh:
 				case <-time.After(kv.timeOut):
-					kv.kvLog.Println("time out")
+					kv.kvLog.Printf("time out: %v\n",op)
 					reply.Err = ERR_NOT_COMMIT
 				}
 			}
@@ -99,7 +99,7 @@ func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 				reply.Err = ERR_NOT_COMMIT
 			}
 		case <-time.After(kv.timeOut):
-			kv.kvLog.Println("time out")
+			kv.kvLog.Printf("time out: %v\n",op)
 			reply.Err = ERR_NOT_COMMIT
 		}
 	}
@@ -131,7 +131,7 @@ func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 				select {
 				case applyReplyMsg = <-kv.applyReplyCh:
 				case <-time.After(kv.timeOut):
-					kv.kvLog.Println("time out")
+					kv.kvLog.Printf("time out: %v\n",op)
 					reply.Err = ERR_NOT_COMMIT
 				}
 			}
@@ -146,7 +146,7 @@ func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 				kv.kvLog.Printf("reply put/append op fail %v\n", applyReplyMsg)
 			}
 		case <-time.After(kv.timeOut):
-			kv.kvLog.Println("time out")
+			kv.kvLog.Printf("time out: %v\n",op)
 			reply.Err = ERR_NOT_COMMIT
 		}
 	}
@@ -159,7 +159,12 @@ func (kv *KVServer) apply() {
 		command := applyMsg.Command.(Op)
 		kv.kvLog.Printf("apply: %v\n", command)
 		if kv.me == command.LeaderId {
-			kv.applyReplyCh <- ApplyReplyArgs{Command: command, CommitIndex: applyMsg.CommandIndex, Value: kv.mapDb[command.Key]}
+			select {
+			case kv.applyReplyCh <- ApplyReplyArgs{Command: command, CommitIndex: applyMsg.CommandIndex, Value: kv.mapDb[command.Key]}:
+			default:
+
+			}
+
 		}
 		switch command.Type {
 		case putOp:
@@ -233,7 +238,7 @@ func StartKVServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persiste
 	kv.applyReplyCh = make(chan ApplyReplyArgs)
 	kv.applyCh = make(chan raft.ApplyMsg)
 	kv.serialNums = make(map[int64]int)
-	kv.timeOut = 4000 * time.Millisecond
+	kv.timeOut = 3000 * time.Millisecond
 	kv.rf = raft.Make(servers, me, persister, kv.applyCh)
 
 	// You may need initialization code here.
