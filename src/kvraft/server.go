@@ -1,6 +1,7 @@
 package raftkv
 
 import (
+	"io/ioutil"
 	"labgob"
 	"labrpc"
 	"log"
@@ -62,12 +63,19 @@ type KVServer struct {
 	kvLog        *log.Logger
 	mapDb        map[string]string
 	serialNums   map[int64]int
-	applyReplyCh chan ApplyReplyArgs
+	applyReplyChMap map[int64]chan ApplyReplyArgs
 	timeOut      time.Duration
 }
 
 func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 	// Your code here.
+	clerkId:=args.ClerkId
+	kv.mu.Lock()
+	if kv.applyReplyChMap[clerkId]==nil{
+		kv.applyReplyChMap[clerkId]=make(chan ApplyReplyArgs)
+	}
+	kv.mu.Unlock()
+
 	op := Op{Type: getOp, Key: args.Key, Value: "", SerialNum: args.SerialNum, ClerkId: args.ClerkId, LeaderId: kv.me}
 	index, _, isLeader := kv.rf.Start(op)
 	reply.WrongLeader = !isLeader
@@ -77,14 +85,15 @@ func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 	} else {
 		kv.kvLog.Printf("receive get op: %v\n", op)
 		select {
-		case applyReplyMsg := <-kv.applyReplyCh:
+		case applyReplyMsg := <-kv.applyReplyChMap[clerkId]:
 			for applyReplyMsg.CommitIndex < index {
-				kv.kvLog.Printf("apply an old cmd: %v\n",applyReplyMsg)
+				kv.kvLog.Printf("apply an old cmd: %v\n", applyReplyMsg)
 				select {
-				case applyReplyMsg = <-kv.applyReplyCh:
+				case applyReplyMsg = <-kv.applyReplyChMap[clerkId]:
 				case <-time.After(kv.timeOut):
-					kv.kvLog.Printf("time out: %v\n",op)
+					kv.kvLog.Printf("time out: %v\n", op)
 					reply.Err = ERR_NOT_COMMIT
+					return
 				}
 			}
 			kv.kvLog.Printf("command: %v, applyCommand: %v\n", op, applyReplyMsg.Command)
@@ -99,7 +108,7 @@ func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 				reply.Err = ERR_NOT_COMMIT
 			}
 		case <-time.After(kv.timeOut):
-			kv.kvLog.Printf("time out: %v\n",op)
+			kv.kvLog.Printf("time out: %v\n", op)
 			reply.Err = ERR_NOT_COMMIT
 		}
 	}
@@ -107,6 +116,12 @@ func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 
 func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 	// Your code here.
+	clerkId:=args.ClerkId
+	kv.mu.Lock()
+	if kv.applyReplyChMap[clerkId]==nil{
+		kv.applyReplyChMap[clerkId]=make(chan ApplyReplyArgs)
+	}
+	kv.mu.Unlock()
 	op := Op{Key: args.Key, Value: args.Value, ClerkId: args.ClerkId, SerialNum: args.SerialNum, LeaderId: kv.me}
 	if args.Op == "Put" {
 		op.Type = putOp
@@ -125,14 +140,15 @@ func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 	} else {
 		kv.kvLog.Printf("receive put/append op: %v\n", op)
 		select {
-		case applyReplyMsg := <-kv.applyReplyCh:
+		case applyReplyMsg := <-kv.applyReplyChMap[clerkId]:
 			for applyReplyMsg.CommitIndex < index {
-				kv.kvLog.Printf("apply an old cmd: %v\n",applyReplyMsg)
+				kv.kvLog.Printf("apply an old cmd: %v\n", applyReplyMsg)
 				select {
-				case applyReplyMsg = <-kv.applyReplyCh:
+				case applyReplyMsg = <-kv.applyReplyChMap[clerkId]:
 				case <-time.After(kv.timeOut):
-					kv.kvLog.Printf("time out: %v\n",op)
+					kv.kvLog.Printf("time out: %v\n", op)
 					reply.Err = ERR_NOT_COMMIT
+					return
 				}
 			}
 			kv.kvLog.Printf("command: %v, applyCommand: %v\n", op, applyReplyMsg.Command)
@@ -146,7 +162,7 @@ func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 				kv.kvLog.Printf("reply put/append op fail %v\n", applyReplyMsg)
 			}
 		case <-time.After(kv.timeOut):
-			kv.kvLog.Printf("time out: %v\n",op)
+			kv.kvLog.Printf("time out: %v\n", op)
 			reply.Err = ERR_NOT_COMMIT
 		}
 	}
@@ -160,9 +176,8 @@ func (kv *KVServer) apply() {
 		kv.kvLog.Printf("apply: %v\n", command)
 		if kv.me == command.LeaderId {
 			select {
-			case kv.applyReplyCh <- ApplyReplyArgs{Command: command, CommitIndex: applyMsg.CommandIndex, Value: kv.mapDb[command.Key]}:
+			case kv.applyReplyChMap[command.ClerkId] <- ApplyReplyArgs{Command: command, CommitIndex: applyMsg.CommandIndex, Value: kv.mapDb[command.Key]}:
 			default:
-
 			}
 
 		}
@@ -231,11 +246,11 @@ func StartKVServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persiste
 	if err != nil {
 		panic(err)
 	}
-	kv.kvLog = log.New(kv.logFile, "[server "+strconv.Itoa(kv.me)+"] ", log.Lmicroseconds)
+	kv.kvLog = log.New(ioutil.Discard, "[server "+strconv.Itoa(kv.me)+"] ", log.Lmicroseconds)
 
 	kv.kvLog.Printf("servers number: %d\n", len(servers))
 	kv.mapDb = make(map[string]string)
-	kv.applyReplyCh = make(chan ApplyReplyArgs)
+	kv.applyReplyChMap = make(map[int64]chan ApplyReplyArgs)
 	kv.applyCh = make(chan raft.ApplyMsg)
 	kv.serialNums = make(map[int64]int)
 	kv.timeOut = 3000 * time.Millisecond

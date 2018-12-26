@@ -14,4 +14,6 @@ func main(){
 	m[key2]=2
 	m[key1]+=1
 	fmt.Println(&key1)
+	m2:=make(map[string]chan int)
+	fmt.Println(m2["1"]==nil)
 }
