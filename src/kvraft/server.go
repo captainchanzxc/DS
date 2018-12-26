@@ -1,7 +1,6 @@
 package raftkv
 
 import (
-	"io/ioutil"
 	"labgob"
 	"labrpc"
 	"log"
@@ -44,6 +43,8 @@ type Op struct {
 	LeaderId  int
 }
 
+
+
 type ApplyReplyArgs struct {
 	CommitIndex int
 	Command     Op
@@ -59,20 +60,20 @@ type KVServer struct {
 	maxraftstate int // snapshot if log grows this big
 
 	// Your definitions here.
-	logFile      *os.File
-	kvLog        *log.Logger
-	mapDb        map[string]string
-	serialNums   map[int64]int
+	logFile         *os.File
+	kvLog           *log.Logger
+	mapDb           map[string]string
+	serialNums      map[int64]int
 	applyReplyChMap map[int64]chan ApplyReplyArgs
-	timeOut      time.Duration
+	timeOut         time.Duration
 }
 
 func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 	// Your code here.
-	clerkId:=args.ClerkId
+	clerkId := args.ClerkId
 	kv.mu.Lock()
-	if kv.applyReplyChMap[clerkId]==nil{
-		kv.applyReplyChMap[clerkId]=make(chan ApplyReplyArgs)
+	if kv.applyReplyChMap[clerkId] == nil {
+		kv.applyReplyChMap[clerkId] = make(chan ApplyReplyArgs)
 	}
 	kv.mu.Unlock()
 
@@ -116,10 +117,10 @@ func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 
 func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 	// Your code here.
-	clerkId:=args.ClerkId
+	clerkId := args.ClerkId
 	kv.mu.Lock()
-	if kv.applyReplyChMap[clerkId]==nil{
-		kv.applyReplyChMap[clerkId]=make(chan ApplyReplyArgs)
+	if kv.applyReplyChMap[clerkId] == nil {
+		kv.applyReplyChMap[clerkId] = make(chan ApplyReplyArgs)
 	}
 	kv.mu.Unlock()
 	op := Op{Key: args.Key, Value: args.Value, ClerkId: args.ClerkId, SerialNum: args.SerialNum, LeaderId: kv.me}
@@ -179,22 +180,38 @@ func (kv *KVServer) apply() {
 			case kv.applyReplyChMap[command.ClerkId] <- ApplyReplyArgs{Command: command, CommitIndex: applyMsg.CommandIndex, Value: kv.mapDb[command.Key]}:
 			default:
 			}
-
 		}
 		switch command.Type {
 		case putOp:
 			if kv.serialNums[command.ClerkId] < command.SerialNum {
 				kv.serialNums[command.ClerkId] = command.SerialNum
 				kv.mapDb[command.Key] = command.Value
+				kv.kvLog.Printf("state size: %d\n",kv.rf.GetStateSize())
+				if kv.rf.GetStateSize() > kv.maxraftstate {
+					snapShot :=raft.SnapShot{LastIncludedIndex: applyMsg.CommandIndex, LastIncludedTerm: applyMsg.CommandTerm,State:kv.mapDb}
+					kv.kvLog.Printf("save snapshot: %v\n",snapShot)
+					kv.rf.SaveSnapShot(snapShot)
+				}
 
 			}
 		case appendOp:
 			if kv.serialNums[command.ClerkId] < command.SerialNum {
 				kv.serialNums[command.ClerkId] = command.SerialNum
 				kv.mapDb[command.Key] += command.Value
+				kv.kvLog.Printf("state size: %d\n",kv.rf.GetStateSize())
+				if kv.rf.GetStateSize() > kv.maxraftstate {
+					snapShot :=raft.SnapShot{LastIncludedIndex: applyMsg.CommandIndex, LastIncludedTerm: applyMsg.CommandTerm,State:kv.mapDb}
+					kv.kvLog.Printf("save snapshot: %v\n",snapShot)
+					kv.rf.SaveSnapShot(snapShot)
+				}
 			}
 		case getOp:
-
+			kv.kvLog.Printf("state size: %d\n",kv.rf.GetStateSize())
+			if kv.rf.GetStateSize() > kv.maxraftstate {
+				snapShot :=raft.SnapShot{LastIncludedIndex: applyMsg.CommandIndex, LastIncludedTerm: applyMsg.CommandTerm,State:kv.mapDb}
+				kv.kvLog.Printf("save snapshot: %v\n",snapShot)
+				kv.rf.SaveSnapShot(snapShot)
+			}
 		}
 
 		kv.kvLog.Println(kv.mapDb)
@@ -231,7 +248,6 @@ func StartKVServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persiste
 	// call labgob.Register on structures you want
 	// Go's RPC library to marshall/unmarshall.
 	labgob.Register(Op{})
-
 	kv := new(KVServer)
 	kv.me = me
 	kv.maxraftstate = maxraftstate
@@ -246,7 +262,7 @@ func StartKVServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persiste
 	if err != nil {
 		panic(err)
 	}
-	kv.kvLog = log.New(ioutil.Discard, "[server "+strconv.Itoa(kv.me)+"] ", log.Lmicroseconds)
+	kv.kvLog = log.New(kv.logFile, "[server "+strconv.Itoa(kv.me)+"] ", log.Lmicroseconds)
 
 	kv.kvLog.Printf("servers number: %d\n", len(servers))
 	kv.mapDb = make(map[string]string)

@@ -1,0 +1,13 @@
+[server 0] 21:42:25.986671 servers number: 5
+[server 0] 21:42:25.987572 start to apply
+[server 0] 21:42:26.602403 receive put/append op: {put 0  1 2536889838759099904 0}
+[server 0] 21:42:26.622104 apply: {put 0  1 2536889838759099904 0}
+[server 0] 21:42:26.622148 state size: 197
+[server 0] 21:42:26.622173 save snapshot: {1 1 map[0:]}
+[server 0] 21:42:26.622236 map[0:]
+[server 0] 21:42:26.622244 start to apply
+[server 0] 21:42:26.622256 command: {put 0  1 2536889838759099904 0}, applyCommand: {put 0  1 2536889838759099904 0}
+[server 0] 21:42:26.622264 command ID/index: 2536889838759099904/1, apply ID/index: 2536889838759099904/1
+[server 0] 21:42:26.622285 reply put/append op succeed {1 {put 0  1 2536889838759099904 0} }
+[server 0] 21:42:26.622296 send to client(put/append) reply: &{false }
+[server 0] 21:42:26.622822 receive get op: {get 0  2 2536889838759099904 0}

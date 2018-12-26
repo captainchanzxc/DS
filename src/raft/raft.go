@@ -20,10 +20,10 @@ package raft
 import (
 	"bytes"
 	"fmt"
-	"io/ioutil"
 	"labgob"
 	"log"
 	"math/rand"
+	"os"
 	"strconv"
 	"sync"
 	"time"
@@ -52,10 +52,17 @@ const (
 	Leader            = "leader"
 )
 
+type SnapShot struct {
+	LastIncludedIndex int
+	LastIncludedTerm  int
+	State             map[string]string
+}
+
 type ApplyMsg struct {
 	CommandValid bool
 	Command      interface{}
 	CommandIndex int
+	CommandTerm int
 }
 
 type Log struct {
@@ -91,6 +98,8 @@ type Raft struct {
 	//volatile state on leaders
 	NextIndex  []int
 	MatchIndex []int
+
+	snapShot SnapShot
 
 	//use to debug
 	rfLog   *log.Logger
@@ -505,7 +514,6 @@ func (rf *Raft) startHeartBeat() {
 				}(i)
 
 			}
-
 		}
 		time.Sleep(time.Duration(rf.heartBeatInterval) * time.Millisecond)
 	}
@@ -595,7 +603,7 @@ func (rf *Raft) checkApplied() {
 		//		fmt.Printf("%s peer %d commitIndex: %d, appliedIndex: %d\n", time.Now().Format("2006/01/02/ 15:03:04.000"), rf.me, rf.CommitIndex, rf.LastApplied)
 		if rf.CommitIndex > rf.LastApplied {
 			rf.LastApplied += 1
-			applyMsg := ApplyMsg{Command: rf.Logs[rf.LastApplied].Command, CommandIndex: rf.LastApplied, CommandValid: true}
+			applyMsg := ApplyMsg{Command: rf.Logs[rf.LastApplied].Command, CommandIndex: rf.LastApplied, CommandValid: true,CommandTerm:rf.Logs[rf.LastApplied].Term}
 			//fmt.Printf("peer %d applied: %v\n", rf.me, rf.Logs[rf.LastApplied].Command)
 			rf.applyCh <- applyMsg
 		}
@@ -679,6 +687,48 @@ func (rf *Raft) Kill() {
 	rf.mu.Unlock()
 }
 
+
+func (rf *Raft)GetStateSize()(size int){
+	return rf.persister.RaftStateSize()
+}
+
+func (rf *Raft)SaveSnapShot(snapShot SnapShot){
+	w := new(bytes.Buffer)
+	e := labgob.NewEncoder(w)
+	rf.mu.Lock()
+	e.Encode(rf.CurrentTerm)
+	e.Encode(rf.VotedFor)
+	e.Encode(rf.Logs)
+	rf.mu.Unlock()
+	stateBytes := w.Bytes()
+
+	w1 := new(bytes.Buffer)
+	e1 := labgob.NewEncoder(w1)
+	err1 := e1.Encode(snapShot.LastIncludedTerm)
+	err2 := e1.Encode(snapShot.LastIncludedIndex)
+	err3 := e1.Encode(snapShot.State)
+	if err1 != nil {
+		panic(err1)
+	}
+	if err2 != nil {
+		panic(err2)
+	}
+	if err3 != nil {
+		panic(err3)
+	}
+	snapShotBytes := w1.Bytes()
+	rf.persister.SaveStateAndSnapshot(stateBytes,snapShotBytes)
+
+	rf.mu.Lock()
+	rf.snapShot=snapShot
+	rf.Logs=rf.Logs[snapShot.LastIncludedIndex+1:]
+	rf.mu.Unlock()
+	//discard logs
+
+
+
+}
+
 func (rf *Raft) printState() {
 	fmt.Printf(">>>>>>>>peer %d state start print\n"+
 		"state: %s\n"+
@@ -721,7 +771,7 @@ func Make(peers []*labrpc.ClientEnd, me int,
 	rf.persister = persister
 	rf.me = me
 	// Your initialization code here (2A, 2B, 2C).
-	rf.rfLog = log.New(ioutil.Discard, "[raft "+strconv.Itoa(rf.me)+"] ", log.Lmicroseconds)
+	rf.rfLog = log.New(os.Stdout, "[raft "+strconv.Itoa(rf.me)+"] ", log.Lmicroseconds)
 	rf.CurrentTerm = 0
 	rf.resetElectionTimeOut()
 	rf.State = Follower
