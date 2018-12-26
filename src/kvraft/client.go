@@ -1,6 +1,7 @@
 package raftkv
 
 import (
+	"io/ioutil"
 	"labrpc"
 	"log"
 	"os"
@@ -39,7 +40,7 @@ func MakeClerk(servers []*labrpc.ClientEnd) *Clerk {
 	}
 	ck.serialNum = 0
 	ck.id=nrand()
-	ck.ckLog = log.New(os.Stdout, "[client "+strconv.FormatInt(ck.id,10)+"] ", log.Lmicroseconds)
+	ck.ckLog = log.New(ioutil.Discard, "[client "+strconv.FormatInt(ck.id,10)+"] ", log.Lmicroseconds)
 	return ck
 }
 
@@ -81,8 +82,7 @@ func (ck *Clerk) Get(key string) string {
 			//ck.ckLog.Printf("reply from server get %d\n",i)
 			if ok {
 				if reply.Err == "" {
-					ck.ckLog.Printf("send GetArgs: %v\n", args)
-					ck.ckLog.Printf("receive ReplyArgs: %v\n", reply)
+					ck.ckLog.Printf("send GetArgs: %v, reply: %v\n", args,reply)
 					ck.lastLeader = i
 					return reply.Value
 				} else {
@@ -122,11 +122,12 @@ func (ck *Clerk) PutAppend(key string, value string, op string) {
 	for {
 		for i := 0; i < len(ck.servers); i++ {
 			reply := PutAppendReply{}
+		//	ck.ckLog.Printf("call server put/append %d\n",i)
 			ok := ck.servers[i].Call("KVServer.PutAppend", &args, &reply)
+		//	ck.ckLog.Printf("reply from server put/append %d\n",i)
 			if ok {
 				if reply.Err == "" {
-					ck.ckLog.Printf("send PutAppendArgs: %v\n", args)
-					ck.ckLog.Printf("receive PutAppendReply: %v\n", reply)
+					ck.ckLog.Printf("send PutAppendArgs: %v, reply: %v\n", args,reply)
 					return
 				}
 			}

@@ -1,0 +1,105 @@
+Test: partitions, one client (3A) ...
+[raft 1] 09:13:13.908270 start a new election
+[raft 1] 09:13:13.909669 becomes leader
+[client 190122265707897898] 09:13:13.959569 send PutAppendArgs: {0  Put 190122265707897898 1}, reply: {false }
+[client 190122265707897898] 09:13:13.990867 send PutAppendArgs: {0 x 0 0 y Append 190122265707897898 2}, reply: {false }
+[client 190122265707897898] 09:13:13.990920 ----------------------start to send get command: {0 190122265707897898 3}
+[client 190122265707897898] 09:13:14.022239 send GetArgs: {0 190122265707897898 3}, reply: {false  x 0 0 y}
+[client 190122265707897898] 09:13:14.043548 send PutAppendArgs: {0 x 0 1 y Append 190122265707897898 4}
+[client 190122265707897898] 09:13:14.043595 ----------------------start to send get command: {0 190122265707897898 5}
+[client 190122265707897898] 09:13:14.074831 send GetArgs: {0 190122265707897898 5}
+[client 190122265707897898] 09:13:14.074874 receive ReplyArgs: {false  x 0 0 yx 0 1 y}
+[client 190122265707897898] 09:13:14.106121 send PutAppendArgs: {0 x 0 2 y Append 190122265707897898 6}
+[client 190122265707897898] 09:13:14.137408 send PutAppendArgs: {0 x 0 3 y Append 190122265707897898 7}
+[client 190122265707897898] 09:13:14.137479 ----------------------start to send get command: {0 190122265707897898 8}
+[client 190122265707897898] 09:13:14.169263 send GetArgs: {0 190122265707897898 8}
+[client 190122265707897898] 09:13:14.169327 receive ReplyArgs: {false  x 0 0 yx 0 1 yx 0 2 yx 0 3 y}
+[client 190122265707897898] 09:13:14.190488 send PutAppendArgs: {0 x 0 4 y Append 190122265707897898 9}
+[client 190122265707897898] 09:13:14.221998 send PutAppendArgs: {0 x 0 5 y Append 190122265707897898 10}
+[client 190122265707897898] 09:13:14.253505 send PutAppendArgs: {0 x 0 6 y Append 190122265707897898 11}
+[client 190122265707897898] 09:13:14.284426 send PutAppendArgs: {0 x 0 7 y Append 190122265707897898 12}
+[client 190122265707897898] 09:13:14.326993 send PutAppendArgs: {0 x 0 8 y Append 190122265707897898 13}
+[client 190122265707897898] 09:13:14.347559 send PutAppendArgs: {0 x 0 9 y Append 190122265707897898 14}
+[client 190122265707897898] 09:13:14.368197 send PutAppendArgs: {0 x 0 10 y Append 190122265707897898 15}
+[client 190122265707897898] 09:13:14.368246 ----------------------start to send get command: {0 190122265707897898 16}
+[client 190122265707897898] 09:13:14.409851 send GetArgs: {0 190122265707897898 16}
+[client 190122265707897898] 09:13:14.409897 receive ReplyArgs: {false  x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 y}
+[client 190122265707897898] 09:13:14.409933 ----------------------start to send get command: {0 190122265707897898 17}
+[client 190122265707897898] 09:13:14.441454 send GetArgs: {0 190122265707897898 17}
+[client 190122265707897898] 09:13:14.441530 receive ReplyArgs: {false  x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 y}
+[client 190122265707897898] 09:13:14.472757 send PutAppendArgs: {0 x 0 11 y Append 190122265707897898 18}
+[client 190122265707897898] 09:13:14.503978 send PutAppendArgs: {0 x 0 12 y Append 190122265707897898 19}
+[client 190122265707897898] 09:13:14.504025 ----------------------start to send get command: {0 190122265707897898 20}
+[client 190122265707897898] 09:13:14.535668 send GetArgs: {0 190122265707897898 20}
+[client 190122265707897898] 09:13:14.535729 receive ReplyArgs: {false  x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 y}
+[client 190122265707897898] 09:13:14.535768 ----------------------start to send get command: {0 190122265707897898 21}
+[client 190122265707897898] 09:13:14.556520 send GetArgs: {0 190122265707897898 21}
+[client 190122265707897898] 09:13:14.556578 receive ReplyArgs: {false  x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 y}
+[client 190122265707897898] 09:13:14.598279 send PutAppendArgs: {0 x 0 13 y Append 190122265707897898 22}
+[client 190122265707897898] 09:13:14.630582 send PutAppendArgs: {0 x 0 14 y Append 190122265707897898 23}
+[client 190122265707897898] 09:13:14.651370 send PutAppendArgs: {0 x 0 15 y Append 190122265707897898 24}
+[client 190122265707897898] 09:13:14.682637 send PutAppendArgs: {0 x 0 16 y Append 190122265707897898 25}
+[client 190122265707897898] 09:13:14.714234 send PutAppendArgs: {0 x 0 17 y Append 190122265707897898 26}
+[client 190122265707897898] 09:13:14.714295 ----------------------start to send get command: {0 190122265707897898 27}
+[client 190122265707897898] 09:13:14.745692 send GetArgs: {0 190122265707897898 27}
+[client 190122265707897898] 09:13:14.745749 receive ReplyArgs: {false  x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 y}
+[client 190122265707897898] 09:13:14.766357 send PutAppendArgs: {0 x 0 18 y Append 190122265707897898 28}
+[client 190122265707897898] 09:13:14.766410 ----------------------start to send get command: {0 190122265707897898 29}
+[client 190122265707897898] 09:13:14.807934 send GetArgs: {0 190122265707897898 29}
+[client 190122265707897898] 09:13:14.807991 receive ReplyArgs: {false  x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 y}
+[client 190122265707897898] 09:13:14.808028 ----------------------start to send get command: {0 190122265707897898 30}
+[client 190122265707897898] 09:13:14.829372 send GetArgs: {0 190122265707897898 30}
+[client 190122265707897898] 09:13:14.829424 receive ReplyArgs: {false  x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 y}
+[client 190122265707897898] 09:13:14.829462 ----------------------start to send get command: {0 190122265707897898 31}
+[client 190122265707897898] 09:13:14.871223 send GetArgs: {0 190122265707897898 31}
+[client 190122265707897898] 09:13:14.871275 receive ReplyArgs: {false  x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 y}
+[client 190122265707897898] 09:13:14.871312 ----------------------start to send get command: {0 190122265707897898 32}
+[raft 3] 09:13:14.884944 start a new election
+[client 190122265707897898] 09:13:14.902909 send GetArgs: {0 190122265707897898 32}
+[client 190122265707897898] 09:13:14.902960 receive ReplyArgs: {false  x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 y}
+[client 190122265707897898] 09:13:14.923892 send PutAppendArgs: {0 x 0 19 y Append 190122265707897898 33}
+[client 190122265707897898] 09:13:14.923954 ----------------------start to send get command: {0 190122265707897898 34}
+[client 190122265707897898] 09:13:14.965479 send GetArgs: {0 190122265707897898 34}
+[client 190122265707897898] 09:13:14.965540 receive ReplyArgs: {false  x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 y}
+[client 190122265707897898] 09:13:14.997126 send PutAppendArgs: {0 x 0 20 y Append 190122265707897898 35}
+[client 190122265707897898] 09:13:15.007364 send PutAppendArgs: {0 x 0 21 y Append 190122265707897898 36}
+[client 190122265707897898] 09:13:15.007419 ----------------------start to send get command: {0 190122265707897898 37}
+[client 190122265707897898] 09:13:15.038953 send GetArgs: {0 190122265707897898 37}
+[client 190122265707897898] 09:13:15.039010 receive ReplyArgs: {false  x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 y}
+[client 190122265707897898] 09:13:15.070551 send PutAppendArgs: {0 x 0 22 y Append 190122265707897898 38}
+[raft 2] 09:13:15.084061 start a new election
+[client 190122265707897898] 09:13:15.112024 send PutAppendArgs: {0 x 0 23 y Append 190122265707897898 39}
+[client 190122265707897898] 09:13:15.112080 ----------------------start to send get command: {0 190122265707897898 40}
+[client 190122265707897898] 09:13:15.143431 send GetArgs: {0 190122265707897898 40}
+[client 190122265707897898] 09:13:15.143495 receive ReplyArgs: {false  x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 yx 0 23 y}
+[client 190122265707897898] 09:13:15.164455 send PutAppendArgs: {0 x 0 24 y Append 190122265707897898 41}
+[client 190122265707897898] 09:13:15.164517 ----------------------start to send get command: {0 190122265707897898 42}
+[client 190122265707897898] 09:13:15.195611 send GetArgs: {0 190122265707897898 42}
+[client 190122265707897898] 09:13:15.195660 receive ReplyArgs: {false  x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 yx 0 23 yx 0 24 y}
+[client 190122265707897898] 09:13:15.237910 send PutAppendArgs: {0 x 0 25 y Append 190122265707897898 43}
+[client 190122265707897898] 09:13:15.237967 ----------------------start to send get command: {0 190122265707897898 44}
+[client 190122265707897898] 09:13:15.269470 send GetArgs: {0 190122265707897898 44}
+[client 190122265707897898] 09:13:15.269522 receive ReplyArgs: {false  x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 yx 0 23 yx 0 24 yx 0 25 y}
+[client 190122265707897898] 09:13:15.269559 ----------------------start to send get command: {0 190122265707897898 45}
+[client 190122265707897898] 09:13:15.290292 send GetArgs: {0 190122265707897898 45}
+[client 190122265707897898] 09:13:15.290379 receive ReplyArgs: {false  x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 yx 0 23 yx 0 24 yx 0 25 y}
+[client 190122265707897898] 09:13:15.290436 ----------------------start to send get command: {0 190122265707897898 46}
+[client 190122265707897898] 09:13:15.331832 send GetArgs: {0 190122265707897898 46}
+[client 190122265707897898] 09:13:15.331881 receive ReplyArgs: {false  x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 yx 0 23 yx 0 24 yx 0 25 y}
+[raft 1] 09:13:15.342299 becomes follower in replicateLog
+[raft 2] 09:13:15.709910 start a new election
+[raft 4] 09:13:16.066401 start a new election
+[raft 1] 09:13:16.085177 start a new election
+[raft 1] 09:13:16.085249 start a new election
+[raft 1] 09:13:16.087575 becomes leader
+[raft 4] 09:13:16.489345 becomes follower in AppendEntries
+[raft 0] 09:13:16.728212 start a new election
+[raft 2] 09:13:16.862918 start a new election
+[raft 0] 09:13:17.406157 start a new election
+[raft 1] 09:13:17.491540 becomes follower in startHeartBeat
+[raft 4] 09:13:17.949027 start a new election
+[raft 0] 09:13:18.127617 start a new election
+[raft 0] 09:13:18.129553 becomes leader
+[raft 4] 09:13:18.599004 start a new election
+signal: interrupt
+FAIL	kvraft	5.548s
