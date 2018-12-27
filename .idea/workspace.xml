@@ -8,10 +8,9 @@
       <change beforePath="$PROJECT_DIR$/src/kvraft/2.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/kvraft/2.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/kvraft/3.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/kvraft/3.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/kvraft/4.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/kvraft/4.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kvraft/5.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kvraft/6.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/kvraft/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/kvraft/server.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/kvraft/test_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/kvraft/test_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mytest/test_slice.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/mytest/test_slice.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/raft/raft.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/raft/raft.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,11 +27,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/raft/raft.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="304" column="41" selection-start-line="304" selection-start-column="34" selection-end-line="304" selection-end-column="41" />
-              <folding>
-                <element signature="e#591#703#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="642">
+              <caret line="551" column="85" selection-start-line="551" selection-start-column="85" selection-end-line="551" selection-end-column="85" />
             </state>
           </provider>
         </entry>
@@ -40,8 +36,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/kvraft/client.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="115" column="28" lean-forward="true" selection-start-line="115" selection-start-column="28" selection-end-line="115" selection-end-column="28" />
+            <state relative-caret-position="691">
+              <caret line="115" column="28" selection-start-line="115" selection-start-column="28" selection-end-line="115" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -49,11 +45,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/kvraft/server.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="444">
-              <caret line="188" column="49" selection-start-line="188" selection-start-column="49" selection-end-line="188" selection-end-column="49" />
-              <folding>
-                <element signature="e#16#107#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="425">
+              <caret line="175" column="67" selection-start-line="175" selection-start-column="67" selection-end-line="175" selection-end-column="67" />
             </state>
           </provider>
         </entry>
@@ -61,8 +54,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/raft/persister.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="349">
-              <caret line="44" column="21" selection-start-line="44" selection-start-column="21" selection-end-line="44" selection-end-column="21" />
+            <state relative-caret-position="805">
+              <caret line="59" column="44" selection-start-line="59" selection-start-column="44" selection-end-line="59" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -79,8 +72,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/kvraft/test_test.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="608">
-              <caret line="278" column="21" lean-forward="true" selection-start-line="278" selection-start-column="21" selection-end-line="278" selection-end-column="21" />
+            <state relative-caret-position="3336">
+              <caret line="592" column="68" selection-start-line="592" selection-start-column="68" selection-end-line="592" selection-end-column="68" />
             </state>
           </provider>
         </entry>
@@ -88,7 +81,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/kvraft/config.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="577">
+            <state relative-caret-position="1273">
               <caret line="84" column="19" selection-start-line="84" selection-start-column="19" selection-end-line="84" selection-end-column="19" />
             </state>
           </provider>
@@ -97,8 +90,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/mytest/test_struct_map.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" selection-start-line="19" selection-end-line="19" />
+            <state relative-caret-position="152">
+              <caret line="8" column="12" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -183,7 +176,6 @@
         <option value="$PROJECT_DIR$/src/mytest/test_sleep.go" />
         <option value="$PROJECT_DIR$/src/mytest/test_time.go" />
         <option value="$PROJECT_DIR$/src/mytest/test_min.go" />
-        <option value="$PROJECT_DIR$/src/mytest/test_slice.go" />
         <option value="$PROJECT_DIR$/src/mytest/test_strcut.go" />
         <option value="$PROJECT_DIR$/src/raft/config.go" />
         <option value="$PROJECT_DIR$/src/raft/test_test.go" />
@@ -200,9 +192,10 @@
         <option value="$PROJECT_DIR$/src/kvraft/config.go" />
         <option value="$PROJECT_DIR$/src/mytest/test_struct_map.go" />
         <option value="$PROJECT_DIR$/src/kvraft/client.go" />
+        <option value="$PROJECT_DIR$/src/mytest/test_slice.go" />
         <option value="$PROJECT_DIR$/src/kvraft/test_test.go" />
-        <option value="$PROJECT_DIR$/src/kvraft/server.go" />
         <option value="$PROJECT_DIR$/src/raft/raft.go" />
+        <option value="$PROJECT_DIR$/src/kvraft/server.go" />
       </list>
     </option>
   </component>
@@ -248,7 +241,7 @@
               <item name="DS" type="b2602c69:ProjectViewProjectNode" />
               <item name="DS" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="raft" type="462c0819:PsiDirectoryNode" />
+              <item name="mytest" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -290,7 +283,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Go Build.go build test_struct_map.go">
+  <component name="RunManager" selected="Go Build.go build test_slice.go">
     <configuration name="go build test_log.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="6.824" />
       <working_directory value="$PROJECT_DIR$/" />
@@ -318,6 +311,15 @@
       <directory value="$PROJECT_DIR$/" />
       <method v="2" />
     </configuration>
+    <configuration name="go build test_slice.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="6.824" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <go_parameters value="-i" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/src/mytest/test_slice.go" />
+      <directory value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
     <configuration name="go build test_struct_map.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="6.824" />
       <working_directory value="$PROJECT_DIR$/" />
@@ -327,29 +329,20 @@
       <directory value="$PROJECT_DIR$/" />
       <method v="2" />
     </configuration>
-    <configuration name="go build test_wrtite_file.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
-      <module name="6.824" />
-      <working_directory value="$PROJECT_DIR$/" />
-      <go_parameters value="-i" />
-      <kind value="FILE" />
-      <filePath value="$PROJECT_DIR$/src/mytest/test_wrtite_file.go" />
-      <directory value="$PROJECT_DIR$/" />
-      <method v="2" />
-    </configuration>
     <list>
       <item itemvalue="Go Build.go build test_log.go" />
       <item itemvalue="Go Build.go build test_map.go" />
       <item itemvalue="Go Build.go build test_struct_map.go" />
-      <item itemvalue="Go Build.go build test_wrtite_file.go" />
       <item itemvalue="Go Build.go build test_select.go" />
+      <item itemvalue="Go Build.go build test_slice.go" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Build.go build test_slice.go" />
         <item itemvalue="Go Build.go build test_struct_map.go" />
         <item itemvalue="Go Build.go build test_select.go" />
         <item itemvalue="Go Build.go build test_log.go" />
         <item itemvalue="Go Build.go build test_map.go" />
-        <item itemvalue="Go Build.go build test_wrtite_file.go" />
       </list>
     </recent_temporary>
   </component>
@@ -371,11 +364,11 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286991" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.31479642" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.31453362" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3995657" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.3286334" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32770607" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.32969216" />
@@ -384,7 +377,7 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" />
-      <window_info active="true" anchor="right" id="Terminal" order="4" visible="true" weight="0.44136462" />
+      <window_info active="true" anchor="right" id="Terminal" order="4" visible="true" weight="0.33315566" />
     </layout>
     <layout-to-restore>
       <window_info content_ui="combo" id="Project" order="0" weight="0.16151386" />
@@ -527,13 +520,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mytest/test_slice.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/labgob/labgob.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2329">
@@ -666,17 +652,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mytest/test_goroutine.go">
+    <entry file="file://$PROJECT_DIR$/src/kvraft/config.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mytest/test_struct_map.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
+        <state relative-caret-position="1273">
+          <caret line="84" column="19" selection-start-line="84" selection-start-column="19" selection-end-line="84" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -687,51 +666,59 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/mytest/test_slice.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="20" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mytest/test_goroutine.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mytest/test_struct_map.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="12" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/kvraft/client.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="115" column="28" lean-forward="true" selection-start-line="115" selection-start-column="28" selection-end-line="115" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/raft/persister.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="44" column="21" selection-start-line="44" selection-start-column="21" selection-end-line="44" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/kvraft/server.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="188" column="49" selection-start-line="188" selection-start-column="49" selection-end-line="188" selection-end-column="49" />
-          <folding>
-            <element signature="e#16#107#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/kvraft/config.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="577">
-          <caret line="84" column="19" selection-start-line="84" selection-start-column="19" selection-end-line="84" selection-end-column="19" />
+        <state relative-caret-position="691">
+          <caret line="115" column="28" selection-start-line="115" selection-start-column="28" selection-end-line="115" selection-end-column="28" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/kvraft/test_test.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="608">
-          <caret line="278" column="21" lean-forward="true" selection-start-line="278" selection-start-column="21" selection-end-line="278" selection-end-column="21" />
+        <state relative-caret-position="3336">
+          <caret line="592" column="68" selection-start-line="592" selection-start-column="68" selection-end-line="592" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/raft/persister.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="805">
+          <caret line="59" column="44" selection-start-line="59" selection-start-column="44" selection-end-line="59" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kvraft/server.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="175" column="67" selection-start-line="175" selection-start-column="67" selection-end-line="175" selection-end-column="67" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/raft/raft.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="304" column="41" selection-start-line="304" selection-start-column="34" selection-end-line="304" selection-end-column="41" />
-          <folding>
-            <element signature="e#591#703#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="642">
+          <caret line="551" column="85" selection-start-line="551" selection-start-column="85" selection-end-line="551" selection-end-column="85" />
         </state>
       </provider>
     </entry>

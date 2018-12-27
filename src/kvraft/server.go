@@ -43,8 +43,6 @@ type Op struct {
 	LeaderId  int
 }
 
-
-
 type ApplyReplyArgs struct {
 	CommitIndex int
 	Command     Op
@@ -173,45 +171,52 @@ func (kv *KVServer) apply() {
 	for true {
 		kv.kvLog.Println("start to apply")
 		applyMsg := <-kv.applyCh
-		command := applyMsg.Command.(Op)
-		kv.kvLog.Printf("apply: %v\n", command)
-		if kv.me == command.LeaderId {
-			select {
-			case kv.applyReplyChMap[command.ClerkId] <- ApplyReplyArgs{Command: command, CommitIndex: applyMsg.CommandIndex, Value: kv.mapDb[command.Key]}:
-			default:
-			}
-		}
-		switch command.Type {
-		case putOp:
-			if kv.serialNums[command.ClerkId] < command.SerialNum {
-				kv.serialNums[command.ClerkId] = command.SerialNum
-				kv.mapDb[command.Key] = command.Value
-				kv.kvLog.Printf("state size: %d\n",kv.rf.GetStateSize())
-				if kv.rf.GetStateSize() > kv.maxraftstate {
-					snapShot :=raft.SnapShot{LastIncludedIndex: applyMsg.CommandIndex, LastIncludedTerm: applyMsg.CommandTerm,State:kv.mapDb}
-					kv.kvLog.Printf("save snapshot: %v\n",snapShot)
-					kv.rf.SaveSnapShot(snapShot)
+		if applyMsg.CommandValid == false {
+			//install snapshot
+			kv.kvLog.Printf("install snapshot: %v\n",applyMsg.Snpst)
+			kv.mapDb=applyMsg.Snpst.State
+		} else {
+			command := applyMsg.Command.(Op)
+			kv.kvLog.Printf("apply: %v\n", command)
+			if kv.me == command.LeaderId {
+				select {
+				case kv.applyReplyChMap[command.ClerkId] <- ApplyReplyArgs{Command: command, CommitIndex: applyMsg.CommandIndex, Value: kv.mapDb[command.Key]}:
+				default:
 				}
+			}
+			switch command.Type {
+			case putOp:
+				if kv.serialNums[command.ClerkId] < command.SerialNum {
+					kv.serialNums[command.ClerkId] = command.SerialNum
+					kv.mapDb[command.Key] = command.Value
+					kv.kvLog.Printf("state size: %d, logs: %v\n", kv.rf.GetStateSize(), kv.rf.GetLogs())
+					if kv.rf.GetStateSize() > kv.maxraftstate {
+						snapShot := raft.SnapShot{LastIncludedIndex: applyMsg.CommandIndex, LastIncludedTerm: applyMsg.CommandTerm, State: kv.mapDb}
+						kv.kvLog.Printf("save snapshot: %v\n", snapShot)
+						kv.rf.SaveSnapShot(snapShot)
+					}
 
-			}
-		case appendOp:
-			if kv.serialNums[command.ClerkId] < command.SerialNum {
-				kv.serialNums[command.ClerkId] = command.SerialNum
-				kv.mapDb[command.Key] += command.Value
-				kv.kvLog.Printf("state size: %d\n",kv.rf.GetStateSize())
+				}
+			case appendOp:
+				if kv.serialNums[command.ClerkId] < command.SerialNum {
+					kv.serialNums[command.ClerkId] = command.SerialNum
+					kv.mapDb[command.Key] += command.Value
+					kv.kvLog.Printf("state size: %d, logs: %v\n", kv.rf.GetStateSize(), kv.rf.GetLogs())
+					if kv.rf.GetStateSize() > kv.maxraftstate {
+						snapShot := raft.SnapShot{LastIncludedIndex: applyMsg.CommandIndex, LastIncludedTerm: applyMsg.CommandTerm, State: kv.mapDb}
+						kv.kvLog.Printf("save snapshot: %v\n", snapShot)
+						kv.rf.SaveSnapShot(snapShot)
+					}
+				}
+			case getOp:
+				kv.kvLog.Printf("state size: %d, logs: %v\n", kv.rf.GetStateSize(), kv.rf.GetLogs())
 				if kv.rf.GetStateSize() > kv.maxraftstate {
-					snapShot :=raft.SnapShot{LastIncludedIndex: applyMsg.CommandIndex, LastIncludedTerm: applyMsg.CommandTerm,State:kv.mapDb}
-					kv.kvLog.Printf("save snapshot: %v\n",snapShot)
+					snapShot := raft.SnapShot{LastIncludedIndex: applyMsg.CommandIndex, LastIncludedTerm: applyMsg.CommandTerm, State: kv.mapDb}
+					kv.kvLog.Printf("save snapshot: %v\n", snapShot)
 					kv.rf.SaveSnapShot(snapShot)
 				}
 			}
-		case getOp:
-			kv.kvLog.Printf("state size: %d\n",kv.rf.GetStateSize())
-			if kv.rf.GetStateSize() > kv.maxraftstate {
-				snapShot :=raft.SnapShot{LastIncludedIndex: applyMsg.CommandIndex, LastIncludedTerm: applyMsg.CommandTerm,State:kv.mapDb}
-				kv.kvLog.Printf("save snapshot: %v\n",snapShot)
-				kv.rf.SaveSnapShot(snapShot)
-			}
+
 		}
 
 		kv.kvLog.Println(kv.mapDb)
