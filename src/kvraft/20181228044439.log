@@ -1,0 +1,15 @@
+Test: restarts, snapshots, many clients (3B) ...
+  ... Passed --  24.4  5 62533  595
+PASS
+ok  	kvraft	24.399s
+=======================
+Test: restarts, snapshots, many clients (3B) ...
+  ... Passed --  23.3  5 66937  591
+PASS
+ok  	kvraft	23.266s
+=======================
+Test: restarts, snapshots, many clients (3B) ...
+exit status 2
+FAIL	kvraft	17.354s
+=======================
+Test: restarts, snapshots, many clients (3B) ...

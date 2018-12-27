@@ -1,0 +1,91 @@
+Test: snapshot size is reasonable (3B) ...
+  ... Passed --  25.1  3  3944  800
+PASS
+ok  	kvraft	25.163s
+=======================
+Test: snapshot size is reasonable (3B) ...
+  ... Passed --  25.1  3  4281  800
+PASS
+ok  	kvraft	25.152s
+=======================
+Test: snapshot size is reasonable (3B) ...
+  ... Passed --  25.1  3  3993  800
+PASS
+ok  	kvraft	25.103s
+=======================
+Test: snapshot size is reasonable (3B) ...
+  ... Passed --  25.2  3  4130  800
+PASS
+ok  	kvraft	25.186s
+=======================
+Test: snapshot size is reasonable (3B) ...
+  ... Passed --  25.0  3  3962  800
+PASS
+ok  	kvraft	25.140s
+=======================
+Test: snapshot size is reasonable (3B) ...
+  ... Passed --  25.2  3  4095  800
+PASS
+ok  	kvraft	25.184s
+=======================
+Test: snapshot size is reasonable (3B) ...
+  ... Passed --  25.0  3  3830  800
+PASS
+ok  	kvraft	25.075s
+=======================
+Test: snapshot size is reasonable (3B) ...
+  ... Passed --  25.1  3  3932  800
+PASS
+ok  	kvraft	25.120s
+=======================
+Test: snapshot size is reasonable (3B) ...
+  ... Passed --  25.2  3  4064  800
+PASS
+ok  	kvraft	25.210s
+=======================
+Test: snapshot size is reasonable (3B) ...
+  ... Passed --  25.0  3  3873  800
+PASS
+ok  	kvraft	25.073s
+=======================
+Test: snapshot size is reasonable (3B) ...
+  ... Passed --  25.2  3  4316  800
+PASS
+ok  	kvraft	25.200s
+=======================
+Test: snapshot size is reasonable (3B) ...
+  ... Passed --  25.2  3  4333  800
+PASS
+ok  	kvraft	25.226s
+=======================
+Test: snapshot size is reasonable (3B) ...
+  ... Passed --  25.0  3  3902  800
+PASS
+ok  	kvraft	25.062s
+=======================
+Test: snapshot size is reasonable (3B) ...
+  ... Passed --  25.1  3  4113  800
+PASS
+ok  	kvraft	25.167s
+=======================
+Test: snapshot size is reasonable (3B) ...
+  ... Passed --  25.1  3  3883  800
+PASS
+ok  	kvraft	25.085s
+=======================
+Test: snapshot size is reasonable (3B) ...
+  ... Passed --  25.2  3  3884  800
+PASS
+ok  	kvraft	25.184s
+=======================
+Test: snapshot size is reasonable (3B) ...
+  ... Passed --  25.1  3  3873  800
+PASS
+ok  	kvraft	25.145s
+=======================
+Test: snapshot size is reasonable (3B) ...
+  ... Passed --  25.3  3  4206  800
+PASS
+ok  	kvraft	25.299s
+=======================
+Test: snapshot size is reasonable (3B) ...

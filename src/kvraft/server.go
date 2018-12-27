@@ -269,13 +269,13 @@ func StartKVServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persiste
 	}
 	kv.kvLog = log.New(kv.logFile, "[server "+strconv.Itoa(kv.me)+"] ", log.Lmicroseconds)
 	kv.kvLog.Printf("servers number: %d\n", len(servers))
-	kv.mapDb = make(map[string]string)
 	kv.applyReplyChMap = make(map[int64]chan ApplyReplyArgs)
 	kv.applyCh = make(chan raft.ApplyMsg)
 	kv.serialNums = make(map[int64]int)
 	kv.timeOut = 3000 * time.Millisecond
 	kv.rf = raft.Make(servers, me, persister, kv.applyCh)
 	kv.rf.RfLog.SetOutput(kv.logFile)
+	kv.mapDb = kv.rf.GetSnapShot().State
 	// You may need initialization code here.
 	go kv.apply()
 	return kv

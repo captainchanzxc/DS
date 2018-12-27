@@ -1,0 +1,3 @@
+Test: unreliable net, snapshots, many clients (3B) ...
+signal: interrupt
+FAIL	kvraft	4.057s

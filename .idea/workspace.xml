@@ -8,9 +8,8 @@
       <change beforePath="$PROJECT_DIR$/src/kvraft/2.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/kvraft/2.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/kvraft/3.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/kvraft/3.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/kvraft/4.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/kvraft/4.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kvraft/rt.sh" beforeDir="false" afterPath="$PROJECT_DIR$/src/kvraft/rt.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/kvraft/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/kvraft/server.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/labrpc/labrpc.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/labrpc/labrpc.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/kvraft/test_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/kvraft/test_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/raft/raft.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/raft/raft.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,8 +26,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/raft/raft.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="584" column="25" selection-start-line="584" selection-start-column="25" selection-end-line="584" selection-end-column="25" />
+            <state relative-caret-position="440">
+              <caret line="889" column="38" selection-start-line="889" selection-start-column="38" selection-end-line="889" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -37,7 +36,7 @@
         <entry file="file://$PROJECT_DIR$/src/labrpc/labrpc.go">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="452">
-              <caret line="95" column="16" selection-start-line="95" selection-start-column="16" selection-end-line="95" selection-end-column="16" />
+              <caret line="98" column="16" selection-start-line="98" selection-start-column="16" selection-end-line="98" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -54,8 +53,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/kvraft/server.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="748">
-              <caret line="193" column="67" selection-start-line="193" selection-start-column="67" selection-end-line="193" selection-end-column="67" />
+            <state relative-caret-position="611">
+              <caret line="194" column="36" selection-start-line="194" selection-start-column="36" selection-end-line="194" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -81,8 +80,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/kvraft/test_test.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="494">
-              <caret line="640" column="36" lean-forward="true" selection-start-line="640" selection-start-column="36" selection-end-line="640" selection-end-column="36" />
+            <state relative-caret-position="-6196">
+              <caret line="155" column="2" selection-start-line="155" selection-start-column="2" selection-end-line="155" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -90,8 +89,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/kvraft/config.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1273">
-              <caret line="84" column="19" selection-start-line="84" selection-start-column="19" selection-end-line="84" selection-end-column="19" />
+            <state relative-caret-position="651">
+              <caret line="317" column="32" selection-start-line="317" selection-start-column="32" selection-end-line="317" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -205,8 +204,8 @@
         <option value="$PROJECT_DIR$/src/mytest/test_struct_map.go" />
         <option value="$PROJECT_DIR$/src/mytest/test_slice.go" />
         <option value="$PROJECT_DIR$/src/kvraft/client.go" />
-        <option value="$PROJECT_DIR$/src/kvraft/server.go" />
         <option value="$PROJECT_DIR$/src/labrpc/labrpc.go" />
+        <option value="$PROJECT_DIR$/src/kvraft/server.go" />
         <option value="$PROJECT_DIR$/src/kvraft/test_test.go" />
         <option value="$PROJECT_DIR$/src/raft/raft.go" />
       </list>
@@ -672,13 +671,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/kvraft/config.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1273">
-          <caret line="84" column="19" selection-start-line="84" selection-start-column="19" selection-end-line="84" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/mytest/test_struct_map.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
@@ -703,7 +695,7 @@
     <entry file="file://$PROJECT_DIR$/src/labrpc/labrpc.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="452">
-          <caret line="95" column="16" selection-start-line="95" selection-start-column="16" selection-end-line="95" selection-end-column="16" />
+          <caret line="98" column="16" selection-start-line="98" selection-start-column="16" selection-end-line="98" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -714,24 +706,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/kvraft/config.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="651">
+          <caret line="317" column="32" selection-start-line="317" selection-start-column="32" selection-end-line="317" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/kvraft/server.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="193" column="67" selection-start-line="193" selection-start-column="67" selection-end-line="193" selection-end-column="67" />
+        <state relative-caret-position="611">
+          <caret line="194" column="36" selection-start-line="194" selection-start-column="36" selection-end-line="194" selection-end-column="36" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/kvraft/test_test.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="640" column="36" lean-forward="true" selection-start-line="640" selection-start-column="36" selection-end-line="640" selection-end-column="36" />
+        <state relative-caret-position="-6196">
+          <caret line="155" column="2" selection-start-line="155" selection-start-column="2" selection-end-line="155" selection-end-column="2" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/raft/raft.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="584" column="25" selection-start-line="584" selection-start-column="25" selection-end-line="584" selection-end-column="25" />
+        <state relative-caret-position="440">
+          <caret line="889" column="38" selection-start-line="889" selection-start-column="38" selection-end-line="889" selection-end-column="38" />
         </state>
       </provider>
     </entry>
