@@ -1,0 +1,28 @@
+Test: snapshots, many clients (3A) ...
+  ... Passed --  15.9  5 10059  499
+PASS
+ok  	kvraft	15.920s
+=======================
+Test: snapshots, many clients (3A) ...
+  ... Passed --  15.9  5 10167  498
+PASS
+ok  	kvraft	15.927s
+=======================
+Test: snapshots, many clients (3A) ...
+  ... Passed --  16.0  5  8470  502
+PASS
+ok  	kvraft	16.016s
+=======================
+Test: snapshots, many clients (3A) ...
+  ... Passed --  15.9  5  8392  502
+PASS
+ok  	kvraft	15.921s
+=======================
+Test: snapshots, many clients (3A) ...
+  ... Passed --  15.8  5  9194  500
+PASS
+ok  	kvraft	15.882s
+=======================
+Test: snapshots, many clients (3A) ...
+signal: interrupt
+FAIL	kvraft	116.233s

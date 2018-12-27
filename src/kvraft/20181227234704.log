@@ -1,0 +1,11 @@
+Test: snapshots, one client (3A) ...
+  ... Passed --  15.2  5  4412  476
+PASS
+ok  	kvraft	15.198s
+=======================
+Test: snapshots, one client (3A) ...
+  ... Passed --  15.2  5  3911  477
+PASS
+ok  	kvraft	15.206s
+=======================
+Test: snapshots, one client (3A) ...

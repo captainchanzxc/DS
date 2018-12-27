@@ -49,7 +49,9 @@ package labrpc
 //   pass svc to srv.AddService()
 //
 
-import "labgob"
+import (
+	"labgob"
+)
 import "bytes"
 import "reflect"
 import "sync"
@@ -90,7 +92,10 @@ func (e *ClientEnd) Call(svcMeth string, args interface{}, reply interface{}) bo
 
 	qb := new(bytes.Buffer)
 	qe := labgob.NewEncoder(qb)
-	qe.Encode(args)
+	err:=qe.Encode(args)
+	if err!=nil{
+		panic(err)
+	}
 	req.args = qb.Bytes()
 
 	select {

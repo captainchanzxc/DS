@@ -1,0 +1,7 @@
+Test: snapshots, one client (3A) ...
+exit status 2
+FAIL	kvraft	14.439s
+=======================
+Test: snapshots, one client (3A) ...
+signal: interrupt
+FAIL	kvraft	3.705s
