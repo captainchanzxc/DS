@@ -1,9 +1,0 @@
-Test: partitions, many clients (3A) ...
-exit status 1
-FAIL	kvraft	7.561s
-=======================
-Test: partitions, many clients (3A) ...
-exit status 1
-FAIL	kvraft	2.241s
-=======================
-Test: partitions, many clients (3A) ...

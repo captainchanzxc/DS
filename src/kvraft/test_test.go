@@ -1,9 +1,6 @@
 package raftkv
 
-import (
-	"fmt"
-	"linearizability"
-)
+import "linearizability"
 
 import "testing"
 import "strconv"
@@ -123,8 +120,7 @@ func checkConcurrentAppends(t *testing.T, v string, counts []int) {
 
 // repartition the servers periodically
 func partitioner(t *testing.T, cfg *config, ch chan bool, done *int32) {
-	defer func() { ch <- true
-	fmt.Println("33333333333333333333")}()
+	defer func() { ch <- true }()
 	for atomic.LoadInt32(done) == 0 {
 		a := make([]int, cfg.n)
 		for i := 0; i < cfg.n; i++ {
@@ -153,7 +149,7 @@ func partitioner(t *testing.T, cfg *config, ch chan bool, done *int32) {
 // maxraftstate is a positive number, the size of the state for Raft (i.e., log
 // size) shouldn't exceed 2*maxraftstate.
 func GenericTest(t *testing.T, part string, nclients int, unreliable bool, crash bool, partitions bool, maxraftstate int) {
-//log.SetOutput(ioutil.Discard)
+
 	title := "Test: "
 	if unreliable {
 		// the network drops RPC requests and replies.
@@ -193,7 +189,7 @@ func GenericTest(t *testing.T, part string, nclients int, unreliable bool, crash
 		clnts[i] = make(chan int)
 	}
 	for i := 0; i < 3; i++ {
-		log.Printf("Iteration %v\n", i)
+		// log.Printf("Iteration %v\n", i)
 		atomic.StoreInt32(&done_clients, 0)
 		atomic.StoreInt32(&done_partitioner, 0)
 		go spawn_clients_and_wait(t, cfg, nclients, func(cli int, myck *Clerk, t *testing.T) {
@@ -207,7 +203,7 @@ func GenericTest(t *testing.T, part string, nclients int, unreliable bool, crash
 			for atomic.LoadInt32(&done_clients) == 0 {
 				if (rand.Int() % 1000) < 500 {
 					nv := "x " + strconv.Itoa(cli) + " " + strconv.Itoa(j) + " y"
-					 log.Printf("%d: client new append %v\n", cli, nv)
+					log.Printf("%d: client new append %v\n", cli, nv)
 					Append(cfg, myck, key, nv)
 					last = NextValue(last, nv)
 					j++
@@ -244,14 +240,14 @@ func GenericTest(t *testing.T, part string, nclients int, unreliable bool, crash
 		}
 
 		if crash {
-			 log.Printf("+++++++++++++++++++++++shutdown servers\n")
+			 log.Printf("shutdown servers\n")
 			for i := 0; i < nservers; i++ {
 				cfg.ShutdownServer(i)
 			}
 			// Wait for a while for servers to shutdown, since
 			// shutdown isn't a real crash and isn't instantaneous
 			time.Sleep(electionTimeout)
-			 log.Printf("restart servers\n")
+			log.Printf("restart servers\n")
 			// crash and re-start all
 			for i := 0; i < nservers; i++ {
 				cfg.StartServer(i)
@@ -259,7 +255,7 @@ func GenericTest(t *testing.T, part string, nclients int, unreliable bool, crash
 			cfg.ConnectAll()
 		}
 
-		log.Printf("++++++++++++++++++++++++wait for clients\n")
+		log.Printf("wait for clients\n")
 		for i := 0; i < nclients; i++ {
 			 log.Printf("read from clients %d\n", i)
 			j := <-clnts[i]
@@ -386,14 +382,14 @@ func GenericTestLinearizability(t *testing.T, part string, nclients int, nserver
 		}
 
 		if crash {
-			log.Printf("-----------------------shutdown servers\n")
+			// log.Printf("shutdown servers\n")
 			for i := 0; i < nservers; i++ {
 				cfg.ShutdownServer(i)
 			}
 			// Wait for a while for servers to shutdown, since
 			// shutdown isn't a real crash and isn't instantaneous
 			time.Sleep(electionTimeout)
-			 log.Printf("---------------------------restart servers\n")
+			// log.Printf("restart servers\n")
 			// crash and re-start all
 			for i := 0; i < nservers; i++ {
 				cfg.StartServer(i)
@@ -429,22 +425,22 @@ func GenericTestLinearizability(t *testing.T, part string, nclients int, nserver
 
 func TestBasic3A(t *testing.T) {
 	// Test: one client (3A) ...
-	GenericTest(t, "3A", 1, false, false, false, 250)
+	GenericTest(t, "3A", 1, false, false, false, -1)
 }
 
 func TestConcurrent3A(t *testing.T) {
 	// Test: many clients (3A) ...
-	GenericTest(t, "3A", 5, false, false, false, 250)
+	GenericTest(t, "3A", 5, false, false, false, -1)
 }
 
 func TestUnreliable3A(t *testing.T) {
 	// Test: unreliable net, many clients (3A) ...
-	GenericTest(t, "3A", 5, true, false, false, 250)
+	GenericTest(t, "3A", 5, true, false, false, -1)
 }
 
 func TestUnreliableOneKey3A(t *testing.T) {
 	const nservers = 3
-	cfg := make_config(t, nservers, true, 250)
+	cfg := make_config(t, nservers, true, -1)
 	defer cfg.cleanup()
 
 	ck := cfg.makeClient(cfg.All())
@@ -479,7 +475,7 @@ func TestUnreliableOneKey3A(t *testing.T) {
 // network ends up in the minority partition.
 func TestOnePartition3A(t *testing.T) {
 	const nservers = 5
-	cfg := make_config(t, nservers, false, 250)
+	cfg := make_config(t, nservers, false, -1)
 	defer cfg.cleanup()
 	ck := cfg.makeClient(cfg.All())
 
@@ -554,42 +550,42 @@ func TestOnePartition3A(t *testing.T) {
 
 func TestManyPartitionsOneClient3A(t *testing.T) {
 	// Test: partitions, one client (3A) ...
-	GenericTest(t, "3A", 1, false, false, true, 250)
+	GenericTest(t, "3A", 1, false, false, true, -1)
 }
 
 func TestManyPartitionsManyClients3A(t *testing.T) {
 	// Test: partitions, many clients (3A) ...
-	GenericTest(t, "3A", 5, false, false, true, 250)
+	GenericTest(t, "3A", 5, false, false, true, -1)
 }
 
 func TestPersistOneClient3A(t *testing.T) {
 	// Test: restarts, one client (3A) ...
-	GenericTest(t, "3A", 1, false, true, false, 250)
+	GenericTest(t, "3A", 1, false, true, false, -1)
 }
 
 func TestPersistConcurrent3A(t *testing.T) {
 	// Test: restarts, many clients (3A) ...
-	GenericTest(t, "3A", 5, false, true, false, 250)
+	GenericTest(t, "3A", 5, false, true, false, -1)
 }
 
 func TestPersistConcurrentUnreliable3A(t *testing.T) {
 	// Test: unreliable net, restarts, many clients (3A) ...
-	GenericTest(t, "3A", 5, true, true, false, 250)
+	GenericTest(t, "3A", 5, true, true, false, -1)
 }
 
 func TestPersistPartition3A(t *testing.T) {
 	// Test: restarts, partitions, many clients (3A) ...
-	GenericTest(t, "3A", 5, false, true, true, 250)
+	GenericTest(t, "3A", 5, false, true, true, -1)
 }
 
 func TestPersistPartitionUnreliable3A(t *testing.T) {
 	// Test: unreliable net, restarts, partitions, many clients (3A) ...
-	GenericTest(t, "3A", 5, true, true, true, 250)
+	GenericTest(t, "3A", 5, true, true, true, -1)
 }
 
 func TestPersistPartitionUnreliableLinearizable3A(t *testing.T) {
 	// Test: unreliable net, restarts, partitions, linearizability checks (3A) ...
-	GenericTestLinearizability(t, "3A", 15, 7, true, true, true, 250)
+	GenericTestLinearizability(t, "3A", 15, 7, true, true, true, -1)
 }
 
 //

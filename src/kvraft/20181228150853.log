@@ -1,0 +1,25 @@
+Test: one client (3A) ...
+  ... Passed --  15.1  5  7214  476
+PASS
+ok  	kvraft	15.151s
+=======================
+Test: one client (3A) ...
+  ... Passed --  15.1  5  7077  475
+PASS
+ok  	kvraft	15.125s
+=======================
+Test: one client (3A) ...
+  ... Passed --  15.2  5  6552  478
+PASS
+ok  	kvraft	15.169s
+=======================
+Test: one client (3A) ...
+  ... Passed --  15.2  5  5004  481
+PASS
+ok  	kvraft	15.174s
+=======================
+Test: one client (3A) ...
+exit status 2
+FAIL	kvraft	11.135s
+=======================
+Test: one client (3A) ...

@@ -20,10 +20,10 @@ package raft
 import (
 	"bytes"
 	"fmt"
-	"io/ioutil"
 	"labgob"
 	"log"
 	"math/rand"
+	"os"
 	"strconv"
 	"sync"
 	"time"
@@ -106,6 +106,7 @@ type Raft struct {
 	//use to debug
 	RfLog   *log.Logger
 	isAlive bool
+	logFile *os.File
 }
 
 // return currentTerm and whether this server
@@ -247,10 +248,12 @@ func (rf *Raft) RequestVote(args *RequestVoteArgs, reply *RequestVoteReply) {
 			rf.VotedFor = args.CandidateId
 		}
 		rf.CurrentTerm = args.Term
+		//need to fix
 		rf.State = Follower
+		rf.RfLog.Println("becomes follower in RequestVote")
 	}
 	rf.persist()
-	//fmt.Printf("%s peer %d(votedFor %d) current term %d vote peer %d current term %d: %t\n", time.Now().Format("2006/01/02/ 15:03:04.000"), rf.me, rf.VotedFor, reply.Term, args.CandidateId, args.Term, reply.VoterGranted)
+	rf.RfLog.Printf("receive RequestVoteArgs: %v, Reply: %v\n",args,reply)
 	rf.mu.Unlock()
 	if reply.VoterGranted {
 		rf.resetElectionTimeOut()
@@ -321,38 +324,44 @@ func (rf *Raft) startElection() {
 		}
 		go func(peer int) {
 			rvr := RequestVoteReply{}
-			rf.sendRequestVote(peer, &rva, &rvr)
-			rf.mu.Lock()
-			if rvr.Term > rf.CurrentTerm {
-				rf.CurrentTerm = rvr.Term
-				rf.State = Follower
-				rf.persist()
+			rf.RfLog.Printf("send RequestVoteArgs: %v to peer: %d\n",rva,peer)
+			ok:=rf.sendRequestVote(peer, &rva, &rvr)
+			if ok{
+				rf.RfLog.Printf("request vote receive reply from peer %d, reply: %v, args: %v\n",peer,rvr,rva)
+				rf.mu.Lock()
+				if rvr.Term > rf.CurrentTerm {
+					rf.CurrentTerm = rvr.Term
+					rf.State = Follower
+					rf.RfLog.Println("becomes follower in election")
+					rf.persist()
+					rf.mu.Unlock()
+					rf.resetElectionTimeOut()
+					rf.startElectionTimeOut()
+					return
+				}
 				rf.mu.Unlock()
-				rf.resetElectionTimeOut()
-				rf.startElectionTimeOut()
-				return
-			}
-			rf.mu.Unlock()
-			rf.mu.Lock()
-			defer rf.mu.Unlock()
-			if rvr.VoterGranted && rvr.ReceivedTerm == rf.CurrentTerm {
-				count += 1
-				if count > len(rf.peers)/2 {
-					rf.RfLog.Println("becomes leader")
-					//fmt.Printf("%s peer %d becomes leader\n", time.Now().Format("2006/01/02/ 15:03:04.000"), rf.me)
-					rf.State = Leader
-					//这个地方当初没写也允许通过了TestBasicAgree2B 和 TestFailAgree2B，值得思考
-					for j := 0; j < len(rf.NextIndex); j++ {
-						rf.MatchIndex[j] = 0
-						rf.NextIndex[j] = len(rf.Logs) + rf.LastIncludedIndex
+				rf.mu.Lock()
+				defer rf.mu.Unlock()
+				if rvr.VoterGranted && rvr.ReceivedTerm == rf.CurrentTerm {
+					count += 1
+					if count > len(rf.peers)/2 {
+						rf.RfLog.Println("becomes leader in election")
+						//fmt.Printf("%s peer %d becomes leader\n", time.Now().Format("2006/01/02/ 15:03:04.000"), rf.me)
+						rf.State = Leader
+						//这个地方当初没写也允许通过了TestBasicAgree2B 和 TestFailAgree2B，值得思考
+						for j := 0; j < len(rf.NextIndex); j++ {
+							rf.MatchIndex[j] = 0
+							rf.NextIndex[j] = len(rf.Logs) + rf.LastIncludedIndex
+						}
+						go rf.startHeartBeat()
+						go rf.checkLeaderCommitIndex()
+						go rf.replicateLog()
+						//如果不加这一行，则选出的leader会启动多个心跳线程
+						count = 0
 					}
-					go rf.startHeartBeat()
-					go rf.checkLeaderCommitIndex()
-					go rf.replicateLog()
-					//如果不加这一行，则选出的leader会启动多个心跳线程
-					count = 0
 				}
 			}
+
 
 		}(i)
 	}
@@ -416,10 +425,11 @@ type AppendEntryReply struct {
 }
 
 func (rf *Raft) AppendEntries(args *AppendEntryArgs, reply *AppendEntryReply) {
+	rf.RfLog.Printf("receive AppendEnryArgs: %v\n",args)
+	defer rf.RfLog.Printf("AppendEntries reply: %v, args:%v\n",reply,args)
 	rf.mu.Lock()
 	defer rf.mu.Unlock()
-	//rf.printState()
-	//	fmt.Printf("before: peer %d logs: %v\n",rf.me,rf.Logs)
+
 	if args.Term >= rf.CurrentTerm {
 		go rf.resetElectionTimeOut()
 	}
@@ -427,6 +437,7 @@ func (rf *Raft) AppendEntries(args *AppendEntryArgs, reply *AppendEntryReply) {
 	if args.Term > rf.CurrentTerm {
 		rf.RfLog.Println("becomes follower in AppendEntries")
 		rf.CurrentTerm = args.Term
+		//need to fix
 		rf.State = Follower
 		rf.persist()
 	}
@@ -526,10 +537,11 @@ func (rf *Raft) startHeartBeat() {
 						installSnapshot := InstallSnapshotArgs{Term: rf.CurrentTerm, LeaderId: rf.me, SnpSt: snapshot}
 						rf.mu.Unlock()
 						reply := InstallSnapshotReply{}
+						rf.RfLog.Printf("StartHeartBeat, send to peer %d InstallSnapshotArgs: %v\n",peer,installSnapshot)
 						ok := rf.sendInstallSnapshot(peer, &installSnapshot, &reply)
 						rf.mu.Lock()
-						rf.RfLog.Printf("StartHeartbeat, InstallSnapshot reply: %v\n", reply)
 						if ok {
+							rf.RfLog.Printf("StartHeartbeat, InstallSnapshot reply from peer %d: %v, args: %v\n", peer,reply,args)
 							if reply.Term > rf.CurrentTerm {
 								rf.RfLog.Println("becomes follower in StartHeartBeat.InstallSnapshot")
 								rf.CurrentTerm = reply.Term
@@ -616,10 +628,11 @@ func (rf *Raft) replicateLog() {
 					installSnapshot := InstallSnapshotArgs{Term: rf.CurrentTerm, LeaderId: rf.me, SnpSt: snapshot}
 					rf.mu.Unlock()
 					reply := InstallSnapshotReply{}
+					rf.RfLog.Printf("Replicate, send to peer %d InstallSnapshotArgs: %v\n",peer,installSnapshot)
 					ok := rf.sendInstallSnapshot(peer, &installSnapshot, &reply)
 					rf.mu.Lock()
-					rf.RfLog.Printf("Replicate, InstallSnapshot reply: %v\n", reply)
 					if ok {
+						rf.RfLog.Printf("Replicate, InstallSnapshot reply from peer %d: %v, args: %v\n",peer, reply,installSnapshot)
 						if reply.Term > rf.CurrentTerm {
 							rf.RfLog.Println("becomes follower in Replicate.InstallSnapshot")
 							rf.CurrentTerm = reply.Term
@@ -656,10 +669,12 @@ func (rf *Raft) replicateLog() {
 				args.LeaderId = rf.me
 				entries := rf.Logs[nextIndex-rf.LastIncludedIndex : nextIndex+1-rf.LastIncludedIndex]
 				args.Entries = append(args.Entries, entries...)
-				//		fmt.Printf("leader %d append to peer %d: %v\n", rf.me, peer, entries)
 				rf.mu.Unlock()
+				rf.RfLog.Printf("send to peer %d ReplicateArgs: %v\n",peer,args)
 				ok := rf.sendAppendEntries(peer, &args, &reply)
 				if ok {
+					rf.RfLog.Printf("Replicate reply from peer %d: %v, args: %v\n",peer,reply,args)
+					rf.RfLog.Printf("re")
 					rf.mu.Lock()
 					if reply.ReceivedTerm != rf.CurrentTerm {
 						rf.mu.Unlock()
@@ -719,6 +734,7 @@ type InstallSnapshotReply struct {
 
 func (rf *Raft) InstallSnapshot(args *InstallSnapshotArgs, reply *InstallSnapshotReply) {
 	rf.RfLog.Printf("receive InstallSnapshot: %v\n", args)
+	defer rf.RfLog.Printf("InstallSnapshot reply: %v, args: %v\n",reply,args)
 	rf.mu.Lock()
 	reply.Term = rf.CurrentTerm
 	if args.Term < rf.CurrentTerm {
@@ -728,6 +744,7 @@ func (rf *Raft) InstallSnapshot(args *InstallSnapshotArgs, reply *InstallSnapsho
 	}
 	if rf.CurrentTerm < args.Term {
 		rf.CurrentTerm = args.Term
+		//need to fix
 		rf.State = Follower
 		rf.RfLog.Printf("becomes follower in InstallSnaoshot")
 	}
@@ -988,7 +1005,12 @@ func Make(peers []*labrpc.ClientEnd, me int,
 	rf.persister = persister
 	rf.me = me
 	// Your initialization code here (2A, 2B, 2C).
-	rf.RfLog = log.New(ioutil.Discard, "[raft "+strconv.Itoa(rf.me)+"] ", log.Lmicroseconds)
+	f, err := os.Create("raft"+strconv.Itoa(rf.me) + ".log")
+	rf.logFile = f
+	if err != nil {
+		panic(err)
+	}
+	rf.RfLog = log.New(rf.logFile, "[raft "+strconv.Itoa(rf.me)+"] ", log.Lmicroseconds)
 	rf.CurrentTerm = 0
 	rf.resetElectionTimeOut()
 	rf.State = Follower

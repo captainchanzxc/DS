@@ -1,0 +1,31 @@
+Test: InstallSnapshot RPC (3B) ...
+  ... Passed --  14.3  3  3895   63
+PASS
+ok  	kvraft	14.298s
+=======================
+Test: InstallSnapshot RPC (3B) ...
+  ... Passed --  12.5  3  4241   63
+PASS
+ok  	kvraft	12.477s
+=======================
+Test: InstallSnapshot RPC (3B) ...
+  ... Passed --   8.4  3  3740   63
+PASS
+ok  	kvraft	8.450s
+=======================
+Test: InstallSnapshot RPC (3B) ...
+  ... Passed --  13.2  3  3810   63
+PASS
+ok  	kvraft	13.191s
+=======================
+Test: InstallSnapshot RPC (3B) ...
+  ... Passed --   8.6  3  3602   63
+PASS
+ok  	kvraft	8.573s
+=======================
+Test: InstallSnapshot RPC (3B) ...
+  ... Passed --  12.4  3  3618   63
+PASS
+ok  	kvraft	12.412s
+=======================
+Test: InstallSnapshot RPC (3B) ...

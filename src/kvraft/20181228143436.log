@@ -1,0 +1,55 @@
+Test: restarts, snapshots, many clients (3B) ...
+  ... Passed --  23.4  5 67628  597
+PASS
+ok  	kvraft	23.454s
+=======================
+Test: restarts, snapshots, many clients (3B) ...
+  ... Passed --  23.4  5 71618  593
+PASS
+ok  	kvraft	23.388s
+=======================
+Test: restarts, snapshots, many clients (3B) ...
+  ... Passed --  24.5  5 66264  594
+PASS
+ok  	kvraft	24.512s
+=======================
+Test: restarts, snapshots, many clients (3B) ...
+  ... Passed --  24.3  5 70710  590
+PASS
+ok  	kvraft	24.456s
+=======================
+Test: restarts, snapshots, many clients (3B) ...
+  ... Passed --  23.6  5 68768  590
+PASS
+ok  	kvraft	23.594s
+=======================
+Test: restarts, snapshots, many clients (3B) ...
+  ... Passed --  24.1  5 71413  591
+PASS
+ok  	kvraft	24.161s
+=======================
+Test: restarts, snapshots, many clients (3B) ...
+  ... Passed --  23.3  5 69140  593
+PASS
+ok  	kvraft	23.299s
+=======================
+Test: restarts, snapshots, many clients (3B) ...
+  ... Passed --  23.8  5 68478  590
+PASS
+ok  	kvraft	23.866s
+=======================
+Test: restarts, snapshots, many clients (3B) ...
+  ... Passed --  23.4  5 67932  593
+PASS
+ok  	kvraft	23.400s
+=======================
+Test: restarts, snapshots, many clients (3B) ...
+  ... Passed --  23.5  5 67424  588
+PASS
+ok  	kvraft	23.545s
+=======================
+Test: restarts, snapshots, many clients (3B) ...
+exit status 2
+FAIL	kvraft	12.386s
+=======================
+Test: restarts, snapshots, many clients (3B) ...

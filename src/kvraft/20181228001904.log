@@ -1,4 +1,0 @@
-Test: snapshots, many clients (3A) ...
-exit status 2
-FAIL	kvraft	13.687s
-=======================

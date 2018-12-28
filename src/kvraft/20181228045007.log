@@ -1,7 +1,0 @@
-Test: snapshot size is reasonable (3B) ...
-exit status 2
-FAIL	kvraft	12.336s
-=======================
-Test: snapshot size is reasonable (3B) ...
-signal: interrupt
-FAIL	kvraft	9.472s

@@ -1,8 +1,0 @@
-Test: InstallSnapshot RPC (3B) ...
-  ... Passed --  13.2  3  3948   63
-PASS
-ok  	kvraft	13.259s
-=======================
-Test: InstallSnapshot RPC (3B) ...
-signal: interrupt
-FAIL	kvraft	61.039s

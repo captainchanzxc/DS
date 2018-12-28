@@ -190,7 +190,7 @@ func (kv *KVServer) apply() {
 					kv.serialNums[command.ClerkId] = command.SerialNum
 					kv.mapDb[command.Key] = command.Value
 					kv.kvLog.Printf("state size: %d, logs: %v\n", kv.rf.GetStateSize(), kv.rf.GetLogs())
-					if kv.rf.GetStateSize() > kv.maxraftstate {
+					if kv.maxraftstate>0&&kv.rf.GetStateSize() > kv.maxraftstate {
 						snapShot := raft.SnapShot{LastIncludedIndex: applyMsg.CommandIndex, LastIncludedTerm: applyMsg.CommandTerm, State: kv.mapDb}
 						kv.kvLog.Printf("save snapshot: %v\n", snapShot)
 						kv.rf.SaveSnapShot(snapShot)
@@ -202,7 +202,7 @@ func (kv *KVServer) apply() {
 					kv.serialNums[command.ClerkId] = command.SerialNum
 					kv.mapDb[command.Key] += command.Value
 					kv.kvLog.Printf("state size: %d, logs: %v\n", kv.rf.GetStateSize(), kv.rf.GetLogs())
-					if kv.rf.GetStateSize() > kv.maxraftstate {
+					if kv.maxraftstate>0&&kv.rf.GetStateSize() > kv.maxraftstate {
 						snapShot := raft.SnapShot{LastIncludedIndex: applyMsg.CommandIndex, LastIncludedTerm: applyMsg.CommandTerm, State: kv.mapDb}
 						kv.kvLog.Printf("save snapshot: %v\n", snapShot)
 						kv.rf.SaveSnapShot(snapShot)
@@ -210,7 +210,7 @@ func (kv *KVServer) apply() {
 				}
 			case getOp:
 				kv.kvLog.Printf("state size: %d, logs: %v\n", kv.rf.GetStateSize(), kv.rf.GetLogs())
-				if kv.rf.GetStateSize() > kv.maxraftstate {
+				if kv.maxraftstate>0&&kv.rf.GetStateSize() > kv.maxraftstate {
 					snapShot := raft.SnapShot{LastIncludedIndex: applyMsg.CommandIndex, LastIncludedTerm: applyMsg.CommandTerm, State: kv.mapDb}
 					kv.kvLog.Printf("save snapshot: %v\n", snapShot)
 					kv.rf.SaveSnapShot(snapShot)

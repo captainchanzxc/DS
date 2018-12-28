@@ -1,12 +1,1049 @@
-[server 2] 06:19:44.852223 servers number: 5
-[raft 2] 06:19:44.852548 read snapshot
-[server 2] 06:19:44.852862 start to apply
-[raft 2] 06:19:45.466016 start a new election
-[raft 2] 06:19:45.505826 AppendEntries,args.PreLogIndedx: 15, rf.LastIncludedIndex: 0, true Index:15, logs: [{21 0} {21 {get 0  7 2088652206612685791 1}} {21 {append 4 x 4 4 y 12 2771099241516658666 1}} {21 {get 1  11 610211743492122616 1}} {21 {get 2  9 1614350004294951917 1}} {21 {append 3 x 3 5 y 11 3712754657825509437 1}} {21 {get 0  8 2088652206612685791 1}} {21 {append 4 x 4 5 y 13 2771099241516658666 1}} {21 {append 1 x 1 7 y 12 610211743492122616 1}} {21 {append 3 x 3 6 y 12 3712754657825509437 1}} {21 {get 0  9 2088652206612685791 1}} {21 {append 2 x 2 5 y 10 1614350004294951917 1}} {21 {append 4 x 4 6 y 14 2771099241516658666 1}} {21 {append 1 x 1 8 y 13 610211743492122616 1}}]
-[raft 2] 06:19:45.560104 AppendEntries,args.PreLogIndedx: 15, rf.LastIncludedIndex: 0, true Index:15, logs: [{21 0} {21 {get 0  7 2088652206612685791 1}} {21 {append 4 x 4 4 y 12 2771099241516658666 1}} {21 {get 1  11 610211743492122616 1}} {21 {get 2  9 1614350004294951917 1}} {21 {append 3 x 3 5 y 11 3712754657825509437 1}} {21 {get 0  8 2088652206612685791 1}} {21 {append 4 x 4 5 y 13 2771099241516658666 1}} {21 {append 1 x 1 7 y 12 610211743492122616 1}} {21 {append 3 x 3 6 y 12 3712754657825509437 1}} {21 {get 0  9 2088652206612685791 1}} {21 {append 2 x 2 5 y 10 1614350004294951917 1}} {21 {append 4 x 4 6 y 14 2771099241516658666 1}} {21 {append 1 x 1 8 y 13 610211743492122616 1}}]
-[raft 2] 06:19:45.582871 AppendEntries,args.PreLogIndedx: 14, rf.LastIncludedIndex: 0, true Index:14, logs: [{21 0} {21 {get 0  7 2088652206612685791 1}} {21 {append 4 x 4 4 y 12 2771099241516658666 1}} {21 {get 1  11 610211743492122616 1}} {21 {get 2  9 1614350004294951917 1}} {21 {append 3 x 3 5 y 11 3712754657825509437 1}} {21 {get 0  8 2088652206612685791 1}} {21 {append 4 x 4 5 y 13 2771099241516658666 1}} {21 {append 1 x 1 7 y 12 610211743492122616 1}} {21 {append 3 x 3 6 y 12 3712754657825509437 1}} {21 {get 0  9 2088652206612685791 1}} {21 {append 2 x 2 5 y 10 1614350004294951917 1}} {21 {append 4 x 4 6 y 14 2771099241516658666 1}} {21 {append 1 x 1 8 y 13 610211743492122616 1}}]
-[raft 2] 06:19:45.600114 AppendEntries,args.PreLogIndedx: 13, rf.LastIncludedIndex: 0, true Index:13, logs: [{21 0} {21 {get 0  7 2088652206612685791 1}} {21 {append 4 x 4 4 y 12 2771099241516658666 1}} {21 {get 1  11 610211743492122616 1}} {21 {get 2  9 1614350004294951917 1}} {21 {append 3 x 3 5 y 11 3712754657825509437 1}} {21 {get 0  8 2088652206612685791 1}} {21 {append 4 x 4 5 y 13 2771099241516658666 1}} {21 {append 1 x 1 7 y 12 610211743492122616 1}} {21 {append 3 x 3 6 y 12 3712754657825509437 1}} {21 {get 0  9 2088652206612685791 1}} {21 {append 2 x 2 5 y 10 1614350004294951917 1}} {21 {append 4 x 4 6 y 14 2771099241516658666 1}} {21 {append 1 x 1 8 y 13 610211743492122616 1}}]
-[raft 2] 06:19:45.647935 AppendEntries,args.PreLogIndedx: 14, rf.LastIncludedIndex: 0, true Index:14, logs: [{21 0} {21 {get 0  7 2088652206612685791 1}} {21 {append 4 x 4 4 y 12 2771099241516658666 1}} {21 {get 1  11 610211743492122616 1}} {21 {get 2  9 1614350004294951917 1}} {21 {append 3 x 3 5 y 11 3712754657825509437 1}} {21 {get 0  8 2088652206612685791 1}} {21 {append 4 x 4 5 y 13 2771099241516658666 1}} {21 {append 1 x 1 7 y 12 610211743492122616 1}} {21 {append 3 x 3 6 y 12 3712754657825509437 1}} {21 {get 0  9 2088652206612685791 1}} {21 {append 2 x 2 5 y 10 1614350004294951917 1}} {21 {append 4 x 4 6 y 14 2771099241516658666 1}} {21 {append 1 x 1 8 y 13 610211743492122616 1}} {21 {append 4 x 4 6 y 14 2771099241516658666 1}}]
-[raft 2] 06:19:45.660106 AppendEntries,args.PreLogIndedx: 15, rf.LastIncludedIndex: 0, true Index:15, logs: [{21 0} {21 {get 0  7 2088652206612685791 1}} {21 {append 4 x 4 4 y 12 2771099241516658666 1}} {21 {get 1  11 610211743492122616 1}} {21 {get 2  9 1614350004294951917 1}} {21 {append 3 x 3 5 y 11 3712754657825509437 1}} {21 {get 0  8 2088652206612685791 1}} {21 {append 4 x 4 5 y 13 2771099241516658666 1}} {21 {append 1 x 1 7 y 12 610211743492122616 1}} {21 {append 3 x 3 6 y 12 3712754657825509437 1}} {21 {get 0  9 2088652206612685791 1}} {21 {append 2 x 2 5 y 10 1614350004294951917 1}} {21 {append 4 x 4 6 y 14 2771099241516658666 1}} {21 {append 1 x 1 8 y 13 610211743492122616 1}} {21 {append 4 x 4 6 y 14 2771099241516658666 1}} {21 {append 1 x 1 8 y 13 610211743492122616 1}}]
-[raft 2] 06:19:45.928748 AppendEntries,args.PreLogIndedx: 16, rf.LastIncludedIndex: 0, true Index:16, logs: [{21 0} {21 {get 0  7 2088652206612685791 1}} {21 {append 4 x 4 4 y 12 2771099241516658666 1}} {21 {get 1  11 610211743492122616 1}} {21 {get 2  9 1614350004294951917 1}} {21 {append 3 x 3 5 y 11 3712754657825509437 1}} {21 {get 0  8 2088652206612685791 1}} {21 {append 4 x 4 5 y 13 2771099241516658666 1}} {21 {append 1 x 1 7 y 12 610211743492122616 1}} {21 {append 3 x 3 6 y 12 3712754657825509437 1}} {21 {get 0  9 2088652206612685791 1}} {21 {append 2 x 2 5 y 10 1614350004294951917 1}} {21 {append 4 x 4 6 y 14 2771099241516658666 1}} {21 {append 1 x 1 8 y 13 610211743492122616 1}} {21 {append 4 x 4 6 y 14 2771099241516658666 1}} {21 {append 1 x 1 8 y 13 610211743492122616 1}} {28 {get 0  6 3268353639820893766 0}}]
-[raft 2] 06:19:46.121638 AppendEntries,args.PreLogIndedx: 16, rf.LastIncludedIndex: 0, true Index:16, logs: [{21 0} {21 {get 0  7 2088652206612685791 1}} {21 {append 4 x 4 4 y 12 2771099241516658666 1}} {21 {get 1  11 610211743492122616 1}} {21 {get 2  9 1614350004294951917 1}} {21 {append 3 x 3 5 y 11 3712754657825509437 1}} {21 {get 0  8 2088652206612685791 1}} {21 {append 4 x 4 5 y 13 2771099241516658666 1}} {21 {append 1 x 1 7 y 12 610211743492122616 1}} {21 {append 3 x 3 6 y 12 3712754657825509437 1}} {21 {get 0  9 2088652206612685791 1}} {21 {append 2 x 2 5 y 10 1614350004294951917 1}} {21 {append 4 x 4 6 y 14 2771099241516658666 1}} {21 {append 1 x 1 8 y 13 610211743492122616 1}} {21 {append 4 x 4 6 y 14 2771099241516658666 1}} {21 {append 1 x 1 8 y 13 610211743492122616 1}} {28 {get 0  6 3268353639820893766 0}}]
+[server 2] 16:23:50.359114 servers number: 3
+[raft 2] 16:23:50.359176 decode snapshot error
+[raft 2] 16:23:50.359191 read snapshot
+[server 2] 16:23:50.360010 start to apply
+[raft 2] 16:23:50.941499 becomes follower in RequestVote
+[raft 2] 16:23:50.941524 receive RequestVoteArgs: &{1 0 0 0}, Reply: &{0 1 true}
+[raft 2] 16:23:50.941946 receive AppendEnryArgs: &{1 0 0 0 [] 0}
+[raft 2] 16:23:50.941962 AppendEntries,args.PreLogIndedx: 0, rf.LastIncludedIndex: 0, true Index:0, logs: [{0 0}]
+[raft 2] 16:23:50.942021 AppendEntries reply: &{1 1 true false}, args:&{1 0 0 0 [] 0}
+[raft 2] 16:23:50.972625 receive AppendEnryArgs: &{1 0 0 0 [{1 {put a A 1 3216577891613064036 0}}] 0}
+[raft 2] 16:23:50.972641 AppendEntries,args.PreLogIndedx: 0, rf.LastIncludedIndex: 0, true Index:0, logs: [{0 0}]
+[raft 2] 16:23:50.972694 AppendEntries reply: &{1 1 true false}, args:&{1 0 0 0 [{1 {put a A 1 3216577891613064036 0}}] 0}
+[raft 2] 16:23:51.002730 receive AppendEnryArgs: &{1 0 1 1 [{1 {get a  2 3216577891613064036 0}}] 1}
+[raft 2] 16:23:51.002745 AppendEntries,args.PreLogIndedx: 1, rf.LastIncludedIndex: 0, true Index:1, logs: [{0 0} {1 {put a A 1 3216577891613064036 0}}]
+[raft 2] 16:23:51.002771 AppendEntries reply: &{1 1 true false}, args:&{1 0 1 1 [{1 {get a  2 3216577891613064036 0}}] 1}
+[raft 2] 16:23:51.008581 rf.LastApplied: 1, rf.LastIncludedIdnex: 0, true index: 1, rf.Logs: [{0 0} {1 {put a A 1 3216577891613064036 0}} {1 {get a  2 3216577891613064036 0}}]
+[server 2] 16:23:51.008616 apply: {put a A 1 3216577891613064036 0}
+[server 2] 16:23:51.008658 state size: 238, logs: [{0 0} {1 {put a A 1 3216577891613064036 0}} {1 {get a  2 3216577891613064036 0}}]
+[server 2] 16:23:51.008669 map[a:A]
+[server 2] 16:23:51.008692 start to apply
+[raft 2] 16:23:51.727364 start a new election
+[raft 2] 16:23:51.727531 send RequestVoteArgs: {2 2 2 1} to peer: 1
+[raft 2] 16:23:51.727590 send RequestVoteArgs: {2 2 2 1} to peer: 0
+[raft 2] 16:23:52.477731 start a new election
+[raft 2] 16:23:52.477888 send RequestVoteArgs: {3 2 2 1} to peer: 1
+[raft 2] 16:23:52.477922 send RequestVoteArgs: {3 2 2 1} to peer: 0
+[raft 2] 16:23:53.152287 start a new election
+[raft 2] 16:23:53.152426 send RequestVoteArgs: {4 2 2 1} to peer: 1
+[raft 2] 16:23:53.152454 send RequestVoteArgs: {4 2 2 1} to peer: 0
+[raft 2] 16:23:53.846852 start a new election
+[raft 2] 16:23:53.847041 send RequestVoteArgs: {5 2 2 1} to peer: 1
+[raft 2] 16:23:53.847130 send RequestVoteArgs: {5 2 2 1} to peer: 0
+[raft 2] 16:23:54.405241 start a new election
+[raft 2] 16:23:54.405370 send RequestVoteArgs: {6 2 2 1} to peer: 1
+[raft 2] 16:23:54.405405 send RequestVoteArgs: {6 2 2 1} to peer: 0
+[raft 2] 16:23:55.146283 start a new election
+[raft 2] 16:23:55.146482 send RequestVoteArgs: {7 2 2 1} to peer: 1
+[raft 2] 16:23:55.146514 send RequestVoteArgs: {7 2 2 1} to peer: 0
+[raft 2] 16:23:55.727131 start a new election
+[raft 2] 16:23:55.727322 send RequestVoteArgs: {8 2 2 1} to peer: 1
+[raft 2] 16:23:55.727331 send RequestVoteArgs: {8 2 2 1} to peer: 0
+[raft 2] 16:23:56.308956 start a new election
+[raft 2] 16:23:56.309191 send RequestVoteArgs: {9 2 2 1} to peer: 1
+[raft 2] 16:23:56.309238 send RequestVoteArgs: {9 2 2 1} to peer: 0
+[raft 2] 16:23:56.817454 start a new election
+[raft 2] 16:23:56.817621 send RequestVoteArgs: {10 2 2 1} to peer: 1
+[raft 2] 16:23:56.817693 send RequestVoteArgs: {10 2 2 1} to peer: 0
+[raft 2] 16:23:57.385672 start a new election
+[raft 2] 16:23:57.385890 send RequestVoteArgs: {11 2 2 1} to peer: 1
+[raft 2] 16:23:57.385941 send RequestVoteArgs: {11 2 2 1} to peer: 0
+[raft 2] 16:23:57.921466 start a new election
+[raft 2] 16:23:57.921584 send RequestVoteArgs: {12 2 2 1} to peer: 1
+[raft 2] 16:23:57.921617 send RequestVoteArgs: {12 2 2 1} to peer: 0
+[raft 2] 16:23:58.492614 start a new election
+[raft 2] 16:23:58.492722 send RequestVoteArgs: {13 2 2 1} to peer: 1
+[raft 2] 16:23:58.492756 send RequestVoteArgs: {13 2 2 1} to peer: 0
+[raft 2] 16:23:58.492925 request vote receive reply from peer 0, reply: {1 13 false}, args: {13 2 2 1}
+[raft 2] 16:23:59.055162 start a new election
+[raft 2] 16:23:59.055318 send RequestVoteArgs: {14 2 2 1} to peer: 1
+[raft 2] 16:23:59.055376 send RequestVoteArgs: {14 2 2 1} to peer: 0
+[raft 2] 16:23:59.055596 request vote receive reply from peer 0, reply: {13 14 false}, args: {14 2 2 1}
+[raft 2] 16:23:59.638305 start a new election
+[raft 2] 16:23:59.638428 send RequestVoteArgs: {15 2 2 1} to peer: 1
+[raft 2] 16:23:59.638462 send RequestVoteArgs: {15 2 2 1} to peer: 0
+[raft 2] 16:23:59.638702 request vote receive reply from peer 0, reply: {14 15 false}, args: {15 2 2 1}
+[raft 2] 16:24:00.358536 start a new election
+[raft 2] 16:24:00.358679 send RequestVoteArgs: {16 2 2 1} to peer: 1
+[raft 2] 16:24:00.358751 send RequestVoteArgs: {16 2 2 1} to peer: 0
+[raft 2] 16:24:00.359068 request vote receive reply from peer 0, reply: {15 16 false}, args: {16 2 2 1}
+[raft 2] 16:24:00.950319 start a new election
+[raft 2] 16:24:00.950547 send RequestVoteArgs: {17 2 2 1} to peer: 1
+[raft 2] 16:24:00.950586 send RequestVoteArgs: {17 2 2 1} to peer: 0
+[raft 2] 16:24:00.950875 request vote receive reply from peer 0, reply: {16 17 false}, args: {17 2 2 1}
+[raft 2] 16:24:01.702735 start a new election
+[raft 2] 16:24:01.702844 send RequestVoteArgs: {18 2 2 1} to peer: 1
+[raft 2] 16:24:01.702880 send RequestVoteArgs: {18 2 2 1} to peer: 0
+[raft 2] 16:24:01.703187 request vote receive reply from peer 0, reply: {17 18 false}, args: {18 2 2 1}
+[raft 2] 16:24:02.379221 start a new election
+[raft 2] 16:24:02.379389 send RequestVoteArgs: {19 2 2 1} to peer: 1
+[raft 2] 16:24:02.379422 send RequestVoteArgs: {19 2 2 1} to peer: 0
+[raft 2] 16:24:02.379643 request vote receive reply from peer 0, reply: {18 19 false}, args: {19 2 2 1}
+[raft 2] 16:24:03.162873 start a new election
+[raft 2] 16:24:03.162994 send RequestVoteArgs: {20 2 2 1} to peer: 1
+[raft 2] 16:24:03.163026 send RequestVoteArgs: {20 2 2 1} to peer: 0
+[raft 2] 16:24:03.163304 request vote receive reply from peer 0, reply: {19 20 false}, args: {20 2 2 1}
+[raft 2] 16:24:03.819549 start a new election
+[raft 2] 16:24:03.819711 send RequestVoteArgs: {21 2 2 1} to peer: 1
+[raft 2] 16:24:03.819758 send RequestVoteArgs: {21 2 2 1} to peer: 0
+[raft 2] 16:24:03.820033 request vote receive reply from peer 0, reply: {20 21 false}, args: {21 2 2 1}
+[raft 2] 16:24:04.474787 start a new election
+[raft 2] 16:24:04.474938 send RequestVoteArgs: {22 2 2 1} to peer: 1
+[raft 2] 16:24:04.474976 send RequestVoteArgs: {22 2 2 1} to peer: 0
+[raft 2] 16:24:04.475176 request vote receive reply from peer 0, reply: {21 22 false}, args: {22 2 2 1}
+[raft 2] 16:24:05.233299 start a new election
+[raft 2] 16:24:05.233456 send RequestVoteArgs: {23 2 2 1} to peer: 1
+[raft 2] 16:24:05.233492 send RequestVoteArgs: {23 2 2 1} to peer: 0
+[raft 2] 16:24:05.233714 request vote receive reply from peer 0, reply: {22 23 false}, args: {23 2 2 1}
+[raft 2] 16:24:05.825942 start a new election
+[raft 2] 16:24:05.826038 send RequestVoteArgs: {24 2 2 1} to peer: 1
+[raft 2] 16:24:05.826110 send RequestVoteArgs: {24 2 2 1} to peer: 0
+[raft 2] 16:24:05.826421 request vote receive reply from peer 0, reply: {23 24 false}, args: {24 2 2 1}
+[raft 2] 16:24:06.368483 start a new election
+[raft 2] 16:24:06.368679 send RequestVoteArgs: {25 2 2 1} to peer: 1
+[raft 2] 16:24:06.368783 send RequestVoteArgs: {25 2 2 1} to peer: 0
+[raft 2] 16:24:06.369138 request vote receive reply from peer 0, reply: {24 25 false}, args: {25 2 2 1}
+[raft 2] 16:24:07.045376 start a new election
+[raft 2] 16:24:07.045498 send RequestVoteArgs: {26 2 2 1} to peer: 1
+[raft 2] 16:24:07.045531 send RequestVoteArgs: {26 2 2 1} to peer: 0
+[raft 2] 16:24:07.045774 request vote receive reply from peer 0, reply: {25 26 false}, args: {26 2 2 1}
+[raft 2] 16:24:07.800841 start a new election
+[raft 2] 16:24:07.800973 send RequestVoteArgs: {27 2 2 1} to peer: 1
+[raft 2] 16:24:07.801012 send RequestVoteArgs: {27 2 2 1} to peer: 0
+[raft 2] 16:24:07.801249 request vote receive reply from peer 0, reply: {26 27 false}, args: {27 2 2 1}
+[raft 2] 16:24:08.343689 start a new election
+[raft 2] 16:24:08.343937 send RequestVoteArgs: {28 2 2 1} to peer: 1
+[raft 2] 16:24:08.343980 send RequestVoteArgs: {28 2 2 1} to peer: 0
+[raft 2] 16:24:08.344159 request vote receive reply from peer 0, reply: {27 28 false}, args: {28 2 2 1}
+[raft 2] 16:24:09.064551 start a new election
+[raft 2] 16:24:09.064690 send RequestVoteArgs: {29 2 2 1} to peer: 1
+[raft 2] 16:24:09.064745 send RequestVoteArgs: {29 2 2 1} to peer: 0
+[raft 2] 16:24:09.065071 request vote receive reply from peer 0, reply: {28 29 false}, args: {29 2 2 1}
+[raft 2] 16:24:09.783356 start a new election
+[raft 2] 16:24:09.783583 send RequestVoteArgs: {30 2 2 1} to peer: 1
+[raft 2] 16:24:09.783643 send RequestVoteArgs: {30 2 2 1} to peer: 0
+[raft 2] 16:24:09.783872 request vote receive reply from peer 0, reply: {29 30 false}, args: {30 2 2 1}
+[raft 2] 16:24:10.575514 start a new election
+[raft 2] 16:24:10.575655 send RequestVoteArgs: {31 2 2 1} to peer: 1
+[raft 2] 16:24:10.575685 send RequestVoteArgs: {31 2 2 1} to peer: 0
+[raft 2] 16:24:10.575853 request vote receive reply from peer 0, reply: {30 31 false}, args: {31 2 2 1}
+[raft 2] 16:24:11.233059 start a new election
+[raft 2] 16:24:11.233238 send RequestVoteArgs: {32 2 2 1} to peer: 1
+[raft 2] 16:24:11.233307 send RequestVoteArgs: {32 2 2 1} to peer: 0
+[raft 2] 16:24:11.233601 request vote receive reply from peer 0, reply: {31 32 false}, args: {32 2 2 1}
+[raft 2] 16:24:11.763536 start a new election
+[raft 2] 16:24:11.763694 send RequestVoteArgs: {33 2 2 1} to peer: 1
+[raft 2] 16:24:11.763727 send RequestVoteArgs: {33 2 2 1} to peer: 0
+[raft 2] 16:24:11.763932 request vote receive reply from peer 0, reply: {32 33 false}, args: {33 2 2 1}
+[raft 2] 16:24:12.450016 start a new election
+[raft 2] 16:24:12.450152 send RequestVoteArgs: {34 2 2 1} to peer: 1
+[raft 2] 16:24:12.450185 send RequestVoteArgs: {34 2 2 1} to peer: 0
+[raft 2] 16:24:12.450396 request vote receive reply from peer 0, reply: {33 34 false}, args: {34 2 2 1}
+[raft 2] 16:24:13.057053 start a new election
+[raft 2] 16:24:13.057161 send RequestVoteArgs: {35 2 2 1} to peer: 1
+[raft 2] 16:24:13.057196 send RequestVoteArgs: {35 2 2 1} to peer: 0
+[raft 2] 16:24:13.057533 request vote receive reply from peer 0, reply: {34 35 false}, args: {35 2 2 1}
+[raft 2] 16:24:13.617875 start a new election
+[raft 2] 16:24:13.618049 send RequestVoteArgs: {36 2 2 1} to peer: 1
+[raft 2] 16:24:13.618082 send RequestVoteArgs: {36 2 2 1} to peer: 0
+[raft 2] 16:24:13.618293 request vote receive reply from peer 0, reply: {35 36 false}, args: {36 2 2 1}
+[raft 2] 16:24:14.263082 start a new election
+[raft 2] 16:24:14.263257 send RequestVoteArgs: {37 2 2 1} to peer: 1
+[raft 2] 16:24:14.263292 send RequestVoteArgs: {37 2 2 1} to peer: 0
+[raft 2] 16:24:14.263471 request vote receive reply from peer 0, reply: {36 37 false}, args: {37 2 2 1}
+[raft 2] 16:24:15.025885 start a new election
+[raft 2] 16:24:15.026008 send RequestVoteArgs: {38 2 2 1} to peer: 1
+[raft 2] 16:24:15.026047 send RequestVoteArgs: {38 2 2 1} to peer: 0
+[raft 2] 16:24:15.026283 request vote receive reply from peer 0, reply: {37 38 false}, args: {38 2 2 1}
+[raft 2] 16:24:15.725861 start a new election
+[raft 2] 16:24:15.726072 send RequestVoteArgs: {39 2 2 1} to peer: 1
+[raft 2] 16:24:15.726133 send RequestVoteArgs: {39 2 2 1} to peer: 0
+[raft 2] 16:24:15.726426 request vote receive reply from peer 0, reply: {38 39 false}, args: {39 2 2 1}
+[raft 2] 16:24:16.316720 start a new election
+[raft 2] 16:24:16.316853 send RequestVoteArgs: {40 2 2 1} to peer: 1
+[raft 2] 16:24:16.316885 send RequestVoteArgs: {40 2 2 1} to peer: 0
+[raft 2] 16:24:16.317092 request vote receive reply from peer 0, reply: {39 40 false}, args: {40 2 2 1}
+[raft 2] 16:24:16.876557 start a new election
+[raft 2] 16:24:16.876769 send RequestVoteArgs: {41 2 2 1} to peer: 1
+[raft 2] 16:24:16.876838 send RequestVoteArgs: {41 2 2 1} to peer: 0
+[raft 2] 16:24:16.877152 request vote receive reply from peer 0, reply: {40 41 false}, args: {41 2 2 1}
+[raft 2] 16:24:17.599375 start a new election
+[raft 2] 16:24:17.599526 send RequestVoteArgs: {42 2 2 1} to peer: 1
+[raft 2] 16:24:17.599559 send RequestVoteArgs: {42 2 2 1} to peer: 0
+[raft 2] 16:24:17.599732 request vote receive reply from peer 0, reply: {41 42 false}, args: {42 2 2 1}
+[raft 2] 16:24:18.304313 start a new election
+[raft 2] 16:24:18.304437 send RequestVoteArgs: {43 2 2 1} to peer: 1
+[raft 2] 16:24:18.304472 send RequestVoteArgs: {43 2 2 1} to peer: 0
+[raft 2] 16:24:18.304718 request vote receive reply from peer 0, reply: {42 43 false}, args: {43 2 2 1}
+[raft 2] 16:24:19.065513 start a new election
+[raft 2] 16:24:19.065664 send RequestVoteArgs: {44 2 2 1} to peer: 1
+[raft 2] 16:24:19.065697 send RequestVoteArgs: {44 2 2 1} to peer: 0
+[raft 2] 16:24:19.065912 request vote receive reply from peer 0, reply: {43 44 false}, args: {44 2 2 1}
+[raft 2] 16:24:19.592323 start a new election
+[raft 2] 16:24:19.592601 send RequestVoteArgs: {45 2 2 1} to peer: 1
+[raft 2] 16:24:19.592622 send RequestVoteArgs: {45 2 2 1} to peer: 0
+[raft 2] 16:24:19.593322 request vote receive reply from peer 0, reply: {44 45 false}, args: {45 2 2 1}
+[raft 2] 16:24:20.134938 start a new election
+[raft 2] 16:24:20.135204 send RequestVoteArgs: {46 2 2 1} to peer: 1
+[raft 2] 16:24:20.135268 send RequestVoteArgs: {46 2 2 1} to peer: 0
+[raft 2] 16:24:20.135805 request vote receive reply from peer 0, reply: {45 46 false}, args: {46 2 2 1}
+[raft 2] 16:24:20.770352 start a new election
+[raft 2] 16:24:20.770482 send RequestVoteArgs: {47 2 2 1} to peer: 1
+[raft 2] 16:24:20.770522 send RequestVoteArgs: {47 2 2 1} to peer: 0
+[raft 2] 16:24:20.770761 request vote receive reply from peer 0, reply: {46 47 false}, args: {47 2 2 1}
+[raft 2] 16:24:21.576214 start a new election
+[raft 2] 16:24:21.576397 send RequestVoteArgs: {48 2 2 1} to peer: 1
+[raft 2] 16:24:21.576434 send RequestVoteArgs: {48 2 2 1} to peer: 0
+[raft 2] 16:24:21.576858 request vote receive reply from peer 0, reply: {47 48 false}, args: {48 2 2 1}
+[raft 2] 16:24:22.364733 start a new election
+[raft 2] 16:24:22.364902 send RequestVoteArgs: {49 2 2 1} to peer: 1
+[raft 2] 16:24:22.364935 send RequestVoteArgs: {49 2 2 1} to peer: 0
+[raft 2] 16:24:22.365145 request vote receive reply from peer 0, reply: {48 49 false}, args: {49 2 2 1}
+[raft 2] 16:24:23.056119 start a new election
+[raft 2] 16:24:23.056299 send RequestVoteArgs: {50 2 2 1} to peer: 1
+[raft 2] 16:24:23.056342 send RequestVoteArgs: {50 2 2 1} to peer: 0
+[raft 2] 16:24:23.056642 request vote receive reply from peer 0, reply: {49 50 false}, args: {50 2 2 1}
+[raft 2] 16:24:23.748826 start a new election
+[raft 2] 16:24:23.748982 send RequestVoteArgs: {51 2 2 1} to peer: 1
+[raft 2] 16:24:23.749014 send RequestVoteArgs: {51 2 2 1} to peer: 0
+[raft 2] 16:24:23.749226 request vote receive reply from peer 0, reply: {50 51 false}, args: {51 2 2 1}
+[raft 2] 16:24:24.439708 start a new election
+[raft 2] 16:24:24.439906 send RequestVoteArgs: {52 2 2 1} to peer: 1
+[raft 2] 16:24:24.439940 send RequestVoteArgs: {52 2 2 1} to peer: 0
+[raft 2] 16:24:24.440198 request vote receive reply from peer 0, reply: {51 52 false}, args: {52 2 2 1}
+[raft 2] 16:24:25.132243 start a new election
+[raft 2] 16:24:25.132395 send RequestVoteArgs: {53 2 2 1} to peer: 1
+[raft 2] 16:24:25.132432 send RequestVoteArgs: {53 2 2 1} to peer: 0
+[raft 2] 16:24:25.132647 request vote receive reply from peer 0, reply: {52 53 false}, args: {53 2 2 1}
+[raft 2] 16:24:25.880993 start a new election
+[raft 2] 16:24:25.881174 send RequestVoteArgs: {54 2 2 1} to peer: 1
+[raft 2] 16:24:25.881212 send RequestVoteArgs: {54 2 2 1} to peer: 0
+[raft 2] 16:24:25.881680 request vote receive reply from peer 0, reply: {53 54 false}, args: {54 2 2 1}
+[raft 2] 16:24:26.455079 start a new election
+[raft 2] 16:24:26.455281 send RequestVoteArgs: {55 2 2 1} to peer: 1
+[raft 2] 16:24:26.455316 send RequestVoteArgs: {55 2 2 1} to peer: 0
+[raft 2] 16:24:26.455752 request vote receive reply from peer 0, reply: {54 55 false}, args: {55 2 2 1}
+[raft 2] 16:24:27.075307 start a new election
+[raft 2] 16:24:27.075456 send RequestVoteArgs: {56 2 2 1} to peer: 1
+[raft 2] 16:24:27.075525 send RequestVoteArgs: {56 2 2 1} to peer: 0
+[raft 2] 16:24:27.075857 request vote receive reply from peer 0, reply: {55 56 false}, args: {56 2 2 1}
+[raft 2] 16:24:27.689712 start a new election
+[raft 2] 16:24:27.689894 send RequestVoteArgs: {57 2 2 1} to peer: 1
+[raft 2] 16:24:27.689930 send RequestVoteArgs: {57 2 2 1} to peer: 0
+[raft 2] 16:24:27.690143 request vote receive reply from peer 0, reply: {56 57 false}, args: {57 2 2 1}
+[raft 2] 16:24:28.410385 start a new election
+[raft 2] 16:24:28.410562 send RequestVoteArgs: {58 2 2 1} to peer: 1
+[raft 2] 16:24:28.410619 send RequestVoteArgs: {58 2 2 1} to peer: 0
+[raft 2] 16:24:28.410842 request vote receive reply from peer 0, reply: {57 58 false}, args: {58 2 2 1}
+[raft 2] 16:24:29.056613 start a new election
+[raft 2] 16:24:29.056798 send RequestVoteArgs: {59 2 2 1} to peer: 1
+[raft 2] 16:24:29.056833 send RequestVoteArgs: {59 2 2 1} to peer: 0
+[raft 2] 16:24:29.057008 request vote receive reply from peer 0, reply: {58 59 false}, args: {59 2 2 1}
+[raft 2] 16:24:29.574244 start a new election
+[raft 2] 16:24:29.574420 send RequestVoteArgs: {60 2 2 1} to peer: 1
+[raft 2] 16:24:29.574486 send RequestVoteArgs: {60 2 2 1} to peer: 0
+[raft 2] 16:24:29.574689 request vote receive reply from peer 0, reply: {59 60 false}, args: {60 2 2 1}
+[raft 2] 16:24:30.270161 start a new election
+[raft 2] 16:24:30.270409 send RequestVoteArgs: {61 2 2 1} to peer: 1
+[raft 2] 16:24:30.270473 send RequestVoteArgs: {61 2 2 1} to peer: 0
+[raft 2] 16:24:30.270816 request vote receive reply from peer 0, reply: {60 61 false}, args: {61 2 2 1}
+[raft 2] 16:24:31.063086 start a new election
+[raft 2] 16:24:31.063269 send RequestVoteArgs: {62 2 2 1} to peer: 1
+[raft 2] 16:24:31.063303 send RequestVoteArgs: {62 2 2 1} to peer: 0
+[raft 2] 16:24:31.063492 request vote receive reply from peer 0, reply: {61 62 false}, args: {62 2 2 1}
+[raft 2] 16:24:31.601116 start a new election
+[raft 2] 16:24:31.601276 send RequestVoteArgs: {63 2 2 1} to peer: 1
+[raft 2] 16:24:31.601310 send RequestVoteArgs: {63 2 2 1} to peer: 0
+[raft 2] 16:24:31.601496 request vote receive reply from peer 0, reply: {62 63 false}, args: {63 2 2 1}
+[raft 2] 16:24:32.348883 start a new election
+[raft 2] 16:24:32.349097 send RequestVoteArgs: {64 2 2 1} to peer: 1
+[raft 2] 16:24:32.349137 send RequestVoteArgs: {64 2 2 1} to peer: 0
+[raft 2] 16:24:32.349369 request vote receive reply from peer 0, reply: {63 64 false}, args: {64 2 2 1}
+[raft 2] 16:24:32.995527 start a new election
+[raft 2] 16:24:32.995741 send RequestVoteArgs: {65 2 2 1} to peer: 1
+[raft 2] 16:24:32.995788 send RequestVoteArgs: {65 2 2 1} to peer: 0
+[raft 2] 16:24:32.996091 request vote receive reply from peer 0, reply: {64 65 false}, args: {65 2 2 1}
+[raft 2] 16:24:33.516868 start a new election
+[raft 2] 16:24:33.517031 send RequestVoteArgs: {66 2 2 1} to peer: 1
+[raft 2] 16:24:33.517063 send RequestVoteArgs: {66 2 2 1} to peer: 0
+[raft 2] 16:24:33.517239 request vote receive reply from peer 0, reply: {65 66 false}, args: {66 2 2 1}
+[raft 2] 16:24:34.298086 start a new election
+[raft 2] 16:24:34.298236 send RequestVoteArgs: {67 2 2 1} to peer: 1
+[raft 2] 16:24:34.298270 send RequestVoteArgs: {67 2 2 1} to peer: 0
+[raft 2] 16:24:34.298486 request vote receive reply from peer 0, reply: {66 67 false}, args: {67 2 2 1}
+[raft 2] 16:24:34.883055 start a new election
+[raft 2] 16:24:34.883196 send RequestVoteArgs: {68 2 2 1} to peer: 1
+[raft 2] 16:24:34.883255 send RequestVoteArgs: {68 2 2 1} to peer: 0
+[raft 2] 16:24:34.883459 request vote receive reply from peer 0, reply: {67 68 false}, args: {68 2 2 1}
+[raft 2] 16:24:35.512027 start a new election
+[raft 2] 16:24:35.512192 send RequestVoteArgs: {69 2 2 1} to peer: 1
+[raft 2] 16:24:35.512226 send RequestVoteArgs: {69 2 2 1} to peer: 0
+[raft 2] 16:24:35.512442 request vote receive reply from peer 0, reply: {68 69 false}, args: {69 2 2 1}
+[raft 2] 16:24:36.086496 start a new election
+[raft 2] 16:24:36.086687 send RequestVoteArgs: {70 2 2 1} to peer: 1
+[raft 2] 16:24:36.086737 send RequestVoteArgs: {70 2 2 1} to peer: 0
+[raft 2] 16:24:36.086983 request vote receive reply from peer 0, reply: {69 70 false}, args: {70 2 2 1}
+[raft 2] 16:24:36.803470 start a new election
+[raft 2] 16:24:36.803658 send RequestVoteArgs: {71 2 2 1} to peer: 1
+[raft 2] 16:24:36.803765 send RequestVoteArgs: {71 2 2 1} to peer: 0
+[raft 2] 16:24:36.804224 request vote receive reply from peer 0, reply: {70 71 false}, args: {71 2 2 1}
+[raft 2] 16:24:37.426954 start a new election
+[raft 2] 16:24:37.427104 send RequestVoteArgs: {72 2 2 1} to peer: 1
+[raft 2] 16:24:37.427137 send RequestVoteArgs: {72 2 2 1} to peer: 0
+[raft 2] 16:24:37.427306 request vote receive reply from peer 0, reply: {71 72 false}, args: {72 2 2 1}
+[raft 2] 16:24:37.932115 start a new election
+[raft 2] 16:24:37.932272 send RequestVoteArgs: {73 2 2 1} to peer: 1
+[raft 2] 16:24:37.932308 send RequestVoteArgs: {73 2 2 1} to peer: 0
+[raft 2] 16:24:37.932481 request vote receive reply from peer 0, reply: {72 73 false}, args: {73 2 2 1}
+[raft 2] 16:24:38.703794 start a new election
+[raft 2] 16:24:38.703941 send RequestVoteArgs: {74 2 2 1} to peer: 1
+[raft 2] 16:24:38.703974 send RequestVoteArgs: {74 2 2 1} to peer: 0
+[raft 2] 16:24:38.704157 request vote receive reply from peer 0, reply: {73 74 false}, args: {74 2 2 1}
+[raft 2] 16:24:39.363086 start a new election
+[raft 2] 16:24:39.363293 send RequestVoteArgs: {75 2 2 1} to peer: 1
+[raft 2] 16:24:39.363308 send RequestVoteArgs: {75 2 2 1} to peer: 0
+[raft 2] 16:24:39.363711 request vote receive reply from peer 0, reply: {74 75 false}, args: {75 2 2 1}
+[raft 2] 16:24:40.006540 start a new election
+[raft 2] 16:24:40.006677 send RequestVoteArgs: {76 2 2 1} to peer: 1
+[raft 2] 16:24:40.006730 send RequestVoteArgs: {76 2 2 1} to peer: 0
+[raft 2] 16:24:40.006948 request vote receive reply from peer 0, reply: {75 76 false}, args: {76 2 2 1}
+[raft 2] 16:24:40.514762 start a new election
+[raft 2] 16:24:40.514902 send RequestVoteArgs: {77 2 2 1} to peer: 1
+[raft 2] 16:24:40.514936 send RequestVoteArgs: {77 2 2 1} to peer: 0
+[raft 2] 16:24:40.515155 request vote receive reply from peer 0, reply: {76 77 false}, args: {77 2 2 1}
+[raft 2] 16:24:41.290672 start a new election
+[raft 2] 16:24:41.290873 send RequestVoteArgs: {78 2 2 1} to peer: 1
+[raft 2] 16:24:41.290910 send RequestVoteArgs: {78 2 2 1} to peer: 0
+[raft 2] 16:24:41.291087 request vote receive reply from peer 0, reply: {77 78 false}, args: {78 2 2 1}
+[raft 2] 16:24:41.959582 start a new election
+[raft 2] 16:24:41.959786 send RequestVoteArgs: {79 2 2 1} to peer: 1
+[raft 2] 16:24:41.959874 send RequestVoteArgs: {79 2 2 1} to peer: 0
+[raft 2] 16:24:41.960301 request vote receive reply from peer 0, reply: {78 79 false}, args: {79 2 2 1}
+[raft 2] 16:24:42.585977 start a new election
+[raft 2] 16:24:42.586207 send RequestVoteArgs: {80 2 2 1} to peer: 1
+[raft 2] 16:24:42.586235 send RequestVoteArgs: {80 2 2 1} to peer: 0
+[raft 2] 16:24:42.586491 request vote receive reply from peer 0, reply: {79 80 false}, args: {80 2 2 1}
+[raft 2] 16:24:43.156553 start a new election
+[raft 2] 16:24:43.156728 send RequestVoteArgs: {81 2 2 1} to peer: 1
+[raft 2] 16:24:43.156800 send RequestVoteArgs: {81 2 2 1} to peer: 0
+[raft 2] 16:24:43.157055 request vote receive reply from peer 0, reply: {80 81 false}, args: {81 2 2 1}
+[raft 2] 16:24:43.786022 start a new election
+[raft 2] 16:24:43.786154 send RequestVoteArgs: {82 2 2 1} to peer: 1
+[raft 2] 16:24:43.786190 send RequestVoteArgs: {82 2 2 1} to peer: 0
+[raft 2] 16:24:43.786446 request vote receive reply from peer 0, reply: {81 82 false}, args: {82 2 2 1}
+[raft 2] 16:24:44.423712 start a new election
+[raft 2] 16:24:44.423853 send RequestVoteArgs: {83 2 2 1} to peer: 1
+[raft 2] 16:24:44.423887 send RequestVoteArgs: {83 2 2 1} to peer: 0
+[raft 2] 16:24:44.424092 request vote receive reply from peer 0, reply: {82 83 false}, args: {83 2 2 1}
+[raft 2] 16:24:45.178812 start a new election
+[raft 2] 16:24:45.178942 send RequestVoteArgs: {84 2 2 1} to peer: 1
+[raft 2] 16:24:45.178976 send RequestVoteArgs: {84 2 2 1} to peer: 0
+[raft 2] 16:24:45.179202 request vote receive reply from peer 0, reply: {83 84 false}, args: {84 2 2 1}
+[raft 2] 16:24:45.917047 start a new election
+[raft 2] 16:24:45.996098 send RequestVoteArgs: {85 2 2 1} to peer: 1
+[raft 2] 16:24:45.996123 send RequestVoteArgs: {85 2 2 1} to peer: 0
+[raft 2] 16:24:45.996798 request vote receive reply from peer 0, reply: {84 85 false}, args: {85 2 2 1}
+[raft 2] 16:24:46.553638 start a new election
+[raft 2] 16:24:46.553812 send RequestVoteArgs: {86 2 2 1} to peer: 1
+[raft 2] 16:24:46.553838 send RequestVoteArgs: {86 2 2 1} to peer: 0
+[raft 2] 16:24:46.554111 request vote receive reply from peer 0, reply: {85 86 false}, args: {86 2 2 1}
+[raft 2] 16:24:47.322385 start a new election
+[raft 2] 16:24:47.322935 send RequestVoteArgs: {87 2 2 1} to peer: 1
+[raft 2] 16:24:47.322972 send RequestVoteArgs: {87 2 2 1} to peer: 0
+[raft 2] 16:24:47.323991 request vote receive reply from peer 0, reply: {86 87 false}, args: {87 2 2 1}
+[raft 2] 16:24:48.003700 start a new election
+[raft 2] 16:24:48.003917 send RequestVoteArgs: {88 2 2 1} to peer: 1
+[raft 2] 16:24:48.003940 send RequestVoteArgs: {88 2 2 1} to peer: 0
+[raft 2] 16:24:48.004191 request vote receive reply from peer 0, reply: {87 88 false}, args: {88 2 2 1}
+[raft 2] 16:24:48.585556 start a new election
+[raft 2] 16:24:48.585776 send RequestVoteArgs: {89 2 2 1} to peer: 1
+[raft 2] 16:24:48.585875 send RequestVoteArgs: {89 2 2 1} to peer: 0
+[raft 2] 16:24:48.586210 request vote receive reply from peer 0, reply: {88 89 false}, args: {89 2 2 1}
+[raft 2] 16:24:49.356727 start a new election
+[raft 2] 16:24:49.357470 send RequestVoteArgs: {90 2 2 1} to peer: 1
+[raft 2] 16:24:49.357532 send RequestVoteArgs: {90 2 2 1} to peer: 0
+[raft 2] 16:24:49.358749 request vote receive reply from peer 0, reply: {89 90 false}, args: {90 2 2 1}
+[raft 2] 16:24:49.923901 start a new election
+[raft 2] 16:24:49.924105 send RequestVoteArgs: {91 2 2 1} to peer: 1
+[raft 2] 16:24:49.924132 send RequestVoteArgs: {91 2 2 1} to peer: 0
+[raft 2] 16:24:49.924503 request vote receive reply from peer 0, reply: {90 91 false}, args: {91 2 2 1}
+[raft 2] 16:24:50.453317 start a new election
+[raft 2] 16:24:50.453466 send RequestVoteArgs: {92 2 2 1} to peer: 1
+[raft 2] 16:24:50.453528 send RequestVoteArgs: {92 2 2 1} to peer: 0
+[raft 2] 16:24:50.453817 request vote receive reply from peer 0, reply: {91 92 false}, args: {92 2 2 1}
+[raft 2] 16:24:51.007112 start a new election
+[raft 2] 16:24:51.007301 send RequestVoteArgs: {93 2 2 1} to peer: 1
+[raft 2] 16:24:51.007353 send RequestVoteArgs: {93 2 2 1} to peer: 0
+[raft 2] 16:24:51.007759 request vote receive reply from peer 0, reply: {92 93 false}, args: {93 2 2 1}
+[raft 2] 16:24:51.696634 start a new election
+[raft 2] 16:24:51.696783 send RequestVoteArgs: {94 2 2 1} to peer: 1
+[raft 2] 16:24:51.696842 send RequestVoteArgs: {94 2 2 1} to peer: 0
+[raft 2] 16:24:51.697058 request vote receive reply from peer 0, reply: {93 94 false}, args: {94 2 2 1}
+[raft 2] 16:24:52.317662 start a new election
+[raft 2] 16:24:52.317857 send RequestVoteArgs: {95 2 2 1} to peer: 1
+[raft 2] 16:24:52.317940 send RequestVoteArgs: {95 2 2 1} to peer: 0
+[raft 2] 16:24:52.318491 request vote receive reply from peer 0, reply: {94 95 false}, args: {95 2 2 1}
+[raft 2] 16:24:53.094212 start a new election
+[raft 2] 16:24:53.094366 send RequestVoteArgs: {96 2 2 1} to peer: 1
+[raft 2] 16:24:53.094380 send RequestVoteArgs: {96 2 2 1} to peer: 0
+[raft 2] 16:24:53.094681 request vote receive reply from peer 0, reply: {95 96 false}, args: {96 2 2 1}
+[raft 2] 16:24:53.796580 start a new election
+[raft 2] 16:24:53.796747 send RequestVoteArgs: {97 2 2 1} to peer: 1
+[raft 2] 16:24:53.796870 send RequestVoteArgs: {97 2 2 1} to peer: 0
+[raft 2] 16:24:53.797068 request vote receive reply from peer 0, reply: {96 97 false}, args: {97 2 2 1}
+[raft 2] 16:24:54.488655 start a new election
+[raft 2] 16:24:54.488799 send RequestVoteArgs: {98 2 2 1} to peer: 1
+[raft 2] 16:24:54.488834 send RequestVoteArgs: {98 2 2 1} to peer: 0
+[raft 2] 16:24:54.489011 request vote receive reply from peer 0, reply: {97 98 false}, args: {98 2 2 1}
+[raft 2] 16:24:55.160005 start a new election
+[raft 2] 16:24:55.160233 send RequestVoteArgs: {99 2 2 1} to peer: 1
+[raft 2] 16:24:55.160295 send RequestVoteArgs: {99 2 2 1} to peer: 0
+[raft 2] 16:24:55.160603 request vote receive reply from peer 0, reply: {98 99 false}, args: {99 2 2 1}
+[raft 2] 16:24:55.796486 start a new election
+[raft 2] 16:24:55.796656 send RequestVoteArgs: {100 2 2 1} to peer: 1
+[raft 2] 16:24:55.796692 send RequestVoteArgs: {100 2 2 1} to peer: 0
+[raft 2] 16:24:55.796941 request vote receive reply from peer 0, reply: {99 100 false}, args: {100 2 2 1}
+[raft 2] 16:24:56.485278 start a new election
+[raft 2] 16:24:56.485499 send RequestVoteArgs: {101 2 2 1} to peer: 1
+[raft 2] 16:24:56.485553 send RequestVoteArgs: {101 2 2 1} to peer: 0
+[raft 2] 16:24:56.485953 request vote receive reply from peer 0, reply: {100 101 false}, args: {101 2 2 1}
+[raft 2] 16:24:57.269693 start a new election
+[raft 2] 16:24:57.269818 send RequestVoteArgs: {102 2 2 1} to peer: 1
+[raft 2] 16:24:57.269855 send RequestVoteArgs: {102 2 2 1} to peer: 0
+[raft 2] 16:24:57.270078 request vote receive reply from peer 0, reply: {101 102 false}, args: {102 2 2 1}
+[raft 2] 16:24:57.775828 start a new election
+[raft 2] 16:24:57.775921 send RequestVoteArgs: {103 2 2 1} to peer: 1
+[raft 2] 16:24:57.775956 send RequestVoteArgs: {103 2 2 1} to peer: 0
+[raft 2] 16:24:57.776133 request vote receive reply from peer 0, reply: {102 103 false}, args: {103 2 2 1}
+[raft 2] 16:24:58.417362 start a new election
+[raft 2] 16:24:58.417520 send RequestVoteArgs: {104 2 2 1} to peer: 1
+[raft 2] 16:24:58.417541 send RequestVoteArgs: {104 2 2 1} to peer: 0
+[raft 2] 16:24:58.417987 request vote receive reply from peer 0, reply: {103 104 false}, args: {104 2 2 1}
+[raft 2] 16:24:59.077363 start a new election
+[raft 2] 16:24:59.077481 send RequestVoteArgs: {105 2 2 1} to peer: 1
+[raft 2] 16:24:59.077514 send RequestVoteArgs: {105 2 2 1} to peer: 0
+[raft 2] 16:24:59.077729 request vote receive reply from peer 0, reply: {104 105 false}, args: {105 2 2 1}
+[raft 2] 16:24:59.737210 start a new election
+[raft 2] 16:24:59.737393 send RequestVoteArgs: {106 2 2 1} to peer: 1
+[raft 2] 16:24:59.737417 send RequestVoteArgs: {106 2 2 1} to peer: 0
+[raft 2] 16:24:59.737827 request vote receive reply from peer 0, reply: {105 106 false}, args: {106 2 2 1}
+[raft 2] 16:25:00.278645 start a new election
+[raft 2] 16:25:00.278785 send RequestVoteArgs: {107 2 2 1} to peer: 1
+[raft 2] 16:25:00.278821 send RequestVoteArgs: {107 2 2 1} to peer: 0
+[raft 2] 16:25:00.279040 request vote receive reply from peer 0, reply: {106 107 false}, args: {107 2 2 1}
+[raft 2] 16:25:00.848649 start a new election
+[raft 2] 16:25:00.848771 send RequestVoteArgs: {108 2 2 1} to peer: 1
+[raft 2] 16:25:00.848808 send RequestVoteArgs: {108 2 2 1} to peer: 0
+[raft 2] 16:25:00.849036 request vote receive reply from peer 0, reply: {107 108 false}, args: {108 2 2 1}
+[raft 2] 16:25:01.589974 start a new election
+[raft 2] 16:25:01.590126 send RequestVoteArgs: {109 2 2 1} to peer: 1
+[raft 2] 16:25:01.590160 send RequestVoteArgs: {109 2 2 1} to peer: 0
+[raft 2] 16:25:01.590497 request vote receive reply from peer 0, reply: {108 109 false}, args: {109 2 2 1}
+[raft 2] 16:25:02.352710 start a new election
+[raft 2] 16:25:02.352943 send RequestVoteArgs: {110 2 2 1} to peer: 1
+[raft 2] 16:25:02.352994 send RequestVoteArgs: {110 2 2 1} to peer: 0
+[raft 2] 16:25:02.353347 request vote receive reply from peer 0, reply: {109 110 false}, args: {110 2 2 1}
+[raft 2] 16:25:02.923448 start a new election
+[raft 2] 16:25:02.923637 send RequestVoteArgs: {111 2 2 1} to peer: 1
+[raft 2] 16:25:02.923699 send RequestVoteArgs: {111 2 2 1} to peer: 0
+[raft 2] 16:25:02.923981 request vote receive reply from peer 0, reply: {110 111 false}, args: {111 2 2 1}
+[raft 2] 16:25:03.580164 start a new election
+[raft 2] 16:25:03.580285 send RequestVoteArgs: {112 2 2 1} to peer: 1
+[raft 2] 16:25:03.580321 send RequestVoteArgs: {112 2 2 1} to peer: 0
+[raft 2] 16:25:03.580540 request vote receive reply from peer 0, reply: {111 112 false}, args: {112 2 2 1}
+[raft 2] 16:25:04.207059 start a new election
+[raft 2] 16:25:04.207272 send RequestVoteArgs: {113 2 2 1} to peer: 1
+[raft 2] 16:25:04.207316 send RequestVoteArgs: {113 2 2 1} to peer: 0
+[raft 2] 16:25:04.207626 request vote receive reply from peer 0, reply: {112 113 false}, args: {113 2 2 1}
+[raft 2] 16:25:04.956000 start a new election
+[raft 2] 16:25:04.956296 send RequestVoteArgs: {114 2 2 1} to peer: 1
+[raft 2] 16:25:04.956321 send RequestVoteArgs: {114 2 2 1} to peer: 0
+[raft 2] 16:25:04.956662 request vote receive reply from peer 0, reply: {113 114 false}, args: {114 2 2 1}
+[raft 2] 16:25:05.705716 start a new election
+[raft 2] 16:25:05.705938 send RequestVoteArgs: {115 2 2 1} to peer: 1
+[raft 2] 16:25:05.706034 send RequestVoteArgs: {115 2 2 1} to peer: 0
+[raft 2] 16:25:05.706501 request vote receive reply from peer 0, reply: {114 115 false}, args: {115 2 2 1}
+[raft 2] 16:25:06.224052 start a new election
+[raft 2] 16:25:06.224236 send RequestVoteArgs: {116 2 2 1} to peer: 1
+[raft 2] 16:25:06.224263 send RequestVoteArgs: {116 2 2 1} to peer: 0
+[raft 2] 16:25:06.224549 request vote receive reply from peer 0, reply: {115 116 false}, args: {116 2 2 1}
+[raft 2] 16:25:06.849016 start a new election
+[raft 2] 16:25:06.849169 send RequestVoteArgs: {117 2 2 1} to peer: 1
+[raft 2] 16:25:06.849203 send RequestVoteArgs: {117 2 2 1} to peer: 0
+[raft 2] 16:25:06.849407 request vote receive reply from peer 0, reply: {116 117 false}, args: {117 2 2 1}
+[raft 2] 16:25:07.471462 start a new election
+[raft 2] 16:25:07.471577 send RequestVoteArgs: {118 2 2 1} to peer: 1
+[raft 2] 16:25:07.471612 send RequestVoteArgs: {118 2 2 1} to peer: 0
+[raft 2] 16:25:07.471850 request vote receive reply from peer 0, reply: {117 118 false}, args: {118 2 2 1}
+[raft 2] 16:25:08.137307 start a new election
+[raft 2] 16:25:08.137531 send RequestVoteArgs: {119 2 2 1} to peer: 1
+[raft 2] 16:25:08.137547 send RequestVoteArgs: {119 2 2 1} to peer: 0
+[raft 2] 16:25:08.137793 request vote receive reply from peer 0, reply: {118 119 false}, args: {119 2 2 1}
+[raft 2] 16:25:08.873812 start a new election
+[raft 2] 16:25:08.873972 send RequestVoteArgs: {120 2 2 1} to peer: 1
+[raft 2] 16:25:08.874038 send RequestVoteArgs: {120 2 2 1} to peer: 0
+[raft 2] 16:25:08.874323 request vote receive reply from peer 0, reply: {119 120 false}, args: {120 2 2 1}
+[raft 2] 16:25:09.522526 start a new election
+[raft 2] 16:25:09.522756 send RequestVoteArgs: {121 2 2 1} to peer: 1
+[raft 2] 16:25:09.522781 send RequestVoteArgs: {121 2 2 1} to peer: 0
+[raft 2] 16:25:09.523107 request vote receive reply from peer 0, reply: {120 121 false}, args: {121 2 2 1}
+[raft 2] 16:25:10.148735 start a new election
+[raft 2] 16:25:10.148866 send RequestVoteArgs: {122 2 2 1} to peer: 1
+[raft 2] 16:25:10.148923 send RequestVoteArgs: {122 2 2 1} to peer: 0
+[raft 2] 16:25:10.149137 request vote receive reply from peer 0, reply: {121 122 false}, args: {122 2 2 1}
+[raft 2] 16:25:10.659096 start a new election
+[raft 2] 16:25:10.659210 send RequestVoteArgs: {123 2 2 1} to peer: 1
+[raft 2] 16:25:10.659246 send RequestVoteArgs: {123 2 2 1} to peer: 0
+[raft 2] 16:25:10.659429 request vote receive reply from peer 0, reply: {122 123 false}, args: {123 2 2 1}
+[raft 2] 16:25:11.243904 start a new election
+[raft 2] 16:25:11.244355 send RequestVoteArgs: {124 2 2 1} to peer: 1
+[raft 2] 16:25:11.244427 send RequestVoteArgs: {124 2 2 1} to peer: 0
+[raft 2] 16:25:11.245082 request vote receive reply from peer 0, reply: {123 124 false}, args: {124 2 2 1}
+[raft 2] 16:25:12.009915 start a new election
+[raft 2] 16:25:12.010121 send RequestVoteArgs: {125 2 2 1} to peer: 1
+[raft 2] 16:25:12.010155 send RequestVoteArgs: {125 2 2 1} to peer: 0
+[raft 2] 16:25:12.010418 request vote receive reply from peer 0, reply: {124 125 false}, args: {125 2 2 1}
+[raft 2] 16:25:12.583369 start a new election
+[raft 2] 16:25:12.583552 send RequestVoteArgs: {126 2 2 1} to peer: 1
+[raft 2] 16:25:12.583566 send RequestVoteArgs: {126 2 2 1} to peer: 0
+[raft 2] 16:25:12.583858 request vote receive reply from peer 0, reply: {125 126 false}, args: {126 2 2 1}
+[raft 2] 16:25:13.178457 start a new election
+[raft 2] 16:25:13.178600 send RequestVoteArgs: {127 2 2 1} to peer: 1
+[raft 2] 16:25:13.178645 send RequestVoteArgs: {127 2 2 1} to peer: 0
+[raft 2] 16:25:13.178943 request vote receive reply from peer 0, reply: {126 127 false}, args: {127 2 2 1}
+[raft 2] 16:25:13.702008 start a new election
+[raft 2] 16:25:13.702125 send RequestVoteArgs: {128 2 2 1} to peer: 1
+[raft 2] 16:25:13.702187 send RequestVoteArgs: {128 2 2 1} to peer: 0
+[raft 2] 16:25:13.702410 request vote receive reply from peer 0, reply: {127 128 false}, args: {128 2 2 1}
+[raft 2] 16:25:14.397012 start a new election
+[raft 2] 16:25:14.397407 send RequestVoteArgs: {129 2 2 1} to peer: 1
+[raft 2] 16:25:14.397456 send RequestVoteArgs: {129 2 2 1} to peer: 0
+[raft 2] 16:25:14.397932 request vote receive reply from peer 0, reply: {128 129 false}, args: {129 2 2 1}
+[raft 2] 16:25:15.173627 start a new election
+[raft 2] 16:25:15.173761 send RequestVoteArgs: {130 2 2 1} to peer: 1
+[raft 2] 16:25:15.173796 send RequestVoteArgs: {130 2 2 1} to peer: 0
+[raft 2] 16:25:15.174011 request vote receive reply from peer 0, reply: {129 130 false}, args: {130 2 2 1}
+[raft 2] 16:25:15.768509 start a new election
+[raft 2] 16:25:15.768626 send RequestVoteArgs: {131 2 2 1} to peer: 1
+[raft 2] 16:25:15.768669 send RequestVoteArgs: {131 2 2 1} to peer: 0
+[raft 2] 16:25:15.769033 request vote receive reply from peer 0, reply: {130 131 false}, args: {131 2 2 1}
+[raft 2] 16:25:16.321474 start a new election
+[raft 2] 16:25:16.321627 send RequestVoteArgs: {132 2 2 1} to peer: 1
+[raft 2] 16:25:16.321662 send RequestVoteArgs: {132 2 2 1} to peer: 0
+[raft 2] 16:25:16.321857 request vote receive reply from peer 0, reply: {131 132 false}, args: {132 2 2 1}
+[raft 2] 16:25:17.063231 start a new election
+[raft 2] 16:25:17.063418 send RequestVoteArgs: {133 2 2 1} to peer: 1
+[raft 2] 16:25:17.063480 send RequestVoteArgs: {133 2 2 1} to peer: 0
+[raft 2] 16:25:17.063738 request vote receive reply from peer 0, reply: {132 133 false}, args: {133 2 2 1}
+[raft 2] 16:25:17.840069 start a new election
+[raft 2] 16:25:17.840204 send RequestVoteArgs: {134 2 2 1} to peer: 1
+[raft 2] 16:25:17.840271 send RequestVoteArgs: {134 2 2 1} to peer: 0
+[raft 2] 16:25:17.840555 request vote receive reply from peer 0, reply: {133 134 false}, args: {134 2 2 1}
+[raft 2] 16:25:18.589986 start a new election
+[raft 2] 16:25:18.590153 send RequestVoteArgs: {135 2 2 1} to peer: 1
+[raft 2] 16:25:18.590193 send RequestVoteArgs: {135 2 2 1} to peer: 0
+[raft 2] 16:25:18.590433 request vote receive reply from peer 0, reply: {134 135 false}, args: {135 2 2 1}
+[raft 2] 16:25:19.102916 start a new election
+[raft 2] 16:25:19.103074 send RequestVoteArgs: {136 2 2 1} to peer: 1
+[raft 2] 16:25:19.103132 send RequestVoteArgs: {136 2 2 1} to peer: 0
+[raft 2] 16:25:19.103384 request vote receive reply from peer 0, reply: {135 136 false}, args: {136 2 2 1}
+[raft 2] 16:25:19.736282 start a new election
+[raft 2] 16:25:19.736388 send RequestVoteArgs: {137 2 2 1} to peer: 1
+[raft 2] 16:25:19.736420 send RequestVoteArgs: {137 2 2 1} to peer: 0
+[raft 2] 16:25:19.736591 request vote receive reply from peer 0, reply: {136 137 false}, args: {137 2 2 1}
+[raft 2] 16:25:20.357160 start a new election
+[raft 2] 16:25:20.357293 send RequestVoteArgs: {138 2 2 1} to peer: 1
+[raft 2] 16:25:20.357329 send RequestVoteArgs: {138 2 2 1} to peer: 0
+[raft 2] 16:25:20.357519 request vote receive reply from peer 0, reply: {137 138 false}, args: {138 2 2 1}
+[raft 2] 16:25:21.057777 start a new election
+[raft 2] 16:25:21.057888 send RequestVoteArgs: {139 2 2 1} to peer: 1
+[raft 2] 16:25:21.057902 send RequestVoteArgs: {139 2 2 1} to peer: 0
+[raft 2] 16:25:21.058115 request vote receive reply from peer 0, reply: {138 139 false}, args: {139 2 2 1}
+[raft 2] 16:25:21.618976 start a new election
+[raft 2] 16:25:21.619113 send RequestVoteArgs: {140 2 2 1} to peer: 1
+[raft 2] 16:25:21.619147 send RequestVoteArgs: {140 2 2 1} to peer: 0
+[raft 2] 16:25:21.619363 request vote receive reply from peer 0, reply: {139 140 false}, args: {140 2 2 1}
+[raft 2] 16:25:22.325411 start a new election
+[raft 2] 16:25:22.325545 send RequestVoteArgs: {141 2 2 1} to peer: 1
+[raft 2] 16:25:22.325602 send RequestVoteArgs: {141 2 2 1} to peer: 0
+[raft 2] 16:25:22.325811 request vote receive reply from peer 0, reply: {140 141 false}, args: {141 2 2 1}
+[raft 2] 16:25:23.041740 start a new election
+[raft 2] 16:25:23.041872 send RequestVoteArgs: {142 2 2 1} to peer: 1
+[raft 2] 16:25:23.041902 send RequestVoteArgs: {142 2 2 1} to peer: 0
+[raft 2] 16:25:23.042060 request vote receive reply from peer 0, reply: {141 142 false}, args: {142 2 2 1}
+[raft 2] 16:25:23.616455 start a new election
+[raft 2] 16:25:23.616897 send RequestVoteArgs: {143 2 2 1} to peer: 1
+[raft 2] 16:25:23.616916 send RequestVoteArgs: {143 2 2 1} to peer: 0
+[raft 2] 16:25:23.617269 request vote receive reply from peer 0, reply: {142 143 false}, args: {143 2 2 1}
+[raft 2] 16:25:24.301563 start a new election
+[raft 2] 16:25:24.301732 send RequestVoteArgs: {144 2 2 1} to peer: 1
+[raft 2] 16:25:24.301793 send RequestVoteArgs: {144 2 2 1} to peer: 0
+[raft 2] 16:25:24.302007 request vote receive reply from peer 0, reply: {143 144 false}, args: {144 2 2 1}
+[raft 2] 16:25:24.974874 start a new election
+[raft 2] 16:25:24.975074 send RequestVoteArgs: {145 2 2 1} to peer: 1
+[raft 2] 16:25:24.975154 send RequestVoteArgs: {145 2 2 1} to peer: 0
+[raft 2] 16:25:24.975594 request vote receive reply from peer 0, reply: {144 145 false}, args: {145 2 2 1}
+[raft 2] 16:25:25.675368 start a new election
+[raft 2] 16:25:25.675488 send RequestVoteArgs: {146 2 2 1} to peer: 1
+[raft 2] 16:25:25.675523 send RequestVoteArgs: {146 2 2 1} to peer: 0
+[raft 2] 16:25:25.675784 request vote receive reply from peer 0, reply: {145 146 false}, args: {146 2 2 1}
+[raft 2] 16:25:26.261503 start a new election
+[raft 2] 16:25:26.261639 send RequestVoteArgs: {147 2 2 1} to peer: 1
+[raft 2] 16:25:26.261671 send RequestVoteArgs: {147 2 2 1} to peer: 0
+[raft 2] 16:25:26.261875 request vote receive reply from peer 0, reply: {146 147 false}, args: {147 2 2 1}
+[raft 2] 16:25:26.923937 start a new election
+[raft 2] 16:25:26.924101 send RequestVoteArgs: {148 2 2 1} to peer: 1
+[raft 2] 16:25:26.924173 send RequestVoteArgs: {148 2 2 1} to peer: 0
+[raft 2] 16:25:26.924445 request vote receive reply from peer 0, reply: {147 148 false}, args: {148 2 2 1}
+[raft 2] 16:25:27.504073 start a new election
+[raft 2] 16:25:27.504246 send RequestVoteArgs: {149 2 2 1} to peer: 1
+[raft 2] 16:25:27.504280 send RequestVoteArgs: {149 2 2 1} to peer: 0
+[raft 2] 16:25:27.504495 request vote receive reply from peer 0, reply: {148 149 false}, args: {149 2 2 1}
+[raft 2] 16:25:28.062693 start a new election
+[raft 2] 16:25:28.062798 send RequestVoteArgs: {150 2 2 1} to peer: 1
+[raft 2] 16:25:28.062864 send RequestVoteArgs: {150 2 2 1} to peer: 0
+[raft 2] 16:25:28.063146 request vote receive reply from peer 0, reply: {149 150 false}, args: {150 2 2 1}
+[raft 2] 16:25:28.666501 start a new election
+[raft 2] 16:25:28.666622 send RequestVoteArgs: {151 2 2 1} to peer: 1
+[raft 2] 16:25:28.666658 send RequestVoteArgs: {151 2 2 1} to peer: 0
+[raft 2] 16:25:28.666838 request vote receive reply from peer 0, reply: {150 151 false}, args: {151 2 2 1}
+[raft 2] 16:25:29.450136 start a new election
+[raft 2] 16:25:29.450713 send RequestVoteArgs: {152 2 2 1} to peer: 1
+[raft 2] 16:25:29.450725 send RequestVoteArgs: {152 2 2 1} to peer: 0
+[raft 2] 16:25:29.453324 request vote receive reply from peer 0, reply: {151 152 false}, args: {152 2 2 1}
+[raft 2] 16:25:30.015702 start a new election
+[raft 2] 16:25:30.015845 send RequestVoteArgs: {153 2 2 1} to peer: 1
+[raft 2] 16:25:30.015914 send RequestVoteArgs: {153 2 2 1} to peer: 0
+[raft 2] 16:25:30.016231 request vote receive reply from peer 0, reply: {152 153 false}, args: {153 2 2 1}
+[raft 2] 16:25:30.632603 start a new election
+[raft 2] 16:25:30.632797 send RequestVoteArgs: {154 2 2 1} to peer: 1
+[raft 2] 16:25:30.632848 send RequestVoteArgs: {154 2 2 1} to peer: 0
+[raft 2] 16:25:30.633141 request vote receive reply from peer 0, reply: {153 154 false}, args: {154 2 2 1}
+[raft 2] 16:25:31.436776 start a new election
+[raft 2] 16:25:31.436942 send RequestVoteArgs: {155 2 2 1} to peer: 1
+[raft 2] 16:25:31.436982 send RequestVoteArgs: {155 2 2 1} to peer: 0
+[raft 2] 16:25:31.437214 request vote receive reply from peer 0, reply: {154 155 false}, args: {155 2 2 1}
+[raft 2] 16:25:32.020053 start a new election
+[raft 2] 16:25:32.020323 send RequestVoteArgs: {156 2 2 1} to peer: 1
+[raft 2] 16:25:32.020431 send RequestVoteArgs: {156 2 2 1} to peer: 0
+[raft 2] 16:25:32.020672 request vote receive reply from peer 0, reply: {155 156 false}, args: {156 2 2 1}
+[raft 2] 16:25:32.611680 start a new election
+[raft 2] 16:25:32.611869 send RequestVoteArgs: {157 2 2 1} to peer: 1
+[raft 2] 16:25:32.611939 send RequestVoteArgs: {157 2 2 1} to peer: 0
+[raft 2] 16:25:32.612287 request vote receive reply from peer 0, reply: {156 157 false}, args: {157 2 2 1}
+[raft 2] 16:25:33.163384 start a new election
+[raft 2] 16:25:33.163506 send RequestVoteArgs: {158 2 2 1} to peer: 1
+[raft 2] 16:25:33.163548 send RequestVoteArgs: {158 2 2 1} to peer: 0
+[raft 2] 16:25:33.163781 request vote receive reply from peer 0, reply: {157 158 false}, args: {158 2 2 1}
+[raft 2] 16:25:33.915705 start a new election
+[raft 2] 16:25:33.915851 send RequestVoteArgs: {159 2 2 1} to peer: 1
+[raft 2] 16:25:33.915882 send RequestVoteArgs: {159 2 2 1} to peer: 0
+[raft 2] 16:25:33.916081 request vote receive reply from peer 0, reply: {158 159 false}, args: {159 2 2 1}
+[raft 2] 16:25:34.602317 start a new election
+[raft 2] 16:25:34.602465 send RequestVoteArgs: {160 2 2 1} to peer: 1
+[raft 2] 16:25:34.602501 send RequestVoteArgs: {160 2 2 1} to peer: 0
+[raft 2] 16:25:34.602717 request vote receive reply from peer 0, reply: {159 160 false}, args: {160 2 2 1}
+[raft 2] 16:25:35.152850 start a new election
+[raft 2] 16:25:35.152983 send RequestVoteArgs: {161 2 2 1} to peer: 1
+[raft 2] 16:25:35.153041 send RequestVoteArgs: {161 2 2 1} to peer: 0
+[raft 2] 16:25:35.153263 request vote receive reply from peer 0, reply: {160 161 false}, args: {161 2 2 1}
+[raft 2] 16:25:35.707045 start a new election
+[raft 2] 16:25:35.707259 send RequestVoteArgs: {162 2 2 1} to peer: 1
+[raft 2] 16:25:35.707274 send RequestVoteArgs: {162 2 2 1} to peer: 0
+[raft 2] 16:25:35.707541 request vote receive reply from peer 0, reply: {161 162 false}, args: {162 2 2 1}
+[raft 2] 16:25:36.387452 start a new election
+[raft 2] 16:25:36.387687 send RequestVoteArgs: {163 2 2 1} to peer: 1
+[raft 2] 16:25:36.387710 send RequestVoteArgs: {163 2 2 1} to peer: 0
+[raft 2] 16:25:36.388024 request vote receive reply from peer 0, reply: {162 163 false}, args: {163 2 2 1}
+[raft 2] 16:25:37.044925 start a new election
+[raft 2] 16:25:37.045059 send RequestVoteArgs: {164 2 2 1} to peer: 1
+[raft 2] 16:25:37.045094 send RequestVoteArgs: {164 2 2 1} to peer: 0
+[raft 2] 16:25:37.045314 request vote receive reply from peer 0, reply: {163 164 false}, args: {164 2 2 1}
+[raft 2] 16:25:37.821438 start a new election
+[raft 2] 16:25:37.821634 send RequestVoteArgs: {165 2 2 1} to peer: 1
+[raft 2] 16:25:37.821658 send RequestVoteArgs: {165 2 2 1} to peer: 0
+[raft 2] 16:25:37.821928 request vote receive reply from peer 0, reply: {164 165 false}, args: {165 2 2 1}
+[raft 2] 16:25:38.495769 start a new election
+[raft 2] 16:25:38.495915 send RequestVoteArgs: {166 2 2 1} to peer: 1
+[raft 2] 16:25:38.495940 send RequestVoteArgs: {166 2 2 1} to peer: 0
+[raft 2] 16:25:38.496194 request vote receive reply from peer 0, reply: {165 166 false}, args: {166 2 2 1}
+[raft 2] 16:25:39.101856 start a new election
+[raft 2] 16:25:39.101975 send RequestVoteArgs: {167 2 2 1} to peer: 1
+[raft 2] 16:25:39.102040 send RequestVoteArgs: {167 2 2 1} to peer: 0
+[raft 2] 16:25:39.102338 request vote receive reply from peer 0, reply: {166 167 false}, args: {167 2 2 1}
+[raft 2] 16:25:39.703827 start a new election
+[raft 2] 16:25:39.704010 send RequestVoteArgs: {168 2 2 1} to peer: 1
+[raft 2] 16:25:39.704075 send RequestVoteArgs: {168 2 2 1} to peer: 0
+[raft 2] 16:25:39.704393 request vote receive reply from peer 0, reply: {167 168 false}, args: {168 2 2 1}
+[raft 2] 16:25:40.396474 start a new election
+[raft 2] 16:25:40.396667 send RequestVoteArgs: {169 2 2 1} to peer: 1
+[raft 2] 16:25:40.396717 send RequestVoteArgs: {169 2 2 1} to peer: 0
+[raft 2] 16:25:40.397195 request vote receive reply from peer 0, reply: {168 169 false}, args: {169 2 2 1}
+[raft 2] 16:25:41.099294 start a new election
+[raft 2] 16:25:41.099541 send RequestVoteArgs: {170 2 2 1} to peer: 1
+[raft 2] 16:25:41.099584 send RequestVoteArgs: {170 2 2 1} to peer: 0
+[raft 2] 16:25:41.100055 request vote receive reply from peer 0, reply: {169 170 false}, args: {170 2 2 1}
+[raft 2] 16:25:41.672593 start a new election
+[raft 2] 16:25:41.672771 send RequestVoteArgs: {171 2 2 1} to peer: 1
+[raft 2] 16:25:41.672811 send RequestVoteArgs: {171 2 2 1} to peer: 0
+[raft 2] 16:25:41.673072 request vote receive reply from peer 0, reply: {170 171 false}, args: {171 2 2 1}
+[raft 2] 16:25:42.231213 start a new election
+[raft 2] 16:25:42.231344 send RequestVoteArgs: {172 2 2 1} to peer: 1
+[raft 2] 16:25:42.231400 send RequestVoteArgs: {172 2 2 1} to peer: 0
+[raft 2] 16:25:42.231607 request vote receive reply from peer 0, reply: {171 172 false}, args: {172 2 2 1}
+[raft 2] 16:25:43.008463 start a new election
+[raft 2] 16:25:43.008597 send RequestVoteArgs: {173 2 2 1} to peer: 1
+[raft 2] 16:25:43.008646 send RequestVoteArgs: {173 2 2 1} to peer: 0
+[raft 2] 16:25:43.008889 request vote receive reply from peer 0, reply: {172 173 false}, args: {173 2 2 1}
+[raft 2] 16:25:43.514996 start a new election
+[raft 2] 16:25:43.515152 send RequestVoteArgs: {174 2 2 1} to peer: 1
+[raft 2] 16:25:43.515203 send RequestVoteArgs: {174 2 2 1} to peer: 0
+[raft 2] 16:25:43.515511 request vote receive reply from peer 0, reply: {173 174 false}, args: {174 2 2 1}
+[raft 2] 16:25:44.228626 start a new election
+[raft 2] 16:25:44.228872 send RequestVoteArgs: {175 2 2 1} to peer: 1
+[raft 2] 16:25:44.228905 send RequestVoteArgs: {175 2 2 1} to peer: 0
+[raft 2] 16:25:44.229356 request vote receive reply from peer 0, reply: {174 175 false}, args: {175 2 2 1}
+[raft 2] 16:25:44.762017 start a new election
+[raft 2] 16:25:44.762161 send RequestVoteArgs: {176 2 2 1} to peer: 1
+[raft 2] 16:25:44.762197 send RequestVoteArgs: {176 2 2 1} to peer: 0
+[raft 2] 16:25:44.762531 request vote receive reply from peer 0, reply: {175 176 false}, args: {176 2 2 1}
+[raft 2] 16:25:45.424439 start a new election
+[raft 2] 16:25:45.424670 send RequestVoteArgs: {177 2 2 1} to peer: 1
+[raft 2] 16:25:45.424683 send RequestVoteArgs: {177 2 2 1} to peer: 0
+[raft 2] 16:25:45.425066 request vote receive reply from peer 0, reply: {176 177 false}, args: {177 2 2 1}
+[raft 2] 16:25:46.132119 start a new election
+[raft 2] 16:25:46.132255 send RequestVoteArgs: {178 2 2 1} to peer: 1
+[raft 2] 16:25:46.132301 send RequestVoteArgs: {178 2 2 1} to peer: 0
+[raft 2] 16:25:46.132609 request vote receive reply from peer 0, reply: {177 178 false}, args: {178 2 2 1}
+[raft 2] 16:25:46.850246 start a new election
+[raft 2] 16:25:46.850819 send RequestVoteArgs: {179 2 2 1} to peer: 1
+[raft 2] 16:25:46.850866 send RequestVoteArgs: {179 2 2 1} to peer: 0
+[raft 2] 16:25:46.851204 request vote receive reply from peer 0, reply: {178 179 false}, args: {179 2 2 1}
+[raft 2] 16:25:47.515133 start a new election
+[raft 2] 16:25:47.515286 send RequestVoteArgs: {180 2 2 1} to peer: 1
+[raft 2] 16:25:47.515321 send RequestVoteArgs: {180 2 2 1} to peer: 0
+[raft 2] 16:25:47.515543 request vote receive reply from peer 0, reply: {179 180 false}, args: {180 2 2 1}
+[raft 2] 16:25:48.119207 start a new election
+[raft 2] 16:25:48.119386 send RequestVoteArgs: {181 2 2 1} to peer: 1
+[raft 2] 16:25:48.119467 send RequestVoteArgs: {181 2 2 1} to peer: 0
+[raft 2] 16:25:48.119874 request vote receive reply from peer 0, reply: {180 181 false}, args: {181 2 2 1}
+[raft 2] 16:25:48.873474 start a new election
+[raft 2] 16:25:48.873640 send RequestVoteArgs: {182 2 2 1} to peer: 1
+[raft 2] 16:25:48.873674 send RequestVoteArgs: {182 2 2 1} to peer: 0
+[raft 2] 16:25:48.873889 request vote receive reply from peer 0, reply: {181 182 false}, args: {182 2 2 1}
+[raft 2] 16:25:49.543377 start a new election
+[raft 2] 16:25:49.543481 send RequestVoteArgs: {183 2 2 1} to peer: 1
+[raft 2] 16:25:49.543518 send RequestVoteArgs: {183 2 2 1} to peer: 0
+[raft 2] 16:25:49.543716 request vote receive reply from peer 0, reply: {182 183 false}, args: {183 2 2 1}
+[raft 2] 16:25:50.317413 start a new election
+[raft 2] 16:25:50.317562 send RequestVoteArgs: {184 2 2 1} to peer: 1
+[raft 2] 16:25:50.317630 send RequestVoteArgs: {184 2 2 1} to peer: 0
+[raft 2] 16:25:50.317922 request vote receive reply from peer 0, reply: {183 184 false}, args: {184 2 2 1}
+[raft 2] 16:25:51.027742 start a new election
+[raft 2] 16:25:51.027876 send RequestVoteArgs: {185 2 2 1} to peer: 1
+[raft 2] 16:25:51.027909 send RequestVoteArgs: {185 2 2 1} to peer: 0
+[raft 2] 16:25:51.028080 request vote receive reply from peer 0, reply: {184 185 false}, args: {185 2 2 1}
+[raft 2] 16:25:51.815548 start a new election
+[raft 2] 16:25:51.815756 send RequestVoteArgs: {186 2 2 1} to peer: 1
+[raft 2] 16:25:51.815807 send RequestVoteArgs: {186 2 2 1} to peer: 0
+[raft 2] 16:25:51.816242 request vote receive reply from peer 0, reply: {185 186 false}, args: {186 2 2 1}
+[raft 2] 16:25:52.450235 start a new election
+[raft 2] 16:25:52.450435 send RequestVoteArgs: {187 2 2 1} to peer: 1
+[raft 2] 16:25:52.450482 send RequestVoteArgs: {187 2 2 1} to peer: 0
+[raft 2] 16:25:52.450832 request vote receive reply from peer 0, reply: {186 187 false}, args: {187 2 2 1}
+[raft 2] 16:25:53.211193 start a new election
+[raft 2] 16:25:53.211354 send RequestVoteArgs: {188 2 2 1} to peer: 1
+[raft 2] 16:25:53.211427 send RequestVoteArgs: {188 2 2 1} to peer: 0
+[raft 2] 16:25:53.211709 request vote receive reply from peer 0, reply: {187 188 false}, args: {188 2 2 1}
+[raft 2] 16:25:53.920824 start a new election
+[raft 2] 16:25:53.920992 send RequestVoteArgs: {189 2 2 1} to peer: 1
+[raft 2] 16:25:53.921052 send RequestVoteArgs: {189 2 2 1} to peer: 0
+[raft 2] 16:25:53.921268 request vote receive reply from peer 0, reply: {188 189 false}, args: {189 2 2 1}
+[raft 2] 16:25:54.591094 start a new election
+[raft 2] 16:25:54.591299 send RequestVoteArgs: {190 2 2 1} to peer: 1
+[raft 2] 16:25:54.591333 send RequestVoteArgs: {190 2 2 1} to peer: 0
+[raft 2] 16:25:54.591588 request vote receive reply from peer 0, reply: {189 190 false}, args: {190 2 2 1}
+[raft 2] 16:25:55.096995 start a new election
+[raft 2] 16:25:55.097199 send RequestVoteArgs: {191 2 2 1} to peer: 1
+[raft 2] 16:25:55.097261 send RequestVoteArgs: {191 2 2 1} to peer: 0
+[raft 2] 16:25:55.097561 request vote receive reply from peer 0, reply: {190 191 false}, args: {191 2 2 1}
+[raft 2] 16:25:55.636721 start a new election
+[raft 2] 16:25:55.636879 send RequestVoteArgs: {192 2 2 1} to peer: 1
+[raft 2] 16:25:55.636919 send RequestVoteArgs: {192 2 2 1} to peer: 0
+[raft 2] 16:25:55.637163 request vote receive reply from peer 0, reply: {191 192 false}, args: {192 2 2 1}
+[raft 2] 16:25:56.414715 start a new election
+[raft 2] 16:25:56.414865 send RequestVoteArgs: {193 2 2 1} to peer: 1
+[raft 2] 16:25:56.414897 send RequestVoteArgs: {193 2 2 1} to peer: 0
+[raft 2] 16:25:56.415417 request vote receive reply from peer 0, reply: {192 193 false}, args: {193 2 2 1}
+[raft 2] 16:25:56.953885 start a new election
+[raft 2] 16:25:56.954271 send RequestVoteArgs: {194 2 2 1} to peer: 1
+[raft 2] 16:25:56.954306 send RequestVoteArgs: {194 2 2 1} to peer: 0
+[raft 2] 16:25:56.954770 request vote receive reply from peer 0, reply: {193 194 false}, args: {194 2 2 1}
+[raft 2] 16:25:57.646709 start a new election
+[raft 2] 16:25:57.646922 send RequestVoteArgs: {195 2 2 1} to peer: 1
+[raft 2] 16:25:57.646969 send RequestVoteArgs: {195 2 2 1} to peer: 0
+[raft 2] 16:25:57.647190 request vote receive reply from peer 0, reply: {194 195 false}, args: {195 2 2 1}
+[raft 2] 16:25:58.444282 start a new election
+[raft 2] 16:25:58.444438 send RequestVoteArgs: {196 2 2 1} to peer: 1
+[raft 2] 16:25:58.444482 send RequestVoteArgs: {196 2 2 1} to peer: 0
+[raft 2] 16:25:58.444768 request vote receive reply from peer 0, reply: {195 196 false}, args: {196 2 2 1}
+[raft 2] 16:25:59.096217 start a new election
+[raft 2] 16:25:59.096524 send RequestVoteArgs: {197 2 2 1} to peer: 1
+[raft 2] 16:25:59.096589 send RequestVoteArgs: {197 2 2 1} to peer: 0
+[raft 2] 16:25:59.096977 request vote receive reply from peer 0, reply: {196 197 false}, args: {197 2 2 1}
+[raft 2] 16:25:59.804872 start a new election
+[raft 2] 16:25:59.805000 send RequestVoteArgs: {198 2 2 1} to peer: 1
+[raft 2] 16:25:59.805035 send RequestVoteArgs: {198 2 2 1} to peer: 0
+[raft 2] 16:25:59.805220 request vote receive reply from peer 0, reply: {197 198 false}, args: {198 2 2 1}
+[raft 2] 16:26:00.377791 start a new election
+[raft 2] 16:26:00.377937 send RequestVoteArgs: {199 2 2 1} to peer: 1
+[raft 2] 16:26:00.377974 send RequestVoteArgs: {199 2 2 1} to peer: 0
+[raft 2] 16:26:00.378788 request vote receive reply from peer 0, reply: {198 199 false}, args: {199 2 2 1}
+[raft 2] 16:26:01.101796 start a new election
+[raft 2] 16:26:01.102008 send RequestVoteArgs: {200 2 2 1} to peer: 1
+[raft 2] 16:26:01.102064 send RequestVoteArgs: {200 2 2 1} to peer: 0
+[raft 2] 16:26:01.102420 request vote receive reply from peer 0, reply: {199 200 false}, args: {200 2 2 1}
+[raft 2] 16:26:01.836122 start a new election
+[raft 2] 16:26:01.836257 send RequestVoteArgs: {201 2 2 1} to peer: 1
+[raft 2] 16:26:01.836308 send RequestVoteArgs: {201 2 2 1} to peer: 0
+[raft 2] 16:26:01.836556 request vote receive reply from peer 0, reply: {200 201 false}, args: {201 2 2 1}
+[raft 2] 16:26:02.463856 start a new election
+[raft 2] 16:26:02.464012 send RequestVoteArgs: {202 2 2 1} to peer: 1
+[raft 2] 16:26:02.464065 send RequestVoteArgs: {202 2 2 1} to peer: 0
+[raft 2] 16:26:02.464283 request vote receive reply from peer 0, reply: {201 202 false}, args: {202 2 2 1}
+[raft 2] 16:26:03.059612 start a new election
+[raft 2] 16:26:03.059782 send RequestVoteArgs: {203 2 2 1} to peer: 1
+[raft 2] 16:26:03.059817 send RequestVoteArgs: {203 2 2 1} to peer: 0
+[raft 2] 16:26:03.060029 request vote receive reply from peer 0, reply: {202 203 false}, args: {203 2 2 1}
+[raft 2] 16:26:03.599017 start a new election
+[raft 2] 16:26:03.599166 send RequestVoteArgs: {204 2 2 1} to peer: 1
+[raft 2] 16:26:03.599195 send RequestVoteArgs: {204 2 2 1} to peer: 0
+[raft 2] 16:26:03.599404 request vote receive reply from peer 0, reply: {203 204 false}, args: {204 2 2 1}
+[raft 2] 16:26:04.321292 start a new election
+[raft 2] 16:26:04.321446 send RequestVoteArgs: {205 2 2 1} to peer: 1
+[raft 2] 16:26:04.321499 send RequestVoteArgs: {205 2 2 1} to peer: 0
+[raft 2] 16:26:04.321701 request vote receive reply from peer 0, reply: {204 205 false}, args: {205 2 2 1}
+[raft 2] 16:26:04.968401 start a new election
+[raft 2] 16:26:04.968517 send RequestVoteArgs: {206 2 2 1} to peer: 1
+[raft 2] 16:26:04.968554 send RequestVoteArgs: {206 2 2 1} to peer: 0
+[raft 2] 16:26:04.968736 request vote receive reply from peer 0, reply: {205 206 false}, args: {206 2 2 1}
+[raft 2] 16:26:05.763235 start a new election
+[raft 2] 16:26:05.763386 send RequestVoteArgs: {207 2 2 1} to peer: 1
+[raft 2] 16:26:05.763430 send RequestVoteArgs: {207 2 2 1} to peer: 0
+[raft 2] 16:26:05.763653 request vote receive reply from peer 0, reply: {206 207 false}, args: {207 2 2 1}
+[raft 2] 16:26:06.411090 start a new election
+[raft 2] 16:26:06.411257 send RequestVoteArgs: {208 2 2 1} to peer: 1
+[raft 2] 16:26:06.411327 send RequestVoteArgs: {208 2 2 1} to peer: 0
+[raft 2] 16:26:06.411651 request vote receive reply from peer 0, reply: {207 208 false}, args: {208 2 2 1}
+[raft 2] 16:26:07.187548 start a new election
+[raft 2] 16:26:07.187693 send RequestVoteArgs: {209 2 2 1} to peer: 1
+[raft 2] 16:26:07.187725 send RequestVoteArgs: {209 2 2 1} to peer: 0
+[raft 2] 16:26:07.187931 request vote receive reply from peer 0, reply: {208 209 false}, args: {209 2 2 1}
+[raft 2] 16:26:07.822341 start a new election
+[raft 2] 16:26:07.822503 send RequestVoteArgs: {210 2 2 1} to peer: 1
+[raft 2] 16:26:07.822541 send RequestVoteArgs: {210 2 2 1} to peer: 0
+[raft 2] 16:26:07.822719 request vote receive reply from peer 0, reply: {209 210 false}, args: {210 2 2 1}
+[raft 2] 16:26:08.499086 start a new election
+[raft 2] 16:26:08.499228 send RequestVoteArgs: {211 2 2 1} to peer: 1
+[raft 2] 16:26:08.499303 send RequestVoteArgs: {211 2 2 1} to peer: 0
+[raft 2] 16:26:08.499503 request vote receive reply from peer 0, reply: {210 211 false}, args: {211 2 2 1}
+[raft 2] 16:26:09.230969 start a new election
+[raft 2] 16:26:09.231190 send RequestVoteArgs: {212 2 2 1} to peer: 1
+[raft 2] 16:26:09.231259 send RequestVoteArgs: {212 2 2 1} to peer: 0
+[raft 2] 16:26:09.231670 request vote receive reply from peer 0, reply: {211 212 false}, args: {212 2 2 1}
+[raft 2] 16:26:09.783869 start a new election
+[raft 2] 16:26:09.784099 send RequestVoteArgs: {213 2 2 1} to peer: 1
+[raft 2] 16:26:09.784196 send RequestVoteArgs: {213 2 2 1} to peer: 0
+[raft 2] 16:26:09.784657 request vote receive reply from peer 0, reply: {212 213 false}, args: {213 2 2 1}
+[raft 2] 16:26:10.321773 start a new election
+[raft 2] 16:26:10.321925 send RequestVoteArgs: {214 2 2 1} to peer: 1
+[raft 2] 16:26:10.321959 send RequestVoteArgs: {214 2 2 1} to peer: 0
+[raft 2] 16:26:10.322180 request vote receive reply from peer 0, reply: {213 214 false}, args: {214 2 2 1}
+[raft 2] 16:26:11.099329 start a new election
+[raft 2] 16:26:11.099486 send RequestVoteArgs: {215 2 2 1} to peer: 1
+[raft 2] 16:26:11.099522 send RequestVoteArgs: {215 2 2 1} to peer: 0
+[raft 2] 16:26:11.099740 request vote receive reply from peer 0, reply: {214 215 false}, args: {215 2 2 1}
+[raft 2] 16:26:11.872737 start a new election
+[raft 2] 16:26:11.872920 send RequestVoteArgs: {216 2 2 1} to peer: 1
+[raft 2] 16:26:11.872989 send RequestVoteArgs: {216 2 2 1} to peer: 0
+[raft 2] 16:26:11.873326 request vote receive reply from peer 0, reply: {215 216 false}, args: {216 2 2 1}
+[raft 2] 16:26:12.488703 start a new election
+[raft 2] 16:26:12.488811 send RequestVoteArgs: {217 2 2 1} to peer: 1
+[raft 2] 16:26:12.488843 send RequestVoteArgs: {217 2 2 1} to peer: 0
+[raft 2] 16:26:12.489015 request vote receive reply from peer 0, reply: {216 217 false}, args: {217 2 2 1}
+[raft 2] 16:26:13.275470 start a new election
+[raft 2] 16:26:13.275621 send RequestVoteArgs: {218 2 2 1} to peer: 1
+[raft 2] 16:26:13.275674 send RequestVoteArgs: {218 2 2 1} to peer: 0
+[raft 2] 16:26:13.276029 request vote receive reply from peer 0, reply: {217 218 false}, args: {218 2 2 1}
+[raft 2] 16:26:14.022595 start a new election
+[raft 2] 16:26:14.022722 send RequestVoteArgs: {219 2 2 1} to peer: 1
+[raft 2] 16:26:14.022779 send RequestVoteArgs: {219 2 2 1} to peer: 0
+[raft 2] 16:26:14.023078 request vote receive reply from peer 0, reply: {218 219 false}, args: {219 2 2 1}
+[raft 2] 16:26:14.699588 start a new election
+[raft 2] 16:26:14.699724 send RequestVoteArgs: {220 2 2 1} to peer: 1
+[raft 2] 16:26:14.699759 send RequestVoteArgs: {220 2 2 1} to peer: 0
+[raft 2] 16:26:14.699980 request vote receive reply from peer 0, reply: {219 220 false}, args: {220 2 2 1}
+[raft 2] 16:26:15.358862 start a new election
+[raft 2] 16:26:15.359018 send RequestVoteArgs: {221 2 2 1} to peer: 1
+[raft 2] 16:26:15.359059 send RequestVoteArgs: {221 2 2 1} to peer: 0
+[raft 2] 16:26:15.359301 request vote receive reply from peer 0, reply: {220 221 false}, args: {221 2 2 1}
+[raft 2] 16:26:16.060649 start a new election
+[raft 2] 16:26:16.060784 send RequestVoteArgs: {222 2 2 1} to peer: 1
+[raft 2] 16:26:16.060809 send RequestVoteArgs: {222 2 2 1} to peer: 0
+[raft 2] 16:26:16.061071 request vote receive reply from peer 0, reply: {221 222 false}, args: {222 2 2 1}
+[raft 2] 16:26:16.721848 start a new election
+[raft 2] 16:26:16.721963 send RequestVoteArgs: {223 2 2 1} to peer: 1
+[raft 2] 16:26:16.722000 send RequestVoteArgs: {223 2 2 1} to peer: 0
+[raft 2] 16:26:16.722186 request vote receive reply from peer 0, reply: {222 223 false}, args: {223 2 2 1}
+[raft 2] 16:26:17.351676 start a new election
+[raft 2] 16:26:17.351801 send RequestVoteArgs: {224 2 2 1} to peer: 1
+[raft 2] 16:26:17.351837 send RequestVoteArgs: {224 2 2 1} to peer: 0
+[raft 2] 16:26:17.352054 request vote receive reply from peer 0, reply: {223 224 false}, args: {224 2 2 1}
+[raft 2] 16:26:17.969132 start a new election
+[raft 2] 16:26:17.969237 send RequestVoteArgs: {225 2 2 1} to peer: 1
+[raft 2] 16:26:17.969281 send RequestVoteArgs: {225 2 2 1} to peer: 0
+[raft 2] 16:26:17.969518 request vote receive reply from peer 0, reply: {224 225 false}, args: {225 2 2 1}
+[raft 2] 16:26:18.529587 start a new election
+[raft 2] 16:26:18.529795 send RequestVoteArgs: {226 2 2 1} to peer: 1
+[raft 2] 16:26:18.529843 send RequestVoteArgs: {226 2 2 1} to peer: 0
+[raft 2] 16:26:18.530238 request vote receive reply from peer 0, reply: {225 226 false}, args: {226 2 2 1}
+[raft 2] 16:26:19.219271 start a new election
+[raft 2] 16:26:19.219420 send RequestVoteArgs: {227 2 2 1} to peer: 1
+[raft 2] 16:26:19.219454 send RequestVoteArgs: {227 2 2 1} to peer: 0
+[raft 2] 16:26:19.219632 request vote receive reply from peer 0, reply: {226 227 false}, args: {227 2 2 1}
+[raft 2] 16:26:19.940548 start a new election
+[raft 2] 16:26:19.940705 send RequestVoteArgs: {228 2 2 1} to peer: 1
+[raft 2] 16:26:19.940740 send RequestVoteArgs: {228 2 2 1} to peer: 0
+[raft 2] 16:26:19.940991 request vote receive reply from peer 0, reply: {227 228 false}, args: {228 2 2 1}
+[raft 2] 16:26:20.556119 start a new election
+[raft 2] 16:26:20.556255 send RequestVoteArgs: {229 2 2 1} to peer: 1
+[raft 2] 16:26:20.556290 send RequestVoteArgs: {229 2 2 1} to peer: 0
+[raft 2] 16:26:20.556532 request vote receive reply from peer 0, reply: {228 229 false}, args: {229 2 2 1}
+[raft 2] 16:26:21.120819 start a new election
+[raft 2] 16:26:21.120949 send RequestVoteArgs: {230 2 2 1} to peer: 1
+[raft 2] 16:26:21.121011 send RequestVoteArgs: {230 2 2 1} to peer: 0
+[raft 2] 16:26:21.121246 request vote receive reply from peer 0, reply: {229 230 false}, args: {230 2 2 1}
+[raft 2] 16:26:21.866937 start a new election
+[raft 2] 16:26:21.867110 send RequestVoteArgs: {231 2 2 1} to peer: 1
+[raft 2] 16:26:21.867181 send RequestVoteArgs: {231 2 2 1} to peer: 0
+[raft 2] 16:26:21.867505 request vote receive reply from peer 0, reply: {230 231 false}, args: {231 2 2 1}
+[raft 2] 16:26:22.381744 start a new election
+[raft 2] 16:26:22.382035 send RequestVoteArgs: {232 2 2 1} to peer: 1
+[raft 2] 16:26:22.382115 send RequestVoteArgs: {232 2 2 1} to peer: 0
+[raft 2] 16:26:22.382476 request vote receive reply from peer 0, reply: {231 232 false}, args: {232 2 2 1}
+[raft 2] 16:26:23.079838 start a new election
+[raft 2] 16:26:23.080100 send RequestVoteArgs: {233 2 2 1} to peer: 1
+[raft 2] 16:26:23.080166 send RequestVoteArgs: {233 2 2 1} to peer: 0
+[raft 2] 16:26:23.080549 request vote receive reply from peer 0, reply: {232 233 false}, args: {233 2 2 1}
+[raft 2] 16:26:23.605503 start a new election
+[raft 2] 16:26:23.605680 send RequestVoteArgs: {234 2 2 1} to peer: 1
+[raft 2] 16:26:23.605734 send RequestVoteArgs: {234 2 2 1} to peer: 0
+[raft 2] 16:26:23.606160 request vote receive reply from peer 0, reply: {233 234 false}, args: {234 2 2 1}
+[raft 2] 16:26:24.303621 start a new election
+[raft 2] 16:26:24.303773 send RequestVoteArgs: {235 2 2 1} to peer: 1
+[raft 2] 16:26:24.303808 send RequestVoteArgs: {235 2 2 1} to peer: 0
+[raft 2] 16:26:24.304033 request vote receive reply from peer 0, reply: {234 235 false}, args: {235 2 2 1}
+[raft 2] 16:26:25.059820 start a new election
+[raft 2] 16:26:25.059940 send RequestVoteArgs: {236 2 2 1} to peer: 1
+[raft 2] 16:26:25.059974 send RequestVoteArgs: {236 2 2 1} to peer: 0
+[raft 2] 16:26:25.060152 request vote receive reply from peer 0, reply: {235 236 false}, args: {236 2 2 1}
+[raft 2] 16:26:25.768762 start a new election
+[raft 2] 16:26:25.768916 send RequestVoteArgs: {237 2 2 1} to peer: 1
+[raft 2] 16:26:25.768952 send RequestVoteArgs: {237 2 2 1} to peer: 0
+[raft 2] 16:26:25.769530 request vote receive reply from peer 0, reply: {236 237 false}, args: {237 2 2 1}
+[raft 2] 16:26:26.411104 start a new election
+[raft 2] 16:26:26.411329 send RequestVoteArgs: {238 2 2 1} to peer: 1
+[raft 2] 16:26:26.411350 send RequestVoteArgs: {238 2 2 1} to peer: 0
+[raft 2] 16:26:26.411867 request vote receive reply from peer 0, reply: {237 238 false}, args: {238 2 2 1}
+[raft 2] 16:26:26.943421 start a new election
+[raft 2] 16:26:26.943574 send RequestVoteArgs: {239 2 2 1} to peer: 1
+[raft 2] 16:26:26.943622 send RequestVoteArgs: {239 2 2 1} to peer: 0
+[raft 2] 16:26:26.943851 request vote receive reply from peer 0, reply: {238 239 false}, args: {239 2 2 1}
+[raft 2] 16:26:27.666045 start a new election
+[raft 2] 16:26:27.666204 send RequestVoteArgs: {240 2 2 1} to peer: 1
+[raft 2] 16:26:27.666304 send RequestVoteArgs: {240 2 2 1} to peer: 0
+[raft 2] 16:26:27.666695 request vote receive reply from peer 0, reply: {239 240 false}, args: {240 2 2 1}
+[raft 2] 16:26:28.188425 start a new election
+[raft 2] 16:26:28.188564 send RequestVoteArgs: {241 2 2 1} to peer: 1
+[raft 2] 16:26:28.188599 send RequestVoteArgs: {241 2 2 1} to peer: 0
+[raft 2] 16:26:28.188855 request vote receive reply from peer 0, reply: {240 241 false}, args: {241 2 2 1}
+[raft 2] 16:26:28.906749 start a new election
+[raft 2] 16:26:28.906916 send RequestVoteArgs: {242 2 2 1} to peer: 1
+[raft 2] 16:26:28.906948 send RequestVoteArgs: {242 2 2 1} to peer: 0
+[raft 2] 16:26:28.907191 request vote receive reply from peer 0, reply: {241 242 false}, args: {242 2 2 1}
+[raft 2] 16:26:29.436845 start a new election
+[raft 2] 16:26:29.437009 send RequestVoteArgs: {243 2 2 1} to peer: 1
+[raft 2] 16:26:29.437062 send RequestVoteArgs: {243 2 2 1} to peer: 0
+[raft 2] 16:26:29.437860 request vote receive reply from peer 0, reply: {242 243 false}, args: {243 2 2 1}
+[raft 2] 16:26:29.998550 start a new election
+[raft 2] 16:26:29.998671 send RequestVoteArgs: {244 2 2 1} to peer: 1
+[raft 2] 16:26:29.998704 send RequestVoteArgs: {244 2 2 1} to peer: 0
+[raft 2] 16:26:29.998874 request vote receive reply from peer 0, reply: {243 244 false}, args: {244 2 2 1}
+[raft 2] 16:26:30.646951 start a new election
+[raft 2] 16:26:30.647060 send RequestVoteArgs: {245 2 2 1} to peer: 1
+[raft 2] 16:26:30.647097 send RequestVoteArgs: {245 2 2 1} to peer: 0
+[raft 2] 16:26:30.647294 request vote receive reply from peer 0, reply: {244 245 false}, args: {245 2 2 1}
+[raft 2] 16:26:31.422374 start a new election
+[raft 2] 16:26:31.422527 send RequestVoteArgs: {246 2 2 1} to peer: 1
+[raft 2] 16:26:31.422581 send RequestVoteArgs: {246 2 2 1} to peer: 0
+[raft 2] 16:26:31.422999 request vote receive reply from peer 0, reply: {245 246 false}, args: {246 2 2 1}
+[raft 2] 16:26:32.008137 start a new election
+[raft 2] 16:26:32.008333 send RequestVoteArgs: {247 2 2 1} to peer: 1
+[raft 2] 16:26:32.008389 send RequestVoteArgs: {247 2 2 1} to peer: 0
+[raft 2] 16:26:32.008595 request vote receive reply from peer 0, reply: {246 247 false}, args: {247 2 2 1}
+[raft 2] 16:26:32.678740 start a new election
+[raft 2] 16:26:32.678922 send RequestVoteArgs: {248 2 2 1} to peer: 1
+[raft 2] 16:26:32.678957 send RequestVoteArgs: {248 2 2 1} to peer: 0
+[raft 2] 16:26:32.679132 request vote receive reply from peer 0, reply: {247 248 false}, args: {248 2 2 1}
+[raft 2] 16:26:33.464668 start a new election
+[raft 2] 16:26:33.464836 send RequestVoteArgs: {249 2 2 1} to peer: 1
+[raft 2] 16:26:33.464871 send RequestVoteArgs: {249 2 2 1} to peer: 0
+[raft 2] 16:26:33.465051 request vote receive reply from peer 0, reply: {248 249 false}, args: {249 2 2 1}
+[raft 2] 16:26:34.184665 start a new election
+[raft 2] 16:26:34.184801 send RequestVoteArgs: {250 2 2 1} to peer: 1
+[raft 2] 16:26:34.184843 send RequestVoteArgs: {250 2 2 1} to peer: 0
+[raft 2] 16:26:34.185085 request vote receive reply from peer 0, reply: {249 250 false}, args: {250 2 2 1}
+[raft 2] 16:26:34.886160 start a new election
+[raft 2] 16:26:34.886304 send RequestVoteArgs: {251 2 2 1} to peer: 1
+[raft 2] 16:26:34.886342 send RequestVoteArgs: {251 2 2 1} to peer: 0
+[raft 2] 16:26:34.886596 request vote receive reply from peer 0, reply: {250 251 false}, args: {251 2 2 1}
+[raft 2] 16:26:35.552007 start a new election
+[raft 2] 16:26:35.552159 send RequestVoteArgs: {252 2 2 1} to peer: 1
+[raft 2] 16:26:35.552197 send RequestVoteArgs: {252 2 2 1} to peer: 0
+[raft 2] 16:26:35.552411 request vote receive reply from peer 0, reply: {251 252 false}, args: {252 2 2 1}
+[raft 2] 16:26:36.348650 start a new election
+[raft 2] 16:26:36.348787 send RequestVoteArgs: {253 2 2 1} to peer: 1
+[raft 2] 16:26:36.348827 send RequestVoteArgs: {253 2 2 1} to peer: 0
+[raft 2] 16:26:36.349037 request vote receive reply from peer 0, reply: {252 253 false}, args: {253 2 2 1}
+[raft 2] 16:26:36.943581 start a new election
+[raft 2] 16:26:36.943693 send RequestVoteArgs: {254 2 2 1} to peer: 1
+[raft 2] 16:26:36.943731 send RequestVoteArgs: {254 2 2 1} to peer: 0
+[raft 2] 16:26:36.943936 request vote receive reply from peer 0, reply: {253 254 false}, args: {254 2 2 1}
+[raft 2] 16:26:37.627802 start a new election
+[raft 2] 16:26:37.627996 send RequestVoteArgs: {255 2 2 1} to peer: 1
+[raft 2] 16:26:37.628013 send RequestVoteArgs: {255 2 2 1} to peer: 0
+[raft 2] 16:26:37.630897 request vote receive reply from peer 0, reply: {254 255 false}, args: {255 2 2 1}
+[raft 2] 16:26:38.375049 start a new election
+[raft 2] 16:26:38.375205 send RequestVoteArgs: {256 2 2 1} to peer: 1
+[raft 2] 16:26:38.375239 send RequestVoteArgs: {256 2 2 1} to peer: 0
+[raft 2] 16:26:38.375472 request vote receive reply from peer 0, reply: {255 256 false}, args: {256 2 2 1}
+[raft 2] 16:26:38.898474 start a new election
+[raft 2] 16:26:38.898726 send RequestVoteArgs: {257 2 2 1} to peer: 0
+[raft 2] 16:26:38.898815 send RequestVoteArgs: {257 2 2 1} to peer: 1
+[raft 2] 16:26:38.899198 request vote receive reply from peer 0, reply: {256 257 false}, args: {257 2 2 1}
+[raft 2] 16:26:39.420567 start a new election
+[raft 2] 16:26:39.420757 send RequestVoteArgs: {258 2 2 1} to peer: 1
+[raft 2] 16:26:39.420791 send RequestVoteArgs: {258 2 2 1} to peer: 0
+[raft 2] 16:26:39.421037 request vote receive reply from peer 0, reply: {257 258 false}, args: {258 2 2 1}
+[raft 2] 16:26:40.071737 start a new election
+[raft 2] 16:26:40.071868 send RequestVoteArgs: {259 2 2 1} to peer: 1
+[raft 2] 16:26:40.071902 send RequestVoteArgs: {259 2 2 1} to peer: 0
+[raft 2] 16:26:40.072120 request vote receive reply from peer 0, reply: {258 259 false}, args: {259 2 2 1}
+[raft 2] 16:26:40.774545 start a new election
+[raft 2] 16:26:40.774666 send RequestVoteArgs: {260 2 2 1} to peer: 1
+[raft 2] 16:26:40.774701 send RequestVoteArgs: {260 2 2 1} to peer: 0
+[raft 2] 16:26:40.774886 request vote receive reply from peer 0, reply: {259 260 false}, args: {260 2 2 1}
+[raft 2] 16:26:41.446989 start a new election
+[raft 2] 16:26:41.447145 send RequestVoteArgs: {261 2 2 1} to peer: 1
+[raft 2] 16:26:41.447186 send RequestVoteArgs: {261 2 2 1} to peer: 0
+[raft 2] 16:26:41.447417 request vote receive reply from peer 0, reply: {260 261 false}, args: {261 2 2 1}
