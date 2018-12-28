@@ -56,6 +56,7 @@ type SnapShot struct {
 	LastIncludedIndex int
 	LastIncludedTerm  int
 	State             map[string]string
+	
 }
 
 type ApplyMsg struct {
@@ -778,7 +779,7 @@ func (rf *Raft) InstallSnapshot(args *InstallSnapshotArgs, reply *InstallSnapsho
 	//install snapshot
 	rf.SaveSnapShot(args.SnpSt)
 
-	rf.applyCh <- applyMsg
+	go func() {rf.applyCh <- applyMsg}()
 
 }
 func (rf *Raft) sendInstallSnapshot(server int, args *InstallSnapshotArgs, reply *InstallSnapshotReply) bool {
@@ -803,7 +804,9 @@ func (rf *Raft) checkApplied() {
 			if rf.LastApplied > rf.LastIncludedIndex {
 				applyMsg := ApplyMsg{Command: rf.Logs[rf.LastApplied-rf.LastIncludedIndex].Command, CommandIndex: rf.LastApplied, CommandValid: true, CommandTerm: rf.Logs[rf.LastApplied-rf.LastIncludedIndex].Term}
 				//fmt.Printf("peer %d applied: %v\n", rf.me, rf.Logs[rf.LastApplied].Command)
-				rf.applyCh <- applyMsg
+				go func() {
+					rf.applyCh <- applyMsg
+				}()
 			}
 
 		}
@@ -822,7 +825,6 @@ func (rf *Raft) checkLeaderCommitIndex() {
 		for N := rf.CommitIndex + 1; N < len(rf.Logs)+rf.LastIncludedIndex; N++ {
 			count := 0
 			if rf.Logs[N-rf.LastIncludedIndex].Term == rf.CurrentTerm {
-
 				for p := 0; p < len(rf.MatchIndex); p++ {
 					if rf.MatchIndex[p] >= N {
 						count++
@@ -910,14 +912,24 @@ func (rf *Raft) GetSnapShot() SnapShot {
 		snapshot.LastIncludedTerm = lastIncludeTerm
 		snapshot.State = state
 	}
-	rf.RfLog.Printf("read snapshot\n")
+	rf.RfLog.Printf("read snapshot: %v\n", snapshot)
 	return snapshot
 }
 
 func (rf *Raft) SaveSnapShot(snapShot SnapShot) {
+
+	//discard logs
+	rf.mu.Lock()
+	defer rf.mu.Unlock()
+	rf.RfLog.Printf("snap shot: %v, logs: %v\n", snapShot, rf.Logs)
+	index := rf.LastIncludedIndex
+	rf.LastIncludedIndex = snapShot.LastIncludedIndex
+	rf.LastIncludedTerm = snapShot.LastIncludedTerm
+	rf.Logs[0].Term = rf.LastIncludedTerm
+	rf.Logs = append(rf.Logs[0:1], rf.Logs[snapShot.LastIncludedIndex+1-index:]...)
+
 	w := new(bytes.Buffer)
 	e := labgob.NewEncoder(w)
-	rf.mu.Lock()
 	err1 := e.Encode(rf.CurrentTerm)
 	err2 := e.Encode(rf.VotedFor)
 	err3 := e.Encode(rf.Logs)
@@ -930,7 +942,6 @@ func (rf *Raft) SaveSnapShot(snapShot SnapShot) {
 	if err3 != nil {
 		panic(err3)
 	}
-	rf.mu.Unlock()
 	stateBytes := w.Bytes()
 
 	w1 := new(bytes.Buffer)
@@ -948,18 +959,9 @@ func (rf *Raft) SaveSnapShot(snapShot SnapShot) {
 		panic(err3)
 	}
 	snapShotBytes := w1.Bytes()
+
 	rf.persister.SaveStateAndSnapshot(stateBytes, snapShotBytes)
 
-	//discard logs
-	rf.mu.Lock()
-	rf.RfLog.Printf("snap shot: %v, logs: %v\n", snapShot, rf.Logs)
-	index := rf.LastIncludedIndex
-	rf.LastIncludedIndex = snapShot.LastIncludedIndex
-	rf.LastIncludedTerm = snapShot.LastIncludedTerm
-	rf.Logs[0].Term = rf.LastIncludedTerm
-	rf.Logs = append(rf.Logs[0:1], rf.Logs[snapShot.LastIncludedIndex+1-index:]...)
-	rf.persist()
-	rf.mu.Unlock()
 }
 
 func (rf *Raft) GetLogs() []Log {

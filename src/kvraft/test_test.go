@@ -1,6 +1,10 @@
 package raftkv
 
-import "linearizability"
+import (
+	"fmt"
+	"linearizability"
+	"os"
+)
 
 import "testing"
 import "strconv"
@@ -149,7 +153,11 @@ func partitioner(t *testing.T, cfg *config, ch chan bool, done *int32) {
 // maxraftstate is a positive number, the size of the state for Raft (i.e., log
 // size) shouldn't exceed 2*maxraftstate.
 func GenericTest(t *testing.T, part string, nclients int, unreliable bool, crash bool, partitions bool, maxraftstate int) {
-
+	f,err:=os.Create("client.log")
+	if err!=nil{
+		panic(err)
+	}
+	log.SetOutput(f)
 	title := "Test: "
 	if unreliable {
 		// the network drops RPC requests and replies.
@@ -188,8 +196,9 @@ func GenericTest(t *testing.T, part string, nclients int, unreliable bool, crash
 	for i := 0; i < nclients; i++ {
 		clnts[i] = make(chan int)
 	}
-	for i := 0; i < 3; i++ {
-		// log.Printf("Iteration %v\n", i)
+	for i := 0; i <30; i++ {
+		fmt.Println(i)
+		log.Printf("Iteration %v\n", i)
 		atomic.StoreInt32(&done_clients, 0)
 		atomic.StoreInt32(&done_partitioner, 0)
 		go spawn_clients_and_wait(t, cfg, nclients, func(cli int, myck *Clerk, t *testing.T) {
@@ -208,7 +217,7 @@ func GenericTest(t *testing.T, part string, nclients int, unreliable bool, crash
 					last = NextValue(last, nv)
 					j++
 				} else {
-					 log.Printf("%d: client new get %v\n", cli, key)
+					log.Printf("%d: client new get %v\n", cli, key)
 					v := Get(cfg, myck, key)
 					if v != last {
 						log.Fatalf("get wrong value, key %v, wanted:\n%v\n, got\n%v\n", key, last, v)
@@ -228,7 +237,7 @@ func GenericTest(t *testing.T, part string, nclients int, unreliable bool, crash
 		atomic.StoreInt32(&done_partitioner, 1) // tell partitioner to quit
 
 		if partitions {
-			 log.Printf("wait for partitioner\n")
+			log.Printf("wait for partitioner\n")
 			<-ch_partitioner
 			// reconnect network and submit a request. A client may
 			// have submitted a request in a minority.  That request
@@ -240,7 +249,7 @@ func GenericTest(t *testing.T, part string, nclients int, unreliable bool, crash
 		}
 
 		if crash {
-			 log.Printf("shutdown servers\n")
+			log.Printf("shutdown servers\n")
 			for i := 0; i < nservers; i++ {
 				cfg.ShutdownServer(i)
 			}
@@ -257,13 +266,13 @@ func GenericTest(t *testing.T, part string, nclients int, unreliable bool, crash
 
 		log.Printf("wait for clients\n")
 		for i := 0; i < nclients; i++ {
-			 log.Printf("read from clients %d\n", i)
+			log.Printf("read from clients %d\n", i)
 			j := <-clnts[i]
 			// if j < 10 {
 			// 	log.Printf("Warning: client %d managed to perform only %d put operations in 1 sec?\n", i, j)
 			// }
 			key := strconv.Itoa(i)
-			 log.Printf("Check %v for client %d\n", j, i)
+			log.Printf("Check %v for client %d\n", j, i)
 			v := Get(cfg, ck, key)
 			checkClntAppends(t, i, v, j)
 		}
@@ -594,6 +603,7 @@ func TestPersistPartitionUnreliableLinearizable3A(t *testing.T) {
 // also checks that majority discards committed log entries
 // even if minority doesn't respond.
 //
+//pass
 func TestSnapshotRPC3B(t *testing.T) {
 	const nservers = 3
 	maxraftstate := 1000
@@ -650,6 +660,7 @@ func TestSnapshotRPC3B(t *testing.T) {
 
 // are the snapshots not too huge? 500 bytes is a generous bound for the
 // operations we're doing here.
+//pass
 func TestSnapshotSize3B(t *testing.T) {
 	const nservers = 3
 	maxraftstate := 1000
@@ -680,17 +691,17 @@ func TestSnapshotSize3B(t *testing.T) {
 
 	cfg.end()
 }
-
+//pass
 func TestSnapshotRecover3B(t *testing.T) {
 	// Test: restarts, snapshots, one client (3B) ...
 	GenericTest(t, "3B", 1, false, true, false, 1000)
 }
-
+//pass
 func TestSnapshotRecoverManyClients3B(t *testing.T) {
 	// Test: restarts, snapshots, many clients (3B) ...
 	GenericTest(t, "3B", 20, false, true, false, 1000)
 }
-
+//pass
 func TestSnapshotUnreliable3B(t *testing.T) {
 	// Test: unreliable net, snapshots, many clients (3B) ...
 	GenericTest(t, "3B", 5, true, false, false, 1000)

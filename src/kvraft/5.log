@@ -1,4 +1,0 @@
-[server 5] 15:23:16.924779 servers number: 7
-[raft 5] 15:23:16.925091 decode snapshot error
-[raft 5] 15:23:16.925104 read snapshot
-[server 5] 15:23:16.925511 start to apply

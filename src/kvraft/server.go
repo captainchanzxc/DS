@@ -174,7 +174,9 @@ func (kv *KVServer) apply() {
 		if applyMsg.CommandValid == false {
 			//install snapshot
 			kv.kvLog.Printf("install snapshot: %v\n",applyMsg.Snpst)
+			kv.mu.Lock()
 			kv.mapDb=applyMsg.Snpst.State
+			kv.mu.Unlock()
 		} else {
 			command := applyMsg.Command.(Op)
 			kv.kvLog.Printf("apply: %v\n", command)
@@ -262,11 +264,15 @@ func StartKVServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persiste
 	//if err!=nil{
 	//	panic(err)
 	//}
-	f, err := os.Create(strconv.Itoa(kv.me) + ".log")
-	kv.logFile = f
-	if err != nil {
-		panic(err)
+	fileName:=strconv.Itoa(kv.me) + ".log"
+	f,err:=os.OpenFile(fileName,os.O_RDWR|os.O_APPEND,0666)
+	if err!=nil&&os.IsNotExist(err){
+		f, err = os.Create(fileName)
+		if err != nil {
+			panic(err)
+		}
 	}
+	kv.logFile = f
 	kv.kvLog = log.New(kv.logFile, "[server "+strconv.Itoa(kv.me)+"] ", log.Lmicroseconds)
 	kv.kvLog.Printf("servers number: %d\n", len(servers))
 	kv.applyReplyChMap = make(map[int64]chan ApplyReplyArgs)
@@ -275,7 +281,15 @@ func StartKVServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persiste
 	kv.timeOut = 3000 * time.Millisecond
 	kv.rf = raft.Make(servers, me, persister, kv.applyCh)
 	kv.rf.RfLog.SetOutput(kv.logFile)
-	kv.mapDb = kv.rf.GetSnapShot().State
+	snapShot:= kv.rf.GetSnapShot()
+	kv.mapDb =snapShot.State
+	kv.rf.LastIncludedIndex=snapShot.LastIncludedIndex
+	kv.rf.LastIncludedTerm=snapShot.LastIncludedTerm
+	kv.rf.CommitIndex=snapShot.LastIncludedIndex
+	kv.rf.LastApplied=snapShot.LastIncludedIndex
+	kv.kvLog.Printf("[initial]rf.Logs: %v, rf.LastApplied: %d, rf.CommitIndex: %d, rf.LastIncludeIndex: %d" +
+		"rf.LastIncludTerm: %d, kv.map: %v",
+		kv.rf.Logs,kv.rf.LastApplied,kv.rf.CommitIndex,kv.rf.LastIncludedIndex,kv.rf.LastIncludedTerm,kv.mapDb)
 	// You may need initialization code here.
 	go kv.apply()
 	return kv
