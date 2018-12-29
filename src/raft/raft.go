@@ -56,7 +56,7 @@ type SnapShot struct {
 	LastIncludedIndex int
 	LastIncludedTerm  int
 	State             map[string]string
-	
+
 }
 
 type ApplyMsg struct {

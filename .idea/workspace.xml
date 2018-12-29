@@ -1,33 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9ba51afa-95e0-4a65-b01c-859fe5e8fb86" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kvraft/0.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/kvraft/0.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kvraft/1.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/kvraft/1.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kvraft/2.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/kvraft/2.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kvraft/20181228143421.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kvraft/20181228143436.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kvraft/20181228143939.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kvraft/20181228150032.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kvraft/20181228150104.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kvraft/20181228150421.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kvraft/20181228150645.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kvraft/20181228150853.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kvraft/20181228151307.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kvraft/20181228151333.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kvraft/20181228152522.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kvraft/20181228153151.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kvraft/20181228155714.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kvraft/20181228161907.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kvraft/3.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/kvraft/3.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kvraft/4.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/kvraft/4.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kvraft/5.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kvraft/6.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kvraft/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/kvraft/server.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kvraft/test_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/kvraft/test_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/raft/raft.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/raft/raft.go" afterDir="false" />
-    </list>
+    <list default="true" id="9ba51afa-95e0-4a65-b01c-859fe5e8fb86" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +17,7 @@
         <entry file="file://$PROJECT_DIR$/src/raft/raft.go">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="551">
-              <caret line="58" column="4" selection-start-line="58" selection-start-column="4" selection-end-line="58" selection-end-column="4" />
+              <caret line="58" selection-start-line="58" selection-end-line="58" />
             </state>
           </provider>
         </entry>
@@ -725,7 +699,7 @@
     <entry file="file://$PROJECT_DIR$/src/raft/raft.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="551">
-          <caret line="58" column="4" selection-start-line="58" selection-start-column="4" selection-end-line="58" selection-end-column="4" />
+          <caret line="58" selection-start-line="58" selection-end-line="58" />
         </state>
       </provider>
     </entry>
