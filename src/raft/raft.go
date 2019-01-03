@@ -1027,8 +1027,11 @@ func Make(peers []*labrpc.ClientEnd, me int,
 	rf.VotedFor = -1
 	rf.isAlive = true
 	rf.applyCh = applyCh
-	rf.LastIncludedTerm = 0
-	rf.LastIncludedIndex = 0
+	snapShot:=rf.GetSnapShot()
+	rf.LastIncludedIndex=snapShot.LastIncludedIndex
+	rf.LastIncludedTerm=snapShot.LastIncludedTerm
+	rf.CommitIndex=snapShot.LastIncludedIndex
+	rf.LastApplied=snapShot.LastIncludedIndex
 	rf.Logs = append(rf.Logs, Log{rf.LastIncludedTerm, 0})
 	for j := 0; j < len(rf.peers); j++ {
 		rf.NextIndex = append(rf.NextIndex, len(rf.Logs)+rf.LastIncludedIndex)

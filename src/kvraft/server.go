@@ -61,19 +61,15 @@ type KVServer struct {
 	logFile         *os.File
 	kvLog           *log.Logger
 	mapDb           map[string]string
-	serialNums      map[int64]int
-	applyReplyChMap map[int64]chan ApplyReplyArgs
+	serialNums      sync.Map
+	applyReplyChMap sync.Map
 	timeOut         time.Duration
 }
 
 func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 	// Your code here.
 	clerkId := args.ClerkId
-	kv.mu.Lock()
-	if kv.applyReplyChMap[clerkId] == nil {
-		kv.applyReplyChMap[clerkId] = make(chan ApplyReplyArgs)
-	}
-	kv.mu.Unlock()
+	kv.applyReplyChMap.LoadOrStore(clerkId, make(chan ApplyReplyArgs))
 
 	op := Op{Type: getOp, Key: args.Key, Value: "", SerialNum: args.SerialNum, ClerkId: args.ClerkId, LeaderId: kv.me}
 	index, _, isLeader := kv.rf.Start(op)
@@ -83,12 +79,14 @@ func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 		reply.Err = ERR_NOT_LEADER
 	} else {
 		kv.kvLog.Printf("receive get op: %v\n", op)
+		ch, _ := kv.applyReplyChMap.Load(clerkId)
+		applyReplyCh := ch.(chan ApplyReplyArgs)
 		select {
-		case applyReplyMsg := <-kv.applyReplyChMap[clerkId]:
+		case applyReplyMsg := <-applyReplyCh:
 			for applyReplyMsg.CommitIndex < index {
 				kv.kvLog.Printf("apply an old cmd: %v\n", applyReplyMsg)
 				select {
-				case applyReplyMsg = <-kv.applyReplyChMap[clerkId]:
+				case applyReplyMsg = <-applyReplyCh:
 				case <-time.After(kv.timeOut):
 					kv.kvLog.Printf("time out: %v\n", op)
 					reply.Err = ERR_NOT_COMMIT
@@ -117,9 +115,7 @@ func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 	// Your code here.
 	clerkId := args.ClerkId
 	kv.mu.Lock()
-	if kv.applyReplyChMap[clerkId] == nil {
-		kv.applyReplyChMap[clerkId] = make(chan ApplyReplyArgs)
-	}
+	kv.applyReplyChMap.LoadOrStore(clerkId, make(chan ApplyReplyArgs))
 	kv.mu.Unlock()
 	op := Op{Key: args.Key, Value: args.Value, ClerkId: args.ClerkId, SerialNum: args.SerialNum, LeaderId: kv.me}
 	if args.Op == "Put" {
@@ -127,7 +123,8 @@ func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 	} else {
 		op.Type = appendOp
 	}
-	if op.SerialNum <= kv.serialNums[op.ClerkId] {
+	serialNum, _ := kv.serialNums.LoadOrStore(op.ClerkId, 0)
+	if op.SerialNum <= serialNum.(int) {
 		reply.Err = ""
 		return
 	}
@@ -138,12 +135,14 @@ func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 		reply.Err = ERR_NOT_LEADER
 	} else {
 		kv.kvLog.Printf("receive put/append op: %v\n", op)
+		ch, _ := kv.applyReplyChMap.Load(clerkId)
+		applyReplyCh := ch.(chan ApplyReplyArgs)
 		select {
-		case applyReplyMsg := <-kv.applyReplyChMap[clerkId]:
+		case applyReplyMsg := <-applyReplyCh:
 			for applyReplyMsg.CommitIndex < index {
 				kv.kvLog.Printf("apply an old cmd: %v\n", applyReplyMsg)
 				select {
-				case applyReplyMsg = <-kv.applyReplyChMap[clerkId]:
+				case applyReplyMsg = <-applyReplyCh:
 				case <-time.After(kv.timeOut):
 					kv.kvLog.Printf("time out: %v\n", op)
 					reply.Err = ERR_NOT_COMMIT
@@ -173,26 +172,29 @@ func (kv *KVServer) apply() {
 		applyMsg := <-kv.applyCh
 		if applyMsg.CommandValid == false {
 			//install snapshot
-			kv.kvLog.Printf("install snapshot: %v\n",applyMsg.Snpst)
+			kv.kvLog.Printf("install snapshot: %v\n", applyMsg.Snpst)
 			kv.mu.Lock()
-			kv.mapDb=applyMsg.Snpst.State
+			kv.mapDb = applyMsg.Snpst.State
 			kv.mu.Unlock()
 		} else {
 			command := applyMsg.Command.(Op)
 			kv.kvLog.Printf("apply: %v\n", command)
 			if kv.me == command.LeaderId {
+				ch, _ := kv.applyReplyChMap.LoadOrStore(command.ClerkId, make(chan ApplyReplyArgs))
+				applyReplyCh := ch.(chan ApplyReplyArgs)
 				select {
-				case kv.applyReplyChMap[command.ClerkId] <- ApplyReplyArgs{Command: command, CommitIndex: applyMsg.CommandIndex, Value: kv.mapDb[command.Key]}:
+				case applyReplyCh <- ApplyReplyArgs{Command: command, CommitIndex: applyMsg.CommandIndex, Value: kv.mapDb[command.Key]}:
 				default:
 				}
 			}
 			switch command.Type {
 			case putOp:
-				if kv.serialNums[command.ClerkId] < command.SerialNum {
-					kv.serialNums[command.ClerkId] = command.SerialNum
+				serialNum, _ := kv.serialNums.LoadOrStore(command.ClerkId, 0)
+				if serialNum.(int) < command.SerialNum {
+					kv.serialNums.Store(command.ClerkId, command.SerialNum)
 					kv.mapDb[command.Key] = command.Value
 					kv.kvLog.Printf("state size: %d, logs: %v\n", kv.rf.GetStateSize(), kv.rf.GetLogs())
-					if kv.maxraftstate>0&&kv.rf.GetStateSize() > kv.maxraftstate {
+					if kv.maxraftstate > 0 && kv.rf.GetStateSize() > kv.maxraftstate {
 						snapShot := raft.SnapShot{LastIncludedIndex: applyMsg.CommandIndex, LastIncludedTerm: applyMsg.CommandTerm, State: kv.mapDb}
 						kv.kvLog.Printf("save snapshot: %v\n", snapShot)
 						kv.rf.SaveSnapShot(snapShot)
@@ -200,11 +202,12 @@ func (kv *KVServer) apply() {
 
 				}
 			case appendOp:
-				if kv.serialNums[command.ClerkId] < command.SerialNum {
-					kv.serialNums[command.ClerkId] = command.SerialNum
+				serialNum, _ := kv.serialNums.LoadOrStore(command.ClerkId, 0)
+				if serialNum.(int) < command.SerialNum {
+					kv.serialNums.Store(command.ClerkId, command.SerialNum)
 					kv.mapDb[command.Key] += command.Value
 					kv.kvLog.Printf("state size: %d, logs: %v\n", kv.rf.GetStateSize(), kv.rf.GetLogs())
-					if kv.maxraftstate>0&&kv.rf.GetStateSize() > kv.maxraftstate {
+					if kv.maxraftstate > 0 && kv.rf.GetStateSize() > kv.maxraftstate {
 						snapShot := raft.SnapShot{LastIncludedIndex: applyMsg.CommandIndex, LastIncludedTerm: applyMsg.CommandTerm, State: kv.mapDb}
 						kv.kvLog.Printf("save snapshot: %v\n", snapShot)
 						kv.rf.SaveSnapShot(snapShot)
@@ -212,7 +215,7 @@ func (kv *KVServer) apply() {
 				}
 			case getOp:
 				kv.kvLog.Printf("state size: %d, logs: %v\n", kv.rf.GetStateSize(), kv.rf.GetLogs())
-				if kv.maxraftstate>0&&kv.rf.GetStateSize() > kv.maxraftstate {
+				if kv.maxraftstate > 0 && kv.rf.GetStateSize() > kv.maxraftstate {
 					snapShot := raft.SnapShot{LastIncludedIndex: applyMsg.CommandIndex, LastIncludedTerm: applyMsg.CommandTerm, State: kv.mapDb}
 					kv.kvLog.Printf("save snapshot: %v\n", snapShot)
 					kv.rf.SaveSnapShot(snapShot)
@@ -264,9 +267,9 @@ func StartKVServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persiste
 	//if err!=nil{
 	//	panic(err)
 	//}
-	fileName:=strconv.Itoa(kv.me) + ".log"
-	f,err:=os.OpenFile(fileName,os.O_RDWR|os.O_APPEND,0666)
-	if err!=nil&&os.IsNotExist(err){
+	fileName := strconv.Itoa(kv.me) + ".log"
+	f, err := os.OpenFile(fileName, os.O_RDWR|os.O_APPEND, 0666)
+	if err != nil && os.IsNotExist(err) {
 		f, err = os.Create(fileName)
 		if err != nil {
 			panic(err)
@@ -275,21 +278,15 @@ func StartKVServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persiste
 	kv.logFile = f
 	kv.kvLog = log.New(kv.logFile, "[server "+strconv.Itoa(kv.me)+"] ", log.Lmicroseconds)
 	kv.kvLog.Printf("servers number: %d\n", len(servers))
-	kv.applyReplyChMap = make(map[int64]chan ApplyReplyArgs)
 	kv.applyCh = make(chan raft.ApplyMsg)
-	kv.serialNums = make(map[int64]int)
 	kv.timeOut = 3000 * time.Millisecond
 	kv.rf = raft.Make(servers, me, persister, kv.applyCh)
 	kv.rf.RfLog.SetOutput(kv.logFile)
-	snapShot:= kv.rf.GetSnapShot()
-	kv.mapDb =snapShot.State
-	kv.rf.LastIncludedIndex=snapShot.LastIncludedIndex
-	kv.rf.LastIncludedTerm=snapShot.LastIncludedTerm
-	kv.rf.CommitIndex=snapShot.LastIncludedIndex
-	kv.rf.LastApplied=snapShot.LastIncludedIndex
-	kv.kvLog.Printf("[initial]rf.Logs: %v, rf.LastApplied: %d, rf.CommitIndex: %d, rf.LastIncludeIndex: %d" +
+	snapShot := kv.rf.GetSnapShot()
+	kv.mapDb = snapShot.State
+	kv.kvLog.Printf("[initial]rf.Logs: %v, rf.LastApplied: %d, rf.CommitIndex: %d, rf.LastIncludeIndex: %d"+
 		"rf.LastIncludTerm: %d, kv.map: %v",
-		kv.rf.Logs,kv.rf.LastApplied,kv.rf.CommitIndex,kv.rf.LastIncludedIndex,kv.rf.LastIncludedTerm,kv.mapDb)
+		kv.rf.Logs, kv.rf.LastApplied, kv.rf.CommitIndex, kv.rf.LastIncludedIndex, kv.rf.LastIncludedTerm, kv.mapDb)
 	// You may need initialization code here.
 	go kv.apply()
 	return kv
