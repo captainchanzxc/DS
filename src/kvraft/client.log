@@ -1,206 +1,189 @@
-2019/01/03 16:03:27 Iteration 0
-2019/01/03 16:03:27 4: client new append x 4 0 y
-2019/01/03 16:03:27 2: client new get 2
-2019/01/03 16:03:27 3: client new get 3
-2019/01/03 16:03:27 1: client new get 1
-2019/01/03 16:03:28 0: client new append x 0 0 y
-2019/01/03 16:03:28 4: client new append x 4 1 y
-2019/01/03 16:03:28 3: client new get 3
-2019/01/03 16:03:28 partition servers into: [2] [0 1 3 4]
-2019/01/03 16:03:28 2: client new append x 2 0 y
-2019/01/03 16:03:28 1: client new get 1
-2019/01/03 16:03:28 3: client new append x 3 0 y
-2019/01/03 16:03:28 4: client new append x 4 2 y
-2019/01/03 16:03:28 2: client new append x 2 1 y
-2019/01/03 16:03:28 0: client new append x 0 1 y
-2019/01/03 16:03:29 1: client new get 1
-2019/01/03 16:03:29 3: client new append x 3 1 y
-2019/01/03 16:03:29 2: client new append x 2 2 y
-2019/01/03 16:03:29 0: client new append x 0 2 y
-2019/01/03 16:03:29 1: client new append x 1 0 y
-2019/01/03 16:03:29 4: client new get 4
-2019/01/03 16:03:29 3: client new get 3
-2019/01/03 16:03:29 partition servers into: [0 3 4] [1 2]
-2019/01/03 16:03:29 0: client new get 0
-2019/01/03 16:03:29 2: client new get 2
-2019/01/03 16:03:29 1: client new append x 1 1 y
-2019/01/03 16:03:29 3: client new get 3
-2019/01/03 16:03:29 4: client new append x 4 3 y
-2019/01/03 16:03:29 2: client new get 2
-2019/01/03 16:03:29 0: client new get 0
-2019/01/03 16:03:29 3: client new append x 3 2 y
-2019/01/03 16:03:30 1: client new append x 1 2 y
-2019/01/03 16:03:30 2: client new get 2
-2019/01/03 16:03:30 4: client new append x 4 4 y
-2019/01/03 16:03:30 0: client new append x 0 3 y
-2019/01/03 16:03:30 3: client new append x 3 3 y
-2019/01/03 16:03:30 1: client new append x 1 3 y
-2019/01/03 16:03:30 2: client new get 2
-2019/01/03 16:03:30 4: client new append x 4 5 y
-2019/01/03 16:03:30 0: client new get 0
-2019/01/03 16:03:30 partition servers into: [0 3] [1 2 4]
-2019/01/03 16:03:31 partition servers into: [2 3 4] [0 1]
-2019/01/03 16:03:32 partition servers into: [0 2 3] [1 4]
-2019/01/03 16:03:33 wait for partitioner
-2019/01/03 16:03:34 shutdown servers
-2019/01/03 16:03:35 restart servers
-2019/01/03 16:03:36 wait for clients
-2019/01/03 16:03:36 read from clients 0
-2019/01/03 16:03:36 Check 4 for client 0
-2019/01/03 16:03:37 read from clients 1
-2019/01/03 16:03:37 Check 4 for client 1
-2019/01/03 16:03:37 read from clients 2
-2019/01/03 16:03:37 Check 3 for client 2
-2019/01/03 16:03:37 read from clients 3
-2019/01/03 16:03:37 Check 4 for client 3
-2019/01/03 16:03:37 read from clients 4
-2019/01/03 16:03:37 Check 6 for client 4
-2019/01/03 16:03:37 Iteration 1
-2019/01/03 16:03:37 4: client new get 4
-2019/01/03 16:03:37 0: client new append x 0 0 y
-2019/01/03 16:03:37 4: client new append x 4 0 y
-2019/01/03 16:03:37 3: client new get 3
-2019/01/03 16:03:38 0: client new get 0
-2019/01/03 16:03:38 4: client new get 4
-2019/01/03 16:03:38 1: client new get 1
-2019/01/03 16:03:38 0: client new get 0
-2019/01/03 16:03:38 4: client new append x 4 1 y
-2019/01/03 16:03:38 2: client new get 2
-2019/01/03 16:03:38 0: client new append x 0 1 y
-2019/01/03 16:03:38 1: client new get 1
-2019/01/03 16:03:38 4: client new get 4
-2019/01/03 16:03:38 3: client new append x 3 0 y
-2019/01/03 16:03:38 0: client new append x 0 2 y
-2019/01/03 16:03:38 partition servers into: [0 1 2 3 4] []
-2019/01/03 16:03:38 2: client new get 2
-2019/01/03 16:03:38 1: client new append x 1 0 y
-2019/01/03 16:03:38 4: client new append x 4 2 y
-2019/01/03 16:03:38 3: client new append x 3 1 y
-2019/01/03 16:03:38 0: client new get 0
-2019/01/03 16:03:39 1: client new get 1
-2019/01/03 16:03:39 4: client new get 4
-2019/01/03 16:03:39 3: client new get 3
-2019/01/03 16:03:39 0: client new get 0
-2019/01/03 16:03:39 1: client new append x 1 1 y
-2019/01/03 16:03:39 2: client new append x 2 0 y
-2019/01/03 16:03:39 4: client new append x 4 3 y
-2019/01/03 16:03:39 3: client new get 3
-2019/01/03 16:03:39 0: client new get 0
-2019/01/03 16:03:39 1: client new append x 1 2 y
-2019/01/03 16:03:39 2: client new get 2
-2019/01/03 16:03:39 4: client new append x 4 4 y
-2019/01/03 16:03:39 partition servers into: [2 3] [0 1 4]
-2019/01/03 16:03:39 3: client new get 3
-2019/01/03 16:03:40 2: client new get 2
-2019/01/03 16:03:40 1: client new append x 1 3 y
-2019/01/03 16:03:40 4: client new append x 4 5 y
-2019/01/03 16:03:40 0: client new get 0
-2019/01/03 16:03:40 2: client new get 2
-2019/01/03 16:03:40 3: client new append x 3 2 y
-2019/01/03 16:03:40 4: client new get 4
-2019/01/03 16:03:40 1: client new get 1
-2019/01/03 16:03:40 0: client new get 0
-2019/01/03 16:03:40 2: client new get 2
-2019/01/03 16:03:40 3: client new get 3
-2019/01/03 16:03:40 4: client new append x 4 6 y
-2019/01/03 16:03:40 1: client new get 1
-2019/01/03 16:03:40 0: client new get 0
-2019/01/03 16:03:40 2: client new get 2
-2019/01/03 16:03:40 partition servers into: [0 1 4] [2 3]
-2019/01/03 16:03:40 3: client new get 3
-2019/01/03 16:03:40 4: client new append x 4 7 y
-2019/01/03 16:03:40 1: client new get 1
-2019/01/03 16:03:41 0: client new append x 0 3 y
-2019/01/03 16:03:41 2: client new get 2
-2019/01/03 16:03:41 3: client new append x 3 3 y
-2019/01/03 16:03:41 4: client new get 4
-2019/01/03 16:03:41 1: client new append x 1 4 y
-2019/01/03 16:03:41 0: client new append x 0 4 y
-2019/01/03 16:03:41 2: client new append x 2 1 y
-2019/01/03 16:03:41 3: client new append x 3 4 y
-2019/01/03 16:03:41 4: client new get 4
-2019/01/03 16:03:41 1: client new get 1
-2019/01/03 16:03:41 0: client new append x 0 5 y
-2019/01/03 16:03:41 2: client new get 2
-2019/01/03 16:03:41 3: client new get 3
-2019/01/03 16:03:41 4: client new append x 4 8 y
-2019/01/03 16:03:41 1: client new get 1
-2019/01/03 16:03:41 partition servers into: [1 2] [0 3 4]
-2019/01/03 16:03:41 0: client new append x 0 6 y
-2019/01/03 16:03:43 partition servers into: [3 4] [0 1 2]
-2019/01/03 16:03:43 wait for partitioner
-2019/01/03 16:03:45 shutdown servers
-2019/01/03 16:03:46 restart servers
-2019/01/03 16:03:46 wait for clients
-2019/01/03 16:03:46 read from clients 0
-2019/01/03 16:03:46 Check 7 for client 0
-2019/01/03 16:03:47 read from clients 1
-2019/01/03 16:03:47 Check 5 for client 1
-2019/01/03 16:03:47 read from clients 2
-2019/01/03 16:03:47 Check 2 for client 2
-2019/01/03 16:03:47 read from clients 3
-2019/01/03 16:03:47 Check 5 for client 3
-2019/01/03 16:03:47 read from clients 4
-2019/01/03 16:03:47 Check 9 for client 4
-2019/01/03 16:03:47 Iteration 2
-2019/01/03 16:03:47 0: client new append x 0 0 y
-2019/01/03 16:03:47 1: client new append x 1 0 y
-2019/01/03 16:03:47 3: client new get 3
-2019/01/03 16:03:47 4: client new get 4
-2019/01/03 16:03:47 2: client new get 2
-2019/01/03 16:03:47 1: client new get 1
-2019/01/03 16:03:48 4: client new append x 4 0 y
-2019/01/03 16:03:48 0: client new append x 0 1 y
-2019/01/03 16:03:48 2: client new append x 2 0 y
-2019/01/03 16:03:48 1: client new get 1
-2019/01/03 16:03:48 4: client new get 4
-2019/01/03 16:03:48 0: client new get 0
-2019/01/03 16:03:48 2: client new get 2
-2019/01/03 16:03:48 1: client new get 1
-2019/01/03 16:03:48 partition servers into: [0 1 3 4] [2]
-2019/01/03 16:03:48 4: client new get 4
-2019/01/03 16:03:48 3: client new append x 3 0 y
-2019/01/03 16:03:48 0: client new get 0
-2019/01/03 16:03:48 2: client new append x 2 1 y
-2019/01/03 16:03:48 1: client new get 1
-2019/01/03 16:03:48 4: client new get 4
-2019/01/03 16:03:48 3: client new get 3
-2019/01/03 16:03:48 0: client new get 0
-2019/01/03 16:03:49 2: client new append x 2 2 y
-2019/01/03 16:03:49 1: client new append x 1 1 y
-2019/01/03 16:03:49 4: client new append x 4 1 y
-2019/01/03 16:03:49 3: client new get 3
-2019/01/03 16:03:49 partition servers into: [0 2] [1 3 4]
-2019/01/03 16:03:49 0: client new get 0
-2019/01/03 16:03:50 partition servers into: [0 3 4] [1 2]
-2019/01/03 16:03:52 partition servers into: [1 4] [0 2 3]
-2019/01/03 16:03:53 partition servers into: [2] [0 1 3 4]
-2019/01/03 16:03:53 wait for partitioner
-2019/01/03 16:03:55 shutdown servers
-2019/01/03 16:03:56 restart servers
-2019/01/03 16:03:56 wait for clients
-2019/01/03 16:03:56 read from clients 0
-2019/01/03 16:03:58 Check 2 for client 0
-2019/01/03 16:03:58 read from clients 1
-2019/01/03 16:03:58 Check 2 for client 1
-2019/01/03 16:03:58 read from clients 2
-2019/01/03 16:03:58 Check 3 for client 2
-2019/01/03 16:03:58 read from clients 3
-2019/01/03 16:03:58 Check 1 for client 3
-2019/01/03 16:03:58 read from clients 4
-2019/01/03 16:03:58 Check 2 for client 4
-2019/01/03 16:04:00 partition servers into: [0 3 4 5 6] [1 2]
-2019/01/03 16:04:01 partition servers into: [1 2] [0 3 4 5 6]
-2019/01/03 16:04:02 partition servers into: [0 1 2 5 6] [3 4]
-2019/01/03 16:04:03 partition servers into: [1 2 6] [0 3 4 5]
-2019/01/03 16:04:04 partition servers into: [0 1 2 3 4] [5 6]
-2019/01/03 16:04:10 partition servers into: [1 3 5 6] [0 2 4]
-2019/01/03 16:04:11 partition servers into: [0 3 6] [1 2 4 5]
-2019/01/03 16:04:12 partition servers into: [2 4 5] [0 1 3 6]
-2019/01/03 16:04:13 partition servers into: [1 3 6] [0 2 4 5]
-2019/01/03 16:04:14 partition servers into: [1 3 4 5] [0 2 6]
-2019/01/03 16:04:25 partition servers into: [1 2 3 4] [0 5 6]
-2019/01/03 16:04:26 partition servers into: [0 2 3] [1 4 5 6]
-2019/01/03 16:04:27 partition servers into: [1 2 3 4 5] [0 6]
-2019/01/03 16:04:28 partition servers into: [0 1 3 4 5 6] [2]
-2019/01/03 16:04:29 partition servers into: [2 3 4 5 6] [0 1]
+2019/01/04 13:29:47 Iteration 0
+2019/01/04 13:29:47 0: client new get 0
+2019/01/04 13:29:48 3: client new get 3
+2019/01/04 13:29:48 2: client new get 2
+2019/01/04 13:29:48 4: client new get 4
+2019/01/04 13:29:48 1: client new get 1
+2019/01/04 13:29:48 0: client new get 0
+2019/01/04 13:29:48 3: client new append x 3 0 y
+2019/01/04 13:29:48 partition servers into: [1 3 4] [0 2]
+2019/01/04 13:29:48 2: client new get 2
+2019/01/04 13:29:49 partition servers into: [0 1 3 4] [2]
+2019/01/04 13:29:50 partition servers into: [1 3 4] [0 2]
+2019/01/04 13:29:51 partition servers into: [0 3 4] [1 2]
+2019/01/04 13:29:51 4: client new append x 4 0 y
+2019/01/04 13:29:51 2: client new append x 2 0 y
+2019/01/04 13:29:52 1: client new get 1
+2019/01/04 13:29:53 partition servers into: [0 2 3 4] [1]
+2019/01/04 13:29:53 wait for partitioner
+2019/01/04 13:29:55 shutdown servers
+2019/01/04 13:29:56 restart servers
+2019/01/04 13:29:56 wait for clients
+2019/01/04 13:29:56 read from clients 0
+2019/01/04 13:29:56 Check 0 for client 0
+2019/01/04 13:29:57 read from clients 1
+2019/01/04 13:29:57 Check 0 for client 1
+2019/01/04 13:29:57 read from clients 2
+2019/01/04 13:29:57 Check 1 for client 2
+2019/01/04 13:29:57 read from clients 3
+2019/01/04 13:29:57 Check 1 for client 3
+2019/01/04 13:29:57 read from clients 4
+2019/01/04 13:29:57 Check 1 for client 4
+2019/01/04 13:29:57 Iteration 1
+2019/01/04 13:29:57 2: client new append x 2 0 y
+2019/01/04 13:29:57 4: client new get 4
+2019/01/04 13:29:57 0: client new append x 0 0 y
+2019/01/04 13:29:57 3: client new append x 3 0 y
+2019/01/04 13:29:57 2: client new append x 2 1 y
+2019/01/04 13:29:57 1: client new append x 1 0 y
+2019/01/04 13:29:57 4: client new append x 4 0 y
+2019/01/04 13:29:57 0: client new get 0
+2019/01/04 13:29:57 3: client new append x 3 1 y
+2019/01/04 13:29:58 2: client new append x 2 2 y
+2019/01/04 13:29:58 1: client new get 1
+2019/01/04 13:29:58 4: client new append x 4 1 y
+2019/01/04 13:29:58 0: client new get 0
+2019/01/04 13:29:58 3: client new get 3
+2019/01/04 13:29:58 2: client new get 2
+2019/01/04 13:29:58 4: client new get 4
+2019/01/04 13:29:58 0: client new append x 0 1 y
+2019/01/04 13:29:58 partition servers into: [2] [0 1 3 4]
+2019/01/04 13:29:58 1: client new get 1
+2019/01/04 13:29:58 3: client new get 3
+2019/01/04 13:29:58 4: client new get 4
+2019/01/04 13:29:58 0: client new get 0
+2019/01/04 13:29:58 1: client new append x 1 1 y
+2019/01/04 13:29:58 2: client new append x 2 3 y
+2019/01/04 13:29:58 3: client new append x 3 2 y
+2019/01/04 13:29:58 4: client new get 4
+2019/01/04 13:29:59 0: client new append x 0 2 y
+2019/01/04 13:29:59 1: client new append x 1 2 y
+2019/01/04 13:29:59 2: client new append x 2 4 y
+2019/01/04 13:29:59 3: client new append x 3 3 y
+2019/01/04 13:29:59 4: client new append x 4 2 y
+2019/01/04 13:29:59 0: client new append x 0 3 y
+2019/01/04 13:29:59 2: client new get 2
+2019/01/04 13:29:59 1: client new get 1
+2019/01/04 13:29:59 3: client new get 3
+2019/01/04 13:29:59 4: client new get 4
+2019/01/04 13:29:59 partition servers into: [1 2 3 4] [0]
+2019/01/04 13:30:00 partition servers into: [0 3] [1 2 4]
+2019/01/04 13:30:01 partition servers into: [0 1 2 3] [4]
+2019/01/04 13:30:02 partition servers into: [0 3] [1 2 4]
+2019/01/04 13:30:03 wait for partitioner
+2019/01/04 13:30:04 shutdown servers
+2019/01/04 13:30:05 restart servers
+2019/01/04 13:30:05 wait for clients
+2019/01/04 13:30:05 read from clients 0
+2019/01/04 13:30:05 Check 4 for client 0
+2019/01/04 13:30:07 read from clients 1
+2019/01/04 13:30:07 Check 3 for client 1
+2019/01/04 13:30:07 read from clients 2
+2019/01/04 13:30:07 Check 5 for client 2
+2019/01/04 13:30:07 read from clients 3
+2019/01/04 13:30:07 Check 4 for client 3
+2019/01/04 13:30:07 read from clients 4
+2019/01/04 13:30:07 Check 3 for client 4
+2019/01/04 13:30:07 Iteration 2
+2019/01/04 13:30:08 0: client new append x 0 0 y
+2019/01/04 13:30:08 1: client new append x 1 0 y
+2019/01/04 13:30:08 2: client new append x 2 0 y
+2019/01/04 13:30:08 4: client new get 4
+2019/01/04 13:30:08 0: client new append x 0 1 y
+2019/01/04 13:30:08 3: client new get 3
+2019/01/04 13:30:08 1: client new get 1
+2019/01/04 13:30:08 2: client new get 2
+2019/01/04 13:30:08 0: client new append x 0 2 y
+2019/01/04 13:30:08 4: client new get 4
+2019/01/04 13:30:08 3: client new append x 3 0 y
+2019/01/04 13:30:08 1: client new append x 1 1 y
+2019/01/04 13:30:08 2: client new get 2
+2019/01/04 13:30:08 0: client new get 0
+2019/01/04 13:30:08 4: client new get 4
+2019/01/04 13:30:08 3: client new append x 3 1 y
+2019/01/04 13:30:08 partition servers into: [0 1 2 4] [3]
+2019/01/04 13:30:09 1: client new get 1
+2019/01/04 13:30:09 2: client new append x 2 1 y
+2019/01/04 13:30:09 0: client new append x 0 3 y
+2019/01/04 13:30:09 4: client new append x 4 0 y
+2019/01/04 13:30:09 3: client new get 3
+2019/01/04 13:30:09 1: client new append x 1 2 y
+2019/01/04 13:30:09 2: client new get 2
+2019/01/04 13:30:09 0: client new append x 0 4 y
+2019/01/04 13:30:09 4: client new get 4
+2019/01/04 13:30:09 3: client new get 3
+2019/01/04 13:30:09 1: client new append x 1 3 y
+2019/01/04 13:30:09 2: client new get 2
+2019/01/04 13:30:09 0: client new get 0
+2019/01/04 13:30:09 4: client new append x 4 1 y
+2019/01/04 13:30:09 3: client new get 3
+2019/01/04 13:30:09 1: client new append x 1 4 y
+2019/01/04 13:30:09 0: client new get 0
+2019/01/04 13:30:09 2: client new append x 2 2 y
+2019/01/04 13:30:10 4: client new append x 4 2 y
+2019/01/04 13:30:10 1: client new append x 1 5 y
+2019/01/04 13:30:10 partition servers into: [0] [1 2 3 4]
+2019/01/04 13:30:10 0: client new get 0
+2019/01/04 13:30:11 partition servers into: [0 2 3 4] [1]
+2019/01/04 13:30:11 2: client new get 2
+2019/01/04 13:30:11 4: client new get 4
+2019/01/04 13:30:11 1: client new append x 1 6 y
+2019/01/04 13:30:11 3: client new append x 3 2 y
+2019/01/04 13:30:11 0: client new append x 0 5 y
+2019/01/04 13:30:11 1: client new get 1
+2019/01/04 13:30:11 4: client new get 4
+2019/01/04 13:30:11 3: client new get 3
+2019/01/04 13:30:11 0: client new get 0
+2019/01/04 13:30:12 2: client new get 2
+2019/01/04 13:30:12 1: client new append x 1 7 y
+2019/01/04 13:30:12 4: client new get 4
+2019/01/04 13:30:12 3: client new append x 3 3 y
+2019/01/04 13:30:12 partition servers into: [2 3 4] [0 1]
+2019/01/04 13:30:12 0: client new append x 0 6 y
+2019/01/04 13:30:12 2: client new get 2
+2019/01/04 13:30:12 1: client new append x 1 8 y
+2019/01/04 13:30:12 4: client new get 4
+2019/01/04 13:30:12 3: client new append x 3 4 y
+2019/01/04 13:30:12 0: client new get 0
+2019/01/04 13:30:12 2: client new append x 2 3 y
+2019/01/04 13:30:12 1: client new append x 1 9 y
+2019/01/04 13:30:12 4: client new append x 4 3 y
+2019/01/04 13:30:12 3: client new get 3
+2019/01/04 13:30:12 0: client new get 0
+2019/01/04 13:30:13 1: client new get 1
+2019/01/04 13:30:13 2: client new get 2
+2019/01/04 13:30:13 3: client new append x 3 5 y
+2019/01/04 13:30:13 0: client new get 0
+2019/01/04 13:30:13 4: client new append x 4 4 y
+2019/01/04 13:30:13 2: client new get 2
+2019/01/04 13:30:13 partition servers into: [2 3] [0 1 4]
+2019/01/04 13:30:13 3: client new append x 3 6 y
+2019/01/04 13:30:14 wait for partitioner
+2019/01/04 13:30:15 shutdown servers
+2019/01/04 13:30:16 restart servers
+2019/01/04 13:30:16 wait for clients
+2019/01/04 13:30:16 read from clients 0
+2019/01/04 13:30:16 Check 7 for client 0
+2019/01/04 13:30:17 read from clients 1
+2019/01/04 13:30:17 Check 10 for client 1
+2019/01/04 13:30:17 read from clients 2
+2019/01/04 13:30:17 Check 4 for client 2
+2019/01/04 13:30:17 read from clients 3
+2019/01/04 13:30:17 Check 7 for client 3
+2019/01/04 13:30:17 read from clients 4
+2019/01/04 13:30:17 Check 5 for client 4
+2019/01/04 13:30:18 partition servers into: [1 2 4 5] [0 3 6]
+2019/01/04 13:30:20 partition servers into: [0 1 3 4] [2 5 6]
+2019/01/04 13:30:21 partition servers into: [1 4 5] [0 2 3 6]
+2019/01/04 13:30:22 partition servers into: [0 1 2 3 5 6] [4]
+2019/01/04 13:30:23 partition servers into: [0 2 6] [1 3 4 5]
+2019/01/04 13:30:39 partition servers into: [0 3] [1 2 4 5 6]
+2019/01/04 13:30:40 partition servers into: [1 2 3 4 6] [0 5]
+2019/01/04 13:30:41 partition servers into: [0 1] [2 3 4 5 6]
+2019/01/04 13:30:42 partition servers into: [2 3] [0 1 4 5 6]
+2019/01/04 13:30:43 partition servers into: [0 1 2 3] [4 5 6]
+2019/01/04 13:30:50 partition servers into: [1 3 5] [0 2 4 6]
+2019/01/04 13:30:51 partition servers into: [2 3 5 6] [0 1 4]
+2019/01/04 13:30:52 partition servers into: [1 2 6] [0 3 4 5]
+2019/01/04 13:30:53 partition servers into: [0 2 4 6] [1 3 5]
+2019/01/04 13:30:54 partition servers into: [0 3] [1 2 4 5 6]

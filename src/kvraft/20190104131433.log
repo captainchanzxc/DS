@@ -1,0 +1,11 @@
+Test: unreliable net, restarts, partitions, snapshots, many clients, linearizability checks (3B) ...
+  ... Passed --  39.6  7 13755  151
+PASS
+ok  	kvraft	39.595s
+=======================
+Test: unreliable net, restarts, partitions, snapshots, many clients, linearizability checks (3B) ...
+  ... Passed --  31.4  7  9159  142
+PASS
+ok  	kvraft	31.482s
+=======================
+Test: unreliable net, restarts, partitions, snapshots, many clients, linearizability checks (3B) ...

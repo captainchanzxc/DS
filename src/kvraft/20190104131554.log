@@ -1,0 +1,50 @@
+Test: unreliable net, restarts, partitions, snapshots, many clients, linearizability checks (3B) ...
+  ... Passed --  29.7  7  9382  145
+PASS
+ok  	kvraft	29.760s
+=======================
+Test: unreliable net, restarts, partitions, snapshots, many clients, linearizability checks (3B) ...
+  ... Passed --  28.8  7  8724  143
+PASS
+ok  	kvraft	28.802s
+=======================
+Test: unreliable net, restarts, partitions, snapshots, many clients, linearizability checks (3B) ...
+  ... Passed --  36.5  7 11894  144
+PASS
+ok  	kvraft	36.505s
+=======================
+Test: unreliable net, restarts, partitions, snapshots, many clients, linearizability checks (3B) ...
+  ... Passed --  33.0  7 11355  136
+PASS
+ok  	kvraft	33.057s
+=======================
+Test: unreliable net, restarts, partitions, snapshots, many clients, linearizability checks (3B) ...
+  ... Passed --  32.0  7  9776  137
+PASS
+ok  	kvraft	32.083s
+=======================
+Test: unreliable net, restarts, partitions, snapshots, many clients, linearizability checks (3B) ...
+  ... Passed --  34.0  7 10262  117
+PASS
+ok  	kvraft	34.039s
+=======================
+Test: unreliable net, restarts, partitions, snapshots, many clients, linearizability checks (3B) ...
+  ... Passed --  30.7  7  9773  148
+PASS
+ok  	kvraft	30.687s
+=======================
+Test: unreliable net, restarts, partitions, snapshots, many clients, linearizability checks (3B) ...
+  ... Passed --  36.9  7 11514  113
+PASS
+ok  	kvraft	36.882s
+=======================
+Test: unreliable net, restarts, partitions, snapshots, many clients, linearizability checks (3B) ...
+  ... Passed --  35.1  7 12413  120
+PASS
+ok  	kvraft	35.162s
+=======================
+Test: unreliable net, restarts, partitions, snapshots, many clients, linearizability checks (3B) ...
+  ... Passed --  31.3  7 11273  146
+PASS
+ok  	kvraft	31.306s
+=======================

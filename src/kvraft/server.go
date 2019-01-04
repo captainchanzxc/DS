@@ -1,6 +1,7 @@
 package raftkv
 
 import (
+	"io/ioutil"
 	"labgob"
 	"labrpc"
 	"log"
@@ -175,6 +176,10 @@ func (kv *KVServer) apply() {
 			kv.kvLog.Printf("install snapshot: %v\n", applyMsg.Snpst)
 			kv.mu.Lock()
 			kv.mapDb = applyMsg.Snpst.State
+			snapShotSerialNums:=applyMsg.Snpst.SerialNums
+			for k,v:=range snapShotSerialNums{
+				kv.serialNums.Store(k,v)
+			}
 			kv.mu.Unlock()
 		} else {
 			command := applyMsg.Command.(Op)
@@ -195,7 +200,14 @@ func (kv *KVServer) apply() {
 					kv.mapDb[command.Key] = command.Value
 					kv.kvLog.Printf("state size: %d, logs: %v\n", kv.rf.GetStateSize(), kv.rf.GetLogs())
 					if kv.maxraftstate > 0 && kv.rf.GetStateSize() > kv.maxraftstate {
-						snapShot := raft.SnapShot{LastIncludedIndex: applyMsg.CommandIndex, LastIncludedTerm: applyMsg.CommandTerm, State: kv.mapDb}
+						kv.mu.Lock()
+						snapShotSerialNums:=make(map[int64]int)
+						kv.serialNums.Range(func(key, value interface{}) bool {
+							snapShotSerialNums[key.(int64)]=value.(int)
+							return true
+						})
+						snapShot := raft.SnapShot{LastIncludedIndex: applyMsg.CommandIndex, LastIncludedTerm: applyMsg.CommandTerm, State: kv.mapDb,SerialNums:snapShotSerialNums}
+						kv.mu.Unlock()
 						kv.kvLog.Printf("save snapshot: %v\n", snapShot)
 						kv.rf.SaveSnapShot(snapShot)
 					}
@@ -208,7 +220,14 @@ func (kv *KVServer) apply() {
 					kv.mapDb[command.Key] += command.Value
 					kv.kvLog.Printf("state size: %d, logs: %v\n", kv.rf.GetStateSize(), kv.rf.GetLogs())
 					if kv.maxraftstate > 0 && kv.rf.GetStateSize() > kv.maxraftstate {
-						snapShot := raft.SnapShot{LastIncludedIndex: applyMsg.CommandIndex, LastIncludedTerm: applyMsg.CommandTerm, State: kv.mapDb}
+						kv.mu.Lock()
+						snapShotSerialNums:=make(map[int64]int)
+						kv.serialNums.Range(func(key, value interface{}) bool {
+							snapShotSerialNums[key.(int64)]=value.(int)
+							return true
+						})
+						snapShot := raft.SnapShot{LastIncludedIndex: applyMsg.CommandIndex, LastIncludedTerm: applyMsg.CommandTerm, State: kv.mapDb,SerialNums:snapShotSerialNums}
+						kv.mu.Unlock()
 						kv.kvLog.Printf("save snapshot: %v\n", snapShot)
 						kv.rf.SaveSnapShot(snapShot)
 					}
@@ -216,7 +235,14 @@ func (kv *KVServer) apply() {
 			case getOp:
 				kv.kvLog.Printf("state size: %d, logs: %v\n", kv.rf.GetStateSize(), kv.rf.GetLogs())
 				if kv.maxraftstate > 0 && kv.rf.GetStateSize() > kv.maxraftstate {
-					snapShot := raft.SnapShot{LastIncludedIndex: applyMsg.CommandIndex, LastIncludedTerm: applyMsg.CommandTerm, State: kv.mapDb}
+					kv.mu.Lock()
+					snapShotSerialNums:=make(map[int64]int)
+					kv.serialNums.Range(func(key, value interface{}) bool {
+						snapShotSerialNums[key.(int64)]=value.(int)
+						return true
+					})
+					snapShot := raft.SnapShot{LastIncludedIndex: applyMsg.CommandIndex, LastIncludedTerm: applyMsg.CommandTerm, State: kv.mapDb,SerialNums:snapShotSerialNums}
+					kv.mu.Unlock()
 					kv.kvLog.Printf("save snapshot: %v\n", snapShot)
 					kv.rf.SaveSnapShot(snapShot)
 				}
@@ -276,17 +302,27 @@ func StartKVServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persiste
 		}
 	}
 	kv.logFile = f
-	kv.kvLog = log.New(kv.logFile, "[server "+strconv.Itoa(kv.me)+"] ", log.Lmicroseconds)
+	kv.kvLog = log.New(ioutil.Discard, "[server "+strconv.Itoa(kv.me)+"] ", log.Lmicroseconds)
 	kv.kvLog.Printf("servers number: %d\n", len(servers))
 	kv.applyCh = make(chan raft.ApplyMsg)
+	//kv.snapShotSerialNums= make(map[int64]int)
 	kv.timeOut = 3000 * time.Millisecond
 	kv.rf = raft.Make(servers, me, persister, kv.applyCh)
-	kv.rf.RfLog.SetOutput(kv.logFile)
-	snapShot := kv.rf.GetSnapShot()
-	kv.mapDb = snapShot.State
+	kv.rf.RfLog.SetOutput(ioutil.Discard)
+	snapShot,readOk := kv.rf.GetSnapShot()
+	if readOk{
+		kv.mapDb = snapShot.State
+		snapShotSerialNums:=snapShot.SerialNums
+		for k,v:=range snapShotSerialNums{
+			kv.serialNums.Store(k,v)
+		}
+	}else {
+		kv.mapDb=make(map[string]string)
+	}
+
 	kv.kvLog.Printf("[initial]rf.Logs: %v, rf.LastApplied: %d, rf.CommitIndex: %d, rf.LastIncludeIndex: %d"+
-		"rf.LastIncludTerm: %d, kv.map: %v",
-		kv.rf.Logs, kv.rf.LastApplied, kv.rf.CommitIndex, kv.rf.LastIncludedIndex, kv.rf.LastIncludedTerm, kv.mapDb)
+		"rf.LastIncludTerm: %d, kv.map: %v, kv.snapshotSerialNums: %v",
+		kv.rf.Logs, kv.rf.LastApplied, kv.rf.CommitIndex, kv.rf.LastIncludedIndex, kv.rf.LastIncludedTerm, kv.mapDb,snapShot.SerialNums)
 	// You may need initialization code here.
 	go kv.apply()
 	return kv

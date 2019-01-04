@@ -20,6 +20,7 @@ package raft
 import (
 	"bytes"
 	"fmt"
+	"io/ioutil"
 	"labgob"
 	"log"
 	"math/rand"
@@ -56,7 +57,7 @@ type SnapShot struct {
 	LastIncludedIndex int
 	LastIncludedTerm  int
 	State             map[string]string
-
+	SerialNums        map[int64]int
 }
 
 type ApplyMsg struct {
@@ -612,23 +613,8 @@ func (rf *Raft) replicateLog() {
 				nextIndex := rf.NextIndex[peer]
 				if nextIndex <= rf.LastIncludedIndex {
 					rf.RfLog.Printf("Replicate, peer %d lag, need to install snapshot\n", peer)
-					snapshot := SnapShot{}
 					rf.RfLog.Printf("start to read snapshot\n")
-					data := rf.persister.ReadSnapshot()
-					rf.RfLog.Printf("read snapshot succeed\n")
-					r := bytes.NewBuffer(data)
-					d := labgob.NewDecoder(r)
-					var lastIncludeTerm int
-					var lastIncludeIndex int
-					var state map[string]string
-					if d.Decode(&lastIncludeTerm) != nil ||
-						d.Decode(&lastIncludeIndex) != nil || d.Decode(&state) != nil {
-						rf.RfLog.Println("decode snapshot error")
-					} else {
-						snapshot.LastIncludedIndex = lastIncludeIndex
-						snapshot.LastIncludedTerm = lastIncludeTerm
-						snapshot.State = state
-					}
+					snapshot,_:=rf.GetSnapShot()
 					installSnapshot := InstallSnapshotArgs{Term: rf.CurrentTerm, LeaderId: rf.me, SnpSt: snapshot}
 					rf.mu.Unlock()
 					reply := InstallSnapshotReply{}
@@ -779,7 +765,7 @@ func (rf *Raft) InstallSnapshot(args *InstallSnapshotArgs, reply *InstallSnapsho
 	//install snapshot
 	rf.SaveSnapShot(args.SnpSt)
 
-	go func() {rf.applyCh <- applyMsg}()
+	go func() { rf.applyCh <- applyMsg }()
 
 }
 func (rf *Raft) sendInstallSnapshot(server int, args *InstallSnapshotArgs, reply *InstallSnapshotReply) bool {
@@ -895,25 +881,30 @@ func (rf *Raft) GetStateSize() (size int) {
 	return rf.persister.RaftStateSize()
 }
 
-func (rf *Raft) GetSnapShot() SnapShot {
+func (rf *Raft) GetSnapShot() (SnapShot, bool) {
 
-	snapshot := SnapShot{State: make(map[string]string)}
+	snapshot := SnapShot{State: make(map[string]string), SerialNums: make(map[int64]int)}
 	data := rf.persister.ReadSnapshot()
 	r := bytes.NewBuffer(data)
 	d := labgob.NewDecoder(r)
 	var lastIncludeTerm int
 	var lastIncludeIndex int
 	var state map[string]string
+	var serialNums map[int64]int
 	if d.Decode(&lastIncludeTerm) != nil ||
-		d.Decode(&lastIncludeIndex) != nil || d.Decode(&state) != nil {
+		d.Decode(&lastIncludeIndex) != nil || d.Decode(&state) != nil || d.Decode(&serialNums) != nil {
 		rf.RfLog.Println("decode snapshot error")
+
+		return snapshot, false
 	} else {
 		snapshot.LastIncludedIndex = lastIncludeIndex
 		snapshot.LastIncludedTerm = lastIncludeTerm
 		snapshot.State = state
+		snapshot.SerialNums = serialNums
 	}
 	rf.RfLog.Printf("read snapshot: %v\n", snapshot)
-	return snapshot
+
+	return snapshot, true
 }
 
 func (rf *Raft) SaveSnapShot(snapShot SnapShot) {
@@ -922,6 +913,10 @@ func (rf *Raft) SaveSnapShot(snapShot SnapShot) {
 	rf.mu.Lock()
 	defer rf.mu.Unlock()
 	rf.RfLog.Printf("snap shot: %v, logs: %v\n", snapShot, rf.Logs)
+	oldSnapshot, ok := rf.GetSnapShot()
+	if ok && oldSnapshot.LastIncludedIndex >= snapShot.LastIncludedIndex {
+		return
+	}
 	index := rf.LastIncludedIndex
 	rf.LastIncludedIndex = snapShot.LastIncludedIndex
 	rf.LastIncludedTerm = snapShot.LastIncludedTerm
@@ -949,6 +944,7 @@ func (rf *Raft) SaveSnapShot(snapShot SnapShot) {
 	err1 = e1.Encode(snapShot.LastIncludedTerm)
 	err2 = e1.Encode(snapShot.LastIncludedIndex)
 	err3 = e1.Encode(snapShot.State)
+	err4 := e1.Encode(snapShot.SerialNums)
 	if err1 != nil {
 		panic(err1)
 	}
@@ -957,6 +953,9 @@ func (rf *Raft) SaveSnapShot(snapShot SnapShot) {
 	}
 	if err3 != nil {
 		panic(err3)
+	}
+	if err4 != nil {
+		panic(err4)
 	}
 	snapShotBytes := w1.Bytes()
 
@@ -1018,7 +1017,7 @@ func Make(peers []*labrpc.ClientEnd, me int,
 	if err != nil {
 		panic(err)
 	}
-	rf.RfLog = log.New(rf.logFile, "[raft "+strconv.Itoa(rf.me)+"] ", log.Lmicroseconds)
+	rf.RfLog = log.New(ioutil.Discard, "[raft "+strconv.Itoa(rf.me)+"] ", log.Lmicroseconds)
 	rf.CurrentTerm = 0
 	rf.resetElectionTimeOut()
 	rf.State = Follower
@@ -1027,11 +1026,19 @@ func Make(peers []*labrpc.ClientEnd, me int,
 	rf.VotedFor = -1
 	rf.isAlive = true
 	rf.applyCh = applyCh
-	snapShot:=rf.GetSnapShot()
-	rf.LastIncludedIndex=snapShot.LastIncludedIndex
-	rf.LastIncludedTerm=snapShot.LastIncludedTerm
-	rf.CommitIndex=snapShot.LastIncludedIndex
-	rf.LastApplied=snapShot.LastIncludedIndex
+	snapShot, readOk := rf.GetSnapShot()
+	if readOk {
+		rf.LastIncludedIndex = snapShot.LastIncludedIndex
+		rf.LastIncludedTerm = snapShot.LastIncludedTerm
+		rf.CommitIndex = snapShot.LastIncludedIndex
+		rf.LastApplied = snapShot.LastIncludedIndex
+	} else {
+		rf.LastIncludedIndex = 0
+		rf.LastIncludedTerm = 0
+		rf.CommitIndex = 0
+		rf.LastApplied = 0
+	}
+
 	rf.Logs = append(rf.Logs, Log{rf.LastIncludedTerm, 0})
 	for j := 0; j < len(rf.peers); j++ {
 		rf.NextIndex = append(rf.NextIndex, len(rf.Logs)+rf.LastIncludedIndex)
