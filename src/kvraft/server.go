@@ -79,34 +79,34 @@ func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 	if !isLeader {
 		reply.Err = ERR_NOT_LEADER
 	} else {
-		kv.kvLog.Printf("receive get op: %v\n", op)
+		//kv.kvLog.Printf("receive get op: %v\n", op)
 		ch, _ := kv.applyReplyChMap.Load(clerkId)
 		applyReplyCh := ch.(chan ApplyReplyArgs)
 		select {
 		case applyReplyMsg := <-applyReplyCh:
 			for applyReplyMsg.CommitIndex < index {
-				kv.kvLog.Printf("apply an old cmd: %v\n", applyReplyMsg)
+				//kv.kvLog.Printf("apply an old cmd: %v\n", applyReplyMsg)
 				select {
 				case applyReplyMsg = <-applyReplyCh:
 				case <-time.After(kv.timeOut):
-					kv.kvLog.Printf("time out: %v\n", op)
+					//kv.kvLog.Printf("time out: %v\n", op)
 					reply.Err = ERR_NOT_COMMIT
 					return
 				}
 			}
-			kv.kvLog.Printf("command: %v, applyCommand: %v\n", op, applyReplyMsg.Command)
-			kv.kvLog.Printf("command ID/index: %v/%v, apply ID/index: %v/%v\n",
-				op.ClerkId, index, applyReplyMsg.Command.ClerkId, applyReplyMsg.CommitIndex)
+			//kv.kvLog.Printf("command: %v, applyCommand: %v\n", op, applyReplyMsg.Command)
+			//kv.kvLog.Printf("command ID/index: %v/%v, apply ID/index: %v/%v\n",
+			//op.ClerkId, index, applyReplyMsg.Command.ClerkId, applyReplyMsg.CommitIndex)
 			if index == applyReplyMsg.CommitIndex && applyReplyMsg.Command.ClerkId == op.ClerkId && applyReplyMsg.Command.SerialNum == op.SerialNum {
-				kv.kvLog.Printf("reply get op succeed %v\n", applyReplyMsg)
+				//kv.kvLog.Printf("reply get op succeed %v\n", applyReplyMsg)
 				reply.Value = applyReplyMsg.Value
-				kv.kvLog.Printf("send to client reply: %v\n", reply)
+				//kv.kvLog.Printf("send to client reply: %v\n", reply)
 			} else {
-				kv.kvLog.Printf("reply get op fail %v\n", applyReplyMsg)
+				//kv.kvLog.Printf("reply get op fail %v\n", applyReplyMsg)
 				reply.Err = ERR_NOT_COMMIT
 			}
 		case <-time.After(kv.timeOut):
-			kv.kvLog.Printf("time out: %v\n", op)
+			//kv.kvLog.Printf("time out: %v\n", op)
 			reply.Err = ERR_NOT_COMMIT
 		}
 	}
@@ -135,33 +135,33 @@ func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 	if !isLeader {
 		reply.Err = ERR_NOT_LEADER
 	} else {
-		kv.kvLog.Printf("receive put/append op: %v\n", op)
+		//kv.kvLog.Printf("receive put/append op: %v\n", op)
 		ch, _ := kv.applyReplyChMap.Load(clerkId)
 		applyReplyCh := ch.(chan ApplyReplyArgs)
 		select {
 		case applyReplyMsg := <-applyReplyCh:
 			for applyReplyMsg.CommitIndex < index {
-				kv.kvLog.Printf("apply an old cmd: %v\n", applyReplyMsg)
+				//kv.kvLog.Printf("apply an old cmd: %v\n", applyReplyMsg)
 				select {
 				case applyReplyMsg = <-applyReplyCh:
 				case <-time.After(kv.timeOut):
-					kv.kvLog.Printf("time out: %v\n", op)
+					//kv.kvLog.Printf("time out: %v\n", op)
 					reply.Err = ERR_NOT_COMMIT
 					return
 				}
 			}
-			kv.kvLog.Printf("command: %v, applyCommand: %v\n", op, applyReplyMsg.Command)
-			kv.kvLog.Printf("command ID/index: %v/%v, apply ID/index: %v/%v\n",
-				op.ClerkId, index, applyReplyMsg.Command.ClerkId, applyReplyMsg.CommitIndex)
+			//kv.kvLog.Printf("command: %v, applyCommand: %v\n", op, applyReplyMsg.Command)
+			//kv.kvLog.Printf("command ID/index: %v/%v, apply ID/index: %v/%v\n",
+			//op.ClerkId, index, applyReplyMsg.Command.ClerkId, applyReplyMsg.CommitIndex)
 			if index == applyReplyMsg.CommitIndex && applyReplyMsg.Command.ClerkId == op.ClerkId && applyReplyMsg.Command.SerialNum == op.SerialNum {
-				kv.kvLog.Printf("reply put/append op succeed %v\n", applyReplyMsg)
-				kv.kvLog.Printf("send to client(put/append) reply: %v\n", reply)
+				//kv.kvLog.Printf("reply put/append op succeed %v\n", applyReplyMsg)
+				//kv.kvLog.Printf("send to client(put/append) reply: %v\n", reply)
 			} else {
 				reply.Err = ERR_NOT_COMMIT
-				kv.kvLog.Printf("reply put/append op fail %v\n", applyReplyMsg)
+				//kv.kvLog.Printf("reply put/append op fail %v\n", applyReplyMsg)
 			}
 		case <-time.After(kv.timeOut):
-			kv.kvLog.Printf("time out: %v\n", op)
+			//kv.kvLog.Printf("time out: %v\n", op)
 			reply.Err = ERR_NOT_COMMIT
 		}
 	}
@@ -173,17 +173,17 @@ func (kv *KVServer) apply() {
 		applyMsg := <-kv.applyCh
 		if applyMsg.CommandValid == false {
 			//install snapshot
-			kv.kvLog.Printf("install snapshot: %v\n", applyMsg.Snpst)
+			//kv.kvLog.Printf("install snapshot: %v\n", applyMsg.Snpst)
 			kv.mu.Lock()
 			kv.mapDb = applyMsg.Snpst.State
-			snapShotSerialNums:=applyMsg.Snpst.SerialNums
-			for k,v:=range snapShotSerialNums{
-				kv.serialNums.Store(k,v)
+			snapShotSerialNums := applyMsg.Snpst.SerialNums
+			for k, v := range snapShotSerialNums {
+				kv.serialNums.Store(k, v)
 			}
 			kv.mu.Unlock()
 		} else {
 			command := applyMsg.Command.(Op)
-			kv.kvLog.Printf("apply: %v\n", command)
+			//kv.kvLog.Printf("apply: %v\n", command)
 			if kv.me == command.LeaderId {
 				ch, _ := kv.applyReplyChMap.LoadOrStore(command.ClerkId, make(chan ApplyReplyArgs))
 				applyReplyCh := ch.(chan ApplyReplyArgs)
@@ -198,17 +198,17 @@ func (kv *KVServer) apply() {
 				if serialNum.(int) < command.SerialNum {
 					kv.serialNums.Store(command.ClerkId, command.SerialNum)
 					kv.mapDb[command.Key] = command.Value
-					kv.kvLog.Printf("state size: %d, logs: %v\n", kv.rf.GetStateSize(), kv.rf.GetLogs())
+					//kv.kvLog.Printf("state size: %d, logs: %v\n", kv.rf.GetStateSize(), kv.rf.GetLogs())
 					if kv.maxraftstate > 0 && kv.rf.GetStateSize() > kv.maxraftstate {
 						kv.mu.Lock()
-						snapShotSerialNums:=make(map[int64]int)
+						snapShotSerialNums := make(map[int64]int)
 						kv.serialNums.Range(func(key, value interface{}) bool {
-							snapShotSerialNums[key.(int64)]=value.(int)
+							snapShotSerialNums[key.(int64)] = value.(int)
 							return true
 						})
-						snapShot := raft.SnapShot{LastIncludedIndex: applyMsg.CommandIndex, LastIncludedTerm: applyMsg.CommandTerm, State: kv.mapDb,SerialNums:snapShotSerialNums}
+						snapShot := raft.SnapShot{LastIncludedIndex: applyMsg.CommandIndex, LastIncludedTerm: applyMsg.CommandTerm, State: kv.mapDb, SerialNums: snapShotSerialNums}
 						kv.mu.Unlock()
-						kv.kvLog.Printf("save snapshot: %v\n", snapShot)
+						//kv.kvLog.Printf("save snapshot: %v\n", snapShot)
 						kv.rf.SaveSnapShot(snapShot)
 					}
 
@@ -218,32 +218,32 @@ func (kv *KVServer) apply() {
 				if serialNum.(int) < command.SerialNum {
 					kv.serialNums.Store(command.ClerkId, command.SerialNum)
 					kv.mapDb[command.Key] += command.Value
-					kv.kvLog.Printf("state size: %d, logs: %v\n", kv.rf.GetStateSize(), kv.rf.GetLogs())
+					//kv.kvLog.Printf("state size: %d, logs: %v\n", kv.rf.GetStateSize(), kv.rf.GetLogs())
 					if kv.maxraftstate > 0 && kv.rf.GetStateSize() > kv.maxraftstate {
 						kv.mu.Lock()
-						snapShotSerialNums:=make(map[int64]int)
+						snapShotSerialNums := make(map[int64]int)
 						kv.serialNums.Range(func(key, value interface{}) bool {
-							snapShotSerialNums[key.(int64)]=value.(int)
+							snapShotSerialNums[key.(int64)] = value.(int)
 							return true
 						})
-						snapShot := raft.SnapShot{LastIncludedIndex: applyMsg.CommandIndex, LastIncludedTerm: applyMsg.CommandTerm, State: kv.mapDb,SerialNums:snapShotSerialNums}
+						snapShot := raft.SnapShot{LastIncludedIndex: applyMsg.CommandIndex, LastIncludedTerm: applyMsg.CommandTerm, State: kv.mapDb, SerialNums: snapShotSerialNums}
 						kv.mu.Unlock()
-						kv.kvLog.Printf("save snapshot: %v\n", snapShot)
+						//kv.kvLog.Printf("save snapshot: %v\n", snapShot)
 						kv.rf.SaveSnapShot(snapShot)
 					}
 				}
 			case getOp:
-				kv.kvLog.Printf("state size: %d, logs: %v\n", kv.rf.GetStateSize(), kv.rf.GetLogs())
+				//kv.kvLog.Printf("state size: %d, logs: %v\n", kv.rf.GetStateSize(), kv.rf.GetLogs())
 				if kv.maxraftstate > 0 && kv.rf.GetStateSize() > kv.maxraftstate {
 					kv.mu.Lock()
-					snapShotSerialNums:=make(map[int64]int)
+					snapShotSerialNums := make(map[int64]int)
 					kv.serialNums.Range(func(key, value interface{}) bool {
-						snapShotSerialNums[key.(int64)]=value.(int)
+						snapShotSerialNums[key.(int64)] = value.(int)
 						return true
 					})
-					snapShot := raft.SnapShot{LastIncludedIndex: applyMsg.CommandIndex, LastIncludedTerm: applyMsg.CommandTerm, State: kv.mapDb,SerialNums:snapShotSerialNums}
+					snapShot := raft.SnapShot{LastIncludedIndex: applyMsg.CommandIndex, LastIncludedTerm: applyMsg.CommandTerm, State: kv.mapDb, SerialNums: snapShotSerialNums}
 					kv.mu.Unlock()
-					kv.kvLog.Printf("save snapshot: %v\n", snapShot)
+					//kv.kvLog.Printf("save snapshot: %v\n", snapShot)
 					kv.rf.SaveSnapShot(snapShot)
 				}
 			}
@@ -303,26 +303,25 @@ func StartKVServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persiste
 	}
 	kv.logFile = f
 	kv.kvLog = log.New(ioutil.Discard, "[server "+strconv.Itoa(kv.me)+"] ", log.Lmicroseconds)
-	kv.kvLog.Printf("servers number: %d\n", len(servers))
+	//kv.kvLog.Printf("servers number: %d\n", len(servers))
 	kv.applyCh = make(chan raft.ApplyMsg)
 	//kv.snapShotSerialNums= make(map[int64]int)
 	kv.timeOut = 3000 * time.Millisecond
 	kv.rf = raft.Make(servers, me, persister, kv.applyCh)
 	kv.rf.RfLog.SetOutput(ioutil.Discard)
-	snapShot,readOk := kv.rf.GetSnapShot()
-	if readOk{
+	snapShot, readOk := kv.rf.GetSnapShot()
+	if readOk {
 		kv.mapDb = snapShot.State
-		snapShotSerialNums:=snapShot.SerialNums
-		for k,v:=range snapShotSerialNums{
-			kv.serialNums.Store(k,v)
+		snapShotSerialNums := snapShot.SerialNums
+		for k, v := range snapShotSerialNums {
+			kv.serialNums.Store(k, v)
 		}
-	}else {
-		kv.mapDb=make(map[string]string)
+	} else {
+		kv.mapDb = make(map[string]string)
 	}
 
-	kv.kvLog.Printf("[initial]rf.Logs: %v, rf.LastApplied: %d, rf.CommitIndex: %d, rf.LastIncludeIndex: %d"+
-		"rf.LastIncludTerm: %d, kv.map: %v, kv.snapshotSerialNums: %v",
-		kv.rf.Logs, kv.rf.LastApplied, kv.rf.CommitIndex, kv.rf.LastIncludedIndex, kv.rf.LastIncludedTerm, kv.mapDb,snapShot.SerialNums)
+	//kv.kvLog.Printf("[initial]rf.Logs: %v, rf.LastApplied: %d, rf.CommitIndex: %d, rf.LastIncludeIndex: %d"+
+	//"rf.LastIncludTerm: %d, kv.map: %v, kv.snapshotSerialNums: %v", kv.rf.Logs, kv.rf.LastApplied, kv.rf.CommitIndex, kv.rf.LastIncludedIndex, kv.rf.LastIncludedTerm, kv.mapDb,snapShot.SerialNums)
 	// You may need initialization code here.
 	go kv.apply()
 	return kv
