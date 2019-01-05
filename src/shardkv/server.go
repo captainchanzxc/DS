@@ -342,7 +342,7 @@ func StartServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persister,
 
 	kv.logFile = f
 	kv.kvLog = log.New(ioutil.Discard, "[server "+strconv.Itoa(kv.me)+"] ", log.Lmicroseconds)
-	kv.timeOut = 3000 * time.Millisecond
+	kv.timeOut = 1000 * time.Millisecond
 	// Use something like this to talk to the shardmaster:
 	// kv.mck = shardmaster.MakeClerk(kv.masters)
 	kv.mck = shardmaster.MakeClerk(kv.masters)

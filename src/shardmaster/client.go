@@ -38,11 +38,11 @@ func MakeClerk(servers []*labrpc.ClientEnd) *Clerk {
 	// Your code here.
 	ck.id=nrand()
 	ck.serialNum=0
-	f, err := os.Create("client_0.log")
-	ck.logFile =f
-	if err != nil {
-		panic(err)
-	}
+	//f, err := os.Create("client_0.log")
+	//ck.logFile =f
+	//if err != nil {
+	//	panic(err)
+	//}
 	ck.ckLog = log.New(ioutil.Discard, "[client "+strconv.FormatInt(ck.id,10)+"] ", log.Lmicroseconds)
 	return ck
 }
@@ -64,7 +64,7 @@ func (ck *Clerk) Query(num int) Config {
 				return reply.Config
 			}
 		}
-		time.Sleep(100 * time.Millisecond)
+		time.Sleep(20 * time.Millisecond)
 	}
 }
 

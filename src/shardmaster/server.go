@@ -423,7 +423,7 @@ func StartServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persister)
 	sm.smLog = log.New(ioutil.Discard, "[server "+strconv.Itoa(sm.me)+"] ", log.Lmicroseconds)
 	//sm.smLog.Printf("servers number: %d\n", len(servers))
 	sm.applyCh = make(chan raft.ApplyMsg)
-	sm.timeOut = 3000 * time.Millisecond
+	sm.timeOut = 1000 * time.Millisecond
 	sm.rf = raft.Make(servers, me, persister, sm.applyCh)
 	sm.rf.RfLog.SetOutput(ioutil.Discard)
 
