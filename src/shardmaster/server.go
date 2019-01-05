@@ -1,6 +1,7 @@
 package shardmaster
 
 import (
+	"io/ioutil"
 	"log"
 	"os"
 	"raft"
@@ -413,18 +414,18 @@ func StartServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persister)
 	sm.applyCh = make(chan raft.ApplyMsg)
 	sm.rf = raft.Make(servers, me, persister, sm.applyCh)
 
-	fileName := strconv.Itoa(sm.me) + ".log"
-	f, err := os.Create(fileName)
-	if err != nil {
-		panic(err)
-	}
-	sm.logFile = f
-	sm.smLog = log.New(sm.logFile, "[server "+strconv.Itoa(sm.me)+"] ", log.Lmicroseconds)
+	//fileName := strconv.Itoa(sm.me) + ".log"
+	//f, err := os.Create(fileName)
+	//if err != nil {
+	//	panic(err)
+	//}
+	//sm.logFile = f
+	sm.smLog = log.New(ioutil.Discard, "[server "+strconv.Itoa(sm.me)+"] ", log.Lmicroseconds)
 	//sm.smLog.Printf("servers number: %d\n", len(servers))
 	sm.applyCh = make(chan raft.ApplyMsg)
 	sm.timeOut = 3000 * time.Millisecond
 	sm.rf = raft.Make(servers, me, persister, sm.applyCh)
-	sm.rf.RfLog.SetOutput(sm.logFile)
+	sm.rf.RfLog.SetOutput(ioutil.Discard)
 
 	go sm.apply()
 

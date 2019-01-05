@@ -426,8 +426,8 @@ type AppendEntryReply struct {
 }
 
 func (rf *Raft) AppendEntries(args *AppendEntryArgs, reply *AppendEntryReply) {
-	rf.RfLog.Printf("receive AppendEnryArgs: %v\n", args)
-	defer rf.RfLog.Printf("AppendEntries reply: %v, args:%v\n", reply, args)
+	//rf.RfLog.Printf("receive AppendEnryArgs: %v\n", args)
+	//defer rf.RfLog.Printf("AppendEntries reply: %v, args:%v\n", reply, args)
 	rf.mu.Lock()
 	defer rf.mu.Unlock()
 
@@ -449,7 +449,7 @@ func (rf *Raft) AppendEntries(args *AppendEntryArgs, reply *AppendEntryReply) {
 	reply.ReceivedTerm = args.Term
 	reply.Term = rf.CurrentTerm
 	//args.PrevLogIndex>len(rf.Logs)-1这种情况也算不match
-	rf.RfLog.Printf("AppendEntries,args.PreLogIndedx: %d, rf.LastIncludedIndex: %d, true Index:%d, logs: %v\n", args.PrevLogIndex, rf.LastIncludedIndex, args.PrevLogIndex-rf.LastIncludedIndex, rf.Logs)
+	//rf.RfLog.Printf("AppendEntries,args.PreLogIndedx: %d, rf.LastIncludedIndex: %d, true Index:%d, logs: %v\n", args.PrevLogIndex, rf.LastIncludedIndex, args.PrevLogIndex-rf.LastIncludedIndex, rf.Logs)
 	if args.PrevLogIndex < rf.LastIncludedIndex {
 		reply.SnpLPrev = true
 		return
@@ -567,7 +567,7 @@ func (rf *Raft) startHeartBeat() {
 						return
 					}
 					args.PrevLogIndex = nextIndex - 1
-					rf.RfLog.Printf("StartHeartBeat,args.PreLogIndedx: %d, rf.LastIncludedIndex: %d, true Index:%d, rf.Logs: %v\n", args.PrevLogIndex, rf.LastIncludedIndex, args.PrevLogIndex-rf.LastIncludedIndex, rf.Logs)
+					//rf.RfLog.Printf("StartHeartBeat,args.PreLogIndedx: %d, rf.LastIncludedIndex: %d, true Index:%d, rf.Logs: %v\n", args.PrevLogIndex, rf.LastIncludedIndex, args.PrevLogIndex-rf.LastIncludedIndex, rf.Logs)
 					args.PrevLogTerm = rf.Logs[args.PrevLogIndex-rf.LastIncludedIndex].Term
 					args.LeaderCommit = rf.CommitIndex
 					rf.mu.Unlock()
@@ -576,8 +576,7 @@ func (rf *Raft) startHeartBeat() {
 					rf.mu.Lock()
 					if reply.Term > rf.CurrentTerm {
 						rf.CurrentTerm = reply.Term
-						rf.RfLog.Println("becomes follower in startHeartBeat")
-						//		fmt.Printf("leader %d becomes follower\n", rf.me)
+						//rf.RfLog.Println("becomes follower in startHeartBeat")
 						rf.State = Follower
 						rf.persist()
 						rf.resetElectionTimeOut()
@@ -647,11 +646,10 @@ func (rf *Raft) replicateLog() {
 					rf.mu.Unlock()
 					return
 				}
-				//	rf.printState()
 				args := AppendEntryArgs{}
 				reply := AppendEntryReply{}
 				args.Term = rf.CurrentTerm
-				rf.RfLog.Printf("Replicate, logs: %v, snapshot index/term: %d/%d, PrevLogIndex: %d, true index: %d\n", rf.Logs, rf.LastIncludedIndex, rf.LastIncludedTerm, nextIndex-1, nextIndex-1-rf.LastIncludedIndex)
+				//rf.RfLog.Printf("Replicate, logs: %v, snapshot index/term: %d/%d, PrevLogIndex: %d, true index: %d\n", rf.Logs, rf.LastIncludedIndex, rf.LastIncludedTerm, nextIndex-1, nextIndex-1-rf.LastIncludedIndex)
 				args.PrevLogIndex = nextIndex - 1
 				args.PrevLogTerm = rf.Logs[args.PrevLogIndex-rf.LastIncludedIndex].Term
 
@@ -660,20 +658,18 @@ func (rf *Raft) replicateLog() {
 				entries := rf.Logs[nextIndex-rf.LastIncludedIndex : nextIndex+1-rf.LastIncludedIndex]
 				args.Entries = append(args.Entries, entries...)
 				rf.mu.Unlock()
-				rf.RfLog.Printf("send to peer %d ReplicateArgs: %v\n", peer, args)
+				//rf.RfLog.Printf("send to peer %d ReplicateArgs: %v\n", peer, args)
 				ok := rf.sendAppendEntries(peer, &args, &reply)
 				if ok {
-					rf.RfLog.Printf("Replicate reply from peer %d: %v, args: %v\n", peer, reply, args)
-					rf.RfLog.Printf("re")
+					//rf.RfLog.Printf("Replicate reply from peer %d: %v, args: %v\n", peer, reply, args)
 					rf.mu.Lock()
 					if reply.ReceivedTerm != rf.CurrentTerm {
 						rf.mu.Unlock()
 						return
 					}
-					//fmt.Printf("peer %d %t!!!!!!!\n",peer,reply.Success)
 					if reply.Term > rf.CurrentTerm {
 						rf.CurrentTerm = reply.Term
-						rf.RfLog.Println("becomes follower in replicateLog")
+						//rf.RfLog.Println("becomes follower in replicateLog")
 						rf.State = Follower
 						rf.persist()
 						rf.resetElectionTimeOut()
@@ -688,13 +684,12 @@ func (rf *Raft) replicateLog() {
 					if reply.Success {
 						rf.NextIndex[peer] = nextIndex + len(entries)
 						rf.MatchIndex[peer] = args.PrevLogIndex + len(entries)
-						rf.RfLog.Printf("next index: %v\n", rf.NextIndex)
+						//rf.RfLog.Printf("next index: %v\n", rf.NextIndex)
 					} else {
 						rf.NextIndex[peer] = nextIndex - 1
-						rf.RfLog.Printf("next index: %v\n", rf.NextIndex)
+						//rf.RfLog.Printf("next index: %v\n", rf.NextIndex)
 					}
-					//	fmt.Printf("match index: %v\n", rf.MatchIndex)
-					//	fmt.Printf("next index: %v\n", rf.NextIndex)
+
 					rf.mu.Unlock()
 				}
 
@@ -783,13 +778,11 @@ func (rf *Raft) checkApplied() {
 			rf.mu.Unlock()
 			break
 		}
-		//		fmt.Printf("%s peer %d commitIndex: %d, appliedIndex: %d\n", time.Now().Format("2006/01/02/ 15:03:04.000"), rf.me, rf.CommitIndex, rf.LastApplied)
 		if rf.CommitIndex > rf.LastApplied {
 			rf.LastApplied += 1
-			rf.RfLog.Printf("rf.LastApplied: %d, rf.LastIncludedIdnex: %d, true index: %d, rf.Logs: %v\n", rf.LastApplied, rf.LastIncludedIndex, rf.LastApplied-rf.LastIncludedIndex, rf.Logs)
+			//rf.RfLog.Printf("rf.LastApplied: %d, rf.LastIncludedIdnex: %d, true index: %d, rf.Logs: %v\n", rf.LastApplied, rf.LastIncludedIndex, rf.LastApplied-rf.LastIncludedIndex, rf.Logs)
 			if rf.LastApplied > rf.LastIncludedIndex {
 				applyMsg := ApplyMsg{Command: rf.Logs[rf.LastApplied-rf.LastIncludedIndex].Command, CommandIndex: rf.LastApplied, CommandValid: true, CommandTerm: rf.Logs[rf.LastApplied-rf.LastIncludedIndex].Term}
-				//fmt.Printf("peer %d applied: %v\n", rf.me, rf.Logs[rf.LastApplied].Command)
 				go func() {
 					rf.applyCh <- applyMsg
 				}()
@@ -858,7 +851,6 @@ func (rf *Raft) Start(command interface{}) (int, int, bool) {
 		rf.MatchIndex[rf.me] = len(rf.Logs) + rf.LastIncludedIndex - 1
 		rf.persist()
 		term = rf.CurrentTerm
-		//	fmt.Println(rf.Logs)
 	}
 
 	return index, term, isLeader
@@ -1012,11 +1004,11 @@ func Make(peers []*labrpc.ClientEnd, me int,
 	rf.persister = persister
 	rf.me = me
 	// Your initialization code here (2A, 2B, 2C).
-	f, err := os.Create("raft" + strconv.Itoa(rf.me) + ".log")
-	rf.logFile = f
-	if err != nil {
-		panic(err)
-	}
+	//f, err := os.Create("raft" + strconv.Itoa(rf.me) + ".log")
+	//rf.logFile = f
+	//if err != nil {
+	//	panic(err)
+	//}
 	rf.RfLog = log.New(ioutil.Discard, "[raft "+strconv.Itoa(rf.me)+"] ", log.Lmicroseconds)
 	rf.CurrentTerm = 0
 	rf.resetElectionTimeOut()

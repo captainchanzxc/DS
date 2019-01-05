@@ -41,6 +41,7 @@ func TestStaticShards(t *testing.T) {
 		va[i] = randstring(20)
 		ck.Put(ka[i], va[i])
 	}
+
 	for i := 0; i < n; i++ {
 		check(t, ck, ka[i], va[i])
 	}
@@ -67,7 +68,7 @@ func TestStaticShards(t *testing.T) {
 		select {
 		case <-ch:
 			ndone += 1
-		case <-time.After(time.Second * 2):
+		case <-time.After(time.Second * 10):
 			done = true
 			break
 		}

@@ -15,5 +15,5 @@ func main(){
 	m:=make(map[string]string)
 	fmt.Println(len(m))
 	m["0"]="0"
-	fmt.Println(len(m))
+	fmt.Println(m["1"]=="")
 }

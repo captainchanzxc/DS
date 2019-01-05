@@ -8,7 +8,13 @@ package shardkv
 // talks to the group that holds the key's shard.
 //
 
-import "labrpc"
+import (
+	"io/ioutil"
+	"labrpc"
+	"log"
+	"os"
+	"strconv"
+)
 import "crypto/rand"
 import "math/big"
 import "shardmaster"
@@ -40,6 +46,10 @@ type Clerk struct {
 	config   shardmaster.Config
 	make_end func(string) *labrpc.ClientEnd
 	// You will have to modify this struct.
+	id int64
+	serialNum int
+	ckLog      *log.Logger
+	logFile    *os.File
 }
 
 //
@@ -56,6 +66,14 @@ func MakeClerk(masters []*labrpc.ClientEnd, make_end func(string) *labrpc.Client
 	ck.sm = shardmaster.MakeClerk(masters)
 	ck.make_end = make_end
 	// You'll have to add code here.
+	ck.id=nrand()
+	ck.serialNum=0
+	//f, err := os.Create("client_0.log")
+	//ck.logFile =f
+	//if err != nil {
+	//	panic(err)
+	//}
+	ck.ckLog = log.New(ioutil.Discard, "[client "+strconv.FormatInt(ck.id,10)+"] ", log.Lmicroseconds)
 	return ck
 }
 
@@ -66,8 +84,12 @@ func MakeClerk(masters []*labrpc.ClientEnd, make_end func(string) *labrpc.Client
 // You will have to modify this function.
 //
 func (ck *Clerk) Get(key string) string {
+
 	args := GetArgs{}
 	args.Key = key
+	ck.serialNum++
+	args.SerialNum=ck.serialNum
+	args.ClerkId=ck.id
 
 	for {
 		shard := key2shard(key)
@@ -77,11 +99,15 @@ func (ck *Clerk) Get(key string) string {
 			for si := 0; si < len(servers); si++ {
 				srv := ck.make_end(servers[si])
 				var reply GetReply
+				//ck.ckLog.Printf("start to send to Server: %d, GetArgs: %v\n",si,args)
 				ok := srv.Call("ShardKV.Get", &args, &reply)
 				if ok && reply.WrongLeader == false && (reply.Err == OK || reply.Err == ErrNoKey) {
+					ck.ckLog.Printf("send get request: %v\n",args)
+					ck.ckLog.Printf("receive get apply: %v\n",reply)
 					return reply.Value
 				}
 				if ok && (reply.Err == ErrWrongGroup) {
+					ck.ckLog.Printf("send get: %v, but get wrong group.\n",args)
 					break
 				}
 			}
@@ -103,7 +129,9 @@ func (ck *Clerk) PutAppend(key string, value string, op string) {
 	args.Key = key
 	args.Value = value
 	args.Op = op
-
+	ck.serialNum++
+	args.SerialNum=ck.serialNum
+	args.ClerkId=ck.id
 
 	for {
 		shard := key2shard(key)
@@ -114,9 +142,12 @@ func (ck *Clerk) PutAppend(key string, value string, op string) {
 				var reply PutAppendReply
 				ok := srv.Call("ShardKV.PutAppend", &args, &reply)
 				if ok && reply.WrongLeader == false && reply.Err == OK {
+					ck.ckLog.Printf("send put/append args: %v\n",args)
+					ck.ckLog.Printf("receive put/append reply: %v\n",reply)
 					return
 				}
 				if ok && reply.Err == ErrWrongGroup {
+					ck.ckLog.Printf("send put/append: %v, but get wrong leader.\n",args)
 					break
 				}
 			}
