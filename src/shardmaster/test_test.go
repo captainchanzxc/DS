@@ -90,17 +90,14 @@ func TestBasic(t *testing.T) {
 	cfa[0] = ck.Query(-1)
 
 	check(t, []int{}, ck)
-
 	var gid1 int = 1
 	ck.Join(map[int][]string{gid1: []string{"x", "y", "z"}})
 	check(t, []int{gid1}, ck)
 	cfa[1] = ck.Query(-1)
-
 	var gid2 int = 2
 	ck.Join(map[int][]string{gid2: []string{"a", "b", "c"}})
 	check(t, []int{gid1, gid2}, ck)
 	cfa[2] = ck.Query(-1)
-
 	cfx := ck.Query(-1)
 	sa1 := cfx.Groups[gid1]
 	if len(sa1) != 3 || sa1[0] != "x" || sa1[1] != "y" || sa1[2] != "z" {

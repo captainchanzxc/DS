@@ -12,6 +12,8 @@ func main(){
 	//}
 	//m["100"]+="122"
 	//fmt.Println(m["100"])
-	var m map[string]string
-	fmt.Println(m==nil)
+	m:=make(map[string]string)
+	fmt.Println(len(m))
+	m["0"]="0"
+	fmt.Println(len(m))
 }
