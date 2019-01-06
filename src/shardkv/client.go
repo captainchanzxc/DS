@@ -9,7 +9,6 @@ package shardkv
 //
 
 import (
-	"io/ioutil"
 	"labrpc"
 	"log"
 	"os"
@@ -74,7 +73,7 @@ func MakeClerk(masters []*labrpc.ClientEnd, make_end func(string) *labrpc.Client
 	//	panic(err)
 	//}
 	ck.config = ck.sm.Query(-1)
-	ck.ckLog = log.New(ioutil.Discard, "[client "+strconv.FormatInt(ck.id,10)+"] ", log.Lmicroseconds)
+	ck.ckLog = log.New(os.Stdout, "[client "+strconv.FormatInt(ck.id,10)+"] ", log.Lmicroseconds)
 	return ck
 }
 

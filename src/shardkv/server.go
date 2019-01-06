@@ -2,7 +2,6 @@ package shardkv
 
 // import "shardmaster"
 import (
-	"io/ioutil"
 	"labrpc"
 	"log"
 	"os"
@@ -195,7 +194,7 @@ func (kv *ShardKV) apply() {
 		applyMsg := <-kv.applyCh
 		if applyMsg.CommandValid == false {
 			//install snapshot
-			//kv.kvLog.Printf("install snapshot: %v\n", applyMsg.Snpst)
+			kv.kvLog.Printf("install snapshot: %v\n", applyMsg.Snpst)
 			kv.mu.Lock()
 			kv.mapDb = applyMsg.Snpst.State
 			snapShotSerialNums := applyMsg.Snpst.SerialNums
@@ -205,7 +204,7 @@ func (kv *ShardKV) apply() {
 			kv.mu.Unlock()
 		} else {
 			command := applyMsg.Command.(Op)
-			//kv.kvLog.Printf("apply: %v\n", command)
+			kv.kvLog.Printf("apply: %v\n", command)
 			if kv.me == command.LeaderId {
 				ch, _ := kv.applyReplyChMap.LoadOrStore(command.ClerkId, make(chan ApplyReplyArgs))
 				applyReplyCh := ch.(chan ApplyReplyArgs)
@@ -220,17 +219,17 @@ func (kv *ShardKV) apply() {
 				if serialNum.(int) < command.SerialNum {
 					kv.serialNums.Store(command.ClerkId, command.SerialNum)
 					kv.mapDb[command.Key] = command.Value
-					//kv.kvLog.Printf("state size: %d, logs: %v\n", kv.rf.GetStateSize(), kv.rf.GetLogs())
+					kv.kvLog.Printf("state size: %d, logs: %v\n", kv.rf.GetStateSize(), kv.rf.GetLogs())
 					if kv.maxraftstate > 0 && kv.rf.GetStateSize() > kv.maxraftstate {
-						kv.mu.Lock()
+
 						snapShotSerialNums := make(map[int64]int)
 						kv.serialNums.Range(func(key, value interface{}) bool {
 							snapShotSerialNums[key.(int64)] = value.(int)
 							return true
 						})
 						snapShot := raft.SnapShot{LastIncludedIndex: applyMsg.CommandIndex, LastIncludedTerm: applyMsg.CommandTerm, State: kv.mapDb, SerialNums: snapShotSerialNums}
-						kv.mu.Unlock()
-						//kv.kvLog.Printf("save snapshot: %v\n", snapShot)
+
+						kv.kvLog.Printf("save snapshot: %v\n", snapShot)
 						kv.rf.SaveSnapShot(snapShot)
 					}
 
@@ -240,17 +239,17 @@ func (kv *ShardKV) apply() {
 				if serialNum.(int) < command.SerialNum {
 					kv.serialNums.Store(command.ClerkId, command.SerialNum)
 					kv.mapDb[command.Key] += command.Value
-					//kv.kvLog.Printf("state size: %d, logs: %v\n", kv.rf.GetStateSize(), kv.rf.GetLogs())
+					kv.kvLog.Printf("state size: %d, logs: %v\n", kv.rf.GetStateSize(), kv.rf.GetLogs())
 					if kv.maxraftstate > 0 && kv.rf.GetStateSize() > kv.maxraftstate {
-						kv.mu.Lock()
+
 						snapShotSerialNums := make(map[int64]int)
 						kv.serialNums.Range(func(key, value interface{}) bool {
 							snapShotSerialNums[key.(int64)] = value.(int)
 							return true
 						})
 						snapShot := raft.SnapShot{LastIncludedIndex: applyMsg.CommandIndex, LastIncludedTerm: applyMsg.CommandTerm, State: kv.mapDb, SerialNums: snapShotSerialNums}
-						kv.mu.Unlock()
-						//kv.kvLog.Printf("save snapshot: %v\n", snapShot)
+
+						kv.kvLog.Printf("save snapshot: %v\n", snapShot)
 						kv.rf.SaveSnapShot(snapShot)
 					}
 				}
@@ -262,32 +261,30 @@ func (kv *ShardKV) apply() {
 						kv.mapDb[k] = v
 					}
 					go func() { kv.migrateSuccessCh <- 1 }()
-					//kv.kvLog.Printf("state size: %d, logs: %v\n", kv.rf.GetStateSize(), kv.rf.GetLogs())
+					kv.kvLog.Printf("state size: %d, logs: %v\n", kv.rf.GetStateSize(), kv.rf.GetLogs())
 					if kv.maxraftstate > 0 && kv.rf.GetStateSize() > kv.maxraftstate {
-						kv.mu.Lock()
+
 						snapShotSerialNums := make(map[int64]int)
 						kv.serialNums.Range(func(key, value interface{}) bool {
 							snapShotSerialNums[key.(int64)] = value.(int)
 							return true
 						})
 						snapShot := raft.SnapShot{LastIncludedIndex: applyMsg.CommandIndex, LastIncludedTerm: applyMsg.CommandTerm, State: kv.mapDb, SerialNums: snapShotSerialNums}
-						kv.mu.Unlock()
-						//kv.kvLog.Printf("save snapshot: %v\n", snapShot)
+
+						kv.kvLog.Printf("save snapshot: %v\n", snapShot)
 						kv.rf.SaveSnapShot(snapShot)
 					}
 				}
 			case getOp:
-				//kv.kvLog.Printf("state size: %d, logs: %v\n", kv.rf.GetStateSize(), kv.rf.GetLogs())
+				kv.kvLog.Printf("state size: %d, logs: %v\n", kv.rf.GetStateSize(), kv.rf.GetLogs())
 				if kv.maxraftstate > 0 && kv.rf.GetStateSize() > kv.maxraftstate {
-					kv.mu.Lock()
 					snapShotSerialNums := make(map[int64]int)
 					kv.serialNums.Range(func(key, value interface{}) bool {
 						snapShotSerialNums[key.(int64)] = value.(int)
 						return true
 					})
 					snapShot := raft.SnapShot{LastIncludedIndex: applyMsg.CommandIndex, LastIncludedTerm: applyMsg.CommandTerm, State: kv.mapDb, SerialNums: snapShotSerialNums}
-					kv.mu.Unlock()
-					//kv.kvLog.Printf("save snapshot: %v\n", snapShot)
+					kv.kvLog.Printf("save snapshot: %v\n", snapShot)
 					kv.rf.SaveSnapShot(snapShot)
 				}
 			}
@@ -353,10 +350,10 @@ func (kv *ShardKV) InstallMigrateData(args *MigrateArgs, reply *MigrateReply) {
 				reply.Gid = kv.gid
 			} else {
 				reply.Err = ERR_NOT_COMMIT
-				//kv.kvLog.Printf("reply put/append op fail %v\n", applyReplyMsg)
+				kv.kvLog.Printf("reply put/append op fail %v\n", applyReplyMsg)
 			}
 		case <-time.After(kv.timeOut):
-			//kv.kvLog.Printf("time out: %v\n", op)
+			kv.kvLog.Printf("time out: %v\n", op)
 			reply.Err = ERR_NOT_COMMIT
 		}
 	}
@@ -366,7 +363,7 @@ func (kv *ShardKV) checkConfig() {
 		time.Sleep(100 * time.Millisecond)
 		kv.mu.Lock()
 		oldConfig := kv.currentConfig
-		kv.currentConfig = kv.mck.Query(-1)
+		kv.currentConfig = kv.mck.Query(oldConfig.Num+1)
 		_, isLeader := kv.rf.GetState()
 		if isLeader {
 			for s, g := range kv.currentConfig.Shards {
@@ -415,6 +412,7 @@ func (kv *ShardKV) checkConfig() {
 				} else if oldConfig.Shards[s] != kv.gid && g == kv.gid {
 					//[group kv.gid] gains a new [shard s], [group oldConfig.Shards[s]] loses [shard s]
 					//wait for migrate data from [group oldConfig.Shards[s]]
+					kv.kvLog.Printf("old config: %v, current config: %v\n", oldConfig, kv.currentConfig)
 					kv.kvLog.Printf("GID: %d wait from GID: %d\n", kv.gid, oldConfig.Shards[s])
 					<-kv.migrateSuccessCh
 					kv.kvLog.Printf("GID: %d receive from GID: %d\n", kv.gid, oldConfig.Shards[s])
@@ -486,18 +484,18 @@ func StartServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persister,
 	}
 
 	kv.logFile = f
-	kv.kvLog = log.New(ioutil.Discard, "[server "+strconv.Itoa(kv.me)+"] ", log.Lmicroseconds)
+	kv.kvLog = log.New(kv.logFile, "[server "+strconv.Itoa(kv.me)+"] ", log.Lmicroseconds)
 	kv.timeOut = 1000 * time.Millisecond
 	// Use something like this to talk to the shardmaster:
 	// kv.mck = shardmaster.MakeClerk(kv.masters)
 	kv.mck = shardmaster.MakeClerk(kv.masters)
-	kv.currentConfig = kv.mck.Query(-1)
 
 	kv.applyCh = make(chan raft.ApplyMsg)
 	kv.migrateSerialNums = make(map[int]int)
 	kv.migrateSuccessCh = make(chan int)
+	kv.currentConfig=kv.mck.Query(-1)
 	kv.rf = raft.Make(servers, me, persister, kv.applyCh)
-	kv.rf.RfLog.SetOutput(ioutil.Discard)
+	kv.rf.RfLog.SetOutput(kv.logFile)
 	snapShot, readOk := kv.rf.GetSnapShot()
 	if readOk {
 		kv.mapDb = snapShot.State
@@ -507,6 +505,7 @@ func StartServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persister,
 		}
 	} else {
 		kv.mapDb = make(map[string]string)
+
 	}
 
 	kv.kvLog.Printf("initial, kv.gid: %d, kv.currentConfig: %v\n", kv.gid, kv.currentConfig)

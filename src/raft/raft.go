@@ -58,6 +58,7 @@ type SnapShot struct {
 	LastIncludedTerm  int
 	State             map[string]string
 	SerialNums        map[int64]int
+	ConfigNum int
 }
 
 type ApplyMsg struct {
@@ -780,7 +781,7 @@ func (rf *Raft) checkApplied() {
 		}
 		if rf.CommitIndex > rf.LastApplied {
 			rf.LastApplied += 1
-			//rf.RfLog.Printf("rf.LastApplied: %d, rf.LastIncludedIdnex: %d, true index: %d, rf.Logs: %v\n", rf.LastApplied, rf.LastIncludedIndex, rf.LastApplied-rf.LastIncludedIndex, rf.Logs)
+			rf.RfLog.Printf("rf.LastApplied: %d, rf.LastIncludedIdnex: %d, true index: %d, rf.Logs: %v\n", rf.LastApplied, rf.LastIncludedIndex, rf.LastApplied-rf.LastIncludedIndex, rf.Logs)
 			if rf.LastApplied > rf.LastIncludedIndex {
 				applyMsg := ApplyMsg{Command: rf.Logs[rf.LastApplied-rf.LastIncludedIndex].Command, CommandIndex: rf.LastApplied, CommandValid: true, CommandTerm: rf.Logs[rf.LastApplied-rf.LastIncludedIndex].Term}
 				go func() {
@@ -883,8 +884,10 @@ func (rf *Raft) GetSnapShot() (SnapShot, bool) {
 	var lastIncludeIndex int
 	var state map[string]string
 	var serialNums map[int64]int
+	var configNum int
 	if d.Decode(&lastIncludeTerm) != nil ||
-		d.Decode(&lastIncludeIndex) != nil || d.Decode(&state) != nil || d.Decode(&serialNums) != nil {
+		d.Decode(&lastIncludeIndex) != nil || d.Decode(&state) != nil || d.Decode(&serialNums) != nil ||
+		d.Decode(&configNum)!=nil{
 		rf.RfLog.Println("decode snapshot error")
 
 		return snapshot, false
@@ -893,6 +896,7 @@ func (rf *Raft) GetSnapShot() (SnapShot, bool) {
 		snapshot.LastIncludedTerm = lastIncludeTerm
 		snapshot.State = state
 		snapshot.SerialNums = serialNums
+		snapshot.ConfigNum=configNum
 	}
 	rf.RfLog.Printf("read snapshot: %v\n", snapshot)
 
@@ -937,6 +941,7 @@ func (rf *Raft) SaveSnapShot(snapShot SnapShot) {
 	err2 = e1.Encode(snapShot.LastIncludedIndex)
 	err3 = e1.Encode(snapShot.State)
 	err4 := e1.Encode(snapShot.SerialNums)
+	err5:=e1.Encode(snapShot.ConfigNum)
 	if err1 != nil {
 		panic(err1)
 	}
@@ -948,6 +953,9 @@ func (rf *Raft) SaveSnapShot(snapShot SnapShot) {
 	}
 	if err4 != nil {
 		panic(err4)
+	}
+	if err5!=nil{
+		panic(err5)
 	}
 	snapShotBytes := w1.Bytes()
 

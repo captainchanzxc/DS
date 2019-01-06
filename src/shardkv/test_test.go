@@ -147,7 +147,7 @@ func TestSnapshot(t *testing.T) {
 	defer cfg.cleanup()
 
 	ck := cfg.makeClient()
-
+	fmt.Println("11111111111111111")
 	cfg.join(0)
 
 	n := 30
@@ -161,18 +161,19 @@ func TestSnapshot(t *testing.T) {
 	for i := 0; i < n; i++ {
 		check(t, ck, ka[i], va[i])
 	}
+	fmt.Println("2222222222222222222")
 
 	cfg.join(1)
 	cfg.join(2)
 	cfg.leave(0)
-
+	fmt.Println("3333333333333333333333333")
 	for i := 0; i < n; i++ {
 		check(t, ck, ka[i], va[i])
 		x := randstring(20)
 		ck.Append(ka[i], x)
 		va[i] += x
 	}
-
+	fmt.Println("44444444444444444444444")
 	cfg.leave(1)
 	cfg.join(0)
 
@@ -182,7 +183,7 @@ func TestSnapshot(t *testing.T) {
 		ck.Append(ka[i], x)
 		va[i] += x
 	}
-
+	fmt.Println("555555555555555555555")
 	time.Sleep(1 * time.Second)
 
 	for i := 0; i < n; i++ {
@@ -192,11 +193,11 @@ func TestSnapshot(t *testing.T) {
 	time.Sleep(1 * time.Second)
 
 	cfg.checklogs()
-
+	fmt.Println("66666666666666666")
 	cfg.ShutdownGroup(0)
 	cfg.ShutdownGroup(1)
 	cfg.ShutdownGroup(2)
-
+	fmt.Println("7777777777777777777")
 	cfg.StartGroup(0)
 	cfg.StartGroup(1)
 	cfg.StartGroup(2)
@@ -231,7 +232,7 @@ func TestMissChange(t *testing.T) {
 	}
 
 	cfg.join(1)
-
+fmt.Println("111111111111111111111111111")
 	cfg.ShutdownServer(0, 0)
 	cfg.ShutdownServer(1, 0)
 	cfg.ShutdownServer(2, 0)
@@ -246,7 +247,7 @@ func TestMissChange(t *testing.T) {
 		ck.Append(ka[i], x)
 		va[i] += x
 	}
-
+	fmt.Println("222222222222222222")
 	cfg.join(1)
 
 	for i := 0; i < n; i++ {
@@ -255,7 +256,7 @@ func TestMissChange(t *testing.T) {
 		ck.Append(ka[i], x)
 		va[i] += x
 	}
-
+	fmt.Println("333333333333333333333")
 	cfg.StartServer(0, 0)
 	cfg.StartServer(1, 0)
 	cfg.StartServer(2, 0)
@@ -266,7 +267,7 @@ func TestMissChange(t *testing.T) {
 		ck.Append(ka[i], x)
 		va[i] += x
 	}
-
+	fmt.Println("4444444444444444444444444")
 	time.Sleep(2 * time.Second)
 
 	cfg.ShutdownServer(0, 1)
@@ -282,6 +283,7 @@ func TestMissChange(t *testing.T) {
 		ck.Append(ka[i], x)
 		va[i] += x
 	}
+	fmt.Println("55555555555555555555555")
 
 	cfg.StartServer(0, 1)
 	cfg.StartServer(1, 1)
