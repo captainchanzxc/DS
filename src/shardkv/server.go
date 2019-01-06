@@ -20,6 +20,7 @@ const (
 	appendOp                   = "append"
 	getOp                      = "get"
 	migrateOp                  = "migrate"
+	requestMigrateOp           = "requestMigrate"
 	ERR_CONNECTION_FAIL        = "connection fail"
 	ERR_NOT_COMMIT             = "not commit"
 	ERR_NOT_LEADER             = "not leader"
@@ -33,6 +34,7 @@ type Op struct {
 	Key         string
 	Value       string
 	MigrateData map[string]string
+	Shard       int
 	SerialNum   int
 	ClerkId     int64
 	LeaderId    int
@@ -42,6 +44,7 @@ type ApplyReplyArgs struct {
 	CommitIndex int
 	Command     Op
 	Value       string
+	Values      map[string]string
 }
 
 type ShardKV struct {
@@ -205,14 +208,8 @@ func (kv *ShardKV) apply() {
 		} else {
 			command := applyMsg.Command.(Op)
 			kv.kvLog.Printf("apply: %v\n", command)
-			if kv.me == command.LeaderId {
-				ch, _ := kv.applyReplyChMap.LoadOrStore(command.ClerkId, make(chan ApplyReplyArgs))
-				applyReplyCh := ch.(chan ApplyReplyArgs)
-				select {
-				case applyReplyCh <- ApplyReplyArgs{Command: command, CommitIndex: applyMsg.CommandIndex, Value: kv.mapDb[command.Key]}:
-				default:
-				}
-			}
+			applyReplyArgs := ApplyReplyArgs{Command: command, CommitIndex: applyMsg.CommandIndex}
+
 			switch command.Type {
 			case putOp:
 				serialNum, _ := kv.serialNums.LoadOrStore(command.ClerkId, 0)
@@ -260,7 +257,6 @@ func (kv *ShardKV) apply() {
 					for k, v := range command.MigrateData {
 						kv.mapDb[k] = v
 					}
-					go func() { kv.migrateSuccessCh <- 1 }()
 					kv.kvLog.Printf("state size: %d, logs: %v\n", kv.rf.GetStateSize(), kv.rf.GetLogs())
 					if kv.maxraftstate > 0 && kv.rf.GetStateSize() > kv.maxraftstate {
 
@@ -277,6 +273,7 @@ func (kv *ShardKV) apply() {
 				}
 			case getOp:
 				kv.kvLog.Printf("state size: %d, logs: %v\n", kv.rf.GetStateSize(), kv.rf.GetLogs())
+				applyReplyArgs.Value = kv.mapDb[command.Key]
 				if kv.maxraftstate > 0 && kv.rf.GetStateSize() > kv.maxraftstate {
 					snapShotSerialNums := make(map[int64]int)
 					kv.serialNums.Range(func(key, value interface{}) bool {
@@ -286,6 +283,34 @@ func (kv *ShardKV) apply() {
 					snapShot := raft.SnapShot{LastIncludedIndex: applyMsg.CommandIndex, LastIncludedTerm: applyMsg.CommandTerm, State: kv.mapDb, SerialNums: snapShotSerialNums}
 					kv.kvLog.Printf("save snapshot: %v\n", snapShot)
 					kv.rf.SaveSnapShot(snapShot)
+				}
+			case requestMigrateOp:
+				kv.kvLog.Printf("state size: %d, logs: %v\n", kv.rf.GetStateSize(), kv.rf.GetLogs())
+				shard := command.Shard
+				values := make(map[string]string)
+				for k, v := range kv.mapDb {
+					if shard == key2shard(k) {
+						values[k] = v
+					}
+				}
+				applyReplyArgs.Values = values
+				if kv.maxraftstate > 0 && kv.rf.GetStateSize() > kv.maxraftstate {
+					snapShotSerialNums := make(map[int64]int)
+					kv.serialNums.Range(func(key, value interface{}) bool {
+						snapShotSerialNums[key.(int64)] = value.(int)
+						return true
+					})
+					snapShot := raft.SnapShot{LastIncludedIndex: applyMsg.CommandIndex, LastIncludedTerm: applyMsg.CommandTerm, State: kv.mapDb, SerialNums: snapShotSerialNums}
+					kv.kvLog.Printf("save snapshot: %v\n", snapShot)
+					kv.rf.SaveSnapShot(snapShot)
+				}
+			}
+			if kv.me == command.LeaderId {
+				ch, _ := kv.applyReplyChMap.LoadOrStore(command.ClerkId, make(chan ApplyReplyArgs))
+				applyReplyCh := ch.(chan ApplyReplyArgs)
+				select {
+				case applyReplyCh <- applyReplyArgs:
+				default:
 				}
 			}
 
@@ -342,7 +367,6 @@ func (kv *ShardKV) InstallMigrateData(args *MigrateArgs, reply *MigrateReply) {
 					return
 				}
 			}
-
 			if index == applyReplyMsg.CommitIndex && applyReplyMsg.Command.ClerkId == op.ClerkId && applyReplyMsg.Command.SerialNum == op.SerialNum {
 				kv.kvLog.Printf("reply migrate op succeed %v\n", applyReplyMsg)
 				kv.kvLog.Printf("send to migrate reply: %v\n", reply)
@@ -358,12 +382,72 @@ func (kv *ShardKV) InstallMigrateData(args *MigrateArgs, reply *MigrateReply) {
 		}
 	}
 }
+
+type RequestMigrateArgs struct {
+	Shard     int
+	SerialNum int
+	Gid       int
+	ToGid     int
+}
+type RequestMigrateReply struct {
+	Success     bool
+	Data        map[string]string
+	Err         string
+	Gid         int
+	WrongLeader bool
+}
+
+func (kv *ShardKV) RequestMigrateData(args *RequestMigrateArgs, reply *RequestMigrateReply) {
+	clerkId := int64(args.Gid)
+	kv.applyReplyChMap.LoadOrStore(clerkId, make(chan ApplyReplyArgs))
+	op := Op{Shard: args.Shard, ClerkId: clerkId, SerialNum: args.SerialNum, LeaderId: kv.me, Type: requestMigrateOp}
+
+	index, _, isLeader := kv.rf.Start(op)
+	reply.WrongLeader = !isLeader
+	reply.Err = ""
+	if !isLeader {
+		//	kv.kvLog.Printf("receive PutAppendArgs: %v, but i'm not leader.\n",args)
+		reply.Err = ERR_NOT_LEADER
+	} else {
+		kv.kvLog.Printf("receive RequestMigrate op: %v\n", op)
+		ch, _ := kv.applyReplyChMap.Load(clerkId)
+		applyReplyCh := ch.(chan ApplyReplyArgs)
+		select {
+		case applyReplyMsg := <-applyReplyCh:
+			for applyReplyMsg.CommitIndex < index {
+				kv.kvLog.Printf("apply an old cmd: %v\n", applyReplyMsg)
+				select {
+				case applyReplyMsg = <-applyReplyCh:
+				case <-time.After(kv.timeOut):
+					kv.kvLog.Printf("time out: %v\n", op)
+					reply.Err = ERR_NOT_COMMIT
+					return
+				}
+			}
+
+			if index == applyReplyMsg.CommitIndex && applyReplyMsg.Command.ClerkId == op.ClerkId && applyReplyMsg.Command.SerialNum == op.SerialNum {
+				kv.kvLog.Printf("reply RequestMigrate op succeed %v\n", applyReplyMsg)
+				kv.kvLog.Printf("send to RequestMigrate: %v\n", reply)
+				reply.Err = OK
+				reply.Gid = kv.gid
+				reply.Data = applyReplyMsg.Values
+			} else {
+				reply.Err = ERR_NOT_COMMIT
+				kv.kvLog.Printf("reply put/append op fail %v\n", applyReplyMsg)
+			}
+		case <-time.After(kv.timeOut):
+			kv.kvLog.Printf("time out: %v\n", op)
+			reply.Err = ERR_NOT_COMMIT
+		}
+	}
+}
+
 func (kv *ShardKV) checkConfig() {
 	for {
-		time.Sleep(100 * time.Millisecond)
+		time.Sleep(60 * time.Millisecond)
 		kv.mu.Lock()
 		oldConfig := kv.currentConfig
-		kv.currentConfig = kv.mck.Query(oldConfig.Num+1)
+		kv.currentConfig = kv.mck.Query(oldConfig.Num + 1)
 		_, isLeader := kv.rf.GetState()
 		if isLeader {
 			for s, g := range kv.currentConfig.Shards {
@@ -375,36 +459,39 @@ func (kv *ShardKV) checkConfig() {
 					//migrate data from [group kv.gid] to [group g]
 					kv.kvLog.Printf("old config: %v, current config: %v\n", oldConfig, kv.currentConfig)
 					kv.kvLog.Printf("migrate data from GID: %d to GID: %d\n", kv.gid, g)
-
-					args := MigrateArgs{}
-					args.Data = make(map[string]string)
-					for k, v := range kv.mapDb {
-						shard := key2shard(k)
-						if shard == s {
-							args.Data[k] = v
-						}
-					}
-					args.Gid = kv.gid
-					args.ToGid = g
-					kv.migrateSerialNums[g]++
-					args.SerialNum = kv.migrateSerialNums[g]
-					sendSuccess := false
-					for sendSuccess == false {
-						if servers, ok := kv.currentConfig.Groups[g]; ok {
-							for _, server := range servers {
-								reply := MigrateReply{}
-								srv := kv.make_end(server)
-								ok := srv.Call("ShardKV.InstallMigrateData", &args, &reply)
-								if ok && reply.WrongLeader == false && reply.Err == OK {
-									kv.kvLog.Printf("send InstallMigrateArgs: %v\n", args)
-									kv.kvLog.Printf("recevice InstallMigrateArgs reply: %v\n", reply)
-									sendSuccess = true
-									break
-								}
-								//todo WrongGroup
+					go func(oldShard int,gid int) {
+						args := MigrateArgs{}
+						args.Data = make(map[string]string)
+						for k, v := range kv.mapDb {
+							shard := key2shard(k)
+							if shard == oldShard {
+								args.Data[k] = v
 							}
 						}
-					}
+						args.Gid = kv.gid
+						args.ToGid = gid
+						kv.migrateSerialNums[gid]++
+						args.SerialNum = kv.migrateSerialNums[gid]
+						sendSuccess := false
+						for sendSuccess == false {
+							if servers, ok := kv.currentConfig.Groups[gid]; ok {
+								for _, server := range servers {
+									reply := MigrateReply{}
+
+									srv := kv.make_end(server)
+									ok := srv.Call("ShardKV.InstallMigrateData", &args, &reply)
+									if ok && reply.WrongLeader == false && reply.Err == OK {
+										kv.kvLog.Printf("send InstallMigrateArgs: %v\n", args)
+										kv.kvLog.Printf("recevice InstallMigrateArgs reply: %v\n", reply)
+										sendSuccess = true
+										break
+									}
+									//todo WrongGroup
+								}
+							}
+						}
+					}(s,g)
+
 					kv.kvLog.Printf("migrate success\n")
 				} else if oldConfig.Shards[s] == 0 && g == kv.gid {
 					//[group kv.gid] gains a [new shard s]
@@ -414,7 +501,44 @@ func (kv *ShardKV) checkConfig() {
 					//wait for migrate data from [group oldConfig.Shards[s]]
 					kv.kvLog.Printf("old config: %v, current config: %v\n", oldConfig, kv.currentConfig)
 					kv.kvLog.Printf("GID: %d wait from GID: %d\n", kv.gid, oldConfig.Shards[s])
-					<-kv.migrateSuccessCh
+					args := RequestMigrateArgs{}
+					args.Shard = s
+					args.Gid = kv.gid
+					args.ToGid = oldConfig.Shards[s]
+					kv.migrateSerialNums[oldConfig.Shards[s]]++
+					args.SerialNum = kv.migrateSerialNums[oldConfig.Shards[s]]
+					sendSuccess := false
+					for sendSuccess == false {
+						if servers, ok := oldConfig.Groups[oldConfig.Shards[s]]; ok {
+							for _, server := range servers {
+								reply := RequestMigrateReply{}
+								srv := kv.make_end(server)
+								//kv.kvLog.Printf("start send RequestMigrateData: %v\n",args)
+								ok := srv.Call("ShardKV.RequestMigrateData", &args, &reply)
+								//kv.kvLog.Printf("get reply RequestMigrateData: %v\n",reply)
+								if ok && reply.WrongLeader == false && reply.Err == OK {
+									kv.kvLog.Printf("send RequestMigrateArgs: %v\n", args)
+									kv.kvLog.Printf("recevice RequestMigrateArgs reply: %v\n", reply)
+									installMigrateArgs := MigrateArgs{}
+									installMigrateArgs.Data = make(map[string]string)
+									for k, v := range reply.Data {
+										installMigrateArgs.Data[k] = v
+									}
+									installMigrateArgs.Gid = kv.gid
+									installMigrateArgs.ToGid = g
+									kv.migrateSerialNums[g]++
+									installMigrateArgs.SerialNum = kv.migrateSerialNums[g]
+									installMigrateReply := MigrateReply{}
+									kv.InstallMigrateData(&installMigrateArgs, &installMigrateReply)
+									if installMigrateReply.Err == OK {
+										sendSuccess = true
+										break
+									}
+								}
+								//todo WrongGroup
+							}
+						}
+					}
 					kv.kvLog.Printf("GID: %d receive from GID: %d\n", kv.gid, oldConfig.Shards[s])
 				}
 			}
@@ -493,7 +617,7 @@ func StartServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persister,
 	kv.applyCh = make(chan raft.ApplyMsg)
 	kv.migrateSerialNums = make(map[int]int)
 	kv.migrateSuccessCh = make(chan int)
-	kv.currentConfig=kv.mck.Query(-1)
+	kv.currentConfig = kv.mck.Query(-1)
 	kv.rf = raft.Make(servers, me, persister, kv.applyCh)
 	kv.rf.RfLog.SetOutput(kv.logFile)
 	snapShot, readOk := kv.rf.GetSnapShot()
