@@ -1,4 +1,4 @@
-# Distribution System
+# Distributed System
 This repository is MIT6.824 2018 Spring Distributed System Test. I have passed most part of the tests, which list below:  
 * Lab 1: MapReduce
    * Part I (pass all tests)
