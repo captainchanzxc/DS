@@ -3,7 +3,7 @@ This repository is MIT6.824 2018 Spring Distributed System Test. I have passed m
 * Lab 1: MapReduce
    * Part I (pass all tests)
    * Part II (pass all tests)
-   * Part II (pass all tests)
+   * Part III (pass all tests)
 * Lab 2: Raft 
    * Part 2A (pass all tests)
    * Part 2B (pass all tests)
