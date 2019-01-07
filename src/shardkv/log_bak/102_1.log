@@ -1,0 +1,56 @@
+[raft 1] 02:21:26.601296 decode snapshot error
+[server 1] 02:21:26.601408 initial, kv.gid: 102, kv.currentConfig: {0 [0 0 0 0 0 0 0 0 0 0] map[]}
+[server 1] 02:21:26.601513 start to apply
+[raft 1] 02:21:26.693844 becomes follower in RequestVote
+[raft 1] 02:21:26.693892 receive RequestVoteArgs: &{2 0 0 0}, Reply: &{0 2 true}
+[raft 1] 02:22:42.292915 rf.LastApplied: 1, rf.LastIncludedIdnex: 0, true index: 1, rf.Logs: [{0 0} {2 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 1 101 0}}]
+[server 1] 02:22:42.292976 apply: {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 1 101 0}
+[server 1] 02:22:42.292996 migrateOp apply command: {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 1 101 0}
+[server 1] 02:22:42.293025 migrateOp apply return: {1 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 1 101 0}  map[]}
+[server 1] 02:22:42.293338 state size: 279, logs: [{0 0} {2 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 1 101 0}}]
+[server 1] 02:22:42.293350 map[7:KpbSllWKDv5vnqTh-BTh]
+[server 1] 02:22:42.293358 start to apply
+[raft 1] 02:22:43.243030 rf.LastApplied: 2, rf.LastIncludedIdnex: 0, true index: 2, rf.Logs: [{0 0} {2 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 1 101 0}} {2 {requestMigrate   map[] 2 2 101 0}} {2 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 3 101 0}}]
+[server 1] 02:22:43.243055 apply: {requestMigrate   map[] 2 2 101 0}
+[server 1] 02:22:43.243085 state size: 380, logs: [{0 0} {2 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 1 101 0}} {2 {requestMigrate   map[] 2 2 101 0}} {2 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 3 101 0}}]
+[server 1] 02:22:43.243094 requestMigrateOp apply command: {requestMigrate   map[] 2 2 101 0}
+[server 1] 02:22:43.243101 shard is: 2
+[server 1] 02:22:43.243109 requestMigrateOp apply return: {2 {requestMigrate   map[] 2 2 101 0}  map[]}
+[server 1] 02:22:43.243117 map[7:KpbSllWKDv5vnqTh-BTh]
+[server 1] 02:22:43.243123 start to apply
+[raft 1] 02:22:43.295135 rf.LastApplied: 3, rf.LastIncludedIdnex: 0, true index: 3, rf.Logs: [{0 0} {2 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 1 101 0}} {2 {requestMigrate   map[] 2 2 101 0}} {2 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 3 101 0}} {2 {migrate   map[4:USBE8r8gAwsIARRdTZUH] 0 1 100 0}}]
+[server 1] 02:22:43.295156 apply: {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 3 101 0}
+[server 1] 02:22:43.295168 migrateOp apply command: {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 3 101 0}
+[server 1] 02:22:43.295178 migrateOp apply return: {3 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 3 101 0}  map[]}
+[server 1] 02:22:43.295195 state size: 438, logs: [{0 0} {2 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 1 101 0}} {2 {requestMigrate   map[] 2 2 101 0}} {2 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 3 101 0}} {2 {migrate   map[4:USBE8r8gAwsIARRdTZUH] 0 1 100 0}}]
+[server 1] 02:22:43.295205 map[7:KpbSllWKDv5vnqTh-BTh 3:sq3vtNA2GPj7KmTDODI8]
+[server 1] 02:22:43.295213 start to apply
+[raft 1] 02:22:43.326373 rf.LastApplied: 4, rf.LastIncludedIdnex: 0, true index: 4, rf.Logs: [{0 0} {2 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 1 101 0}} {2 {requestMigrate   map[] 2 2 101 0}} {2 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 3 101 0}} {2 {migrate   map[4:USBE8r8gAwsIARRdTZUH] 0 1 100 0}} {2 {requestMigrate   map[] 8 4 101 0}}]
+[server 1] 02:22:43.326412 apply: {migrate   map[4:USBE8r8gAwsIARRdTZUH] 0 1 100 0}
+[server 1] 02:22:43.326425 migrateOp apply command: {migrate   map[4:USBE8r8gAwsIARRdTZUH] 0 1 100 0}
+[server 1] 02:22:43.326435 migrateOp apply return: {4 {migrate   map[4:USBE8r8gAwsIARRdTZUH] 0 1 100 0}  map[]}
+[server 1] 02:22:43.326450 state size: 480, logs: [{0 0} {2 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 1 101 0}} {2 {requestMigrate   map[] 2 2 101 0}} {2 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 3 101 0}} {2 {migrate   map[4:USBE8r8gAwsIARRdTZUH] 0 1 100 0}} {2 {requestMigrate   map[] 8 4 101 0}}]
+[server 1] 02:22:43.326459 map[7:KpbSllWKDv5vnqTh-BTh 3:sq3vtNA2GPj7KmTDODI8 4:USBE8r8gAwsIARRdTZUH]
+[server 1] 02:22:43.326465 start to apply
+[raft 1] 02:22:43.358433 rf.LastApplied: 5, rf.LastIncludedIdnex: 0, true index: 5, rf.Logs: [{0 0} {2 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 1 101 0}} {2 {requestMigrate   map[] 2 2 101 0}} {2 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 3 101 0}} {2 {migrate   map[4:USBE8r8gAwsIARRdTZUH] 0 1 100 0}} {2 {requestMigrate   map[] 8 4 101 0}} {2 {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 5 101 0}}]
+[server 1] 02:22:43.358548 apply: {requestMigrate   map[] 8 4 101 0}
+[server 1] 02:22:43.358627 state size: 539, logs: [{0 0} {2 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 1 101 0}} {2 {requestMigrate   map[] 2 2 101 0}} {2 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 3 101 0}} {2 {migrate   map[4:USBE8r8gAwsIARRdTZUH] 0 1 100 0}} {2 {requestMigrate   map[] 8 4 101 0}} {2 {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 5 101 0}}]
+[server 1] 02:22:43.358649 requestMigrateOp apply command: {requestMigrate   map[] 8 4 101 0}
+[server 1] 02:22:43.358665 shard is: 8
+[server 1] 02:22:43.358678 requestMigrateOp apply return: {5 {requestMigrate   map[] 8 4 101 0}  map[]}
+[server 1] 02:22:43.358689 map[7:KpbSllWKDv5vnqTh-BTh 3:sq3vtNA2GPj7KmTDODI8 4:USBE8r8gAwsIARRdTZUH]
+[server 1] 02:22:43.358696 start to apply
+[raft 1] 02:22:43.390520 rf.LastApplied: 6, rf.LastIncludedIdnex: 0, true index: 6, rf.Logs: [{0 0} {2 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 1 101 0}} {2 {requestMigrate   map[] 2 2 101 0}} {2 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 3 101 0}} {2 {migrate   map[4:USBE8r8gAwsIARRdTZUH] 0 1 100 0}} {2 {requestMigrate   map[] 8 4 101 0}} {2 {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 5 101 0}} {2 {migrate   map[0:-0D3Ut8DZk_QzwkkKKtl] 0 2 100 0}}]
+[server 1] 02:22:43.390541 apply: {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 5 101 0}
+[server 1] 02:22:43.390552 migrateOp apply command: {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 5 101 0}
+[server 1] 02:22:43.390563 migrateOp apply return: {6 {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 5 101 0}  map[]}
+[server 1] 02:22:43.390583 state size: 597, logs: [{0 0} {2 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 1 101 0}} {2 {requestMigrate   map[] 2 2 101 0}} {2 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 3 101 0}} {2 {migrate   map[4:USBE8r8gAwsIARRdTZUH] 0 1 100 0}} {2 {requestMigrate   map[] 8 4 101 0}} {2 {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 5 101 0}} {2 {migrate   map[0:-0D3Ut8DZk_QzwkkKKtl] 0 2 100 0}}]
+[server 1] 02:22:43.390593 map[4:USBE8r8gAwsIARRdTZUH 9:4LGiOnPFz2M8QNgttwWC 7:KpbSllWKDv5vnqTh-BTh 3:sq3vtNA2GPj7KmTDODI8]
+[server 1] 02:22:43.390600 start to apply
+[raft 1] 02:22:43.422801 rf.LastApplied: 7, rf.LastIncludedIdnex: 0, true index: 7, rf.Logs: [{0 0} {2 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 1 101 0}} {2 {requestMigrate   map[] 2 2 101 0}} {2 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 3 101 0}} {2 {migrate   map[4:USBE8r8gAwsIARRdTZUH] 0 1 100 0}} {2 {requestMigrate   map[] 8 4 101 0}} {2 {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 5 101 0}} {2 {migrate   map[0:-0D3Ut8DZk_QzwkkKKtl] 0 2 100 0}} {2 {migrate   map[4:USBE8r8gAwsIARRdTZUH] 0 1 102 0}}]
+[server 1] 02:22:43.422822 apply: {migrate   map[0:-0D3Ut8DZk_QzwkkKKtl] 0 2 100 0}
+[server 1] 02:22:43.422832 migrateOp apply command: {migrate   map[0:-0D3Ut8DZk_QzwkkKKtl] 0 2 100 0}
+[server 1] 02:22:43.422842 migrateOp apply return: {7 {migrate   map[0:-0D3Ut8DZk_QzwkkKKtl] 0 2 100 0}  map[]}
+[server 1] 02:22:43.422860 state size: 655, logs: [{0 0} {2 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 1 101 0}} {2 {requestMigrate   map[] 2 2 101 0}} {2 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 3 101 0}} {2 {migrate   map[4:USBE8r8gAwsIARRdTZUH] 0 1 100 0}} {2 {requestMigrate   map[] 8 4 101 0}} {2 {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 5 101 0}} {2 {migrate   map[0:-0D3Ut8DZk_QzwkkKKtl] 0 2 100 0}} {2 {migrate   map[4:USBE8r8gAwsIARRdTZUH] 0 1 102 0}}]
+[server 1] 02:22:43.422883 map[7:KpbSllWKDv5vnqTh-BTh 3:sq3vtNA2GPj7KmTDODI8 4:USBE8r8gAwsIARRdTZUH 9:4LGiOnPFz2M8QNgttwWC 0:-0D3Ut8DZk_QzwkkKKtl]
+[server 1] 02:22:43.422890 start to apply

@@ -1,0 +1,309 @@
+[raft 0] 02:21:25.022361 decode snapshot error
+[server 0] 02:21:25.022418 initial, kv.gid: 101, kv.currentConfig: {0 [0 0 0 0 0 0 0 0 0 0] map[]}
+[server 0] 02:21:25.022711 start to apply
+[raft 0] 02:21:25.537537 start a new election
+[raft 0] 02:21:25.537693 send RequestVoteArgs: {1 0 0 0} to peer: 2
+[raft 0] 02:21:25.537717 send RequestVoteArgs: {1 0 0 0} to peer: 1
+[raft 0] 02:21:25.538075 request vote receive reply from peer 2, reply: {0 1 true}, args: {1 0 0 0}
+[raft 0] 02:21:25.538091 becomes leader in election
+[raft 0] 02:21:25.538257 request vote receive reply from peer 1, reply: {0 1 true}, args: {1 0 0 0}
+[server 0] 02:22:40.205380 old config: {1 [100 100 100 100 100 100 100 100 100 100] map[100:[server-100-0 server-100-1 server-100-2]]}, current config: {2 [100 101 100 101 100 101 100 101 100 101] map[100:[server-100-0 server-100-1 server-100-2] 101:[server-101-0 server-101-1 server-101-2]]}
+[server 0] 02:22:40.205422 GID: 101 wait from GID: 100
+[server 0] 02:22:40.215877 send RequestMigrateArgs: {1 1 101 100}
+[server 0] 02:22:40.215893 recevice RequestMigrateArgs reply: {false map[3:sq3vtNA2GPj7KmTDODI8] OK 100 false}
+[server 0] 02:22:40.215930 receive migrate op: {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 1 101 0}
+[raft 0] 02:22:40.229186 rf.LastApplied: 1, rf.LastIncludedIdnex: 0, true index: 1, rf.Logs: [{0 0} {1 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 1 101 0}}]
+[server 0] 02:22:40.229264 apply: {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 1 101 0}
+[server 0] 02:22:40.229300 migrateOp apply command: {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 1 101 0}
+[server 0] 02:22:40.229313 migrateOp apply return: {1 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 1 101 0}  map[]}
+[server 0] 02:22:40.229339 state size: 279, logs: [{0 0} {1 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 1 101 0}}]
+[server 0] 02:22:40.229366 final apply return: {1 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 1 101 0}  map[]}
+[server 0] 02:22:40.229375 map[3:sq3vtNA2GPj7KmTDODI8]
+[server 0] 02:22:40.229400 start to apply
+[server 0] 02:22:40.229412 reply migrate op succeed {1 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 1 101 0}  map[]}
+[server 0] 02:22:40.229425 send to migrate reply: &{false  0 false}
+[server 0] 02:22:40.229449 GID: 101 receive from GID: 100
+[server 0] 02:22:40.229463 old config: {1 [100 100 100 100 100 100 100 100 100 100] map[100:[server-100-0 server-100-1 server-100-2]]}, current config: {2 [100 101 100 101 100 101 100 101 100 101] map[100:[server-100-0 server-100-1 server-100-2] 101:[server-101-0 server-101-1 server-101-2]]}
+[server 0] 02:22:40.229471 GID: 101 wait from GID: 100
+[server 0] 02:22:40.258070 send RequestMigrateArgs: {3 2 101 100}
+[server 0] 02:22:40.258082 recevice RequestMigrateArgs reply: {false map[5:_Z0PgMUg0ae4PyN4SSZ3] OK 100 false}
+[server 0] 02:22:40.258166 receive migrate op: {migrate   map[5:_Z0PgMUg0ae4PyN4SSZ3] 0 2 101 0}
+[raft 0] 02:22:40.282155 rf.LastApplied: 2, rf.LastIncludedIdnex: 0, true index: 2, rf.Logs: [{0 0} {1 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 1 101 0}} {1 {migrate   map[5:_Z0PgMUg0ae4PyN4SSZ3] 0 2 101 0}}]
+[server 0] 02:22:40.282191 apply: {migrate   map[5:_Z0PgMUg0ae4PyN4SSZ3] 0 2 101 0}
+[server 0] 02:22:40.282203 migrateOp apply command: {migrate   map[5:_Z0PgMUg0ae4PyN4SSZ3] 0 2 101 0}
+[server 0] 02:22:40.282213 migrateOp apply return: {2 {migrate   map[5:_Z0PgMUg0ae4PyN4SSZ3] 0 2 101 0}  map[]}
+[server 0] 02:22:40.282226 state size: 337, logs: [{0 0} {1 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 1 101 0}} {1 {migrate   map[5:_Z0PgMUg0ae4PyN4SSZ3] 0 2 101 0}}]
+[server 0] 02:22:40.282237 final apply return: {2 {migrate   map[5:_Z0PgMUg0ae4PyN4SSZ3] 0 2 101 0}  map[]}
+[server 0] 02:22:40.282246 map[3:sq3vtNA2GPj7KmTDODI8 5:_Z0PgMUg0ae4PyN4SSZ3]
+[server 0] 02:22:40.282253 start to apply
+[server 0] 02:22:40.282263 reply migrate op succeed {2 {migrate   map[5:_Z0PgMUg0ae4PyN4SSZ3] 0 2 101 0}  map[]}
+[server 0] 02:22:40.282272 send to migrate reply: &{false  0 false}
+[server 0] 02:22:40.282279 GID: 101 receive from GID: 100
+[server 0] 02:22:40.282291 old config: {1 [100 100 100 100 100 100 100 100 100 100] map[100:[server-100-0 server-100-1 server-100-2]]}, current config: {2 [100 101 100 101 100 101 100 101 100 101] map[100:[server-100-0 server-100-1 server-100-2] 101:[server-101-0 server-101-1 server-101-2]]}
+[server 0] 02:22:40.282301 GID: 101 wait from GID: 100
+[server 0] 02:22:40.311854 send RequestMigrateArgs: {5 3 101 100}
+[server 0] 02:22:40.311867 recevice RequestMigrateArgs reply: {false map[7:KpbSllWKDv5vnqTh-BTh] OK 100 false}
+[server 0] 02:22:40.311904 receive migrate op: {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 3 101 0}
+[raft 0] 02:22:40.346127 rf.LastApplied: 3, rf.LastIncludedIdnex: 0, true index: 3, rf.Logs: [{0 0} {1 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 1 101 0}} {1 {migrate   map[5:_Z0PgMUg0ae4PyN4SSZ3] 0 2 101 0}} {1 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 3 101 0}}]
+[server 0] 02:22:40.346185 apply: {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 3 101 0}
+[server 0] 02:22:40.346214 migrateOp apply command: {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 3 101 0}
+[server 0] 02:22:40.346225 migrateOp apply return: {3 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 3 101 0}  map[]}
+[server 0] 02:22:40.346240 state size: 396, logs: [{0 0} {1 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 1 101 0}} {1 {migrate   map[5:_Z0PgMUg0ae4PyN4SSZ3] 0 2 101 0}} {1 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 3 101 0}}]
+[server 0] 02:22:40.346286 final apply return: {3 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 3 101 0}  map[]}
+[server 0] 02:22:40.346314 map[3:sq3vtNA2GPj7KmTDODI8 5:_Z0PgMUg0ae4PyN4SSZ3 7:KpbSllWKDv5vnqTh-BTh]
+[server 0] 02:22:40.346337 start to apply
+[server 0] 02:22:40.346348 reply migrate op succeed {3 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 3 101 0}  map[]}
+[server 0] 02:22:40.346357 send to migrate reply: &{false  0 false}
+[server 0] 02:22:40.346364 GID: 101 receive from GID: 100
+[server 0] 02:22:40.346376 old config: {1 [100 100 100 100 100 100 100 100 100 100] map[100:[server-100-0 server-100-1 server-100-2]]}, current config: {2 [100 101 100 101 100 101 100 101 100 101] map[100:[server-100-0 server-100-1 server-100-2] 101:[server-101-0 server-101-1 server-101-2]]}
+[server 0] 02:22:40.346383 GID: 101 wait from GID: 100
+[server 0] 02:22:40.374931 send RequestMigrateArgs: {7 4 101 100}
+[server 0] 02:22:40.374945 recevice RequestMigrateArgs reply: {false map[9:4LGiOnPFz2M8QNgttwWC] OK 100 false}
+[server 0] 02:22:40.374982 receive migrate op: {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 4 101 0}
+[raft 0] 02:22:40.420181 rf.LastApplied: 4, rf.LastIncludedIdnex: 0, true index: 4, rf.Logs: [{0 0} {1 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 1 101 0}} {1 {migrate   map[5:_Z0PgMUg0ae4PyN4SSZ3] 0 2 101 0}} {1 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 3 101 0}} {1 {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 4 101 0}}]
+[server 0] 02:22:40.420246 apply: {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 4 101 0}
+[server 0] 02:22:40.420258 migrateOp apply command: {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 4 101 0}
+[server 0] 02:22:40.420269 migrateOp apply return: {4 {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 4 101 0}  map[]}
+[server 0] 02:22:40.420283 state size: 454, logs: [{0 0} {1 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 1 101 0}} {1 {migrate   map[5:_Z0PgMUg0ae4PyN4SSZ3] 0 2 101 0}} {1 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 3 101 0}} {1 {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 4 101 0}}]
+[server 0] 02:22:40.420294 final apply return: {4 {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 4 101 0}  map[]}
+[server 0] 02:22:40.420303 map[3:sq3vtNA2GPj7KmTDODI8 5:_Z0PgMUg0ae4PyN4SSZ3 7:KpbSllWKDv5vnqTh-BTh 9:4LGiOnPFz2M8QNgttwWC]
+[server 0] 02:22:40.420309 start to apply
+[server 0] 02:22:40.420319 reply migrate op succeed {4 {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 4 101 0}  map[]}
+[server 0] 02:22:40.420328 send to migrate reply: &{false  0 false}
+[server 0] 02:22:40.420335 GID: 101 receive from GID: 100
+[server 0] 02:22:40.420347 old config: {1 [100 100 100 100 100 100 100 100 100 100] map[100:[server-100-0 server-100-1 server-100-2]]}, current config: {2 [100 101 100 101 100 101 100 101 100 101] map[100:[server-100-0 server-100-1 server-100-2] 101:[server-101-0 server-101-1 server-101-2]]}
+[server 0] 02:22:40.420358 GID: 101 wait from GID: 100
+[server 0] 02:22:40.458396 send RequestMigrateArgs: {9 5 101 100}
+[server 0] 02:22:40.458415 recevice RequestMigrateArgs reply: {false map[1:_DippeN4YXcXWWG1JNcZ 14:LkivqSNlx70NN86eMlKh 13:D_DJKK9GxqWxAPgf8PXM 15:dEg7yj_6tFbSGKswyPn8 19:lIa2meMlBSrRQuGwiMWT 18:e_RRdspQv52EJpqTbu4R 10:h5C8cfg4Mm1UscOV1nb6 12:O5cC_0Bx1ustJTajf7US 17:tJ7lPUHv2mmsKd1yCy-v 11:63f8ho0WuDlD5Ht9Zp7q 16:LrFcKr9PzaqkYXZhFo0-] OK 100 false}
+[server 0] 02:22:40.458624 receive migrate op: {migrate   map[13:D_DJKK9GxqWxAPgf8PXM 1:_DippeN4YXcXWWG1JNcZ 11:63f8ho0WuDlD5Ht9Zp7q 16:LrFcKr9PzaqkYXZhFo0- 19:lIa2meMlBSrRQuGwiMWT 18:e_RRdspQv52EJpqTbu4R 12:O5cC_0Bx1ustJTajf7US 17:tJ7lPUHv2mmsKd1yCy-v 15:dEg7yj_6tFbSGKswyPn8 14:LkivqSNlx70NN86eMlKh 10:h5C8cfg4Mm1UscOV1nb6] 0 5 101 0}
+[raft 0] 02:22:40.472439 rf.LastApplied: 5, rf.LastIncludedIdnex: 0, true index: 5, rf.Logs: [{0 0} {1 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 1 101 0}} {1 {migrate   map[5:_Z0PgMUg0ae4PyN4SSZ3] 0 2 101 0}} {1 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 3 101 0}} {1 {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 4 101 0}} {1 {migrate   map[10:h5C8cfg4Mm1UscOV1nb6 15:dEg7yj_6tFbSGKswyPn8 14:LkivqSNlx70NN86eMlKh 11:63f8ho0WuDlD5Ht9Zp7q 16:LrFcKr9PzaqkYXZhFo0- 19:lIa2meMlBSrRQuGwiMWT 18:e_RRdspQv52EJpqTbu4R 12:O5cC_0Bx1ustJTajf7US 17:tJ7lPUHv2mmsKd1yCy-v 13:D_DJKK9GxqWxAPgf8PXM 1:_DippeN4YXcXWWG1JNcZ] 0 5 101 0}}]
+[server 0] 02:22:40.472509 apply: {migrate   map[15:dEg7yj_6tFbSGKswyPn8 14:LkivqSNlx70NN86eMlKh 10:h5C8cfg4Mm1UscOV1nb6 19:lIa2meMlBSrRQuGwiMWT 18:e_RRdspQv52EJpqTbu4R 12:O5cC_0Bx1ustJTajf7US 17:tJ7lPUHv2mmsKd1yCy-v 13:D_DJKK9GxqWxAPgf8PXM 1:_DippeN4YXcXWWG1JNcZ 11:63f8ho0WuDlD5Ht9Zp7q 16:LrFcKr9PzaqkYXZhFo0-] 0 5 101 0}
+[server 0] 02:22:40.472523 migrateOp apply command: {migrate   map[15:dEg7yj_6tFbSGKswyPn8 14:LkivqSNlx70NN86eMlKh 10:h5C8cfg4Mm1UscOV1nb6 13:D_DJKK9GxqWxAPgf8PXM 1:_DippeN4YXcXWWG1JNcZ 11:63f8ho0WuDlD5Ht9Zp7q 16:LrFcKr9PzaqkYXZhFo0- 19:lIa2meMlBSrRQuGwiMWT 18:e_RRdspQv52EJpqTbu4R 12:O5cC_0Bx1ustJTajf7US 17:tJ7lPUHv2mmsKd1yCy-v] 0 5 101 0}
+[server 0] 02:22:40.472542 migrateOp apply return: {5 {migrate   map[13:D_DJKK9GxqWxAPgf8PXM 1:_DippeN4YXcXWWG1JNcZ 11:63f8ho0WuDlD5Ht9Zp7q 16:LrFcKr9PzaqkYXZhFo0- 19:lIa2meMlBSrRQuGwiMWT 18:e_RRdspQv52EJpqTbu4R 12:O5cC_0Bx1ustJTajf7US 17:tJ7lPUHv2mmsKd1yCy-v 15:dEg7yj_6tFbSGKswyPn8 14:LkivqSNlx70NN86eMlKh 10:h5C8cfg4Mm1UscOV1nb6] 0 5 101 0}  map[]}
+[server 0] 02:22:40.472560 state size: 755, logs: [{0 0} {1 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 1 101 0}} {1 {migrate   map[5:_Z0PgMUg0ae4PyN4SSZ3] 0 2 101 0}} {1 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 3 101 0}} {1 {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 4 101 0}} {1 {migrate   map[12:O5cC_0Bx1ustJTajf7US 17:tJ7lPUHv2mmsKd1yCy-v 13:D_DJKK9GxqWxAPgf8PXM 1:_DippeN4YXcXWWG1JNcZ 11:63f8ho0WuDlD5Ht9Zp7q 16:LrFcKr9PzaqkYXZhFo0- 19:lIa2meMlBSrRQuGwiMWT 18:e_RRdspQv52EJpqTbu4R 15:dEg7yj_6tFbSGKswyPn8 14:LkivqSNlx70NN86eMlKh 10:h5C8cfg4Mm1UscOV1nb6] 0 5 101 0}}]
+[server 0] 02:22:40.472575 final apply return: {5 {migrate   map[11:63f8ho0WuDlD5Ht9Zp7q 16:LrFcKr9PzaqkYXZhFo0- 19:lIa2meMlBSrRQuGwiMWT 18:e_RRdspQv52EJpqTbu4R 12:O5cC_0Bx1ustJTajf7US 17:tJ7lPUHv2mmsKd1yCy-v 13:D_DJKK9GxqWxAPgf8PXM 1:_DippeN4YXcXWWG1JNcZ 10:h5C8cfg4Mm1UscOV1nb6 15:dEg7yj_6tFbSGKswyPn8 14:LkivqSNlx70NN86eMlKh] 0 5 101 0}  map[]}
+[server 0] 02:22:40.472587 map[15:dEg7yj_6tFbSGKswyPn8 11:63f8ho0WuDlD5Ht9Zp7q 12:O5cC_0Bx1ustJTajf7US 10:h5C8cfg4Mm1UscOV1nb6 3:sq3vtNA2GPj7KmTDODI8 19:lIa2meMlBSrRQuGwiMWT 17:tJ7lPUHv2mmsKd1yCy-v 13:D_DJKK9GxqWxAPgf8PXM 16:LrFcKr9PzaqkYXZhFo0- 18:e_RRdspQv52EJpqTbu4R 5:_Z0PgMUg0ae4PyN4SSZ3 9:4LGiOnPFz2M8QNgttwWC 14:LkivqSNlx70NN86eMlKh 7:KpbSllWKDv5vnqTh-BTh 1:_DippeN4YXcXWWG1JNcZ]
+[server 0] 02:22:40.472594 start to apply
+[server 0] 02:22:40.472606 reply migrate op succeed {5 {migrate   map[10:h5C8cfg4Mm1UscOV1nb6 15:dEg7yj_6tFbSGKswyPn8 14:LkivqSNlx70NN86eMlKh 11:63f8ho0WuDlD5Ht9Zp7q 16:LrFcKr9PzaqkYXZhFo0- 19:lIa2meMlBSrRQuGwiMWT 18:e_RRdspQv52EJpqTbu4R 12:O5cC_0Bx1ustJTajf7US 17:tJ7lPUHv2mmsKd1yCy-v 13:D_DJKK9GxqWxAPgf8PXM 1:_DippeN4YXcXWWG1JNcZ] 0 5 101 0}  map[]}
+[server 0] 02:22:40.472619 send to migrate reply: &{false  0 false}
+[server 0] 02:22:40.472628 GID: 101 receive from GID: 100
+[server 0] 02:22:41.011869 receive migrate op: {migrate   map[17:tJ7lPUHv2mmsKd1yCy-v 15:dEg7yj_6tFbSGKswyPn8 18:e_RRdspQv52EJpqTbu4R 10:h5C8cfg4Mm1UscOV1nb6 12:O5cC_0Bx1ustJTajf7US 11:63f8ho0WuDlD5Ht9Zp7q 19:lIa2meMlBSrRQuGwiMWT 1:_DippeN4YXcXWWG1JNcZ 16:LrFcKr9PzaqkYXZhFo0- 13:D_DJKK9GxqWxAPgf8PXM 14:LkivqSNlx70NN86eMlKh] 0 1 100 0}
+[server 0] 02:22:41.011925 receive migrate op: {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 4 100 0}
+[server 0] 02:22:41.011985 receive migrate op: {migrate   map[5:_Z0PgMUg0ae4PyN4SSZ3] 0 2 100 0}
+[server 0] 02:22:41.012039 receive migrate op: {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 5 100 0}
+[server 0] 02:22:41.012084 receive migrate op: {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 3 100 0}
+[raft 0] 02:22:41.031047 rf.LastApplied: 6, rf.LastIncludedIdnex: 0, true index: 6, rf.Logs: [{0 0} {1 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 1 101 0}} {1 {migrate   map[5:_Z0PgMUg0ae4PyN4SSZ3] 0 2 101 0}} {1 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 3 101 0}} {1 {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 4 101 0}} {1 {migrate   map[15:dEg7yj_6tFbSGKswyPn8 14:LkivqSNlx70NN86eMlKh 10:h5C8cfg4Mm1UscOV1nb6 18:e_RRdspQv52EJpqTbu4R 12:O5cC_0Bx1ustJTajf7US 17:tJ7lPUHv2mmsKd1yCy-v 13:D_DJKK9GxqWxAPgf8PXM 1:_DippeN4YXcXWWG1JNcZ 11:63f8ho0WuDlD5Ht9Zp7q 16:LrFcKr9PzaqkYXZhFo0- 19:lIa2meMlBSrRQuGwiMWT] 0 5 101 0}} {1 {migrate   map[1:_DippeN4YXcXWWG1JNcZ 16:LrFcKr9PzaqkYXZhFo0- 13:D_DJKK9GxqWxAPgf8PXM 14:LkivqSNlx70NN86eMlKh 10:h5C8cfg4Mm1UscOV1nb6 12:O5cC_0Bx1ustJTajf7US 11:63f8ho0WuDlD5Ht9Zp7q 19:lIa2meMlBSrRQuGwiMWT 18:e_RRdspQv52EJpqTbu4R 17:tJ7lPUHv2mmsKd1yCy-v 15:dEg7yj_6tFbSGKswyPn8] 0 1 100 0}} {1 {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 4 100 0}} {1 {migrate   map[5:_Z0PgMUg0ae4PyN4SSZ3] 0 2 100 0}} {1 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 5 100 0}} {1 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 3 100 0}}]
+[server 0] 02:22:41.031097 apply: {migrate   map[14:LkivqSNlx70NN86eMlKh 10:h5C8cfg4Mm1UscOV1nb6 12:O5cC_0Bx1ustJTajf7US 11:63f8ho0WuDlD5Ht9Zp7q 19:lIa2meMlBSrRQuGwiMWT 1:_DippeN4YXcXWWG1JNcZ 16:LrFcKr9PzaqkYXZhFo0- 13:D_DJKK9GxqWxAPgf8PXM 18:e_RRdspQv52EJpqTbu4R 17:tJ7lPUHv2mmsKd1yCy-v 15:dEg7yj_6tFbSGKswyPn8] 0 1 100 0}
+[server 0] 02:22:41.031113 migrateOp apply command: {migrate   map[17:tJ7lPUHv2mmsKd1yCy-v 15:dEg7yj_6tFbSGKswyPn8 18:e_RRdspQv52EJpqTbu4R 10:h5C8cfg4Mm1UscOV1nb6 12:O5cC_0Bx1ustJTajf7US 11:63f8ho0WuDlD5Ht9Zp7q 19:lIa2meMlBSrRQuGwiMWT 1:_DippeN4YXcXWWG1JNcZ 16:LrFcKr9PzaqkYXZhFo0- 13:D_DJKK9GxqWxAPgf8PXM 14:LkivqSNlx70NN86eMlKh] 0 1 100 0}
+[server 0] 02:22:41.031141 migrateOp apply return: {6 {migrate   map[19:lIa2meMlBSrRQuGwiMWT 1:_DippeN4YXcXWWG1JNcZ 16:LrFcKr9PzaqkYXZhFo0- 13:D_DJKK9GxqWxAPgf8PXM 14:LkivqSNlx70NN86eMlKh 10:h5C8cfg4Mm1UscOV1nb6 12:O5cC_0Bx1ustJTajf7US 11:63f8ho0WuDlD5Ht9Zp7q 18:e_RRdspQv52EJpqTbu4R 17:tJ7lPUHv2mmsKd1yCy-v 15:dEg7yj_6tFbSGKswyPn8] 0 1 100 0}  map[]}
+[server 0] 02:22:41.031167 state size: 1287, logs: [{0 0} {1 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 1 101 0}} {1 {migrate   map[5:_Z0PgMUg0ae4PyN4SSZ3] 0 2 101 0}} {1 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 3 101 0}} {1 {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 4 101 0}} {1 {migrate   map[19:lIa2meMlBSrRQuGwiMWT 18:e_RRdspQv52EJpqTbu4R 12:O5cC_0Bx1ustJTajf7US 17:tJ7lPUHv2mmsKd1yCy-v 13:D_DJKK9GxqWxAPgf8PXM 1:_DippeN4YXcXWWG1JNcZ 11:63f8ho0WuDlD5Ht9Zp7q 16:LrFcKr9PzaqkYXZhFo0- 15:dEg7yj_6tFbSGKswyPn8 14:LkivqSNlx70NN86eMlKh 10:h5C8cfg4Mm1UscOV1nb6] 0 5 101 0}} {1 {migrate   map[16:LrFcKr9PzaqkYXZhFo0- 13:D_DJKK9GxqWxAPgf8PXM 14:LkivqSNlx70NN86eMlKh 10:h5C8cfg4Mm1UscOV1nb6 12:O5cC_0Bx1ustJTajf7US 11:63f8ho0WuDlD5Ht9Zp7q 19:lIa2meMlBSrRQuGwiMWT 1:_DippeN4YXcXWWG1JNcZ 18:e_RRdspQv52EJpqTbu4R 17:tJ7lPUHv2mmsKd1yCy-v 15:dEg7yj_6tFbSGKswyPn8] 0 1 100 0}} {1 {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 4 100 0}} {1 {migrate   map[5:_Z0PgMUg0ae4PyN4SSZ3] 0 2 100 0}} {1 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 5 100 0}} {1 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 3 100 0}}]
+[server 0] 02:22:41.031188 save snapshot: {6 1 map[7:KpbSllWKDv5vnqTh-BTh 1:_DippeN4YXcXWWG1JNcZ 14:LkivqSNlx70NN86eMlKh 11:63f8ho0WuDlD5Ht9Zp7q 12:O5cC_0Bx1ustJTajf7US 15:dEg7yj_6tFbSGKswyPn8 3:sq3vtNA2GPj7KmTDODI8 19:lIa2meMlBSrRQuGwiMWT 10:h5C8cfg4Mm1UscOV1nb6 18:e_RRdspQv52EJpqTbu4R 5:_Z0PgMUg0ae4PyN4SSZ3 9:4LGiOnPFz2M8QNgttwWC 17:tJ7lPUHv2mmsKd1yCy-v 13:D_DJKK9GxqWxAPgf8PXM 16:LrFcKr9PzaqkYXZhFo0-] map[101:5 100:1] 0}
+[raft 0] 02:22:41.031223 snap shot: {6 1 map[3:sq3vtNA2GPj7KmTDODI8 19:lIa2meMlBSrRQuGwiMWT 10:h5C8cfg4Mm1UscOV1nb6 5:_Z0PgMUg0ae4PyN4SSZ3 9:4LGiOnPFz2M8QNgttwWC 17:tJ7lPUHv2mmsKd1yCy-v 13:D_DJKK9GxqWxAPgf8PXM 16:LrFcKr9PzaqkYXZhFo0- 18:e_RRdspQv52EJpqTbu4R 7:KpbSllWKDv5vnqTh-BTh 1:_DippeN4YXcXWWG1JNcZ 14:LkivqSNlx70NN86eMlKh 11:63f8ho0WuDlD5Ht9Zp7q 12:O5cC_0Bx1ustJTajf7US 15:dEg7yj_6tFbSGKswyPn8] map[101:5 100:1] 0}, logs: [{0 0} {1 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 1 101 0}} {1 {migrate   map[5:_Z0PgMUg0ae4PyN4SSZ3] 0 2 101 0}} {1 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 3 101 0}} {1 {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 4 101 0}} {1 {migrate   map[19:lIa2meMlBSrRQuGwiMWT 18:e_RRdspQv52EJpqTbu4R 12:O5cC_0Bx1ustJTajf7US 17:tJ7lPUHv2mmsKd1yCy-v 13:D_DJKK9GxqWxAPgf8PXM 1:_DippeN4YXcXWWG1JNcZ 11:63f8ho0WuDlD5Ht9Zp7q 16:LrFcKr9PzaqkYXZhFo0- 15:dEg7yj_6tFbSGKswyPn8 14:LkivqSNlx70NN86eMlKh 10:h5C8cfg4Mm1UscOV1nb6] 0 5 101 0}} {1 {migrate   map[17:tJ7lPUHv2mmsKd1yCy-v 15:dEg7yj_6tFbSGKswyPn8 18:e_RRdspQv52EJpqTbu4R 10:h5C8cfg4Mm1UscOV1nb6 12:O5cC_0Bx1ustJTajf7US 11:63f8ho0WuDlD5Ht9Zp7q 19:lIa2meMlBSrRQuGwiMWT 1:_DippeN4YXcXWWG1JNcZ 16:LrFcKr9PzaqkYXZhFo0- 13:D_DJKK9GxqWxAPgf8PXM 14:LkivqSNlx70NN86eMlKh] 0 1 100 0}} {1 {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 4 100 0}} {1 {migrate   map[5:_Z0PgMUg0ae4PyN4SSZ3] 0 2 100 0}} {1 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 5 100 0}} {1 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 3 100 0}}]
+[raft 0] 02:22:41.031233 decode snapshot error
+[server 0] 02:22:41.031285 final apply return: {6 {migrate   map[16:LrFcKr9PzaqkYXZhFo0- 13:D_DJKK9GxqWxAPgf8PXM 14:LkivqSNlx70NN86eMlKh 10:h5C8cfg4Mm1UscOV1nb6 12:O5cC_0Bx1ustJTajf7US 11:63f8ho0WuDlD5Ht9Zp7q 19:lIa2meMlBSrRQuGwiMWT 1:_DippeN4YXcXWWG1JNcZ 18:e_RRdspQv52EJpqTbu4R 17:tJ7lPUHv2mmsKd1yCy-v 15:dEg7yj_6tFbSGKswyPn8] 0 1 100 0}  map[]}
+[server 0] 02:22:41.031297 map[11:63f8ho0WuDlD5Ht9Zp7q 12:O5cC_0Bx1ustJTajf7US 15:dEg7yj_6tFbSGKswyPn8 3:sq3vtNA2GPj7KmTDODI8 19:lIa2meMlBSrRQuGwiMWT 10:h5C8cfg4Mm1UscOV1nb6 5:_Z0PgMUg0ae4PyN4SSZ3 9:4LGiOnPFz2M8QNgttwWC 17:tJ7lPUHv2mmsKd1yCy-v 13:D_DJKK9GxqWxAPgf8PXM 16:LrFcKr9PzaqkYXZhFo0- 18:e_RRdspQv52EJpqTbu4R 7:KpbSllWKDv5vnqTh-BTh 1:_DippeN4YXcXWWG1JNcZ 14:LkivqSNlx70NN86eMlKh]
+[server 0] 02:22:41.031304 start to apply
+[server 0] 02:22:41.031316 reply migrate op succeed {6 {migrate   map[15:dEg7yj_6tFbSGKswyPn8 18:e_RRdspQv52EJpqTbu4R 17:tJ7lPUHv2mmsKd1yCy-v 12:O5cC_0Bx1ustJTajf7US 11:63f8ho0WuDlD5Ht9Zp7q 19:lIa2meMlBSrRQuGwiMWT 1:_DippeN4YXcXWWG1JNcZ 16:LrFcKr9PzaqkYXZhFo0- 13:D_DJKK9GxqWxAPgf8PXM 14:LkivqSNlx70NN86eMlKh 10:h5C8cfg4Mm1UscOV1nb6] 0 1 100 0}  map[]}
+[server 0] 02:22:41.031324 send to migrate reply: &{false  0 false}
+[raft 0] 02:22:41.052021 rf.LastApplied: 7, rf.LastIncludedIdnex: 6, true index: 1, rf.Logs: [{1 0} {1 {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 4 100 0}} {1 {migrate   map[5:_Z0PgMUg0ae4PyN4SSZ3] 0 2 100 0}} {1 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 5 100 0}} {1 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 3 100 0}}]
+[server 0] 02:22:41.052041 apply: {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 4 100 0}
+[server 0] 02:22:41.052068 migrateOp apply command: {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 4 100 0}
+[server 0] 02:22:41.052079 migrateOp apply return: {7 {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 4 100 0}  map[]}
+[server 0] 02:22:41.052094 state size: 456, logs: [{1 0} {1 {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 4 100 0}} {1 {migrate   map[5:_Z0PgMUg0ae4PyN4SSZ3] 0 2 100 0}} {1 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 5 100 0}} {1 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 3 100 0}}]
+[server 0] 02:22:41.052121 final apply return: {7 {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 4 100 0}  map[]}
+[server 0] 02:22:41.052151 map[16:LrFcKr9PzaqkYXZhFo0- 18:e_RRdspQv52EJpqTbu4R 5:_Z0PgMUg0ae4PyN4SSZ3 9:4LGiOnPFz2M8QNgttwWC 17:tJ7lPUHv2mmsKd1yCy-v 13:D_DJKK9GxqWxAPgf8PXM 7:KpbSllWKDv5vnqTh-BTh 1:_DippeN4YXcXWWG1JNcZ 14:LkivqSNlx70NN86eMlKh 11:63f8ho0WuDlD5Ht9Zp7q 12:O5cC_0Bx1ustJTajf7US 15:dEg7yj_6tFbSGKswyPn8 3:sq3vtNA2GPj7KmTDODI8 19:lIa2meMlBSrRQuGwiMWT 10:h5C8cfg4Mm1UscOV1nb6]
+[server 0] 02:22:41.052159 start to apply
+[server 0] 02:22:41.052168 reply migrate op succeed {7 {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 4 100 0}  map[]}
+[server 0] 02:22:41.052176 send to migrate reply: &{false  0 false}
+[raft 0] 02:22:41.084385 rf.LastApplied: 8, rf.LastIncludedIdnex: 6, true index: 2, rf.Logs: [{1 0} {1 {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 4 100 0}} {1 {migrate   map[5:_Z0PgMUg0ae4PyN4SSZ3] 0 2 100 0}} {1 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 5 100 0}} {1 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 3 100 0}}]
+[server 0] 02:22:41.084451 apply: {migrate   map[5:_Z0PgMUg0ae4PyN4SSZ3] 0 2 100 0}
+[server 0] 02:22:41.084465 final apply return: {8 {migrate   map[5:_Z0PgMUg0ae4PyN4SSZ3] 0 2 100 0}  map[]}
+[server 0] 02:22:41.084505 map[7:KpbSllWKDv5vnqTh-BTh 1:_DippeN4YXcXWWG1JNcZ 14:LkivqSNlx70NN86eMlKh 11:63f8ho0WuDlD5Ht9Zp7q 12:O5cC_0Bx1ustJTajf7US 15:dEg7yj_6tFbSGKswyPn8 3:sq3vtNA2GPj7KmTDODI8 19:lIa2meMlBSrRQuGwiMWT 10:h5C8cfg4Mm1UscOV1nb6 5:_Z0PgMUg0ae4PyN4SSZ3 9:4LGiOnPFz2M8QNgttwWC 17:tJ7lPUHv2mmsKd1yCy-v 13:D_DJKK9GxqWxAPgf8PXM 16:LrFcKr9PzaqkYXZhFo0- 18:e_RRdspQv52EJpqTbu4R]
+[server 0] 02:22:41.084511 start to apply
+[server 0] 02:22:41.084521 reply migrate op succeed {8 {migrate   map[5:_Z0PgMUg0ae4PyN4SSZ3] 0 2 100 0}  map[]}
+[server 0] 02:22:41.084529 send to migrate reply: &{false  0 false}
+[raft 0] 02:22:41.116093 rf.LastApplied: 9, rf.LastIncludedIdnex: 6, true index: 3, rf.Logs: [{1 0} {1 {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 4 100 0}} {1 {migrate   map[5:_Z0PgMUg0ae4PyN4SSZ3] 0 2 100 0}} {1 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 5 100 0}} {1 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 3 100 0}}]
+[server 0] 02:22:41.116130 apply: {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 5 100 0}
+[server 0] 02:22:41.116141 migrateOp apply command: {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 5 100 0}
+[server 0] 02:22:41.116152 migrateOp apply return: {9 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 5 100 0}  map[]}
+[server 0] 02:22:41.116167 state size: 456, logs: [{1 0} {1 {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 4 100 0}} {1 {migrate   map[5:_Z0PgMUg0ae4PyN4SSZ3] 0 2 100 0}} {1 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 5 100 0}} {1 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 3 100 0}}]
+[server 0] 02:22:41.116193 final apply return: {9 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 5 100 0}  map[]}
+[server 0] 02:22:41.116207 map[11:63f8ho0WuDlD5Ht9Zp7q 12:O5cC_0Bx1ustJTajf7US 15:dEg7yj_6tFbSGKswyPn8 3:sq3vtNA2GPj7KmTDODI8 19:lIa2meMlBSrRQuGwiMWT 10:h5C8cfg4Mm1UscOV1nb6 5:_Z0PgMUg0ae4PyN4SSZ3 9:4LGiOnPFz2M8QNgttwWC 17:tJ7lPUHv2mmsKd1yCy-v 13:D_DJKK9GxqWxAPgf8PXM 16:LrFcKr9PzaqkYXZhFo0- 18:e_RRdspQv52EJpqTbu4R 7:KpbSllWKDv5vnqTh-BTh 1:_DippeN4YXcXWWG1JNcZ 14:LkivqSNlx70NN86eMlKh]
+[server 0] 02:22:41.116214 start to apply
+[server 0] 02:22:41.116224 reply migrate op succeed {9 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 5 100 0}  map[]}
+[server 0] 02:22:41.116233 send to migrate reply: &{false  0 false}
+[raft 0] 02:22:41.148798 rf.LastApplied: 10, rf.LastIncludedIdnex: 6, true index: 4, rf.Logs: [{1 0} {1 {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 4 100 0}} {1 {migrate   map[5:_Z0PgMUg0ae4PyN4SSZ3] 0 2 100 0}} {1 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 5 100 0}} {1 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 3 100 0}}]
+[server 0] 02:22:41.148834 apply: {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 3 100 0}
+[server 0] 02:22:41.148847 final apply return: {10 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 3 100 0}  map[]}
+[server 0] 02:22:41.148862 map[10:h5C8cfg4Mm1UscOV1nb6 3:sq3vtNA2GPj7KmTDODI8 19:lIa2meMlBSrRQuGwiMWT 17:tJ7lPUHv2mmsKd1yCy-v 13:D_DJKK9GxqWxAPgf8PXM 16:LrFcKr9PzaqkYXZhFo0- 18:e_RRdspQv52EJpqTbu4R 5:_Z0PgMUg0ae4PyN4SSZ3 9:4LGiOnPFz2M8QNgttwWC 14:LkivqSNlx70NN86eMlKh 7:KpbSllWKDv5vnqTh-BTh 1:_DippeN4YXcXWWG1JNcZ 15:dEg7yj_6tFbSGKswyPn8 11:63f8ho0WuDlD5Ht9Zp7q 12:O5cC_0Bx1ustJTajf7US]
+[server 0] 02:22:41.148873 start to apply
+[server 0] 02:22:41.148886 reply migrate op succeed {10 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 3 100 0}  map[]}
+[server 0] 02:22:41.148896 send to migrate reply: &{false  0 false}
+
+
+
+[server 0] 02:22:42.136567 old config: {2 [100 101 100 101 100 101 100 101 100 101] map[100:[server-100-0 server-100-1 server-100-2] 101:[server-101-0 server-101-1 server-101-2]]}, current config: {3 [100 101 102 100 101 102 100 101 102 100] map[100:[server-100-0 server-100-1 server-100-2] 101:[server-101-0 server-101-1 server-101-2] 102:[server-102-0 server-102-1 server-102-2]]}
+[server 0] 02:22:42.136593 migrate data from GID: 101 to GID: 100
+[server 0] 02:22:42.136602 migrate success
+[server 0] 02:22:42.136617 old config: {2 [100 101 100 101 100 101 100 101 100 101] map[100:[server-100-0 server-100-1 server-100-2] 101:[server-101-0 server-101-1 server-101-2]]}, current config: {3 [100 101 102 100 101 102 100 101 102 100] map[101:[server-101-0 server-101-1 server-101-2] 102:[server-102-0 server-102-1 server-102-2] 100:[server-100-0 server-100-1 server-100-2]]}
+[server 0] 02:22:42.136624 GID: 101 wait from GID: 100
+[server 0] 02:22:42.157839 send RequestMigrateArgs: {4 6 101 100}
+[server 0] 02:22:42.157850 recevice RequestMigrateArgs reply: {false map[6:0z2PUj8-OI-bJfzIRIwu] OK 100 false}
+[server 0] 02:22:42.157883 receive migrate op: {migrate   map[6:0z2PUj8-OI-bJfzIRIwu] 0 6 101 0}
+[raft 0] 02:22:42.178621 rf.LastApplied: 11, rf.LastIncludedIdnex: 6, true index: 5, rf.Logs: [{1 0} {1 {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 4 100 0}} {1 {migrate   map[5:_Z0PgMUg0ae4PyN4SSZ3] 0 2 100 0}} {1 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 5 100 0}} {1 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 3 100 0}} {1 {migrate   map[6:0z2PUj8-OI-bJfzIRIwu] 0 6 101 0}}]
+[server 0] 02:22:42.178665 apply: {migrate   map[6:0z2PUj8-OI-bJfzIRIwu] 0 6 101 0}
+[server 0] 02:22:42.178689 migrateOp apply command: {migrate   map[6:0z2PUj8-OI-bJfzIRIwu] 0 6 101 0}
+[server 0] 02:22:42.178698 migrateOp apply return: {11 {migrate   map[6:0z2PUj8-OI-bJfzIRIwu] 0 6 101 0}  map[]}
+[server 0] 02:22:42.178714 state size: 515, logs: [{1 0} {1 {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 4 100 0}} {1 {migrate   map[5:_Z0PgMUg0ae4PyN4SSZ3] 0 2 100 0}} {1 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 5 100 0}} {1 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 3 100 0}} {1 {migrate   map[6:0z2PUj8-OI-bJfzIRIwu] 0 6 101 0}}]
+[server 0] 02:22:42.178725 final apply return: {11 {migrate   map[6:0z2PUj8-OI-bJfzIRIwu] 0 6 101 0}  map[]}
+[server 0] 02:22:42.178738 map[11:63f8ho0WuDlD5Ht9Zp7q 12:O5cC_0Bx1ustJTajf7US 15:dEg7yj_6tFbSGKswyPn8 3:sq3vtNA2GPj7KmTDODI8 19:lIa2meMlBSrRQuGwiMWT 10:h5C8cfg4Mm1UscOV1nb6 5:_Z0PgMUg0ae4PyN4SSZ3 9:4LGiOnPFz2M8QNgttwWC 17:tJ7lPUHv2mmsKd1yCy-v 13:D_DJKK9GxqWxAPgf8PXM 16:LrFcKr9PzaqkYXZhFo0- 18:e_RRdspQv52EJpqTbu4R 7:KpbSllWKDv5vnqTh-BTh 1:_DippeN4YXcXWWG1JNcZ 14:LkivqSNlx70NN86eMlKh 6:0z2PUj8-OI-bJfzIRIwu]
+[server 0] 02:22:42.178744 start to apply
+[server 0] 02:22:42.178753 reply migrate op succeed {11 {migrate   map[6:0z2PUj8-OI-bJfzIRIwu] 0 6 101 0}  map[]}
+[server 0] 02:22:42.178761 send to migrate reply: &{false  0 false}
+[server 0] 02:22:42.178768 GID: 101 receive from GID: 100
+[server 0] 02:22:42.178780 old config: {2 [100 101 100 101 100 101 100 101 100 101] map[100:[server-100-0 server-100-1 server-100-2] 101:[server-101-0 server-101-1 server-101-2]]}, current config: {3 [100 101 102 100 101 102 100 101 102 100] map[100:[server-100-0 server-100-1 server-100-2] 101:[server-101-0 server-101-1 server-101-2] 102:[server-102-0 server-102-1 server-102-2]]}
+[server 0] 02:22:42.178787 migrate data from GID: 101 to GID: 102
+[server 0] 02:22:42.178795 migrate success
+[server 0] 02:22:42.178806 old config: {2 [100 101 100 101 100 101 100 101 100 101] map[100:[server-100-0 server-100-1 server-100-2] 101:[server-101-0 server-101-1 server-101-2]]}, current config: {3 [100 101 102 100 101 102 100 101 102 100] map[100:[server-100-0 server-100-1 server-100-2] 101:[server-101-0 server-101-1 server-101-2] 102:[server-102-0 server-102-1 server-102-2]]}
+[server 0] 02:22:42.178815 migrate data from GID: 101 to GID: 100
+[server 0] 02:22:42.178823 migrate success
+[server 0] 02:22:42.199243 send InstallMigrateArgs: {map[7:KpbSllWKDv5vnqTh-BTh] 1 101 102}
+[server 0] 02:22:42.199254 recevice InstallMigrateArgs reply: {false OK 102 false}
+[server 0] 02:22:42.199391 send InstallMigrateArgs: {map[5:_Z0PgMUg0ae4PyN4SSZ3] 7 101 100}
+[server 0] 02:22:42.199401 recevice InstallMigrateArgs reply: {false OK 100 false}
+[server 0] 02:22:42.219869 send InstallMigrateArgs: {map[16:LrFcKr9PzaqkYXZhFo0- 18:e_RRdspQv52EJpqTbu4R 17:tJ7lPUHv2mmsKd1yCy-v 1:_DippeN4YXcXWWG1JNcZ 15:dEg7yj_6tFbSGKswyPn8 12:O5cC_0Bx1ustJTajf7US 19:lIa2meMlBSrRQuGwiMWT 10:h5C8cfg4Mm1UscOV1nb6 13:D_DJKK9GxqWxAPgf8PXM 14:LkivqSNlx70NN86eMlKh 11:63f8ho0WuDlD5Ht9Zp7q] 8 101 100}
+[server 0] 02:22:42.219880 recevice InstallMigrateArgs reply: {false OK 100 false}
+[server 0] 02:22:43.152098 old config: {3 [100 101 102 100 101 102 100 101 102 100] map[100:[server-100-0 server-100-1 server-100-2] 101:[server-101-0 server-101-1 server-101-2] 102:[server-102-0 server-102-1 server-102-2]]}, current config: {4 [101 102 101 102 101 102 101 102 101 102] map[102:[server-102-0 server-102-1 server-102-2] 101:[server-101-0 server-101-1 server-101-2]]}
+[server 0] 02:22:43.152121 GID: 101 wait from GID: 100
+[server 0] 02:22:43.170952 send RequestMigrateArgs: {0 9 101 100}
+[server 0] 02:22:43.170967 recevice RequestMigrateArgs reply: {false map[22:knO854WNjMXwykx8dwxQ 25:qpMJKQJ9nKD3riFlBbv- 28:vU4U7BcwHYWweX3N2xQR 21:rzzraFF6j9BmlCRp02Xu 27:HuRWSo7BoL6E_dNYJT1V 2:A9Cgg6R66TFl-SynAvxB 24:pmWbpBVmcuOtfriDsrTs 23:TfUcbTJy7WBqkqkZJq-E 20:hKciwX12Y7Wjqe1t3oVa 26:FOKJFeF3CS6ohGVvpcUl 29:JlCPnh9KDT7scDJCV4vc] OK 100 false}
+[server 0] 02:22:43.171016 receive migrate op: {migrate   map[25:qpMJKQJ9nKD3riFlBbv- 28:vU4U7BcwHYWweX3N2xQR 27:HuRWSo7BoL6E_dNYJT1V 24:pmWbpBVmcuOtfriDsrTs 23:TfUcbTJy7WBqkqkZJq-E 26:FOKJFeF3CS6ohGVvpcUl 22:knO854WNjMXwykx8dwxQ 21:rzzraFF6j9BmlCRp02Xu 2:A9Cgg6R66TFl-SynAvxB 20:hKciwX12Y7Wjqe1t3oVa 29:JlCPnh9KDT7scDJCV4vc] 0 7 101 0}
+[raft 0] 02:22:43.181196 rf.LastApplied: 12, rf.LastIncludedIdnex: 6, true index: 6, rf.Logs: [{1 0} {1 {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 4 100 0}} {1 {migrate   map[5:_Z0PgMUg0ae4PyN4SSZ3] 0 2 100 0}} {1 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 5 100 0}} {1 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 3 100 0}} {1 {migrate   map[6:0z2PUj8-OI-bJfzIRIwu] 0 6 101 0}} {1 {migrate   map[22:knO854WNjMXwykx8dwxQ 21:rzzraFF6j9BmlCRp02Xu 2:A9Cgg6R66TFl-SynAvxB 20:hKciwX12Y7Wjqe1t3oVa 29:JlCPnh9KDT7scDJCV4vc 25:qpMJKQJ9nKD3riFlBbv- 28:vU4U7BcwHYWweX3N2xQR 27:HuRWSo7BoL6E_dNYJT1V 24:pmWbpBVmcuOtfriDsrTs 23:TfUcbTJy7WBqkqkZJq-E 26:FOKJFeF3CS6ohGVvpcUl] 0 7 101 0}}]
+[server 0] 02:22:43.181240 apply: {migrate   map[29:JlCPnh9KDT7scDJCV4vc 22:knO854WNjMXwykx8dwxQ 21:rzzraFF6j9BmlCRp02Xu 2:A9Cgg6R66TFl-SynAvxB 20:hKciwX12Y7Wjqe1t3oVa 23:TfUcbTJy7WBqkqkZJq-E 26:FOKJFeF3CS6ohGVvpcUl 25:qpMJKQJ9nKD3riFlBbv- 28:vU4U7BcwHYWweX3N2xQR 27:HuRWSo7BoL6E_dNYJT1V 24:pmWbpBVmcuOtfriDsrTs] 0 7 101 0}
+[server 0] 02:22:43.181253 migrateOp apply command: {migrate   map[22:knO854WNjMXwykx8dwxQ 21:rzzraFF6j9BmlCRp02Xu 2:A9Cgg6R66TFl-SynAvxB 20:hKciwX12Y7Wjqe1t3oVa 29:JlCPnh9KDT7scDJCV4vc 25:qpMJKQJ9nKD3riFlBbv- 28:vU4U7BcwHYWweX3N2xQR 27:HuRWSo7BoL6E_dNYJT1V 24:pmWbpBVmcuOtfriDsrTs 23:TfUcbTJy7WBqkqkZJq-E 26:FOKJFeF3CS6ohGVvpcUl] 0 7 101 0}
+[server 0] 02:22:43.181269 migrateOp apply return: {12 {migrate   map[22:knO854WNjMXwykx8dwxQ 21:rzzraFF6j9BmlCRp02Xu 2:A9Cgg6R66TFl-SynAvxB 20:hKciwX12Y7Wjqe1t3oVa 29:JlCPnh9KDT7scDJCV4vc 25:qpMJKQJ9nKD3riFlBbv- 28:vU4U7BcwHYWweX3N2xQR 27:HuRWSo7BoL6E_dNYJT1V 24:pmWbpBVmcuOtfriDsrTs 23:TfUcbTJy7WBqkqkZJq-E 26:FOKJFeF3CS6ohGVvpcUl] 0 7 101 0}  map[]}
+[server 0] 02:22:43.181288 state size: 815, logs: [{1 0} {1 {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 4 100 0}} {1 {migrate   map[5:_Z0PgMUg0ae4PyN4SSZ3] 0 2 100 0}} {1 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 5 100 0}} {1 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 3 100 0}} {1 {migrate   map[6:0z2PUj8-OI-bJfzIRIwu] 0 6 101 0}} {1 {migrate   map[26:FOKJFeF3CS6ohGVvpcUl 25:qpMJKQJ9nKD3riFlBbv- 28:vU4U7BcwHYWweX3N2xQR 27:HuRWSo7BoL6E_dNYJT1V 24:pmWbpBVmcuOtfriDsrTs 23:TfUcbTJy7WBqkqkZJq-E 22:knO854WNjMXwykx8dwxQ 21:rzzraFF6j9BmlCRp02Xu 2:A9Cgg6R66TFl-SynAvxB 20:hKciwX12Y7Wjqe1t3oVa 29:JlCPnh9KDT7scDJCV4vc] 0 7 101 0}}]
+[server 0] 02:22:43.181341 final apply return: {12 {migrate   map[23:TfUcbTJy7WBqkqkZJq-E 26:FOKJFeF3CS6ohGVvpcUl 25:qpMJKQJ9nKD3riFlBbv- 28:vU4U7BcwHYWweX3N2xQR 27:HuRWSo7BoL6E_dNYJT1V 24:pmWbpBVmcuOtfriDsrTs 29:JlCPnh9KDT7scDJCV4vc 22:knO854WNjMXwykx8dwxQ 21:rzzraFF6j9BmlCRp02Xu 2:A9Cgg6R66TFl-SynAvxB 20:hKciwX12Y7Wjqe1t3oVa] 0 7 101 0}  map[]}
+[server 0] 02:22:43.181361 map[27:HuRWSo7BoL6E_dNYJT1V 22:knO854WNjMXwykx8dwxQ 20:hKciwX12Y7Wjqe1t3oVa 7:KpbSllWKDv5vnqTh-BTh 1:_DippeN4YXcXWWG1JNcZ 14:LkivqSNlx70NN86eMlKh 25:qpMJKQJ9nKD3riFlBbv- 2:A9Cgg6R66TFl-SynAvxB 11:63f8ho0WuDlD5Ht9Zp7q 15:dEg7yj_6tFbSGKswyPn8 21:rzzraFF6j9BmlCRp02Xu 19:lIa2meMlBSrRQuGwiMWT 16:LrFcKr9PzaqkYXZhFo0- 18:e_RRdspQv52EJpqTbu4R 5:_Z0PgMUg0ae4PyN4SSZ3 9:4LGiOnPFz2M8QNgttwWC 17:tJ7lPUHv2mmsKd1yCy-v 6:0z2PUj8-OI-bJfzIRIwu 26:FOKJFeF3CS6ohGVvpcUl 29:JlCPnh9KDT7scDJCV4vc 28:vU4U7BcwHYWweX3N2xQR 24:pmWbpBVmcuOtfriDsrTs 23:TfUcbTJy7WBqkqkZJq-E 12:O5cC_0Bx1ustJTajf7US 3:sq3vtNA2GPj7KmTDODI8 10:h5C8cfg4Mm1UscOV1nb6 13:D_DJKK9GxqWxAPgf8PXM]
+[server 0] 02:22:43.181368 start to apply
+[server 0] 02:22:43.181380 reply migrate op succeed {12 {migrate   map[22:knO854WNjMXwykx8dwxQ 21:rzzraFF6j9BmlCRp02Xu 2:A9Cgg6R66TFl-SynAvxB 20:hKciwX12Y7Wjqe1t3oVa 29:JlCPnh9KDT7scDJCV4vc 26:FOKJFeF3CS6ohGVvpcUl 25:qpMJKQJ9nKD3riFlBbv- 28:vU4U7BcwHYWweX3N2xQR 27:HuRWSo7BoL6E_dNYJT1V 24:pmWbpBVmcuOtfriDsrTs 23:TfUcbTJy7WBqkqkZJq-E] 0 7 101 0}  map[]}
+[server 0] 02:22:43.181388 send to migrate reply: &{false  0 false}
+[server 0] 02:22:43.181395 GID: 101 receive from GID: 100
+[server 0] 02:22:43.181409 old config: {3 [100 101 102 100 101 102 100 101 102 100] map[100:[server-100-0 server-100-1 server-100-2] 101:[server-101-0 server-101-1 server-101-2] 102:[server-102-0 server-102-1 server-102-2]]}, current config: {4 [101 102 101 102 101 102 101 102 101 102] map[101:[server-101-0 server-101-1 server-101-2] 102:[server-102-0 server-102-1 server-102-2]]}
+[server 0] 02:22:43.181415 migrate data from GID: 101 to GID: 102
+[server 0] 02:22:43.181422 migrate success
+[server 0] 02:22:43.181434 old config: {3 [100 101 102 100 101 102 100 101 102 100] map[100:[server-100-0 server-100-1 server-100-2] 101:[server-101-0 server-101-1 server-101-2] 102:[server-102-0 server-102-1 server-102-2]]}, current config: {4 [101 102 101 102 101 102 101 102 101 102] map[101:[server-101-0 server-101-1 server-101-2] 102:[server-102-0 server-102-1 server-102-2]]}
+[server 0] 02:22:43.181440 GID: 101 wait from GID: 102
+[server 0] 02:22:43.222172 send RequestMigrateArgs: {2 2 101 102}
+[server 0] 02:22:43.222228 recevice RequestMigrateArgs reply: {false map[] OK 102 false}
+[server 0] 02:22:43.222268 receive migrate op: {migrate   map[] 0 8 101 0}
+[server 0] 02:22:43.243914 send InstallMigrateArgs: {map[3:sq3vtNA2GPj7KmTDODI8] 3 101 102}
+[server 0] 02:22:43.243956 recevice InstallMigrateArgs reply: {false OK 102 false}
+[raft 0] 02:22:43.245036 rf.LastApplied: 13, rf.LastIncludedIdnex: 6, true index: 7, rf.Logs: [{1 0} {1 {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 4 100 0}} {1 {migrate   map[5:_Z0PgMUg0ae4PyN4SSZ3] 0 2 100 0}} {1 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 5 100 0}} {1 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 3 100 0}} {1 {migrate   map[6:0z2PUj8-OI-bJfzIRIwu] 0 6 101 0}} {1 {migrate   map[25:qpMJKQJ9nKD3riFlBbv- 28:vU4U7BcwHYWweX3N2xQR 27:HuRWSo7BoL6E_dNYJT1V 24:pmWbpBVmcuOtfriDsrTs 23:TfUcbTJy7WBqkqkZJq-E 26:FOKJFeF3CS6ohGVvpcUl 22:knO854WNjMXwykx8dwxQ 21:rzzraFF6j9BmlCRp02Xu 2:A9Cgg6R66TFl-SynAvxB 20:hKciwX12Y7Wjqe1t3oVa 29:JlCPnh9KDT7scDJCV4vc] 0 7 101 0}} {1 {migrate   map[] 0 8 101 0}}]
+[server 0] 02:22:43.245059 apply: {migrate   map[] 0 8 101 0}
+[server 0] 02:22:43.245113 migrateOp apply command: {migrate   map[] 0 8 101 0}
+[server 0] 02:22:43.245126 migrateOp apply return: {13 {migrate   map[] 0 8 101 0}  map[]}
+[server 0] 02:22:43.245162 state size: 850, logs: [{1 0} {1 {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 4 100 0}} {1 {migrate   map[5:_Z0PgMUg0ae4PyN4SSZ3] 0 2 100 0}} {1 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 5 100 0}} {1 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 3 100 0}} {1 {migrate   map[6:0z2PUj8-OI-bJfzIRIwu] 0 6 101 0}} {1 {migrate   map[21:rzzraFF6j9BmlCRp02Xu 2:A9Cgg6R66TFl-SynAvxB 20:hKciwX12Y7Wjqe1t3oVa 29:JlCPnh9KDT7scDJCV4vc 22:knO854WNjMXwykx8dwxQ 28:vU4U7BcwHYWweX3N2xQR 27:HuRWSo7BoL6E_dNYJT1V 24:pmWbpBVmcuOtfriDsrTs 23:TfUcbTJy7WBqkqkZJq-E 26:FOKJFeF3CS6ohGVvpcUl 25:qpMJKQJ9nKD3riFlBbv-] 0 7 101 0}} {1 {migrate   map[] 0 8 101 0}}]
+[server 0] 02:22:43.245175 final apply return: {13 {migrate   map[] 0 8 101 0}  map[]}
+[server 0] 02:22:43.245213 map[13:D_DJKK9GxqWxAPgf8PXM 22:knO854WNjMXwykx8dwxQ 20:hKciwX12Y7Wjqe1t3oVa 7:KpbSllWKDv5vnqTh-BTh 1:_DippeN4YXcXWWG1JNcZ 14:LkivqSNlx70NN86eMlKh 27:HuRWSo7BoL6E_dNYJT1V 2:A9Cgg6R66TFl-SynAvxB 11:63f8ho0WuDlD5Ht9Zp7q 15:dEg7yj_6tFbSGKswyPn8 25:qpMJKQJ9nKD3riFlBbv- 19:lIa2meMlBSrRQuGwiMWT 21:rzzraFF6j9BmlCRp02Xu 18:e_RRdspQv52EJpqTbu4R 5:_Z0PgMUg0ae4PyN4SSZ3 9:4LGiOnPFz2M8QNgttwWC 17:tJ7lPUHv2mmsKd1yCy-v 16:LrFcKr9PzaqkYXZhFo0- 6:0z2PUj8-OI-bJfzIRIwu 26:FOKJFeF3CS6ohGVvpcUl 29:JlCPnh9KDT7scDJCV4vc 28:vU4U7BcwHYWweX3N2xQR 24:pmWbpBVmcuOtfriDsrTs 23:TfUcbTJy7WBqkqkZJq-E 12:O5cC_0Bx1ustJTajf7US 3:sq3vtNA2GPj7KmTDODI8 10:h5C8cfg4Mm1UscOV1nb6]
+[server 0] 02:22:43.245221 start to apply
+[server 0] 02:22:43.245231 reply migrate op succeed {13 {migrate   map[] 0 8 101 0}  map[]}
+[server 0] 02:22:43.245254 send to migrate reply: &{false  0 false}
+[server 0] 02:22:43.245261 GID: 101 receive from GID: 102
+[server 0] 02:22:43.245276 old config: {3 [100 101 102 100 101 102 100 101 102 100] map[100:[server-100-0 server-100-1 server-100-2] 101:[server-101-0 server-101-1 server-101-2] 102:[server-102-0 server-102-1 server-102-2]]}, current config: {4 [101 102 101 102 101 102 101 102 101 102] map[101:[server-101-0 server-101-1 server-101-2] 102:[server-102-0 server-102-1 server-102-2]]}
+[server 0] 02:22:43.245283 GID: 101 wait from GID: 100
+[server 0] 02:22:43.266445 send RequestMigrateArgs: {6 10 101 100}
+[server 0] 02:22:43.266456 recevice RequestMigrateArgs reply: {false map[8:7io5ffTDu1Jo8_rzCZqN] OK 100 false}
+[server 0] 02:22:43.266495 receive migrate op: {migrate   map[8:7io5ffTDu1Jo8_rzCZqN] 0 9 101 0}
+[server 0] 02:22:43.273012 receive RequestMigrate op: {requestMigrate   map[] 3 6 100 0}
+[raft 0] 02:22:43.276481 rf.LastApplied: 14, rf.LastIncludedIdnex: 6, true index: 8, rf.Logs: [{1 0} {1 {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 4 100 0}} {1 {migrate   map[5:_Z0PgMUg0ae4PyN4SSZ3] 0 2 100 0}} {1 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 5 100 0}} {1 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 3 100 0}} {1 {migrate   map[6:0z2PUj8-OI-bJfzIRIwu] 0 6 101 0}} {1 {migrate   map[26:FOKJFeF3CS6ohGVvpcUl 25:qpMJKQJ9nKD3riFlBbv- 28:vU4U7BcwHYWweX3N2xQR 27:HuRWSo7BoL6E_dNYJT1V 24:pmWbpBVmcuOtfriDsrTs 23:TfUcbTJy7WBqkqkZJq-E 22:knO854WNjMXwykx8dwxQ 21:rzzraFF6j9BmlCRp02Xu 2:A9Cgg6R66TFl-SynAvxB 20:hKciwX12Y7Wjqe1t3oVa 29:JlCPnh9KDT7scDJCV4vc] 0 7 101 0}} {1 {migrate   map[] 0 8 101 0}} {1 {migrate   map[8:7io5ffTDu1Jo8_rzCZqN] 0 9 101 0}} {1 {requestMigrate   map[] 3 6 100 0}}]
+[server 0] 02:22:43.276503 apply: {migrate   map[8:7io5ffTDu1Jo8_rzCZqN] 0 9 101 0}
+[server 0] 02:22:43.276514 migrateOp apply command: {migrate   map[8:7io5ffTDu1Jo8_rzCZqN] 0 9 101 0}
+[server 0] 02:22:43.276539 migrateOp apply return: {14 {migrate   map[8:7io5ffTDu1Jo8_rzCZqN] 0 9 101 0}  map[]}
+[server 0] 02:22:43.276561 state size: 950, logs: [{1 0} {1 {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 4 100 0}} {1 {migrate   map[5:_Z0PgMUg0ae4PyN4SSZ3] 0 2 100 0}} {1 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 5 100 0}} {1 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 3 100 0}} {1 {migrate   map[6:0z2PUj8-OI-bJfzIRIwu] 0 6 101 0}} {1 {migrate   map[27:HuRWSo7BoL6E_dNYJT1V 24:pmWbpBVmcuOtfriDsrTs 23:TfUcbTJy7WBqkqkZJq-E 26:FOKJFeF3CS6ohGVvpcUl 25:qpMJKQJ9nKD3riFlBbv- 28:vU4U7BcwHYWweX3N2xQR 2:A9Cgg6R66TFl-SynAvxB 20:hKciwX12Y7Wjqe1t3oVa 29:JlCPnh9KDT7scDJCV4vc 22:knO854WNjMXwykx8dwxQ 21:rzzraFF6j9BmlCRp02Xu] 0 7 101 0}} {1 {migrate   map[] 0 8 101 0}} {1 {migrate   map[8:7io5ffTDu1Jo8_rzCZqN] 0 9 101 0}} {1 {requestMigrate   map[] 3 6 100 0}}]
+[server 0] 02:22:43.276574 final apply return: {14 {migrate   map[8:7io5ffTDu1Jo8_rzCZqN] 0 9 101 0}  map[]}
+[server 0] 02:22:43.276593 map[28:vU4U7BcwHYWweX3N2xQR 24:pmWbpBVmcuOtfriDsrTs 23:TfUcbTJy7WBqkqkZJq-E 8:7io5ffTDu1Jo8_rzCZqN 12:O5cC_0Bx1ustJTajf7US 10:h5C8cfg4Mm1UscOV1nb6 3:sq3vtNA2GPj7KmTDODI8 13:D_DJKK9GxqWxAPgf8PXM 1:_DippeN4YXcXWWG1JNcZ 14:LkivqSNlx70NN86eMlKh 27:HuRWSo7BoL6E_dNYJT1V 22:knO854WNjMXwykx8dwxQ 20:hKciwX12Y7Wjqe1t3oVa 7:KpbSllWKDv5vnqTh-BTh 15:dEg7yj_6tFbSGKswyPn8 25:qpMJKQJ9nKD3riFlBbv- 2:A9Cgg6R66TFl-SynAvxB 11:63f8ho0WuDlD5Ht9Zp7q 21:rzzraFF6j9BmlCRp02Xu 19:lIa2meMlBSrRQuGwiMWT 9:4LGiOnPFz2M8QNgttwWC 17:tJ7lPUHv2mmsKd1yCy-v 16:LrFcKr9PzaqkYXZhFo0- 18:e_RRdspQv52EJpqTbu4R 5:_Z0PgMUg0ae4PyN4SSZ3 26:FOKJFeF3CS6ohGVvpcUl 29:JlCPnh9KDT7scDJCV4vc 6:0z2PUj8-OI-bJfzIRIwu]
+[server 0] 02:22:43.276600 start to apply
+[server 0] 02:22:43.276610 reply migrate op succeed {14 {migrate   map[8:7io5ffTDu1Jo8_rzCZqN] 0 9 101 0}  map[]}
+[server 0] 02:22:43.276618 send to migrate reply: &{false  0 false}
+[server 0] 02:22:43.276625 GID: 101 receive from GID: 100
+[server 0] 02:22:43.276639 old config: {3 [100 101 102 100 101 102 100 101 102 100] map[100:[server-100-0 server-100-1 server-100-2] 101:[server-101-0 server-101-1 server-101-2] 102:[server-102-0 server-102-1 server-102-2]]}, current config: {4 [101 102 101 102 101 102 101 102 101 102] map[101:[server-101-0 server-101-1 server-101-2] 102:[server-102-0 server-102-1 server-102-2]]}
+[server 0] 02:22:43.276646 migrate data from GID: 101 to GID: 102
+[server 0] 02:22:43.276652 migrate success
+[server 0] 02:22:43.276664 old config: {3 [100 101 102 100 101 102 100 101 102 100] map[100:[server-100-0 server-100-1 server-100-2] 101:[server-101-0 server-101-1 server-101-2] 102:[server-102-0 server-102-1 server-102-2]]}, current config: {4 [101 102 101 102 101 102 101 102 101 102] map[101:[server-101-0 server-101-1 server-101-2] 102:[server-102-0 server-102-1 server-102-2]]}
+[server 0] 02:22:43.276671 GID: 101 wait from GID: 102
+[raft 0] 02:22:43.308900 rf.LastApplied: 15, rf.LastIncludedIdnex: 6, true index: 9, rf.Logs: [{1 0} {1 {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 4 100 0}} {1 {migrate   map[5:_Z0PgMUg0ae4PyN4SSZ3] 0 2 100 0}} {1 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 5 100 0}} {1 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 3 100 0}} {1 {migrate   map[6:0z2PUj8-OI-bJfzIRIwu] 0 6 101 0}} {1 {migrate   map[20:hKciwX12Y7Wjqe1t3oVa 29:JlCPnh9KDT7scDJCV4vc 22:knO854WNjMXwykx8dwxQ 21:rzzraFF6j9BmlCRp02Xu 2:A9Cgg6R66TFl-SynAvxB 24:pmWbpBVmcuOtfriDsrTs 23:TfUcbTJy7WBqkqkZJq-E 26:FOKJFeF3CS6ohGVvpcUl 25:qpMJKQJ9nKD3riFlBbv- 28:vU4U7BcwHYWweX3N2xQR 27:HuRWSo7BoL6E_dNYJT1V] 0 7 101 0}} {1 {migrate   map[] 0 8 101 0}} {1 {migrate   map[8:7io5ffTDu1Jo8_rzCZqN] 0 9 101 0}} {1 {requestMigrate   map[] 3 6 100 0}}]
+[server 0] 02:22:43.308936 apply: {requestMigrate   map[] 3 6 100 0}
+[server 0] 02:22:43.308960 state size: 950, logs: [{1 0} {1 {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 4 100 0}} {1 {migrate   map[5:_Z0PgMUg0ae4PyN4SSZ3] 0 2 100 0}} {1 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 5 100 0}} {1 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 3 100 0}} {1 {migrate   map[6:0z2PUj8-OI-bJfzIRIwu] 0 6 101 0}} {1 {migrate   map[29:JlCPnh9KDT7scDJCV4vc 22:knO854WNjMXwykx8dwxQ 21:rzzraFF6j9BmlCRp02Xu 2:A9Cgg6R66TFl-SynAvxB 20:hKciwX12Y7Wjqe1t3oVa 23:TfUcbTJy7WBqkqkZJq-E 26:FOKJFeF3CS6ohGVvpcUl 25:qpMJKQJ9nKD3riFlBbv- 28:vU4U7BcwHYWweX3N2xQR 27:HuRWSo7BoL6E_dNYJT1V 24:pmWbpBVmcuOtfriDsrTs] 0 7 101 0}} {1 {migrate   map[] 0 8 101 0}} {1 {migrate   map[8:7io5ffTDu1Jo8_rzCZqN] 0 9 101 0}} {1 {requestMigrate   map[] 3 6 100 0}}]
+[server 0] 02:22:43.308969 requestMigrateOp apply command: {requestMigrate   map[] 3 6 100 0}
+[server 0] 02:22:43.308979 shard is: 3
+[server 0] 02:22:43.308989 k: 5, key2shard: 3
+[server 0] 02:22:43.309000 requestMigrateOp apply return: {15 {requestMigrate   map[] 3 6 100 0}  map[5:_Z0PgMUg0ae4PyN4SSZ3]}
+[server 0] 02:22:43.309013 final apply return: {15 {requestMigrate   map[] 3 6 100 0}  map[5:_Z0PgMUg0ae4PyN4SSZ3]}
+[server 0] 02:22:43.309030 map[5:_Z0PgMUg0ae4PyN4SSZ3 9:4LGiOnPFz2M8QNgttwWC 17:tJ7lPUHv2mmsKd1yCy-v 16:LrFcKr9PzaqkYXZhFo0- 18:e_RRdspQv52EJpqTbu4R 6:0z2PUj8-OI-bJfzIRIwu 26:FOKJFeF3CS6ohGVvpcUl 29:JlCPnh9KDT7scDJCV4vc 12:O5cC_0Bx1ustJTajf7US 28:vU4U7BcwHYWweX3N2xQR 24:pmWbpBVmcuOtfriDsrTs 23:TfUcbTJy7WBqkqkZJq-E 8:7io5ffTDu1Jo8_rzCZqN 3:sq3vtNA2GPj7KmTDODI8 10:h5C8cfg4Mm1UscOV1nb6 13:D_DJKK9GxqWxAPgf8PXM 7:KpbSllWKDv5vnqTh-BTh 1:_DippeN4YXcXWWG1JNcZ 14:LkivqSNlx70NN86eMlKh 27:HuRWSo7BoL6E_dNYJT1V 22:knO854WNjMXwykx8dwxQ 20:hKciwX12Y7Wjqe1t3oVa 11:63f8ho0WuDlD5Ht9Zp7q 15:dEg7yj_6tFbSGKswyPn8 25:qpMJKQJ9nKD3riFlBbv- 2:A9Cgg6R66TFl-SynAvxB 19:lIa2meMlBSrRQuGwiMWT 21:rzzraFF6j9BmlCRp02Xu]
+[server 0] 02:22:43.309037 start to apply
+[server 0] 02:22:43.309047 reply RequestMigrate op succeed {15 {requestMigrate   map[] 3 6 100 0}  map[5:_Z0PgMUg0ae4PyN4SSZ3]}
+[server 0] 02:22:43.309056 send to RequestMigrate: &{false map[5:_Z0PgMUg0ae4PyN4SSZ3] OK 101 false}
+[server 0] 02:22:43.329896 receive RequestMigrate op: {requestMigrate   map[] 9 8 100 0}
+[server 0] 02:22:43.329939 receive migrate op: {migrate   map[6:0z2PUj8-OI-bJfzIRIwu] 0 7 100 0}
+[server 0] 02:22:43.337698 send RequestMigrateArgs: {8 4 101 102}
+[server 0] 02:22:43.337709 recevice RequestMigrateArgs reply: {false map[] OK 102 false}
+[server 0] 02:22:43.337754 receive migrate op: {migrate   map[] 0 10 101 0}
+[raft 0] 02:22:43.340068 rf.LastApplied: 16, rf.LastIncludedIdnex: 6, true index: 10, rf.Logs: [{1 0} {1 {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 4 100 0}} {1 {migrate   map[5:_Z0PgMUg0ae4PyN4SSZ3] 0 2 100 0}} {1 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 5 100 0}} {1 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 3 100 0}} {1 {migrate   map[6:0z2PUj8-OI-bJfzIRIwu] 0 6 101 0}} {1 {migrate   map[29:JlCPnh9KDT7scDJCV4vc 22:knO854WNjMXwykx8dwxQ 21:rzzraFF6j9BmlCRp02Xu 2:A9Cgg6R66TFl-SynAvxB 20:hKciwX12Y7Wjqe1t3oVa 23:TfUcbTJy7WBqkqkZJq-E 26:FOKJFeF3CS6ohGVvpcUl 25:qpMJKQJ9nKD3riFlBbv- 28:vU4U7BcwHYWweX3N2xQR 27:HuRWSo7BoL6E_dNYJT1V 24:pmWbpBVmcuOtfriDsrTs] 0 7 101 0}} {1 {migrate   map[] 0 8 101 0}} {1 {migrate   map[8:7io5ffTDu1Jo8_rzCZqN] 0 9 101 0}} {1 {requestMigrate   map[] 3 6 100 0}} {1 {requestMigrate   map[] 9 8 100 0}} {1 {migrate   map[6:0z2PUj8-OI-bJfzIRIwu] 0 7 100 0}} {1 {migrate   map[] 0 10 101 0}}]
+[server 0] 02:22:43.340087 apply: {requestMigrate   map[] 9 8 100 0}
+[server 0] 02:22:43.340131 state size: 1085, logs: [{1 0} {1 {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 4 100 0}} {1 {migrate   map[5:_Z0PgMUg0ae4PyN4SSZ3] 0 2 100 0}} {1 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 5 100 0}} {1 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 3 100 0}} {1 {migrate   map[6:0z2PUj8-OI-bJfzIRIwu] 0 6 101 0}} {1 {migrate   map[22:knO854WNjMXwykx8dwxQ 21:rzzraFF6j9BmlCRp02Xu 2:A9Cgg6R66TFl-SynAvxB 20:hKciwX12Y7Wjqe1t3oVa 29:JlCPnh9KDT7scDJCV4vc 25:qpMJKQJ9nKD3riFlBbv- 28:vU4U7BcwHYWweX3N2xQR 27:HuRWSo7BoL6E_dNYJT1V 24:pmWbpBVmcuOtfriDsrTs 23:TfUcbTJy7WBqkqkZJq-E 26:FOKJFeF3CS6ohGVvpcUl] 0 7 101 0}} {1 {migrate   map[] 0 8 101 0}} {1 {migrate   map[8:7io5ffTDu1Jo8_rzCZqN] 0 9 101 0}} {1 {requestMigrate   map[] 3 6 100 0}} {1 {requestMigrate   map[] 9 8 100 0}} {1 {migrate   map[6:0z2PUj8-OI-bJfzIRIwu] 0 7 100 0}} {1 {migrate   map[] 0 10 101 0}}]
+[server 0] 02:22:43.340140 requestMigrateOp apply command: {requestMigrate   map[] 9 8 100 0}
+[server 0] 02:22:43.340146 shard is: 9
+[server 0] 02:22:43.340153 k: 13, key2shard: 9
+[server 0] 02:22:43.340161 k: 1, key2shard: 9
+[server 0] 02:22:43.340167 k: 14, key2shard: 9
+[server 0] 02:22:43.340174 k: 11, key2shard: 9
+[server 0] 02:22:43.340181 k: 15, key2shard: 9
+[server 0] 02:22:43.340187 k: 19, key2shard: 9
+[server 0] 02:22:43.340194 k: 17, key2shard: 9
+[server 0] 02:22:43.340200 k: 16, key2shard: 9
+[server 0] 02:22:43.340248 k: 18, key2shard: 9
+[server 0] 02:22:43.340259 k: 12, key2shard: 9
+[server 0] 02:22:43.340266 k: 10, key2shard: 9
+[server 0] 02:22:43.340278 requestMigrateOp apply return: {16 {requestMigrate   map[] 9 8 100 0}  map[14:LkivqSNlx70NN86eMlKh 11:63f8ho0WuDlD5Ht9Zp7q 16:LrFcKr9PzaqkYXZhFo0- 10:h5C8cfg4Mm1UscOV1nb6 17:tJ7lPUHv2mmsKd1yCy-v 18:e_RRdspQv52EJpqTbu4R 12:O5cC_0Bx1ustJTajf7US 13:D_DJKK9GxqWxAPgf8PXM 1:_DippeN4YXcXWWG1JNcZ 15:dEg7yj_6tFbSGKswyPn8 19:lIa2meMlBSrRQuGwiMWT]}
+[server 0] 02:22:43.340300 save snapshot: {16 1 map[3:sq3vtNA2GPj7KmTDODI8 10:h5C8cfg4Mm1UscOV1nb6 13:D_DJKK9GxqWxAPgf8PXM 14:LkivqSNlx70NN86eMlKh 27:HuRWSo7BoL6E_dNYJT1V 22:knO854WNjMXwykx8dwxQ 20:hKciwX12Y7Wjqe1t3oVa 7:KpbSllWKDv5vnqTh-BTh 1:_DippeN4YXcXWWG1JNcZ 25:qpMJKQJ9nKD3riFlBbv- 2:A9Cgg6R66TFl-SynAvxB 11:63f8ho0WuDlD5Ht9Zp7q 15:dEg7yj_6tFbSGKswyPn8 19:lIa2meMlBSrRQuGwiMWT 21:rzzraFF6j9BmlCRp02Xu 17:tJ7lPUHv2mmsKd1yCy-v 16:LrFcKr9PzaqkYXZhFo0- 18:e_RRdspQv52EJpqTbu4R 5:_Z0PgMUg0ae4PyN4SSZ3 9:4LGiOnPFz2M8QNgttwWC 29:JlCPnh9KDT7scDJCV4vc 6:0z2PUj8-OI-bJfzIRIwu 26:FOKJFeF3CS6ohGVvpcUl 24:pmWbpBVmcuOtfriDsrTs 23:TfUcbTJy7WBqkqkZJq-E 8:7io5ffTDu1Jo8_rzCZqN 12:O5cC_0Bx1ustJTajf7US 28:vU4U7BcwHYWweX3N2xQR] map[101:9 100:5] 0}
+[raft 0] 02:22:43.340350 snap shot: {16 1 map[13:D_DJKK9GxqWxAPgf8PXM 1:_DippeN4YXcXWWG1JNcZ 14:LkivqSNlx70NN86eMlKh 27:HuRWSo7BoL6E_dNYJT1V 22:knO854WNjMXwykx8dwxQ 20:hKciwX12Y7Wjqe1t3oVa 7:KpbSllWKDv5vnqTh-BTh 15:dEg7yj_6tFbSGKswyPn8 25:qpMJKQJ9nKD3riFlBbv- 2:A9Cgg6R66TFl-SynAvxB 11:63f8ho0WuDlD5Ht9Zp7q 21:rzzraFF6j9BmlCRp02Xu 19:lIa2meMlBSrRQuGwiMWT 9:4LGiOnPFz2M8QNgttwWC 17:tJ7lPUHv2mmsKd1yCy-v 16:LrFcKr9PzaqkYXZhFo0- 18:e_RRdspQv52EJpqTbu4R 5:_Z0PgMUg0ae4PyN4SSZ3 26:FOKJFeF3CS6ohGVvpcUl 29:JlCPnh9KDT7scDJCV4vc 6:0z2PUj8-OI-bJfzIRIwu 28:vU4U7BcwHYWweX3N2xQR 24:pmWbpBVmcuOtfriDsrTs 23:TfUcbTJy7WBqkqkZJq-E 8:7io5ffTDu1Jo8_rzCZqN 12:O5cC_0Bx1ustJTajf7US 10:h5C8cfg4Mm1UscOV1nb6 3:sq3vtNA2GPj7KmTDODI8] map[101:9 100:5] 0}, logs: [{1 0} {1 {migrate   map[9:4LGiOnPFz2M8QNgttwWC] 0 4 100 0}} {1 {migrate   map[5:_Z0PgMUg0ae4PyN4SSZ3] 0 2 100 0}} {1 {migrate   map[7:KpbSllWKDv5vnqTh-BTh] 0 5 100 0}} {1 {migrate   map[3:sq3vtNA2GPj7KmTDODI8] 0 3 100 0}} {1 {migrate   map[6:0z2PUj8-OI-bJfzIRIwu] 0 6 101 0}} {1 {migrate   map[22:knO854WNjMXwykx8dwxQ 21:rzzraFF6j9BmlCRp02Xu 2:A9Cgg6R66TFl-SynAvxB 20:hKciwX12Y7Wjqe1t3oVa 29:JlCPnh9KDT7scDJCV4vc 25:qpMJKQJ9nKD3riFlBbv- 28:vU4U7BcwHYWweX3N2xQR 27:HuRWSo7BoL6E_dNYJT1V 24:pmWbpBVmcuOtfriDsrTs 23:TfUcbTJy7WBqkqkZJq-E 26:FOKJFeF3CS6ohGVvpcUl] 0 7 101 0}} {1 {migrate   map[] 0 8 101 0}} {1 {migrate   map[8:7io5ffTDu1Jo8_rzCZqN] 0 9 101 0}} {1 {requestMigrate   map[] 3 6 100 0}} {1 {requestMigrate   map[] 9 8 100 0}} {1 {migrate   map[6:0z2PUj8-OI-bJfzIRIwu] 0 7 100 0}} {1 {migrate   map[] 0 10 101 0}}]
+[raft 0] 02:22:43.340410 read snapshot: {6 1 map[19:lIa2meMlBSrRQuGwiMWT 17:tJ7lPUHv2mmsKd1yCy-v 16:LrFcKr9PzaqkYXZhFo0- 1:_DippeN4YXcXWWG1JNcZ 15:dEg7yj_6tFbSGKswyPn8 7:KpbSllWKDv5vnqTh-BTh 14:LkivqSNlx70NN86eMlKh 5:_Z0PgMUg0ae4PyN4SSZ3 18:e_RRdspQv52EJpqTbu4R 3:sq3vtNA2GPj7KmTDODI8 10:h5C8cfg4Mm1UscOV1nb6 9:4LGiOnPFz2M8QNgttwWC 13:D_DJKK9GxqWxAPgf8PXM 11:63f8ho0WuDlD5Ht9Zp7q 12:O5cC_0Bx1ustJTajf7US] map[100:1 101:5] 0}
+[server 0] 02:22:43.340513 final apply return: {16 {requestMigrate   map[] 9 8 100 0}  map[19:lIa2meMlBSrRQuGwiMWT 17:tJ7lPUHv2mmsKd1yCy-v 18:e_RRdspQv52EJpqTbu4R 12:O5cC_0Bx1ustJTajf7US 13:D_DJKK9GxqWxAPgf8PXM 1:_DippeN4YXcXWWG1JNcZ 15:dEg7yj_6tFbSGKswyPn8 10:h5C8cfg4Mm1UscOV1nb6 14:LkivqSNlx70NN86eMlKh 11:63f8ho0WuDlD5Ht9Zp7q 16:LrFcKr9PzaqkYXZhFo0-]}
+[server 0] 02:22:43.340547 map[6:0z2PUj8-OI-bJfzIRIwu 26:FOKJFeF3CS6ohGVvpcUl 29:JlCPnh9KDT7scDJCV4vc 12:O5cC_0Bx1ustJTajf7US 28:vU4U7BcwHYWweX3N2xQR 24:pmWbpBVmcuOtfriDsrTs 23:TfUcbTJy7WBqkqkZJq-E 8:7io5ffTDu1Jo8_rzCZqN 3:sq3vtNA2GPj7KmTDODI8 10:h5C8cfg4Mm1UscOV1nb6 13:D_DJKK9GxqWxAPgf8PXM 7:KpbSllWKDv5vnqTh-BTh 1:_DippeN4YXcXWWG1JNcZ 14:LkivqSNlx70NN86eMlKh 27:HuRWSo7BoL6E_dNYJT1V 22:knO854WNjMXwykx8dwxQ 20:hKciwX12Y7Wjqe1t3oVa 11:63f8ho0WuDlD5Ht9Zp7q 15:dEg7yj_6tFbSGKswyPn8 25:qpMJKQJ9nKD3riFlBbv- 2:A9Cgg6R66TFl-SynAvxB 19:lIa2meMlBSrRQuGwiMWT 21:rzzraFF6j9BmlCRp02Xu 5:_Z0PgMUg0ae4PyN4SSZ3 9:4LGiOnPFz2M8QNgttwWC 17:tJ7lPUHv2mmsKd1yCy-v 16:LrFcKr9PzaqkYXZhFo0- 18:e_RRdspQv52EJpqTbu4R]
+[server 0] 02:22:43.340561 start to apply
+[server 0] 02:22:43.340575 reply RequestMigrate op succeed {16 {requestMigrate   map[] 9 8 100 0}  map[11:63f8ho0WuDlD5Ht9Zp7q 16:LrFcKr9PzaqkYXZhFo0- 10:h5C8cfg4Mm1UscOV1nb6 14:LkivqSNlx70NN86eMlKh 1:_DippeN4YXcXWWG1JNcZ 15:dEg7yj_6tFbSGKswyPn8 19:lIa2meMlBSrRQuGwiMWT 17:tJ7lPUHv2mmsKd1yCy-v 18:e_RRdspQv52EJpqTbu4R 12:O5cC_0Bx1ustJTajf7US 13:D_DJKK9GxqWxAPgf8PXM]}
+[server 0] 02:22:43.340588 send to RequestMigrate: &{false map[16:LrFcKr9PzaqkYXZhFo0- 10:h5C8cfg4Mm1UscOV1nb6 14:LkivqSNlx70NN86eMlKh 11:63f8ho0WuDlD5Ht9Zp7q 15:dEg7yj_6tFbSGKswyPn8 19:lIa2meMlBSrRQuGwiMWT 17:tJ7lPUHv2mmsKd1yCy-v 18:e_RRdspQv52EJpqTbu4R 12:O5cC_0Bx1ustJTajf7US 13:D_DJKK9GxqWxAPgf8PXM 1:_DippeN4YXcXWWG1JNcZ] OK 101 false}
+[server 0] 02:22:43.369752 send InstallMigrateArgs: {map[9:4LGiOnPFz2M8QNgttwWC] 5 101 102}
+[server 0] 02:22:43.369767 recevice InstallMigrateArgs reply: {false OK 102 false}
+[raft 0] 02:22:43.372968 rf.LastApplied: 17, rf.LastIncludedIdnex: 16, true index: 1, rf.Logs: [{1 0} {1 {migrate   map[6:0z2PUj8-OI-bJfzIRIwu] 0 7 100 0}} {1 {migrate   map[] 0 10 101 0}}]
+[server 0] 02:22:43.372986 apply: {migrate   map[6:0z2PUj8-OI-bJfzIRIwu] 0 7 100 0}
+[server 0] 02:22:43.372996 migrateOp apply command: {migrate   map[6:0z2PUj8-OI-bJfzIRIwu] 0 7 100 0}
+[server 0] 02:22:43.373006 migrateOp apply return: {17 {migrate   map[6:0z2PUj8-OI-bJfzIRIwu] 0 7 100 0}  map[]}
+[server 0] 02:22:43.373036 state size: 316, logs: [{1 0} {1 {migrate   map[6:0z2PUj8-OI-bJfzIRIwu] 0 7 100 0}} {1 {migrate   map[] 0 10 101 0}}]
+[server 0] 02:22:43.373049 final apply return: {17 {migrate   map[6:0z2PUj8-OI-bJfzIRIwu] 0 7 100 0}  map[]}
+[server 0] 02:22:43.373071 map[15:dEg7yj_6tFbSGKswyPn8 25:qpMJKQJ9nKD3riFlBbv- 2:A9Cgg6R66TFl-SynAvxB 11:63f8ho0WuDlD5Ht9Zp7q 21:rzzraFF6j9BmlCRp02Xu 19:lIa2meMlBSrRQuGwiMWT 9:4LGiOnPFz2M8QNgttwWC 17:tJ7lPUHv2mmsKd1yCy-v 16:LrFcKr9PzaqkYXZhFo0- 18:e_RRdspQv52EJpqTbu4R 5:_Z0PgMUg0ae4PyN4SSZ3 26:FOKJFeF3CS6ohGVvpcUl 29:JlCPnh9KDT7scDJCV4vc 6:0z2PUj8-OI-bJfzIRIwu 28:vU4U7BcwHYWweX3N2xQR 24:pmWbpBVmcuOtfriDsrTs 23:TfUcbTJy7WBqkqkZJq-E 8:7io5ffTDu1Jo8_rzCZqN 12:O5cC_0Bx1ustJTajf7US 10:h5C8cfg4Mm1UscOV1nb6 3:sq3vtNA2GPj7KmTDODI8 13:D_DJKK9GxqWxAPgf8PXM 1:_DippeN4YXcXWWG1JNcZ 14:LkivqSNlx70NN86eMlKh 27:HuRWSo7BoL6E_dNYJT1V 22:knO854WNjMXwykx8dwxQ 20:hKciwX12Y7Wjqe1t3oVa 7:KpbSllWKDv5vnqTh-BTh]
+[server 0] 02:22:43.373078 start to apply
+[server 0] 02:22:43.373102 reply migrate op succeed {17 {migrate   map[6:0z2PUj8-OI-bJfzIRIwu] 0 7 100 0}  map[]}
+[server 0] 02:22:43.373111 send to migrate reply: &{false  0 false}
+[raft 0] 02:22:43.405489 rf.LastApplied: 18, rf.LastIncludedIdnex: 16, true index: 2, rf.Logs: [{1 0} {1 {migrate   map[6:0z2PUj8-OI-bJfzIRIwu] 0 7 100 0}} {1 {migrate   map[] 0 10 101 0}}]
+[server 0] 02:22:43.405524 apply: {migrate   map[] 0 10 101 0}
+[server 0] 02:22:43.405534 migrateOp apply command: {migrate   map[] 0 10 101 0}
+[server 0] 02:22:43.405558 migrateOp apply return: {18 {migrate   map[] 0 10 101 0}  map[]}
+[server 0] 02:22:43.405568 state size: 316, logs: [{1 0} {1 {migrate   map[6:0z2PUj8-OI-bJfzIRIwu] 0 7 100 0}} {1 {migrate   map[] 0 10 101 0}}]
+[server 0] 02:22:43.405579 final apply return: {18 {migrate   map[] 0 10 101 0}  map[]}
+[server 0] 02:22:43.405596 map[28:vU4U7BcwHYWweX3N2xQR 24:pmWbpBVmcuOtfriDsrTs 23:TfUcbTJy7WBqkqkZJq-E 8:7io5ffTDu1Jo8_rzCZqN 12:O5cC_0Bx1ustJTajf7US 10:h5C8cfg4Mm1UscOV1nb6 3:sq3vtNA2GPj7KmTDODI8 13:D_DJKK9GxqWxAPgf8PXM 1:_DippeN4YXcXWWG1JNcZ 14:LkivqSNlx70NN86eMlKh 27:HuRWSo7BoL6E_dNYJT1V 22:knO854WNjMXwykx8dwxQ 20:hKciwX12Y7Wjqe1t3oVa 7:KpbSllWKDv5vnqTh-BTh 15:dEg7yj_6tFbSGKswyPn8 25:qpMJKQJ9nKD3riFlBbv- 2:A9Cgg6R66TFl-SynAvxB 11:63f8ho0WuDlD5Ht9Zp7q 21:rzzraFF6j9BmlCRp02Xu 19:lIa2meMlBSrRQuGwiMWT 9:4LGiOnPFz2M8QNgttwWC 17:tJ7lPUHv2mmsKd1yCy-v 16:LrFcKr9PzaqkYXZhFo0- 18:e_RRdspQv52EJpqTbu4R 5:_Z0PgMUg0ae4PyN4SSZ3 26:FOKJFeF3CS6ohGVvpcUl 29:JlCPnh9KDT7scDJCV4vc 6:0z2PUj8-OI-bJfzIRIwu]
+[server 0] 02:22:43.405604 start to apply
+[server 0] 02:22:43.405615 reply migrate op succeed {18 {migrate   map[] 0 10 101 0}  map[]}
+[server 0] 02:22:43.405623 send to migrate reply: &{false  0 false}
+[server 0] 02:22:43.405630 GID: 101 receive from GID: 102
+[server 0] 02:22:43.405667 receive get op: {get 0  map[] 0 61 141350219722399373 0}
+[server 0] 02:22:43.433139 receive RequestMigrate op: {requestMigrate   map[] 5 1 102 0}
+[raft 0] 02:22:43.437386 rf.LastApplied: 19, rf.LastIncludedIdnex: 16, true index: 3, rf.Logs: [{1 0} {1 {migrate   map[6:0z2PUj8-OI-bJfzIRIwu] 0 7 100 0}} {1 {migrate   map[] 0 10 101 0}} {1 {get 0  map[] 0 61 141350219722399373 0}} {1 {requestMigrate   map[] 5 1 102 0}}]
+[server 0] 02:22:43.437422 apply: {get 0  map[] 0 61 141350219722399373 0}
+[server 0] 02:22:43.437465 state size: 398, logs: [{1 0} {1 {migrate   map[6:0z2PUj8-OI-bJfzIRIwu] 0 7 100 0}} {1 {migrate   map[] 0 10 101 0}} {1 {get 0  map[] 0 61 141350219722399373 0}} {1 {requestMigrate   map[] 5 1 102 0}}]
+[server 0] 02:22:43.437476 final apply return: {19 {get 0  map[] 0 61 141350219722399373 0}  map[]}
+[server 0] 02:22:43.437492 map[3:sq3vtNA2GPj7KmTDODI8 10:h5C8cfg4Mm1UscOV1nb6 13:D_DJKK9GxqWxAPgf8PXM 7:KpbSllWKDv5vnqTh-BTh 1:_DippeN4YXcXWWG1JNcZ 14:LkivqSNlx70NN86eMlKh 27:HuRWSo7BoL6E_dNYJT1V 22:knO854WNjMXwykx8dwxQ 20:hKciwX12Y7Wjqe1t3oVa 11:63f8ho0WuDlD5Ht9Zp7q 15:dEg7yj_6tFbSGKswyPn8 25:qpMJKQJ9nKD3riFlBbv- 2:A9Cgg6R66TFl-SynAvxB 19:lIa2meMlBSrRQuGwiMWT 21:rzzraFF6j9BmlCRp02Xu 5:_Z0PgMUg0ae4PyN4SSZ3 9:4LGiOnPFz2M8QNgttwWC 17:tJ7lPUHv2mmsKd1yCy-v 16:LrFcKr9PzaqkYXZhFo0- 18:e_RRdspQv52EJpqTbu4R 6:0z2PUj8-OI-bJfzIRIwu 26:FOKJFeF3CS6ohGVvpcUl 29:JlCPnh9KDT7scDJCV4vc 12:O5cC_0Bx1ustJTajf7US 28:vU4U7BcwHYWweX3N2xQR 24:pmWbpBVmcuOtfriDsrTs 23:TfUcbTJy7WBqkqkZJq-E 8:7io5ffTDu1Jo8_rzCZqN]
+[server 0] 02:22:43.437499 start to apply
+[server 0] 02:22:43.437509 reply get op succeed {19 {get 0  map[] 0 61 141350219722399373 0}  map[]}
+[server 0] 02:22:43.437517 send to client reply: &{false OK }

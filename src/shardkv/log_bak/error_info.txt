@@ -1,0 +1,11 @@
+Test: snapshots, join, and leave ...
+11111111111111111
+2222222222222222222
+3333333333333333333333333
+--- FAIL: TestSnapshot (79.09s)
+        test_test.go:18: Get(0): expected:
+                -0D3Ut8DZk_QzwkkKKtl
+                received:
+FAIL
+exit status 1
+FAIL    shardkv 79.092s
